@@ -8,6 +8,7 @@
 !.npmrc
 !.tmux.conf
 !.zshrc
+!dotfiles.sh
 
 !.aws
 !.aws/config
