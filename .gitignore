@@ -29,6 +29,8 @@
 !.ecs
 !.ecs/.gitkeep
 
+!.vim
+
 !.ssh
 !.ssh/.gitkeep
 

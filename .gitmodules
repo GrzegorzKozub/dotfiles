@@ -1,0 +1,4 @@
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:GrzegorzKozub/vim.git
+	branch = master
