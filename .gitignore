@@ -25,5 +25,11 @@
 !.config/systemd/user
 !.config/systemd/user/tmux.service
 
+!.ecs
+!.ecs/.gitkeep
+
+!.ssh
+!.ssh/.gitkeep
+
 !Pictures
 !Pictures/Among Trees.png
