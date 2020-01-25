@@ -21,5 +21,9 @@
 !.config/ranger
 !.config/ranger/rc.conf
 
+!.config/systemd
+!.config/systemd/user
+!.config/systemd/user/tmux.service
+
 !Pictures
 !Pictures/Among Trees.png
