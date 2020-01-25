@@ -2,3 +2,7 @@
 	path = .vim
 	url = git@github.com:GrzegorzKozub/vim.git
 	branch = master
+[submodule ".config/Code"]
+	path = .config/Code
+	url = git@github.com:GrzegorzKozub/vscode.git
+	branch = master

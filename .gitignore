@@ -14,7 +14,10 @@
 !.aws/config
 
 !.config
+
 !.config/chromium-flags.conf
+
+!.config/Code
 
 !.config/keepassxc
 !.config/keepassxc/keepassxc.ini
