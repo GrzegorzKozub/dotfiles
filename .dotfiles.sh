@@ -10,8 +10,6 @@ if [ -d ~/.tmux/plugins/tpm ]; then rm -rf ~/.tmux/plugins/tpm; fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bindings/install_plugins
 
-systemctl --user enable tmux
-
 # ranger
 
 if [ -d ~/ranger_devicons ]; then rm -rf ~/ranger_devicons; fi
