@@ -6,6 +6,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc
 
 # tmux
 
+if [ -d ~/.tmux/plugins/tpm ]; then rm -rf ~/.tmux/plugins/tpm; fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bindings/install_plugins
 
@@ -23,6 +24,6 @@ rm -rf ~/ranger_devicons
 
 # vim and neovim
 
-vim -c 'PlugInstall | exit'
-ln -s ~/.vim  ~/.config/nvim
+vim -c 'PlugInstall | qall'
+ln -sf ~/.vim  ~/.config/nvim
 
