@@ -111,7 +111,17 @@ setopt hist_verify # don't run command immediately
 setopt inc_append_history # add commands in the order of execution
 setopt share_history # share history between terminals
 
-cp ~/.zshhist ~/Dropbox/Backup
+HISTBACKUP=~/Dropbox/Backup/arch/.zshhist
+if [[ -d $(dirname $HISTBACKUP) ]]; then
+  if [[ ! -f $HISTFILE ]]; then touch $HISTFILE; fi
+  if [[ ! -f $HISTBACKUP ]]; then touch $HISTBACKUP; fi
+  if [[ $(stat -c%s $HISTFILE) -gt $(stat -c%s $HISTBACKUP) ]]; then
+    cp $HISTFILE $HISTBACKUP
+  else
+    cp $HISTBACKUP $HISTFILE
+  fi
+fi
+unset HISTBACKUP
 
 # aliases
 alias grep='grep --color=auto --exclude-dir={.git}'
