@@ -111,7 +111,7 @@ setopt hist_verify # don't run command immediately
 setopt inc_append_history # add commands in the order of execution
 setopt share_history # share history between terminals
 
-HISTBACKUP=~/Dropbox/Backup/arch/.zshhist
+HISTBACKUP=~/Dropbox/Arch/.zshhist
 if [[ -d $(dirname $HISTBACKUP) ]]; then
   if [[ ! -f $HISTFILE ]]; then touch $HISTFILE; fi
   if [[ ! -f $HISTBACKUP ]]; then touch $HISTBACKUP; fi
