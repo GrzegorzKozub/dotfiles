@@ -1,6 +1,6 @@
 # paths
 typeset -U path
-path=(~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.6.0/bin $path[@])
+path=(~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.7.0/bin $path[@])
 
 # colors
 
