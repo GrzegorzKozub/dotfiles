@@ -34,12 +34,12 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
 zinit snippet OMZ::lib/git.zsh
-zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/zsh/solarized-dark.zsh-theme # after zsh-vim-mode
+zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/zsh/solarized-light.zsh-theme # after zsh-vim-mode
 
 zinit ice wait lucid
 zinit light zdharma/fast-syntax-highlighting
-zinit ice wait cloneonly nocompile atclone'fast-theme ./solarized-dark.ini --quiet' atpull'%atclone' lucid
-zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/fast-syntax-highlighting/solarized-dark.ini # after fast-syntax-highlighting
+zinit ice wait cloneonly nocompile atclone'fast-theme ./solarized-light.ini --quiet' atpull'%atclone' lucid
+zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/fast-syntax-highlighting/solarized-light.ini # after fast-syntax-highlighting
 
 zinit snippet PZT::modules/terminal/init.zsh
 
