@@ -125,7 +125,7 @@ unset HISTBACKUP
 
 # theme
 
-THEME=solarized-light
+export THEME=solarized-light
 
 set-gnome-terminal-colors() {
   if (( ! $+commands[gsettings] || ! $+commands[dconf] )); then return; fi
