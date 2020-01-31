@@ -123,6 +123,24 @@ if [[ -d $(dirname $HISTBACKUP) ]]; then
 fi
 unset HISTBACKUP
 
+# theme
+
+THEME=solarized-light
+
+set-gnome-terminal-colors() {
+  if (( ! $+commands[gsettings] || ! $+commands[dconf] )); then return; fi
+  UUID=$(gsettings get org.gnome.Terminal.ProfilesList default)
+  UUID=${UUID:1:-1}
+  dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/foreground-color" $2
+  dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/background-color" $1
+  unset UUID
+}
+
+case $THEME in
+  'solarized-light') set-gnome-terminal-colors "'rgb(253,246,227)'" "'rgb(101,123,131)'";;
+  'solarized-dark') set-gnome-terminal-colors "'rgb(0,43,54)'" "'rgb(131,148,150)'";;
+esac
+
 # aliases
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias ls='ls --color=auto'
