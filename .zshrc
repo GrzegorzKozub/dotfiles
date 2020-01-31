@@ -111,7 +111,7 @@ setopt hist_verify # don't run command immediately
 setopt inc_append_history # add commands in the order of execution
 setopt share_history # share history between terminals
 
-HISTBACKUP=~/Dropbox/Arch/.zshhist
+HISTBACKUP=~/Dropbox/arch/.zshhist
 if [[ -d $(dirname $HISTBACKUP) ]]; then
   if [[ ! -f $HISTFILE ]]; then touch $HISTFILE; fi
   if [[ ! -f $HISTBACKUP ]]; then touch $HISTBACKUP; fi
@@ -129,17 +129,20 @@ THEME=solarized-light
 
 set-gnome-terminal-colors() {
   if (( ! $+commands[gsettings] || ! $+commands[dconf] )); then return; fi
-  UUID=$(gsettings get org.gnome.Terminal.ProfilesList default)
-  UUID=${UUID:1:-1}
-  dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/foreground-color" $2
-  dconf write "/org/gnome/terminal/legacy/profiles:/:$UUID/background-color" $1
-  unset UUID
+  PROFILE="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
+  case $THEME in
+    'solarized-light')
+      dconf write "$PROFILE/foreground-color" "'rgb(101,123,131)'"
+      dconf write "$PROFILE/background-color" "'rgb(253,246,227)'"
+      ;;
+    'solarized-dark')
+      dconf write "$PROFILE/foreground-color" "'rgb(131,148,150)'"
+      dconf write "$PROFILE/background-color" "'rgb(0,43,54)'"
+      ;;
+  esac
+  unset PROFILE
 }
-
-case $THEME in
-  'solarized-light') set-gnome-terminal-colors "'rgb(253,246,227)'" "'rgb(101,123,131)'";;
-  'solarized-dark') set-gnome-terminal-colors "'rgb(0,43,54)'" "'rgb(131,148,150)'";;
-esac
+set-gnome-terminal-colors
 
 # aliases
 alias grep='grep --color=auto --exclude-dir={.git}'
