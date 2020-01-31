@@ -18,6 +18,11 @@ fi
 # terminal
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
+# global env vars
+
+export EDITOR='vim'
+export THEME='solarized-light'
+
 # plugins
 
 source ~/.zinit/bin/zinit.zsh
@@ -30,16 +35,20 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
 
 zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
+
 zinit ice wait lucid
 zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
+zinit ice lucid
 zinit snippet OMZ::lib/git.zsh
-zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/zsh/solarized-light.zsh-theme # after zsh-vim-mode
 
-zinit ice wait lucid
+zinit ice lucid
 zinit light zdharma/fast-syntax-highlighting
-zinit ice wait cloneonly nocompile atclone'fast-theme ./solarized-light.ini --quiet' atpull'%atclone' lucid
-zinit snippet https://github.com/GrzegorzKozub/themes/blob/master/fast-syntax-highlighting/solarized-light.ini # after fast-syntax-highlighting
+
+zinit ice nocompile lucid \
+  atload"source ./zsh/$THEME.zsh-theme" \
+  atload"fast-theme ./fast-syntax-highlighting/$THEME.ini --quiet"
+zinit light GrzegorzKozub/themes # after zsh-vim-mode and fast-syntax-highlighting
 
 zinit snippet PZT::modules/terminal/init.zsh
 
@@ -53,8 +62,6 @@ zinit ice wait lucid as'completion'
 zinit snippet OMZ::plugins/pip/_pip
 
 # options
-
-export EDITOR='vim'
 
 setopt auto_pushd # pushd on every cd
 setopt correct_all
@@ -123,9 +130,7 @@ if [[ -d $(dirname $HISTBACKUP) ]]; then
 fi
 unset HISTBACKUP
 
-# theme
-
-export THEME=solarized-light
+# gnome terminal
 
 set-gnome-terminal-colors() {
   if (( ! $+commands[gsettings] || ! $+commands[dconf] )); then return; fi
@@ -142,6 +147,7 @@ set-gnome-terminal-colors() {
   esac
   unset PROFILE
 }
+
 set-gnome-terminal-colors
 
 # aliases
