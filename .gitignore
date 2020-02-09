@@ -24,6 +24,8 @@
 
 !.config/ranger
 !.config/ranger/rc.conf
+!.config/ranger/colorschemes
+!.config/ranger/colorschemes/solarized-light.py
 
 !.ecs
 !.ecs/.gitkeep
