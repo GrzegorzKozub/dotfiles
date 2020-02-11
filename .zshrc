@@ -151,9 +151,10 @@ set-gnome-terminal-colors() {
 set-gnome-terminal-colors
 
 # aliases
+alias clip='xclip -selection clipboard'
 alias grep='grep --color=auto --exclude-dir={.git}'
-alias ls='ls --color=auto'
 alias la='ls -lAh'
+alias ls='ls --color=auto'
 
 # dirhistory
 bindkey -M vicmd '^[[1;3D' dirhistory_zle_dirhistory_back
