@@ -21,7 +21,9 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # global env vars
 
 export EDITOR='vim'
+
 export THEME='solarized-light'
+[[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark'
 
 # plugins
 
@@ -133,7 +135,8 @@ unset HISTBACKUP
 # gnome terminal
 
 set-gnome-terminal-colors() {
-  if (( ! $+commands[gsettings] || ! $+commands[dconf] )); then return; fi
+  [[ $TERM_PROGRAM == 'vscode' ]] && return
+  [[ ! $+commands[gsettings] || ! $+commands[dconf] ]] && return
   PROFILE="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
   case $THEME in
     'solarized-light')
