@@ -23,7 +23,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 export EDITOR='vim'
 
 export THEME='solarized-light'
-[[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark'
+[[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark-vscode'
 
 # plugins
 
