@@ -166,9 +166,9 @@ bindkey -M vicmd '^[[1;3A' dirhistory_zle_dirhistory_up
 bindkey -M vicmd '^[[1;3B' dirhistory_zle_dirhistory_down
 
 # zsh-vim-mode
-MODE_CURSOR_SEARCH='steady block'
-MODE_CURSOR_VICMD='blinking block'
-MODE_CURSOR_VIINS='blinking bar'
+# MODE_CURSOR_SEARCH='steady block'
+# MODE_CURSOR_VICMD='blinking block'
+# MODE_CURSOR_VIINS='blinking bar'
 
 # dotnet
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
