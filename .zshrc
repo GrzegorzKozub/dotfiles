@@ -198,10 +198,11 @@ zle -N ranger-cd
 bindkey -M vicmd '\er' ranger-cd
 bindkey -M viins '\er' ranger-cd
 
-# larger fonts on 4k screen
 function screen {
-  if [[ $(xrandr | grep connected | grep 3840x2160) ]]; then FACTOR=1.5; else FACTOR=1.25; fi
-  gsettings set org.gnome.desktop.interface text-scaling-factor $FACTOR
-  unset FACTOR
+  if (( ${+1} )); then
+    gsettings set org.gnome.desktop.interface text-scaling-factor $1
+  else
+    gsettings get org.gnome.desktop.interface text-scaling-factor
+  fi
 }
 
