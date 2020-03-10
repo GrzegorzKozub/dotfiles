@@ -198,7 +198,7 @@ zle -N ranger-cd
 bindkey -M vicmd '\er' ranger-cd
 bindkey -M viins '\er' ranger-cd
 
-function screen {
+function fonts {
   if (( ${+1} )); then
     gsettings set org.gnome.desktop.interface text-scaling-factor $1
   else
