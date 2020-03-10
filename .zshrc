@@ -7,12 +7,12 @@ path=(~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.7.0/bin $path[@])
 autoload -U colors && colors
 
 if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
-  CMD=/tmp/ls_colors.zsh
-  if [[ ! -x $CMD ]]; then
-    dircolors -b > $CMD && chmod a+x $CMD
+  if [[ ! -f ~/.dir_colors ]]; then
+    dircolors --print-database > ~/.dir_colors
+    sed -i 's/ 01;/ 00;/' ~/.dir_colors
+    sed -i 's/;01 /;00 /' ~/.dir_colors
   fi
-  $CMD
-  unset CMD
+  eval `dircolors -b ~/.dir_colors`
 fi
 
 # terminal
