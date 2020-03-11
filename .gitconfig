@@ -18,7 +18,7 @@
   stash = magenta
   tag = yellow
 [color.diff]
-  commit = 13
+  commit = yellow
   func = -1
   frag = cyan
   meta = 12
