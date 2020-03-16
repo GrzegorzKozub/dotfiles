@@ -155,6 +155,7 @@ set-gnome-terminal-colors
 
 # aliases
 alias clip='xclip -selection clipboard'
+alias diff='diff --color'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias ls='ls --color=auto'
