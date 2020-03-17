@@ -1,6 +1,41 @@
+# os
+
+case $(uname -s) in
+  'Linux') ARCH=1;;
+  'Darwin') MAC=1;;
+esac
+
+if [[ $MAC ]] && type brew &>/dev/null; then
+  BREW=$(brew --prefix)
+fi
+
 # paths
+
 typeset -U path
-path=(~/.local/bin ~/.npm/bin ~/go/bin ~/.gem/ruby/2.7.0/bin $path[@])
+
+if [[ $MAC ]]; then
+  path=(
+    /usr/local/opt/coreutils/libexec/gnubin
+    /usr/local/opt/findutils/libexec/gnubin
+    /usr/local/opt/gnu-sed/libexec/gnubin
+    /usr/local/opt/grep/libexec/gnubin
+    /usr/local/opt/curl/bin
+    /usr/local/opt/ncurses/bin
+    ~/.dotnet/tools
+    ~/.gem/ruby/2.6.0/bin
+    ~/go/bin
+    ~/Library/Python/3.7/bin
+    $path[@]
+  )
+else
+  path=(
+    ~/.local/bin
+    ~/.npm/bin
+    ~/.gem/ruby/2.7.0/bin
+    ~/go/bin
+    $path[@]
+  )
+fi
 
 # colors
 
@@ -16,6 +51,7 @@ if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
 fi
 
 # terminal
+
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # global env vars
@@ -74,12 +110,21 @@ setopt pushd_minus # cd - goes to the previous dir
 stty -ixon # disable flow control (^s and ^c)
 
 # prompt
+
 autoload -Uz promptinit && promptinit
 setopt prompt_subst
 
 # completion
 
 WORDCHARS=''
+
+if [[ $MAC ]] && [[ $BREW ]]; then
+  typeset -U fpath
+  fpath=(
+    $BREW/share/zsh/site-functions
+    $fpath[@]
+  )
+fi
 
 autoload -Uz compinit && compinit
 
@@ -134,26 +179,31 @@ unset HISTBACKUP
 
 # gnome terminal
 
-set-gnome-terminal-colors() {
-  [[ $TERM_PROGRAM == 'vscode' ]] && return
-  [[ ! $+commands[gsettings] || ! $+commands[dconf] ]] && return
-  PROFILE="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
-  case $THEME in
-    'solarized-light')
-      dconf write "$PROFILE/foreground-color" "'rgb(101,123,131)'"
-      dconf write "$PROFILE/background-color" "'rgb(253,246,227)'"
-      ;;
-    'solarized-dark')
-      dconf write "$PROFILE/foreground-color" "'rgb(131,148,150)'"
-      dconf write "$PROFILE/background-color" "'rgb(0,43,54)'"
-      ;;
-  esac
-  unset PROFILE
-}
+if [[ $ARCH ]]; then
 
-set-gnome-terminal-colors
+  set-gnome-terminal-colors() {
+    [[ $TERM_PROGRAM == 'vscode' ]] && return
+    [[ ! $+commands[gsettings] || ! $+commands[dconf] ]] && return
+    PROFILE="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
+    case $THEME in
+      'solarized-light')
+        dconf write "$PROFILE/foreground-color" "'rgb(101,123,131)'"
+        dconf write "$PROFILE/background-color" "'rgb(253,246,227)'"
+        ;;
+      'solarized-dark')
+        dconf write "$PROFILE/foreground-color" "'rgb(131,148,150)'"
+        dconf write "$PROFILE/background-color" "'rgb(0,43,54)'"
+        ;;
+    esac
+    unset PROFILE
+  }
+
+  set-gnome-terminal-colors
+
+fi
 
 # aliases
+
 alias clip='xclip -selection clipboard'
 alias diff='diff --color'
 alias grep='grep --color=auto --exclude-dir={.git}'
@@ -161,28 +211,34 @@ alias la='ls -lAh'
 alias ls='ls --color=auto'
 
 # dirhistory
+
 bindkey -M vicmd '^[[1;3D' dirhistory_zle_dirhistory_back
 bindkey -M vicmd '^[[1;3C' dirhistory_zle_dirhistory_future
 bindkey -M vicmd '^[[1;3A' dirhistory_zle_dirhistory_up
 bindkey -M vicmd '^[[1;3B' dirhistory_zle_dirhistory_down
 
 # zsh-vim-mode
+
 # MODE_CURSOR_SEARCH='steady block'
 # MODE_CURSOR_VICMD='blinking block'
 # MODE_CURSOR_VIINS='blinking bar'
 
 # dotnet
+
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # erlang
+
 export ERL_AFLAGS='-kernel shell_history enabled'
 
 # fzf
+
 bindkey -M vicmd '^[c' fzf-cd-widget
 bindkey -M vicmd '^r' fzf-history-widget
 bindkey -M vicmd '^t' fzf-file-widget
 
 # esc+r activates ranger which changes current dir upon exit
+
 function ranger-cd {
   TMP="$(mktemp)"
   ranger --choosedir="$TMP" "$@" < $TTY
@@ -199,11 +255,21 @@ zle -N ranger-cd
 bindkey -M vicmd '\er' ranger-cd
 bindkey -M viins '\er' ranger-cd
 
-function fonts {
-  if (( ${+1} )); then
-    gsettings set org.gnome.desktop.interface text-scaling-factor $1
-  else
-    gsettings get org.gnome.desktop.interface text-scaling-factor
-  fi
-}
+# font size
+
+if [[ $ARCH ]]; then
+
+  function fonts {
+    if (( ${+1} )); then
+      gsettings set org.gnome.desktop.interface text-scaling-factor $1
+    else
+      gsettings get org.gnome.desktop.interface text-scaling-factor
+    fi
+  }
+
+fi
+
+# cleanup
+
+unset ARCH MAC BREW
 
