@@ -1,19 +1,16 @@
 # os
 
 case $(uname -s) in
-  'Linux') ARCH=1;;
+  'Linux') LINUX=1;;
   'Darwin') MAC=1;;
 esac
-
-if [[ $MAC ]] && type brew &>/dev/null; then
-  BREW=$(brew --prefix)
-fi
 
 # paths
 
 typeset -U path
 
 if [[ $MAC ]]; then
+
   path=(
     /usr/local/opt/coreutils/libexec/gnubin
     /usr/local/opt/findutils/libexec/gnubin
@@ -27,7 +24,9 @@ if [[ $MAC ]]; then
     ~/Library/Python/3.7/bin
     $path[@]
   )
+
 else
+
   path=(
     ~/.local/bin
     ~/.npm/bin
@@ -35,6 +34,7 @@ else
     ~/go/bin
     $path[@]
   )
+
 fi
 
 # colors
@@ -118,10 +118,10 @@ setopt prompt_subst
 
 WORDCHARS=''
 
-if [[ $MAC ]] && [[ $BREW ]]; then
+if [[ $MAC ]]; then
   typeset -U fpath
   fpath=(
-    $BREW/share/zsh/site-functions
+    /usr/local/share/zsh/site-functions
     $fpath[@]
   )
 fi
@@ -179,7 +179,7 @@ unset HISTBACKUP
 
 # gnome terminal
 
-if [[ $ARCH ]]; then
+if [[ $LINUX ]]; then
 
   set-gnome-terminal-colors() {
     [[ $TERM_PROGRAM == 'vscode' ]] && return
@@ -204,7 +204,12 @@ fi
 
 # aliases
 
-alias clip='xclip -selection clipboard'
+if [[ $LINUX ]]; then
+
+  alias clip='xclip -selection clipboard'
+
+fi
+
 alias diff='diff --color'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
@@ -212,10 +217,14 @@ alias ls='ls --color=auto'
 
 # dirhistory
 
-bindkey -M vicmd '^[[1;3D' dirhistory_zle_dirhistory_back
-bindkey -M vicmd '^[[1;3C' dirhistory_zle_dirhistory_future
-bindkey -M vicmd '^[[1;3A' dirhistory_zle_dirhistory_up
-bindkey -M vicmd '^[[1;3B' dirhistory_zle_dirhistory_down
+if [[ $MAC ]]; then ALT='^[^[['; else ALT='^[[1;3'; fi
+
+bindkey -M vicmd "${ALT}D" dirhistory_zle_dirhistory_back
+bindkey -M vicmd "${ALT}C" dirhistory_zle_dirhistory_future
+bindkey -M vicmd "${ALT}A" dirhistory_zle_dirhistory_up
+bindkey -M vicmd "${ALT}B" dirhistory_zle_dirhistory_down
+
+unset ALT
 
 # zsh-vim-mode
 
@@ -257,7 +266,7 @@ bindkey -M viins '\er' ranger-cd
 
 # font size
 
-if [[ $ARCH ]]; then
+if [[ $LINUX ]]; then
 
   function fonts {
     if (( ${+1} )); then
@@ -271,5 +280,5 @@ fi
 
 # cleanup
 
-unset ARCH MAC BREW
+unset LINUX MAC
 
