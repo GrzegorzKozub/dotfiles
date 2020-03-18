@@ -1,12 +1,32 @@
 set -e -o verbose
 
-# init
+# repo
 
 pushd `dirname $0`
 git submodule update --init
 git submodule foreach --recursive git checkout master
-git update-index --assume-unchanged .aws/config .config/keepassxc/keepassxc.ini
+git update-index --assume-unchanged aws/.aws/config keepass/keepassxc/keepassxc.ini
 popd
+
+# links
+
+if [ ! -d ~/.config ]; then mkdir ~/.config; fi
+
+stow --dir=`dirname $0` --target=$HOME/.config --stow \
+  keepass \
+  ranger \
+  vscode
+
+stow --dir=`dirname $0` --target=$HOME --stow \
+  aws \
+  elixir \
+  git \
+  node \
+  tmux \
+  vim \
+  zsh
+
+ln -sf $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
 
 # zsh
 
@@ -32,5 +52,4 @@ rm -rf ~/ranger_devicons
 # vim and neovim
 
 vim -c 'PlugInstall'
-ln -sf ~/.vim  ~/.config/nvim
 
