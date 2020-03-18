@@ -1,0 +1,8 @@
+[submodule "vim/.vim"]
+	path = vim/.vim
+	url = git@github.com:GrzegorzKozub/vim.git
+	branch = master
+[submodule "vscode/Code"]
+	path = vscode/Code
+	url = git@github.com:GrzegorzKozub/vscode.git
+	branch = master
