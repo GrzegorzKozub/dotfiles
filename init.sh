@@ -5,7 +5,7 @@ set -e -o verbose
 pushd `dirname $0`
 git submodule update --init
 git submodule foreach --recursive git checkout master
-git update-index --assume-unchanged aws/.aws/config keepass/keepassxc/keepassxc.ini
+git update-index --assume-unchanged keepass/keepassxc/keepassxc.ini
 popd
 
 # links
@@ -18,7 +18,6 @@ stow --dir=`dirname $0` --target=$HOME/.config --stow \
   vscode
 
 stow --dir=`dirname $0` --target=$HOME --stow \
-  aws \
   elixir \
   git \
   node \
