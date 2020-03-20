@@ -165,17 +165,17 @@ setopt hist_verify # don't run command immediately
 setopt inc_append_history # add commands in the order of execution
 setopt share_history # share history between terminals
 
-HISTBACKUP=~/Dropbox/arch/zsh/.zshhist
-if [[ -d $(dirname $HISTBACKUP) ]]; then
-  if [[ ! -f $HISTFILE ]]; then touch $HISTFILE; fi
-  if [[ ! -f $HISTBACKUP ]]; then touch $HISTBACKUP; fi
-  if [[ $(stat -c%s $HISTFILE) -gt $(stat -c%s $HISTBACKUP) ]]; then
-    cp $HISTFILE $HISTBACKUP
-  else
-    cp $HISTBACKUP $HISTFILE
+backup-history() {
+  if [[ -d $(dirname $1) ]]; then
+    if [[ ! -f $HISTFILE ]]; then touch $HISTFILE; fi
+    if [[ ! -f $1 ]]; then touch $1; fi
+    if [[ $(stat -c%s $HISTFILE) -gt $(stat -c%s $1) ]]; then
+      cp $HISTFILE $1
+    else
+      cp $1 $HISTFILE
+    fi
   fi
-fi
-unset HISTBACKUP
+}
 
 # gnome terminal
 
