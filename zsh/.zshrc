@@ -20,6 +20,7 @@ if [[ $MAC ]]; then
     /usr/local/opt/ncurses/bin
     ~/.dotnet/tools
     ~/.gem/ruby/2.6.0/bin
+    ~/.npm/bin
     ~/go/bin
     ~/Library/Python/3.7/bin
     $path[@]
