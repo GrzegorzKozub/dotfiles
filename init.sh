@@ -12,7 +12,7 @@ esac
 pushd `dirname $0`
 git submodule update --init
 git submodule foreach --recursive git checkout master
-git update-index --assume-unchanged keepass/keepassxc/keepassxc.ini
+git update-index --assume-unchanged keepass/keepassxc/keepassxc.ini keepass.mac/KeePassXC/keepassxc.ini
 popd
 
 # links
