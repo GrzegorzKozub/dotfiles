@@ -57,6 +57,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # global env vars
 
+if [[ $MAC ]]; then export LC_ALL=en_US.UTF-8; fi
 export EDITOR='vim'
 
 export THEME='solarized-light'
