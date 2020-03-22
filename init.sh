@@ -30,14 +30,14 @@ stow --dir=`dirname $0` --target=$HOME --stow \
   vim \
   zsh
 
-ln -sf $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
+ln -sfT $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
 
 if [[ $MAC ]]; then
 
-  ln -sf $(dirname $(realpath $0))/keepass.mac/KeePassXC \
+  ln -sfT $(dirname $(realpath $0))/keepass.mac/KeePassXC \
     ~/Library/Application\ Support/KeePassXC
 
-  ln -sf $(dirname $(realpath $0))/vscode/Code \
+  ln -sfT $(dirname $(realpath $0))/vscode/Code \
     ~/Library/Application\ Support/Code
 
 else
