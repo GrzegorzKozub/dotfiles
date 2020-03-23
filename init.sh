@@ -10,9 +10,14 @@ esac
 # repo
 
 pushd `dirname $0`
+
 git submodule update --init
 git submodule foreach --recursive git checkout master
-git update-index --assume-unchanged keepass/keepassxc/keepassxc.ini keepass.mac/KeePassXC/keepassxc.ini
+
+git update-index --assume-unchanged \
+  keepass.arch/keepassxc/keepassxc.ini \
+  keepass.mac/KeePassXC/keepassxc.ini
+
 popd
 
 # links
@@ -34,16 +39,15 @@ ln -sfT $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
 
 if [[ $MAC ]]; then
 
-  ln -sfT $(dirname $(realpath $0))/keepass.mac/KeePassXC \
-    ~/Library/Application\ Support/KeePassXC
-
-  ln -sfT $(dirname $(realpath $0))/vscode/Code \
-    ~/Library/Application\ Support/Code
+  stow --dir=`dirname $0` \
+    --target=$HOME/Library/Application\ Support --stow \
+    keepass.mac \
+    vscode
 
 else
 
   stow --dir=`dirname $0` --target=$HOME/.config --stow \
-    keepass \
+    keepass.arch \
     vscode
 
 fi
