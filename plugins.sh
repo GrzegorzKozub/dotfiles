@@ -23,5 +23,5 @@ rm -rf ~/ranger_devicons
 
 # vim and neovim
 
-vim -c 'PlugInstall'
+nvim --headless +PlugInstall +qall
 
