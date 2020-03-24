@@ -213,6 +213,7 @@ if [[ $LINUX ]]; then
 fi
 
 alias diff='diff --color'
+alias glances='glances --theme-white'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias ls='ls --color=auto'
