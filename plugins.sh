@@ -10,6 +10,7 @@ if [ -d ~/.tmux/plugins/tpm ]; then rm -rf ~/.tmux/plugins/tpm; fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux new-session -d
 ~/.tmux/plugins/tpm/bindings/install_plugins
+tmux kill-server
 
 # ranger
 
