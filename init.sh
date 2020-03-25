@@ -48,6 +48,7 @@ if [[ $MAC ]]; then
 else
 
   stow --dir=`dirname $0` --target=$HOME/.config --stow \
+    chrome \
     flameshot \
     keepass.arch \
     vscode \
