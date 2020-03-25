@@ -14,13 +14,13 @@ tmux kill-server
 
 # ranger
 
-if [ -d ~/ranger_devicons ]; then rm -rf ~/ranger_devicons; fi
-pushd ~
-git clone https://github.com/alexanderjeurissen/ranger_devicons
-cd ranger_devicons
-make install
-popd
-rm -rf ~/ranger_devicons
+# if [ -d ~/ranger_devicons ]; then rm -rf ~/ranger_devicons; fi
+# pushd ~
+# git clone https://github.com/alexanderjeurissen/ranger_devicons
+# cd ranger_devicons
+# make install
+# popd
+# rm -rf ~/ranger_devicons
 
 # vim and neovim
 
