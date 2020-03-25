@@ -6,7 +6,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/i
 
 # tmux
 
-if [ -d ~/.tmux/plugins/tpm ]; then rm -rf ~/.tmux/plugins/tpm; fi
+if [ -d ~/.tmux/plugins ]; then rm -rf ~/.tmux/plugins; fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux new-session -d
 ~/.tmux/plugins/tpm/bindings/install_plugins
