@@ -22,7 +22,7 @@ popd
 
 # links
 
-if [ ! -d ~/.config ]; then mkdir ~/.config; fi
+[[ -d ~/.config ]] || mkdir ~/.config
 
 stow --dir=`dirname $0` --target=$HOME/.config --stow \
   ranger \
@@ -35,7 +35,8 @@ stow --dir=`dirname $0` --target=$HOME --stow \
   tmux \
   vim
 
-ln -sfT $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
+[[ -d ~/.config/nvim ]] && rm ~/.config/nvim
+ln -s $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
 
 if [[ $MAC ]]; then
 
@@ -50,8 +51,6 @@ if [[ $MAC ]]; then
 
   launchctl unload ~/Library/LaunchAgents/environment.plist
   launchctl load ~/Library/LaunchAgents/environment.plist
-
-  ln -sfT $(dirname $(realpath $0))/zsh/zsh/.zshrc ~/.zshrc
 
 else
 
