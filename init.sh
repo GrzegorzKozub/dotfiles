@@ -56,6 +56,7 @@ else
 
   stow --dir=`dirname $0` --target=$HOME/.config --stow \
     chrome \
+    environment.arch \
     flameshot \
     keepass.arch \
     vscode
