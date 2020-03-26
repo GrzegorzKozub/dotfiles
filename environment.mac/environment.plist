@@ -14,7 +14,7 @@
         launchctl setenv XDG_CACHE_HOME $HOME/.cache;
         launchctl setenv XDG_DATA_HOME $HOME/.local/share;
 
-        launchctl setenv ZDOTDIR $XDG_CONFIG_HOME/zsh;
+        launchctl setenv ZDOTDIR $HOME/.config/zsh;
 
       </string>
     </array>
