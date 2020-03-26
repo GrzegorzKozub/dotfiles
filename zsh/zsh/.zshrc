@@ -75,6 +75,8 @@ export THEME='solarized-light'
 
 # plugins
 
+export ZSH_CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}/zinit
+
 source ~/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
