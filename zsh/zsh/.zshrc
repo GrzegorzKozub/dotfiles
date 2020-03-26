@@ -51,7 +51,7 @@ fi
 autoload -U colors && colors
 
 if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
-  if [[ $MAC ]]; then COLORS_FILE=~/.dir_colors; else COLORS_FILE=$ZSH_CACHE_HOME/dir_colors; fi
+  COLORS_FILE=$ZSH_CACHE_HOME/dir_colors
   if [[ ! -f $COLORS_FILE ]]; then
     dircolors --print-database > $COLORS_FILE
     sed -i 's/ 01;/ 00;/' $COLORS_FILE
@@ -67,7 +67,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # global env vars
 
-if [[ $MAC ]]; then export LC_ALL=en_US.UTF-8; fi
+[[ $MAC ]] && export LC_ALL=en_US.UTF-8
 export EDITOR='vim'
 
 export THEME='solarized-light'
@@ -131,15 +131,16 @@ setopt prompt_subst
 WORDCHARS=''
 
 if [[ $MAC ]]; then
+
   typeset -U fpath
   fpath=(
     /usr/local/share/zsh/site-functions
     $fpath[@]
   )
+
 fi
 
-autoload -Uz compinit
-if [[ $MAC ]]; then compinit; else compinit -d $ZSH_CACHE_HOME/zcompdump; fi
+autoload -Uz compinit && compinit -d $ZSH_CACHE_HOME/zcompdump
 
 setopt always_to_end # put cursor at the end of completed word
 setopt auto_menu # show completion menu on 2nd tab
@@ -161,10 +162,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # history
 
-if [[ -z "$HISTFILE" ]]; then
-  if [[ $MAC ]]; then HISTFILE=~/.zshhist; else HISTFILE=$ZSH_DATA_HOME/history; fi
-fi
-
+HISTFILE=$ZSH_DATA_HOME/history
 HISTSIZE=50000
 SAVEHIST=10000
 

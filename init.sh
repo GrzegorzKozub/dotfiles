@@ -25,14 +25,15 @@ popd
 if [ ! -d ~/.config ]; then mkdir ~/.config; fi
 
 stow --dir=`dirname $0` --target=$HOME/.config --stow \
-  ranger
+  ranger \
+  zsh
 
 stow --dir=`dirname $0` --target=$HOME --stow \
   elixir \
   git \
   node \
   tmux \
-  vim \
+  vim
 
 ln -sfT $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
 
@@ -43,6 +44,13 @@ if [[ $MAC ]]; then
     keepass.mac \
     vscode
 
+  stow --dir=`dirname $0` \
+    --target=$HOME/Library/LaunchAgents --stow \
+    environment.mac
+
+  launchctl unload ~/Library/LaunchAgents/environment.plist
+  launchctl load ~/Library/LaunchAgents/environment.plist
+
   ln -sfT $(dirname $(realpath $0))/zsh/zsh/.zshrc ~/.zshrc
 
 else
@@ -51,8 +59,7 @@ else
     chrome \
     flameshot \
     keepass.arch \
-    vscode \
-    zsh
+    vscode
 
 fi
 
