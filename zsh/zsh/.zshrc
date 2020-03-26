@@ -5,6 +5,14 @@ case $(uname -s) in
   'Darwin') MAC=1;;
 esac
 
+# dirs
+
+ZSH_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
+ZSH_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/zsh
+
+[[ -d $ZSH_CACHE_HOME ]] || mkdir -p $ZSH_CACHE_HOME
+[[ -d $ZSH_DATA_HOME ]] || mkdir -p $ZSH_DATA_HOME
+
 # paths
 
 typeset -U path
@@ -43,12 +51,14 @@ fi
 autoload -U colors && colors
 
 if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
-  if [[ ! -f ~/.dir_colors ]]; then
-    dircolors --print-database > ~/.dir_colors
-    sed -i 's/ 01;/ 00;/' ~/.dir_colors
-    sed -i 's/;01 /;00 /' ~/.dir_colors
+  if [[ $MAC ]]; then COLORS_FILE=~/.dir_colors; else COLORS_FILE=$ZSH_CACHE_HOME/dir_colors; fi
+  if [[ ! -f $COLORS_FILE ]]; then
+    dircolors --print-database > $COLORS_FILE
+    sed -i 's/ 01;/ 00;/' $COLORS_FILE
+    sed -i 's/;01 /;00 /' $COLORS_FILE
   fi
-  eval `dircolors -b ~/.dir_colors`
+  eval `dircolors -b $COLORS_FILE`
+  unset COLORS_FILE
 fi
 
 # terminal
@@ -128,7 +138,8 @@ if [[ $MAC ]]; then
   )
 fi
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ $MAC ]]; then compinit; else compinit -d $ZSH_CACHE_HOME/zcompdump; fi
 
 setopt always_to_end # put cursor at the end of completed word
 setopt auto_menu # show completion menu on 2nd tab
@@ -150,7 +161,9 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # history
 
-[ -z "$HISTFILE" ] && HISTFILE=~/.zshhist
+if [[ -z "$HISTFILE" ]]; then
+  if [[ $MAC ]]; then HISTFILE=~/.zshhist; else HISTFILE=$ZSH_DATA_HOME/history; fi
+fi
 
 HISTSIZE=50000
 SAVEHIST=10000
@@ -283,5 +296,5 @@ fi
 
 # cleanup
 
-unset LINUX MAC
+unset LINUX MAC ZSH_CACHE_HOME ZSH_DATA_HOME
 

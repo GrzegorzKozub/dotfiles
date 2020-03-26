@@ -33,7 +33,6 @@ stow --dir=`dirname $0` --target=$HOME --stow \
   node \
   tmux \
   vim \
-  zsh
 
 ln -sfT $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
 
@@ -44,12 +43,15 @@ if [[ $MAC ]]; then
     keepass.mac \
     vscode
 
+  ln -sfT $(dirname $(realpath $0))/zsh/zsh/.zshrc ~/.zshrc
+
 else
 
   stow --dir=`dirname $0` --target=$HOME/.config --stow \
     flameshot \
     keepass.arch \
-    vscode
+    vscode \
+    zsh
 
 fi
 
