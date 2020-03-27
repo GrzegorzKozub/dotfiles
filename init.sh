@@ -35,7 +35,6 @@ ln -s $(dirname $(realpath $0))/vim/vim ~/.config/nvim
 stow --dir=`dirname $0` --target=$HOME --stow \
   elixir \
   git \
-  node \
   tmux
 
 if [[ $MAC ]]; then

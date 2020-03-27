@@ -26,9 +26,9 @@ if [[ $MAC ]]; then
     /usr/local/opt/grep/libexec/gnubin
     /usr/local/opt/curl/bin
     /usr/local/opt/ncurses/bin
+    ~/.local/share/npm/bin
     ~/.dotnet/tools
     ~/.gem/ruby/2.6.0/bin
-    ~/.npm/bin
     ~/go/bin
     ~/Library/Python/3.7/bin
     $path[@]
@@ -38,7 +38,7 @@ else
 
   path=(
     ~/.local/bin
-    ~/.npm/bin
+    ~/.local/share/npm/bin
     ~/.gem/ruby/2.7.0/bin
     ~/go/bin
     $path[@]
@@ -68,6 +68,9 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # global env vars
 
 export EDITOR='vim'
+export NPM_CONFIG_CACHE=${XDG_RUNTIME_DIR:-/tmp}/npm
+export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-$HOME/.local/shared}/npm
+export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc
 [[ $MAC ]] && export LC_ALL=en_US.UTF-8
 export THEME='solarized-light'
 [[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark-vscode'
@@ -261,6 +264,10 @@ export ERL_AFLAGS='-kernel shell_history enabled'
 bindkey -M vicmd '^[c' fzf-cd-widget
 bindkey -M vicmd '^r' fzf-history-widget
 bindkey -M vicmd '^t' fzf-file-widget
+
+# node
+
+export NG_CLI_ANALYTICS=ci
 
 # esc+r activates ranger which changes current dir upon exit
 
