@@ -1,5 +1,5 @@
-[submodule "vim/.vim"]
-	path = vim/.vim
+[submodule "vim/vim"]
+	path = vim/vim
 	url = git@github.com:GrzegorzKozub/vim.git
 	branch = master
 [submodule "vscode/Code"]

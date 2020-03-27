@@ -26,17 +26,17 @@ popd
 
 stow --dir=`dirname $0` --target=$HOME/.config --stow \
   ranger \
+  vim \
   zsh
+
+[[ -d ~/.config/nvim ]] && rm ~/.config/nvim
+ln -s $(dirname $(realpath $0))/vim/vim ~/.config/nvim
 
 stow --dir=`dirname $0` --target=$HOME --stow \
   elixir \
   git \
   node \
-  tmux \
-  vim
-
-[[ -d ~/.config/nvim ]] && rm ~/.config/nvim
-ln -s $(dirname $(realpath $0))/vim/.vim ~/.config/nvim
+  tmux
 
 if [[ $MAC ]]; then
 

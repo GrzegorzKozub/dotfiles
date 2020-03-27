@@ -7,11 +7,11 @@ esac
 
 # dirs
 
-ZSH_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
-ZSH_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}/zsh
+CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
+DATA_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/zsh
 
-[[ -d $ZSH_CACHE_HOME ]] || mkdir -p $ZSH_CACHE_HOME
-[[ -d $ZSH_DATA_HOME ]] || mkdir -p $ZSH_DATA_HOME
+[[ -d $CACHE_DIR ]] || mkdir -p $CACHE_DIR
+[[ -d $DATA_DIR ]] || mkdir -p $DATA_DIR
 
 # paths
 
@@ -51,7 +51,7 @@ fi
 autoload -U colors && colors
 
 if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
-  COLORS_FILE=$ZSH_CACHE_HOME/dir_colors
+  COLORS_FILE=$CACHE_DIR/dir_colors
   if [[ ! -f $COLORS_FILE ]]; then
     dircolors --print-database > $COLORS_FILE
     sed -i 's/ 01;/ 00;/' $COLORS_FILE
@@ -67,11 +67,11 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # global env vars
 
-[[ $MAC ]] && export LC_ALL=en_US.UTF-8
 export EDITOR='vim'
-
+[[ $MAC ]] && export LC_ALL=en_US.UTF-8
 export THEME='solarized-light'
 [[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark-vscode'
+export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-$HOME/.config}'/vim/vimrc" | source $MYVIMRC'
 
 # plugins
 
@@ -142,7 +142,7 @@ if [[ $MAC ]]; then
 
 fi
 
-autoload -Uz compinit && compinit -d $ZSH_CACHE_HOME/zcompdump
+autoload -Uz compinit && compinit -d $CACHE_DIR/zcompdump
 
 setopt always_to_end # put cursor at the end of completed word
 setopt auto_menu # show completion menu on 2nd tab
@@ -164,7 +164,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # history
 
-HISTFILE=$ZSH_DATA_HOME/history
+HISTFILE=$DATA_DIR/history
 HISTSIZE=50000
 SAVEHIST=10000
 
@@ -265,15 +265,15 @@ bindkey -M vicmd '^t' fzf-file-widget
 # esc+r activates ranger which changes current dir upon exit
 
 function ranger-cd {
-  TMP="$(mktemp)"
-  ranger --choosedir="$TMP" "$@" < $TTY
-  if [ -f "$TMP" ]; then
-    DIR="$(cat "$TMP")"
-    rm -f "$TMP"
-    [ -d "$DIR" ] && [ "$DIR" != "$(pwd)" ] && cd "$DIR"
-    unset DIR
+  TEMP_FILE="$(mktemp)"
+  ranger --choosedir="$TEMP_FILE" "$@" < $TTY
+  if [ -f "$TEMP_FILE" ]; then
+    TARGET_DIR="$(cat "$TEMP_FILE")"
+    rm -f "$TEMP_FILE"
+    [ -d "$TARGET_DIR" ] && [ "$TARGET_DIR" != "$(pwd)" ] && cd "$TARGET_DIR"
+    unset TARGET_DIR
   fi
-  unset TMP
+  unset TEMP_FILE
   zle reset-prompt
 }
 zle -N ranger-cd
@@ -296,5 +296,5 @@ fi
 
 # cleanup
 
-unset LINUX MAC ZSH_CACHE_HOME ZSH_DATA_HOME
+unset LINUX MAC CACHE_DIR DATA_DIR
 
