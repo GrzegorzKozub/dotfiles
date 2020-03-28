@@ -68,6 +68,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # global env vars
 
 export EDITOR='vim'
+export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
 export NPM_CONFIG_CACHE=${XDG_RUNTIME_DIR:-/tmp}/npm
 export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
