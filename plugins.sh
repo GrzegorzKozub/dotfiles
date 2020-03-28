@@ -2,14 +2,17 @@ set -e -o verbose
 
 # zsh
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+if [ -d ~/.local/share/zinit ]; then rm -rf ~/.local/share/zinit; fi
+mkdir -p ~/.local/share/zinit
+git clone https://github.com/zdharma/zinit.git ~/.local/share/zinit/bin
 
 # tmux
 
-if [ -d ~/.tmux/plugins ]; then rm -rf ~/.tmux/plugins; fi
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ -d ~/.local/share/tmux ]; then rm -rf ~/.local/share/tmux; fi
+mkdir -p ~/.local/share/tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm
 tmux new-session -d
-~/.tmux/plugins/tpm/bindings/install_plugins
+~/.local/share/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
 # ranger

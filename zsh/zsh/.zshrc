@@ -7,8 +7,8 @@ esac
 
 # dirs
 
-CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
-DATA_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/zsh
+CACHE_DIR=${XDG_CACHE_HOME:-~/.cache}/zsh
+DATA_DIR=${XDG_DATA_HOME:-~/.local/share}/zsh
 
 [[ -d $CACHE_DIR ]] || mkdir -p $CACHE_DIR
 [[ -d $DATA_DIR ]] || mkdir -p $DATA_DIR
@@ -68,19 +68,24 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 # global env vars
 
 export EDITOR='vim'
+export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
 export NPM_CONFIG_CACHE=${XDG_RUNTIME_DIR:-/tmp}/npm
-export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-$HOME/.local/shared}/npm
-export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc
+export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
+export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
 [[ $MAC ]] && export LC_ALL=en_US.UTF-8
 export THEME='solarized-light'
 [[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark-vscode'
-export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-$HOME/.config}'/vim/vimrc" | source $MYVIMRC'
+export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | source $MYVIMRC'
 
 # plugins
 
-export ZSH_CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}/zinit
+export ZSH_CACHE_DIR=${XDG_CACHE_HOME:-~/.cache}/zinit
 
-source ~/.zinit/bin/zinit.zsh
+declare -A ZINIT
+export ZINIT[HOME_DIR]=${XDG_DATA_HOME:-~/.local/share}/zinit
+export ZINIT[ZCOMPDUMP_PATH]=$CACHE_DIR/zcompdump
+
+source ${XDG_DATA_HOME:-~/.local/share}/zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -231,8 +236,10 @@ fi
 alias diff='diff --color'
 alias glances='glances --theme-white'
 alias grep='grep --color=auto --exclude-dir={.git}'
+alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 alias la='ls -lAh'
 alias ls='ls --color=auto'
+alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 
 # dirhistory
 
