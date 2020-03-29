@@ -11,6 +11,9 @@ export GOPATH=$XDG_DATA_HOME/go
 
 # dirs
 
+CONFIG_DIR=${XDG_CONFIG_HOME:-~/.config}
+[[ -d $CONFIG_DIR ]] || mkdir -p $CONFIG_DIR
+
 DATA_DIR=${XDG_DATA_HOME:-~/.local/share}
 [[ -d $DATA_DIR ]] || mkdir -p $DATA_DIR
 
@@ -19,6 +22,7 @@ DATA_DIR=${XDG_DATA_HOME:-~/.local/share}
 if [ -d $DATA_DIR/zinit ]; then rm -rf $DATA_DIR/zinit; fi
 mkdir -p $DATA_DIR/zinit
 git clone https://github.com/zdharma/zinit.git $DATA_DIR/zinit/bin
+zsh -c "source $CONFIG_DIR/zsh/.zshrc && exit"
 
 # tmux
 
@@ -39,17 +43,13 @@ tmux kill-server
 # popd
 # rm -rf ~/ranger_devicons
 
-# vim and neovim
-
-nvim --headless +PlugInstall +qall
-
 # dotnet
 
-dotnet tool install --global dotnet-counters
-dotnet tool install --global dotnet-dump
-dotnet tool install --global dotnet-format
-dotnet tool install --global dotnet-outdated
-dotnet tool install --global dotnet-trace
+# dotnet tool install --global dotnet-counters
+# dotnet tool install --global dotnet-dump
+# dotnet tool install --global dotnet-format
+# dotnet tool install --global dotnet-outdated
+# dotnet tool install --global dotnet-trace
 
 # elixir
 
@@ -142,6 +142,10 @@ pip install --user --pre \
 gem install --user-install \
   neovim
 
+# vim and neovim
+
+nvim --headless +PlugInstall +qall
+
 # vscode
 
 for EXTENSION in \
@@ -175,4 +179,4 @@ code --uninstall-extension equinusocio.vsc-material-theme-icons
 
 # cleanup
 
-unset DATA_DIR
+unset CONFIG_DIR DATA_DIR

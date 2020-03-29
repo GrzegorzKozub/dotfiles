@@ -8,9 +8,9 @@ esac
 # dirs
 
 CACHE_DIR=${XDG_CACHE_HOME:-~/.cache}/zsh
-DATA_DIR=${XDG_DATA_HOME:-~/.local/share}/zsh
-
 [[ -d $CACHE_DIR ]] || mkdir -p $CACHE_DIR
+
+DATA_DIR=${XDG_DATA_HOME:-~/.local/share}/zsh
 [[ -d $DATA_DIR ]] || mkdir -p $DATA_DIR
 
 # paths
