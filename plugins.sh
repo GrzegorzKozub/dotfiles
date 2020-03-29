@@ -8,31 +8,26 @@ export XDG_DATA_HOME=~/.local/share
 
 # dirs
 
-CONFIG_DIR=${XDG_CONFIG_HOME:-~/.config}
-[[ -d $CONFIG_DIR ]] || mkdir -p $CONFIG_DIR
-
-CACHE_DIR=${XDG_CACHE_HOME:-~/.cache}
-[[ -d $CACHE_DIR ]] || mkdir -p $CACHE_DIR
-
-DATA_DIR=${XDG_DATA_HOME:-~/.local/share}
-[[ -d $DATA_DIR ]] || mkdir -p $DATA_DIR
+[[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
+[[ -d ${XDG_CACHE_HOME:-~/.cache} ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}
+[[ -d ${XDG_DATA_HOME:-~/.local/share} ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}
 
 # zsh
 
-export ZDOTDIR=$CONFIG_DIR/zsh
+export ZDOTDIR=${XDG_CONFIG_HOME:-~/.config}/zsh
 
-if [ -d $DATA_DIR/zinit ]; then rm -rf $DATA_DIR/zinit; fi
-mkdir -p $DATA_DIR/zinit
-git clone https://github.com/zdharma/zinit.git $DATA_DIR/zinit/bin
-zsh -c "source $CONFIG_DIR/zsh/.zshrc && exit"
+if [ -d ${XDG_DATA_HOME:-~/.local/share}/zinit ]; then rm -rf ${XDG_DATA_HOME:-~/.local/share}/zinit; fi
+mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zinit
+git clone https://github.com/zdharma/zinit.git ${XDG_DATA_HOME:-~/.local/share}/zinit/bin
+zsh -c "source ${XDG_CONFIG_HOME:-~/.config}/zsh/.zshrc && exit"
 
 # tmux
 
-if [ -d $DATA_DIR/tmux ]; then rm -rf $DATA_DIR/tmux; fi
-mkdir -p $DATA_DIR/tmux/plugins
-git clone https://github.com/tmux-plugins/tpm $DATA_DIR/tmux/plugins/tpm
-tmux -f $CONFIG_DIR/tmux/tmux.conf new-session -d
-$DATA_DIR/tmux/plugins/tpm/bindings/install_plugins
+if [ -d ${XDG_DATA_HOME:-~/.local/share}/tmux ]; then rm -rf ${XDG_DATA_HOME:-~/.local/share}/tmux; fi
+mkdir -p ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm
+tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
+${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
 # ranger
@@ -55,7 +50,7 @@ tmux kill-server
 
 # elixir
 
-export HEX_HOME=$CACHE_DIR/hex
+export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
 
 mix local.hex --force
 mix local.rebar --force
@@ -63,7 +58,7 @@ mix archive.install hex phx_new --force
 
 # go
 
-export GOPATH=$DATA_DIR/go
+export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
 
 for PACKAGE_FOR_VSCODE in \
   github.com/acroca/go-symbols \
@@ -118,8 +113,8 @@ done
 # node
 
 export NG_CLI_ANALYTICS=ci
-export NPM_CONFIG_CACHE=$CACHE_DIR/npm
-export NPM_CONFIG_PREFIX=$DATA_DIR/npm
+export NPM_CONFIG_CACHE=${XDG_CACHE_HOME:-~/.cache}/npm
+export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
 
 npm install --global \
   @angular/cli \
@@ -186,8 +181,4 @@ done
 
 code --uninstall-extension equinusocio.vsc-community-material-theme
 code --uninstall-extension equinusocio.vsc-material-theme-icons
-
-# cleanup
-
-unset CONFIG_DIR CACHE_DIR DATA_DIR
 

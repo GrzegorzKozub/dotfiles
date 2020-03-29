@@ -22,12 +22,11 @@ esac
 
 # dirs
 
-CONFIG_DIR=${XDG_CONFIG_HOME:-~/.config}
-[[ -d $CONFIG_DIR ]] || mkdir -p $CONFIG_DIR
+[[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
 
 # links
 
-stow --dir=`dirname $0` --target=$CONFIG_DIR --stow \
+stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   git \
   iex \
   ranger \
@@ -35,12 +34,12 @@ stow --dir=`dirname $0` --target=$CONFIG_DIR --stow \
   vim \
   zsh
 
-[[ -d $CONFIG_DIR/nvim ]] && rm $CONFIG_DIR/nvim
-ln -s $(dirname $(realpath $0))/vim/vim $CONFIG_DIR/nvim
+[[ -d ${XDG_CONFIG_HOME:-~/.config}/nvim ]] && rm ${XDG_CONFIG_HOME:-~/.config}/nvim
+ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 
 if [[ $LINUX ]]; then
 
-  stow --dir=`dirname $0` --target=$CONFIG_DIR --stow \
+  stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
     chrome \
     environment.arch \
     flameshot \
@@ -67,5 +66,5 @@ fi
 
 # cleanup
 
-unset LINUX MAC CONFIG_DIR
+unset LINUX MAC
 

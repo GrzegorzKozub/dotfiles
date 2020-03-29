@@ -7,15 +7,24 @@ esac
 
 # dirs
 
-CACHE_DIR=${XDG_CACHE_HOME:-~/.cache}/zsh
-[[ -d $CACHE_DIR ]] || mkdir -p $CACHE_DIR
-
-DATA_DIR=${XDG_DATA_HOME:-~/.local/share}/zsh
-[[ -d $DATA_DIR ]] || mkdir -p $DATA_DIR
+[[ -d ${XDG_CACHE_HOME:-~/.cache}/zsh ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}/zsh
+[[ -d ${XDG_DATA_HOME:-~/.local/share}/zsh ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zsh
 
 # paths
 
 typeset -U path
+
+if [[ $LINUX ]]; then
+
+  path=(
+    ~/.local/bin
+    ~/.local/share/go/bin
+    ~/.local/share/npm/bin
+    ~/.gem/ruby/2.7.0/bin
+    $path[@]
+  )
+
+fi
 
 if [[ $MAC ]]; then
 
@@ -31,16 +40,6 @@ if [[ $MAC ]]; then
     ~/.dotnet/tools
     ~/.gem/ruby/2.6.0/bin
     ~/Library/Python/3.7/bin
-    $path[@]
-  )
-
-else
-
-  path=(
-    ~/.local/bin
-    ~/.local/share/go/bin
-    ~/.local/share/npm/bin
-    ~/.gem/ruby/2.7.0/bin
     $path[@]
   )
 
@@ -61,7 +60,7 @@ export ZSH_CACHE_DIR=${XDG_CACHE_HOME:-~/.cache}/zinit
 
 declare -A ZINIT
 export ZINIT[HOME_DIR]=${XDG_DATA_HOME:-~/.local/share}/zinit
-export ZINIT[ZCOMPDUMP_PATH]=$CACHE_DIR/zcompdump
+export ZINIT[ZCOMPDUMP_PATH]=${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 
 source $ZINIT[HOME_DIR]/bin/zinit.zsh
 autoload -Uz _zinit
@@ -117,7 +116,7 @@ export EDITOR='vim'
 autoload -U colors && colors
 
 if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
-  COLORS_FILE=$CACHE_DIR/dir_colors
+  COLORS_FILE=${XDG_CACHE_HOME:-~/.cache}/zsh/dir_colors
   if [[ ! -f $COLORS_FILE ]]; then
     dircolors --print-database > $COLORS_FILE
     sed -i 's/ 01;/ 00;/' $COLORS_FILE
@@ -146,7 +145,7 @@ if [[ $MAC ]]; then
 
 fi
 
-autoload -Uz compinit && compinit -d $CACHE_DIR/zcompdump
+autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 
 setopt always_to_end # put cursor at the end of completed word
 setopt auto_menu # show completion menu on 2nd tab
@@ -168,7 +167,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # history
 
-HISTFILE=$DATA_DIR/history
+HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
 HISTSIZE=50000
 SAVEHIST=10000
 
@@ -316,5 +315,5 @@ export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | sourc
 
 # cleanup
 
-unset LINUX MAC CACHE_DIR DATA_DIR
+unset LINUX MAC
 
