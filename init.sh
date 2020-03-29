@@ -1,12 +1,5 @@
 set -e -o verbose
 
-# os
-
-case $(uname -s) in
-  'Linux') LINUX=1;;
-  'Darwin') MAC=1;;
-esac
-
 # repo
 
 pushd `dirname $0`
@@ -20,38 +13,34 @@ git update-index --assume-unchanged \
 
 popd
 
+# os
+
+case $(uname -s) in
+  'Linux') LINUX=1;;
+  'Darwin') MAC=1;;
+esac
+
+# dirs
+
+CONFIG_DIR=${XDG_CONFIG_HOME:-~/.config}
+[[ -d $CONFIG_DIR ]] || mkdir -p $CONFIG_DIR
+
 # links
 
-[[ -d ~/.config ]] || mkdir ~/.config
-
-stow --dir=`dirname $0` --target=$HOME/.config --stow \
+stow --dir=`dirname $0` --target=$CONFIG_DIR --stow \
   git \
   iex \
   ranger \
-  vim \
   tmux \
+  vim \
   zsh
 
-[[ -d ~/.config/nvim ]] && rm ~/.config/nvim
-ln -s $(dirname $(realpath $0))/vim/vim ~/.config/nvim
+[[ -d $CONFIG_DIR/nvim ]] && rm $CONFIG_DIR/nvim
+ln -s $(dirname $(realpath $0))/vim/vim $CONFIG_DIR/nvim
 
-if [[ $MAC ]]; then
+if [[ $LINUX ]]; then
 
-  stow --dir=`dirname $0` \
-    --target=$HOME/Library/Application\ Support --stow \
-    keepass.mac \
-    vscode
-
-  stow --dir=`dirname $0` \
-    --target=$HOME/Library/LaunchAgents --stow \
-    environment.mac
-
-  launchctl unload ~/Library/LaunchAgents/environment.plist
-  launchctl load ~/Library/LaunchAgents/environment.plist
-
-else
-
-  stow --dir=`dirname $0` --target=$HOME/.config --stow \
+  stow --dir=`dirname $0` --target=$CONFIG_DIR --stow \
     chrome \
     environment.arch \
     flameshot \
@@ -60,7 +49,23 @@ else
 
 fi
 
+if [[ $MAC ]]; then
+
+  stow --dir=`dirname $0` \
+    --target=$HOME/Library/LaunchAgents --stow \
+    environment.mac
+
+  launchctl unload ~/Library/LaunchAgents/environment.plist
+  launchctl load ~/Library/LaunchAgents/environment.plist
+
+  stow --dir=`dirname $0` \
+    --target=$HOME/Library/Application\ Support --stow \
+    keepass.mac \
+    vscode
+
+fi
+
 # cleanup
 
-unset LINUX MAC
+unset LINUX MAC CONFIG_DIR
 

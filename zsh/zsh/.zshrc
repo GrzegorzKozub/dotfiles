@@ -220,7 +220,7 @@ unset ALT
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-# erlang and elixir
+# elixir
 
 export ERL_AFLAGS='-kernel shell_history enabled'
 export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
