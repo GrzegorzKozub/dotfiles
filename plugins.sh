@@ -6,18 +6,20 @@ export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
 export XDG_DATA_HOME=~/.local/share
 
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
-export GOPATH=$XDG_DATA_HOME/go
-
 # dirs
 
 CONFIG_DIR=${XDG_CONFIG_HOME:-~/.config}
 [[ -d $CONFIG_DIR ]] || mkdir -p $CONFIG_DIR
 
+CACHE_DIR=${XDG_CACHE_HOME:-~/.cache}
+[[ -d $CACHE_DIR ]] || mkdir -p $CACHE_DIR
+
 DATA_DIR=${XDG_DATA_HOME:-~/.local/share}
 [[ -d $DATA_DIR ]] || mkdir -p $DATA_DIR
 
 # zsh
+
+export ZDOTDIR=$CONFIG_DIR/zsh
 
 if [ -d $DATA_DIR/zinit ]; then rm -rf $DATA_DIR/zinit; fi
 mkdir -p $DATA_DIR/zinit
@@ -29,7 +31,7 @@ zsh -c "source $CONFIG_DIR/zsh/.zshrc && exit"
 if [ -d $DATA_DIR/tmux ]; then rm -rf $DATA_DIR/tmux; fi
 mkdir -p $DATA_DIR/tmux/plugins
 git clone https://github.com/tmux-plugins/tpm $DATA_DIR/tmux/plugins/tpm
-tmux new-session -d
+tmux -f $CONFIG_DIR/tmux/tmux.conf new-session -d
 $DATA_DIR/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
@@ -53,11 +55,15 @@ tmux kill-server
 
 # elixir
 
+export HEX_HOME=$CACHE_DIR/hex
+
 mix local.hex --force
 mix local.rebar --force
 mix archive.install hex phx_new --force
 
 # go
+
+export GOPATH=$DATA_DIR/go
 
 for PACKAGE_FOR_VSCODE in \
   github.com/acroca/go-symbols \
@@ -110,6 +116,10 @@ do
 done
 
 # node
+
+export NG_CLI_ANALYTICS=ci
+export NPM_CONFIG_CACHE=$CACHE_DIR/npm
+export NPM_CONFIG_PREFIX=$DATA_DIR/npm
 
 npm install --global \
   @angular/cli \
@@ -179,4 +189,5 @@ code --uninstall-extension equinusocio.vsc-material-theme-icons
 
 # cleanup
 
-unset CONFIG_DIR DATA_DIR
+unset CONFIG_DIR CACHE_DIR DATA_DIR
+
