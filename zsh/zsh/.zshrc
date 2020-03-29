@@ -26,10 +26,10 @@ if [[ $MAC ]]; then
     /usr/local/opt/grep/libexec/gnubin
     /usr/local/opt/curl/bin
     /usr/local/opt/ncurses/bin
-    ~/.local/share/go/bin
     ~/.local/share/npm/bin
-    # ~/.dotnet/tools
+    ~/.dotnet/tools
     ~/.gem/ruby/2.6.0/bin
+    ~/go/bin
     ~/Library/Python/3.7/bin
     $path[@]
   )
@@ -38,45 +38,22 @@ else
 
   path=(
     ~/.local/bin
-    ~/.local/share/go/bin
     ~/.local/share/npm/bin
     ~/.gem/ruby/2.7.0/bin
+    ~/go/bin
     $path[@]
   )
 
-fi
-
-# colors
-
-autoload -U colors && colors
-
-if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
-  COLORS_FILE=$CACHE_DIR/dir_colors
-  if [[ ! -f $COLORS_FILE ]]; then
-    dircolors --print-database > $COLORS_FILE
-    sed -i 's/ 01;/ 00;/' $COLORS_FILE
-    sed -i 's/;01 /;00 /' $COLORS_FILE
-  fi
-  eval `dircolors -b $COLORS_FILE`
-  unset COLORS_FILE
 fi
 
 # terminal
 
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
-# global env vars
+# theme
 
-export EDITOR='vim'
-export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
-export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
-export NPM_CONFIG_CACHE=${XDG_RUNTIME_DIR:-/tmp}/npm
-export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
-export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
-[[ $MAC ]] && export LC_ALL=en_US.UTF-8
 export THEME='solarized-light'
 [[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark-vscode'
-export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | source $MYVIMRC'
 
 # plugins
 
@@ -86,7 +63,7 @@ declare -A ZINIT
 export ZINIT[HOME_DIR]=${XDG_DATA_HOME:-~/.local/share}/zinit
 export ZINIT[ZCOMPDUMP_PATH]=$CACHE_DIR/zcompdump
 
-source ${XDG_DATA_HOME:-~/.local/share}/zinit/bin/zinit.zsh
+source $ZINIT[HOME_DIR]/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -131,6 +108,24 @@ setopt pushd_ignore_dups
 setopt pushd_minus # cd - goes to the previous dir
 
 stty -ixon # disable flow control (^s and ^c)
+
+export EDITOR='vim'
+[[ $MAC ]] && export LC_ALL=en_US.UTF-8
+
+# colors
+
+autoload -U colors && colors
+
+if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
+  COLORS_FILE=$CACHE_DIR/dir_colors
+  if [[ ! -f $COLORS_FILE ]]; then
+    dircolors --print-database > $COLORS_FILE
+    sed -i 's/ 01;/ 00;/' $COLORS_FILE
+    sed -i 's/;01 /;00 /' $COLORS_FILE
+  fi
+  eval `dircolors -b $COLORS_FILE`
+  unset COLORS_FILE
+fi
 
 # prompt
 
@@ -201,7 +196,44 @@ backup-history() {
   fi
 }
 
-# gnome terminal
+# aliases
+
+[[ $LINUX ]] && alias clip='xclip -selection clipboard'
+alias diff='diff --color'
+alias glances='glances --theme-white'
+alias grep='grep --color=auto --exclude-dir={.git}'
+alias la='ls -lAh'
+alias ls='ls --color=auto'
+
+# dirhistory
+
+if [[ $MAC ]]; then ALT='^[^[['; else ALT='^[[1;3'; fi
+
+bindkey -M vicmd "${ALT}D" dirhistory_zle_dirhistory_back
+bindkey -M vicmd "${ALT}C" dirhistory_zle_dirhistory_future
+bindkey -M vicmd "${ALT}A" dirhistory_zle_dirhistory_up
+bindkey -M vicmd "${ALT}B" dirhistory_zle_dirhistory_down
+
+unset ALT
+
+# dotnet
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# erlang and elixir
+
+export ERL_AFLAGS='-kernel shell_history enabled'
+export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
+
+alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
+
+# fzf
+
+bindkey -M vicmd '^[c' fzf-cd-widget
+bindkey -M vicmd '^r' fzf-history-widget
+bindkey -M vicmd '^t' fzf-file-widget
+
+# gnome
 
 if [[ $LINUX ]]; then
 
@@ -224,60 +256,28 @@ if [[ $LINUX ]]; then
 
   set-gnome-terminal-colors
 
+  function fonts {
+    if (( ${+1} )); then
+      gsettings set org.gnome.desktop.interface text-scaling-factor $1
+    else
+      gsettings get org.gnome.desktop.interface text-scaling-factor
+    fi
+  }
+
 fi
 
-# aliases
+# gnupg
 
-if [[ $LINUX ]]; then
-
-  alias clip='xclip -selection clipboard'
-
-fi
-
-alias diff='diff --color'
-alias glances='glances --theme-white'
-alias grep='grep --color=auto --exclude-dir={.git}'
-alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
-alias la='ls -lAh'
-alias ls='ls --color=auto'
-alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
-
-# dirhistory
-
-if [[ $MAC ]]; then ALT='^[^[['; else ALT='^[[1;3'; fi
-
-bindkey -M vicmd "${ALT}D" dirhistory_zle_dirhistory_back
-bindkey -M vicmd "${ALT}C" dirhistory_zle_dirhistory_future
-bindkey -M vicmd "${ALT}A" dirhistory_zle_dirhistory_up
-bindkey -M vicmd "${ALT}B" dirhistory_zle_dirhistory_down
-
-unset ALT
-
-# zsh-vim-mode
-
-# MODE_CURSOR_SEARCH='steady block'
-# MODE_CURSOR_VICMD='blinking block'
-# MODE_CURSOR_VIINS='blinking bar'
-
-# dotnet
-
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-# erlang
-
-export ERL_AFLAGS='-kernel shell_history enabled'
-
-# fzf
-
-bindkey -M vicmd '^[c' fzf-cd-widget
-bindkey -M vicmd '^r' fzf-history-widget
-bindkey -M vicmd '^t' fzf-file-widget
+export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 
 # node
 
 export NG_CLI_ANALYTICS=ci
+export NPM_CONFIG_CACHE=${XDG_CACHE_HOME:-~/.cache}/npm
+export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
+export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
 
-# esc+r activates ranger which changes current dir upon exit
+# ranger
 
 function ranger-cd {
   TEMP_FILE="$(mktemp)"
@@ -291,23 +291,24 @@ function ranger-cd {
   unset TEMP_FILE
   zle reset-prompt
 }
+
 zle -N ranger-cd
 bindkey -M vicmd '\er' ranger-cd
 bindkey -M viins '\er' ranger-cd
 
-# font size
+# tmux
 
-if [[ $LINUX ]]; then
+alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 
-  function fonts {
-    if (( ${+1} )); then
-      gsettings set org.gnome.desktop.interface text-scaling-factor $1
-    else
-      gsettings get org.gnome.desktop.interface text-scaling-factor
-    fi
-  }
+# vim
 
-fi
+export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | source $MYVIMRC'
+
+# zsh-vim-mode
+
+# MODE_CURSOR_SEARCH='steady block'
+# MODE_CURSOR_VICMD='blinking block'
+# MODE_CURSOR_VIINS='blinking bar'
 
 # cleanup
 
