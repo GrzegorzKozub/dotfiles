@@ -26,10 +26,10 @@ if [[ $MAC ]]; then
     /usr/local/opt/grep/libexec/gnubin
     /usr/local/opt/curl/bin
     /usr/local/opt/ncurses/bin
+    ~/.local/share/go/bin
     ~/.local/share/npm/bin
     ~/.dotnet/tools
     ~/.gem/ruby/2.6.0/bin
-    ~/go/bin
     ~/Library/Python/3.7/bin
     $path[@]
   )
@@ -38,9 +38,9 @@ else
 
   path=(
     ~/.local/bin
+    ~/.local/share/go/bin
     ~/.local/share/npm/bin
     ~/.gem/ruby/2.7.0/bin
-    ~/go/bin
     $path[@]
   )
 
