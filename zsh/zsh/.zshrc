@@ -270,6 +270,10 @@ fi
 
 export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 
+# less
+
+export LESSHISTFILE=-
+
 # node
 
 export NG_CLI_ANALYTICS=ci
