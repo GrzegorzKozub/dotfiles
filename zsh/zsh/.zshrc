@@ -195,6 +195,8 @@ backup-history() {
   fi
 }
 
+backup-history ~/code/backups/.zshhist
+
 # aliases
 
 [[ $LINUX ]] && alias clip='xclip -selection clipboard'
