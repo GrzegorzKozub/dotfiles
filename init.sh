@@ -27,6 +27,7 @@ esac
 # links
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+  alacritty \
   git \
   iex \
   ranger \
