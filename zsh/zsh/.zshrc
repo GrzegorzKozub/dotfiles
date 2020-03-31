@@ -205,6 +205,7 @@ alias glances='glances --theme-white'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias ls='ls --color=auto'
+[[ $MAC ]] && alias pip='pip3'
 
 # dirhistory
 

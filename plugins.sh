@@ -1,5 +1,12 @@
 set -e -o verbose
 
+# os
+
+case $(uname -s) in
+  'Linux') LINUX=1;;
+  'Darwin') MAC=1;;
+esac
+
 # env
 
 export XDG_CONFIG_HOME=~/.config
@@ -130,6 +137,8 @@ npm install --global \
 
 # python
 
+[[ $MAC ]] && alias pip='pip3'
+
 pip install --user \
   awscli \
   docker-compose \
@@ -181,4 +190,8 @@ done
 
 code --uninstall-extension equinusocio.vsc-community-material-theme
 code --uninstall-extension equinusocio.vsc-material-theme-icons
+
+# cleanup
+
+unset LINUX MAC
 

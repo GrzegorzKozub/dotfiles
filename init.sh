@@ -20,6 +20,10 @@ case $(uname -s) in
   'Darwin') MAC=1;;
 esac
 
+# env
+
+export XDG_CONFIG_HOME=~/.config
+
 # dirs
 
 [[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
