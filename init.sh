@@ -62,6 +62,9 @@ if [[ $MAC ]]; then
   launchctl unload ~/Library/LaunchAgents/environment.plist
   launchctl load ~/Library/LaunchAgents/environment.plist
 
+  launchctl unload ~/Library/LaunchAgents/key-mapping.plist
+  launchctl load ~/Library/LaunchAgents/key-mapping.plist
+
   stow --dir=`dirname $0` \
     --target=$HOME/Library/Application\ Support --stow \
     keepass.mac \
