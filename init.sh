@@ -31,7 +31,6 @@ export XDG_CONFIG_HOME=~/.config
 # links
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
-  alacritty \
   git \
   iex \
   ranger \
@@ -45,6 +44,7 @@ ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 if [[ $LINUX ]]; then
 
   stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+    alacritty.arch \
     chrome \
     environment.arch \
     flameshot \
@@ -55,8 +55,10 @@ fi
 
 if [[ $MAC ]]; then
 
-  stow --dir=`dirname $0` \
-    --target=$HOME/Library/LaunchAgents --stow \
+  stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+    alacritty.mac
+
+  stow --dir=`dirname $0` --target=$HOME/Library/LaunchAgents --stow \
     environment.mac
 
   launchctl unload ~/Library/LaunchAgents/environment.plist
@@ -65,8 +67,7 @@ if [[ $MAC ]]; then
   launchctl unload ~/Library/LaunchAgents/key-mapping.plist
   launchctl load ~/Library/LaunchAgents/key-mapping.plist
 
-  stow --dir=`dirname $0` \
-    --target=$HOME/Library/Application\ Support --stow \
+  stow --dir=`dirname $0` --target=$HOME/Library/Application\ Support --stow \
     keepass.mac \
     vscode
 
