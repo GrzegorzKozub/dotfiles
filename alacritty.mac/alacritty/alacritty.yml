@@ -23,8 +23,7 @@ font:
   use_thin_strokes: false
 
 key_bindings:
-  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
-  - { key: F11, action: ToggleSimpleFullscreen }
+  - { key: N, mods: Command, action: SpawnNewInstance }
 
 schemes:
 
