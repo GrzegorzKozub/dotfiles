@@ -168,7 +168,6 @@ for EXTENSION in \
   aws-scripting-guy.cform \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
-  equinusocio.vsc-material-theme \
   esbenp.prettier-vscode \
   `# humao.rest-client` \
   ms-azuretools.vscode-docker \
@@ -183,13 +182,12 @@ for EXTENSION in \
   ms-vscode.vscode-typescript-tslint-plugin \
   `# msjsdiag.debugger-for-chrome` \
   pkief.material-icon-theme \
-  redhat.vscode-yaml
+  redhat.vscode-yaml \
+  sainnhe.forest-night \
+  sainnhe.gruvbox-material
 do
   code --install-extension $EXTENSION --force
 done
-
-code --uninstall-extension equinusocio.vsc-community-material-theme
-code --uninstall-extension equinusocio.vsc-material-theme-icons
 
 # cleanup
 
