@@ -37,16 +37,6 @@ tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
 ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
-# ranger
-
-# if [ -d ~/ranger_devicons ]; then rm -rf ~/ranger_devicons; fi
-# pushd ~
-# git clone https://github.com/alexanderjeurissen/ranger_devicons
-# cd ranger_devicons
-# make install
-# popd
-# rm -rf ~/ranger_devicons
-
 # dotnet
 
 # dotnet tool install --global dotnet-counters
