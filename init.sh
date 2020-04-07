@@ -51,6 +51,9 @@ if [[ $LINUX ]]; then
     keepass.arch \
     vscode
 
+  stow --dir=`dirname $0` --target=$HOME --stow \
+    imwheel
+
 fi
 
 if [[ $MAC ]]; then
