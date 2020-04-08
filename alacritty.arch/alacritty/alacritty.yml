@@ -12,13 +12,13 @@ window:
 font:
   size: 12
   normal:
-    family: FiraCode Nerd Font Mono
+    family: Fira Code
     style: Retina
   bold:
-    family: FiraCode Nerd Font Mono
+    family: Fira Code
     style: Retina
   italic:
-    family: FiraCode Nerd Font Mono
+    family: Fira Code
     style: Retina
   use_thin_strokes: false
 
