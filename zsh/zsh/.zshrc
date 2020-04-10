@@ -218,6 +218,12 @@ bindkey -M vicmd "${ALT}B" dirhistory_zle_dirhistory_down
 
 unset ALT
 
+# aws
+
+export AWS_CONFIG_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/config
+export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/credentials
+export AWS_PROFILE=greg
+
 # dotnet
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
