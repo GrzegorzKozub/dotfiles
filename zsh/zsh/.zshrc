@@ -49,6 +49,13 @@ fi
 
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
+function palette {
+   for color in {0..15}; do
+     print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
+   done
+   print '\n'
+}
+
 # theme
 
 export MY_THEME='solarized-light'
