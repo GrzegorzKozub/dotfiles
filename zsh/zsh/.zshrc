@@ -77,15 +77,15 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
 zinit ice lucid
-zinit snippet OMZ::lib/git.zsh
-
-zinit ice lucid
 zinit light zdharma/fast-syntax-highlighting
 
 zinit ice nocompile lucid \
-  atload"source ./zsh/$THEME.zsh-theme" \
+  atload"source ./zsh/$THEME.sh" \
   atload"fast-theme ./fast-syntax-highlighting/$THEME.ini --quiet"
 zinit light GrzegorzKozub/themes # after zsh-vim-mode and fast-syntax-highlighting
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k 
 
 zinit snippet PZT::modules/terminal/init.zsh
 
@@ -321,6 +321,10 @@ export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | sourc
 # MODE_CURSOR_SEARCH='steady block'
 # MODE_CURSOR_VICMD='blinking block'
 # MODE_CURSOR_VIINS='blinking bar'
+
+# powerlevel10k
+
+[[ ! -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh ]] || source ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh
 
 # cleanup
 
