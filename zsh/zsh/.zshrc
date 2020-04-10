@@ -51,8 +51,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # theme
 
-export THEME='solarized-light'
-[[ $TERM_PROGRAM == 'vscode' ]] && export THEME='solarized-dark-vscode'
+export MY_THEME='solarized-light'
 
 # plugins
 
@@ -80,8 +79,8 @@ zinit ice lucid
 zinit light zdharma/fast-syntax-highlighting
 
 zinit ice nocompile lucid \
-  atload"source ./zsh/$THEME.sh" \
-  atload"fast-theme ./fast-syntax-highlighting/$THEME.ini --quiet"
+  atload"source ./zsh/$MY_THEME.sh" \
+  atload"fast-theme ./fast-syntax-highlighting/$MY_THEME.ini --quiet"
 zinit light GrzegorzKozub/themes # after zsh-vim-mode and fast-syntax-highlighting
 
 zinit ice depth=1
@@ -249,7 +248,7 @@ if [[ $LINUX ]]; then
     [[ $TERM_PROGRAM == 'vscode' ]] && return
     [[ ! $+commands[gsettings] || ! $+commands[dconf] ]] && return
     PROFILE="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
-    case $THEME in
+    case $MY_THEME in
       'solarized-light')
         dconf write "$PROFILE/foreground-color" "'rgb(101,123,131)'"
         dconf write "$PROFILE/background-color" "'rgb(253,246,227)'"
