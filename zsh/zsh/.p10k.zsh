@@ -9,10 +9,20 @@
   unset -m 'POWERLEVEL9K_*'
   autoload -Uz is-at-least && is-at-least 5.1 || return
 
+  # options
+
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
+
   # layout
 
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline prompt_char)
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time aws)
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+    command_execution_time
+    aws
+    dotnet_version
+    go_version
+    node_version
+  )
 
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=
 
@@ -146,6 +156,24 @@
   typeset -g POWERLEVEL9K_AWS_PROD_FOREGROUND=$MY_PROMPT_AWS_COLOR_PROD
   typeset -g POWERLEVEL9K_AWS_TEST_FOREGROUND=$MY_PROMPT_AWS_COLOR_TEST
   typeset -g POWERLEVEL9K_AWS_DEV_FOREGROUND=$MY_PROMPT_AWS_COLOR_DEV
+
+  # dotnet_version
+
+  typeset -g POWERLEVEL9K_DOTNET_VERSION_PROJECT_ONLY=true
+  typeset -g POWERLEVEL9K_DOTNET_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_DOTNET_VERSION_FOREGROUND=$MY_PROMPT_VERSION_COLOR
+
+  # go_version
+
+  typeset -g POWERLEVEL9K_GO_VERSION_PROJECT_ONLY=true
+  typeset -g POWERLEVEL9K_GO_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_GO_VERSION_FOREGROUND=$MY_PROMPT_VERSION_COLOR
+
+  # node_version
+
+  typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=true
+  typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=$MY_PROMPT_VERSION_COLOR
 
   (( ! $+functions[p10k] )) || p10k reload
 }
