@@ -8,7 +8,7 @@ from ranger.gui.color import (
 )
 class Solarized(ColorScheme):
     progress_bar_color = blue
-    __light = os.environ['THEME'] == 'solarized-light'
+    __light = os.environ['MY_THEME'] == 'solarized-light'
     def __dim_gray(self):
         color = cyan if self.__light else green
         color += BRIGHT
