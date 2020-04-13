@@ -297,22 +297,29 @@ export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
 
 # ranger
 
-function ranger-cd {
-  TEMP_FILE="$(mktemp)"
-  ranger --choosedir="$TEMP_FILE" "$@" < $TTY
-  if [ -f "$TEMP_FILE" ]; then
-    TARGET_DIR="$(cat "$TEMP_FILE")"
-    rm -f "$TEMP_FILE"
-    [ -d "$TARGET_DIR" ] && [ "$TARGET_DIR" != "$(pwd)" ] && cd "$TARGET_DIR"
-    unset TARGET_DIR
-  fi
-  unset TEMP_FILE
+my-redraw-prompt() {
+  local precmd
+  for precmd in $precmd_functions; do
+    $precmd
+  done
   zle reset-prompt
 }
+zle -N my-redraw-prompt
 
-zle -N ranger-cd
-bindkey -M vicmd '\er' ranger-cd
-bindkey -M viins '\er' ranger-cd
+function my-ranger-cd {
+  local temp_file="$(mktemp)"
+  ranger --choosedir="$temp_file" "$@" < $TTY
+  if [ -f "$temp_file" ]; then
+    local target_dir="$(cat "$temp_file")"
+    rm -f "$temp_file"
+    [ -d "$target_dir" ] && [ "$target_dir" != "$(pwd)" ] && cd "$target_dir"
+  fi
+  zle my-redraw-prompt
+}
+zle -N my-ranger-cd
+
+bindkey -M vicmd '\er' my-ranger-cd
+bindkey -M viins '\er' my-ranger-cd
 
 # tmux
 
