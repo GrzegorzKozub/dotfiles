@@ -121,16 +121,17 @@ export EDITOR='vim'
 
 autoload -U colors && colors
 
-if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
-  COLORS_FILE=${XDG_CACHE_HOME:-~/.cache}/zsh/dir_colors
-  if [[ ! -f $COLORS_FILE ]]; then
-    dircolors --print-database > $COLORS_FILE
-    sed -i 's/ 01;/ 00;/' $COLORS_FILE
-    sed -i 's/;01 /;00 /' $COLORS_FILE
+() {
+  if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
+    local colors_file=${XDG_CACHE_HOME:-~/.cache}/zsh/dir_colors
+    if [[ ! -f $colors_file ]]; then
+      dircolors --print-database > $colors_file
+      sed -i 's/ 01;/ 00;/' $colors_file
+      sed -i 's/;01 /;00 /' $colors_file
+    fi
+    eval `dircolors -b $colors_file`
   fi
-  eval `dircolors -b $COLORS_FILE`
-  unset COLORS_FILE
-fi
+}
 
 # prompt
 
@@ -215,14 +216,14 @@ alias ls='ls --color=auto'
 
 # dirhistory
 
-if [[ $MAC ]]; then ALT='^[^[['; else ALT='^[[1;3'; fi
+() {
+  if [[ $MAC ]]; then local alt='^[^[['; else local alt='^[[1;3'; fi
 
-bindkey -M vicmd "${ALT}D" dirhistory_zle_dirhistory_back
-bindkey -M vicmd "${ALT}C" dirhistory_zle_dirhistory_future
-bindkey -M vicmd "${ALT}A" dirhistory_zle_dirhistory_up
-bindkey -M vicmd "${ALT}B" dirhistory_zle_dirhistory_down
-
-unset ALT
+  bindkey -M vicmd "${alt}D" dirhistory_zle_dirhistory_back
+  bindkey -M vicmd "${alt}C" dirhistory_zle_dirhistory_future
+  bindkey -M vicmd "${alt}A" dirhistory_zle_dirhistory_up
+  bindkey -M vicmd "${alt}B" dirhistory_zle_dirhistory_down
+}
 
 # aws
 
@@ -254,18 +255,17 @@ if [[ $LINUX ]]; then
   set-gnome-terminal-colors() {
     [[ $TERM_PROGRAM == 'vscode' ]] && return
     [[ ! $+commands[gsettings] || ! $+commands[dconf] ]] && return
-    PROFILE="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
+    local profile="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
     case $MY_THEME in
       'solarized-light')
-        dconf write "$PROFILE/foreground-color" "'rgb(101,123,131)'"
-        dconf write "$PROFILE/background-color" "'rgb(253,246,227)'"
+        dconf write "$profile/foreground-color" "'rgb(101,123,131)'"
+        dconf write "$profile/background-color" "'rgb(253,246,227)'"
         ;;
       'solarized-dark')
-        dconf write "$PROFILE/foreground-color" "'rgb(131,148,150)'"
-        dconf write "$PROFILE/background-color" "'rgb(0,43,54)'"
+        dconf write "$profile/foreground-color" "'rgb(131,148,150)'"
+        dconf write "$profile/background-color" "'rgb(0,43,54)'"
         ;;
     esac
-    unset PROFILE
   }
 
   set-gnome-terminal-colors
