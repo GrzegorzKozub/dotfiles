@@ -11,6 +11,7 @@
 
   # options
 
+  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
 
   # layout
