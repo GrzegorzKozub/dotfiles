@@ -71,9 +71,6 @@
       return
     fi
 
-    local icon_tag='#'
-    local icon_commit='@'
-
     local icon_behind='↓'
     local icon_ahead='↑'
     local icon_push_behind='←'
@@ -90,19 +87,18 @@
     local prompt
     local branch_or_tag
 
-    prompt+=${MY_PROMPT_GIT_COLOR_BRANCH_OR_TAG}
-
     if [[ -n $VCS_STATUS_LOCAL_BRANCH ]]; then
+      prompt+=${MY_PROMPT_GIT_COLOR_BRANCH}
       branch_or_tag=${(V)VCS_STATUS_LOCAL_BRANCH}
     elif [[ -n $VCS_STATUS_TAG ]]; then
-      prompt+=$icon_tag
+      prompt+=${MY_PROMPT_GIT_COLOR_TAG}
       branch_or_tag=${(V)VCS_STATUS_TAG}
     fi
 
     (( $#branch_or_tag > 32 )) && branch_or_tag[13,-13]='…'
     prompt+="${branch_or_tag//\%/%%}"
 
-    [[ -z $branch_or_tag ]] && prompt+=" ${MY_PROMPT_GIT_COLOR_COMMIT}${icon_commit}${VCS_STATUS_COMMIT[1,7]}"
+    [[ -z $branch_or_tag ]] && prompt+="${MY_PROMPT_GIT_COLOR_COMMIT}${VCS_STATUS_COMMIT[1,7]}"
 
     (( VCS_STATUS_COMMITS_BEHIND )) && prompt+=" ${MY_PROMPT_GIT_COLOR_BEHIND}${icon_behind}${VCS_STATUS_COMMITS_BEHIND}"
     (( VCS_STATUS_COMMITS_AHEAD )) && prompt+=" ${MY_PROMPT_GIT_COLOR_AHEAD}${icon_ahead}${VCS_STATUS_COMMITS_AHEAD}"
