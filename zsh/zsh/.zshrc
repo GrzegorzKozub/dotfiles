@@ -211,6 +211,7 @@ alias diff='diff --color'
 alias glances='glances --theme-white'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
+alias less='less --raw-control-chars'
 alias ls='ls --color=auto'
 [[ $MAC ]] && alias pip='pip3'
 
@@ -320,6 +321,10 @@ zle -N my-ranger-cd
 
 bindkey -M vicmd '\er' my-ranger-cd
 bindkey -M viins '\er' my-ranger-cd
+
+# ripgrep
+
+alias rg='rg --colors "line:fg:12" --colors "match:fg:9" --colors "path:fg:6" --context 3 --context-separator="" --hidden --smart-case'
 
 # tmux
 
