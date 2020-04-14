@@ -1,0 +1,12 @@
+--colors=line:fg:12
+--colors=match:fg:9
+--colors=path:fg:6
+
+--context=3
+--context-separator=''
+
+--glob=!git/*
+--hidden
+
+--smart-case
+

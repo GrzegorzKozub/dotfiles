@@ -324,7 +324,7 @@ bindkey -M viins '\er' my-ranger-cd
 
 # ripgrep
 
-alias rg='rg --colors "line:fg:12" --colors "match:fg:9" --colors "path:fg:6" --context 3 --context-separator="" --hidden --smart-case'
+export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
 
 # tmux
 
