@@ -172,6 +172,16 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
+# up and down history completion 
+
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
 # history
 
 HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
