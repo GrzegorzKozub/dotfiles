@@ -5,7 +5,9 @@
 --context=3
 --context-separator=''
 
---glob=!git/*
+--glob=!.git/*
+--glob=!node_modules/*
+
 --hidden
 
 --smart-case
