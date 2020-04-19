@@ -120,7 +120,7 @@ export EDITOR='vim'
 autoload -U colors && colors
 
 () {
-  if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
+  if [[ -z $LS_COLORS ]] && (( $+commands[dircolors] )); then
     local colors_file=${XDG_CACHE_HOME:-~/.cache}/zsh/dir_colors
     if [[ ! -f $colors_file ]]; then
       dircolors --print-database > $colors_file
@@ -200,8 +200,8 @@ setopt share_history # share history between terminals
 
 backup-history() {
   if [[ -d $(dirname $1) ]]; then
-    if [[ ! -f $HISTFILE ]]; then touch $HISTFILE; fi
-    if [[ ! -f $1 ]]; then touch $1; fi
+    [[ -f $HISTFILE ]] || touch $HISTFILE
+    [[ -f $1 ]] || touch $1
     if [[ $(stat -c%s $HISTFILE) -gt $(stat -c%s $1) ]]; then
       cp $HISTFILE $1
     else
@@ -262,7 +262,7 @@ bindkey -M vicmd '^t' fzf-file-widget
 if [[ $LINUX ]]; then
 
   set-gnome-terminal-colors() {
-    [[ $TERM_PROGRAM == 'vscode' ]] && return
+    [[ $TERM_PROGRAM && $TERM_PROGRAM = 'vscode' ]] && return
     [[ ! $+commands[gsettings] || ! $+commands[dconf] ]] && return
     local profile="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
     case $MY_THEME in
@@ -280,7 +280,7 @@ if [[ $LINUX ]]; then
   set-gnome-terminal-colors
 
   function fonts {
-    if (( ${+1} )); then
+    if [[ $1 ]]; then
       gsettings set org.gnome.desktop.interface text-scaling-factor $1
     else
       gsettings get org.gnome.desktop.interface text-scaling-factor
@@ -318,10 +318,10 @@ zle -N my-redraw-prompt
 function my-ranger-cd {
   local temp_file="$(mktemp)"
   ranger --choosedir="$temp_file" "$@" < $TTY
-  if [ -f "$temp_file" ]; then
+  if [[ -f "$temp_file" ]]; then
     local target_dir="$(cat "$temp_file")"
     rm -f "$temp_file"
-    [ -d "$target_dir" ] && [ "$target_dir" != "$(pwd)" ] && cd "$target_dir"
+    [[ -d "$target_dir" && "$target_dir" != "$(pwd)" ]] && cd "$target_dir"
   fi
   zle my-redraw-prompt
 }
@@ -350,7 +350,7 @@ export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | sourc
 
 # powerlevel10k
 
-[[ ! -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh ]] || source ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh
+[[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh ]] && source ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh
 
 # cleanup
 
