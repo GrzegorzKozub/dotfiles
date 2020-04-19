@@ -261,9 +261,7 @@ bindkey -M vicmd '^t' fzf-file-widget
 
 if [[ $LINUX ]]; then
 
-  set-gnome-terminal-colors() {
-    [[ $TERM_PROGRAM && $TERM_PROGRAM = 'vscode' ]] && return
-    [[ ! $+commands[gsettings] || ! $+commands[dconf] ]] && return
+  if [[ ( $+commands[gsettings] && $+commands[dconf] ) && ( ! $TERM_PROGRAM || ! $TERM_PROGRAM = 'vscode' ) ]]; then
     local profile="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
     case $MY_THEME in
       'solarized-light')
@@ -275,9 +273,7 @@ if [[ $LINUX ]]; then
         dconf write "$profile/background-color" "'rgb(0,43,54)'"
         ;;
     esac
-  }
-
-  set-gnome-terminal-colors
+  fi
 
   function fonts {
     if [[ $1 ]]; then
