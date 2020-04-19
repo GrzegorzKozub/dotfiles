@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 set -e -o verbose
 
 # repo
@@ -28,7 +30,7 @@ export XDG_CONFIG_HOME=~/.config
 
 [[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
 
-[ -d ~/code/backups ] || mkdir ~/code/backups
+[[ -d ~/code/backups ]] || mkdir ~/code/backups
 
 # links
 

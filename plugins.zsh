@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 set -e -o verbose
 
 # os
@@ -23,14 +25,14 @@ export XDG_DATA_HOME=~/.local/share
 
 export ZDOTDIR=${XDG_CONFIG_HOME:-~/.config}/zsh
 
-if [[ -d ${XDG_DATA_HOME:-~/.local/share}/zinit ]]; then rm -rf ${XDG_DATA_HOME:-~/.local/share}/zinit; fi
+[[ -d ${XDG_DATA_HOME:-~/.local/share}/zinit ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/zinit
 mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zinit
 git clone https://github.com/zdharma/zinit.git ${XDG_DATA_HOME:-~/.local/share}/zinit/bin
 zsh -c "source ${XDG_CONFIG_HOME:-~/.config}/zsh/.zshrc && exit"
 
 # tmux
 
-if [[ -d ${XDG_DATA_HOME:-~/.local/share}/tmux ]]; then rm -rf ${XDG_DATA_HOME:-~/.local/share}/tmux; fi
+[[ -d ${XDG_DATA_HOME:-~/.local/share}/tmux ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/tmux
 mkdir -p ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm
 tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
