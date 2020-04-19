@@ -76,7 +76,7 @@
     local icon_push_behind='←'
     local icon_push_ahead='→'
 
-    local icon_push_stashes='↙'
+    local icon_stashes='↙'
 
     local icon_conflicted='?'
 
