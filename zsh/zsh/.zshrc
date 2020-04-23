@@ -338,6 +338,10 @@ export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
 
 alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 
+# unison
+
+export UNISON=${XDG_CONFIG_HOME:-~/.config}/unison
+
 # vim
 
 export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | source $MYVIMRC'

@@ -40,6 +40,7 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   ranger \
   ripgrep \
   tmux \
+  unison \
   vim \
   zsh
 
