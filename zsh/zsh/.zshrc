@@ -341,9 +341,17 @@ export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | sourc
 
 # zsh-vim-mode
 
-# MODE_CURSOR_SEARCH='steady block'
-# MODE_CURSOR_VICMD='blinking block'
-# MODE_CURSOR_VIINS='blinking bar'
+MODE_CURSOR_VIINS='blinking bar'
+MODE_CURSOR_VICMD='blinking block'
+MODE_CURSOR_VISUAL=$MODE_CURSOR_VICMD
+MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
+MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
+MODE_CURSOR_SEARCH='steady underline'
+
+for MAP in viins vicmd; do
+  bindkey -M $MAP "^[[H" beginning-of-line
+  bindkey -M $MAP "^[[F" end-of-line
+done
 
 # powerlevel10k
 
