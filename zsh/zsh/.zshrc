@@ -296,10 +296,13 @@ export LESSHISTFILE=-
 
 # node
 
-export NG_CLI_ANALYTICS=ci
+export NODE_REPL_HISTORY=''
+
 export NPM_CONFIG_CACHE=${XDG_CACHE_HOME:-~/.cache}/npm
 export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
 export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
+
+export NG_CLI_ANALYTICS=ci
 
 # ranger
 
