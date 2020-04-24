@@ -343,13 +343,14 @@ export UNISON=${XDG_DATA_HOME:-~/.local/share}/unison
 
 function sync-code-dir {
   [[ $1 ]] || return
+  local path=/home/greg/code/
   unison \
     -auto -batch -log=false -silent \
     -ignore='Name dist' \
     -ignore='Regex .*/node_modules/.*' \
     -ignorenot='Regex .*/\.gitkeep' \
-    /home/greg/code/ \
-    ssh://$1//home/greg/Downloads/code/
+    $path \
+    ssh://$1/$path
 }
 
 # vim
