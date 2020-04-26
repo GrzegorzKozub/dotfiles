@@ -339,19 +339,7 @@ alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 
 # unison
 
-export UNISON=${XDG_DATA_HOME:-~/.local/share}/unison
-
-function sync-code-dir {
-  [[ $1 ]] || return
-  local path=/home/greg/code/
-  unison \
-    -auto -batch -log=false -silent \
-    -ignore='Name dist' \
-    -ignore='Regex .*/node_modules/.*' \
-    -ignorenot='Regex .*/\.gitkeep' \
-    $path \
-    ssh://$1/$path
-}
+alias unison="unison -auto -log=false -ignore='Name dist' -ignore='Regex .*/node_modules/.*' -ignorenot='Regex .*/\.gitkeep'"
 
 # vim
 
