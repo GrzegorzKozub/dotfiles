@@ -34,7 +34,7 @@ schemes:
       foreground: '#657b83' # base00
     cursor:
       text:       '#fdf6e3' # base3
-      cursor:     '#657b83' # base00
+      cursor:     '#839496' # base0
     normal:
       black:      '#073642' # base02
       red:        '#dc322f' # red
