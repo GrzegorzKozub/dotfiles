@@ -237,7 +237,7 @@ alias ls='ls --color=auto'
 
 export AWS_CONFIG_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/config
 export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/credentials
-export AWS_PROFILE=greg
+export AWS_PROFILE=apsis-waw-stage
 export AWS_SDK_LOAD_CONFIG=1
 
 # dotnet
