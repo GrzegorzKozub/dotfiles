@@ -253,6 +253,19 @@ alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 
 # fzf
 
+FZF_DEFAULT_OPTS="
+  --color dark,bg+:-1,fg:$MY_FZF_COLOR_LIGHT,fg+:-1,hl:$MY_FZF_COLOR_ACCENT,hl+:$MY_FZF_COLOR_ACCENT
+  --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_ACCENT,pointer:$MY_FZF_COLOR_DARK,marker:$MY_FZF_COLOR_DARK
+  --layout reverse-list
+  --margin 10%,0,0,0
+  --marker $MY_FZF_CHAR_MARKER
+  --no-bold
+  --no-info
+  --pointer $MY_FZF_CHAR_POINTER
+  --prompt $MY_FZF_CHAR_PROMPT
+  --tabstop 2
+"
+
 bindkey -M vicmd '^[c' fzf-cd-widget
 bindkey -M vicmd '^r' fzf-history-widget
 bindkey -M vicmd '^t' fzf-file-widget
