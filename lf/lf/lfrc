@@ -3,38 +3,67 @@
 set color256
 set errorfmt "\033[31;1m%s\033[0m"
 set hidden
-set ifs "\n"
+set ifs '\n'
 set promptfmt "\033[36;1m%w/\033[0m\033[36;1m%f\033[0m"
 set ratios 2:3:4
 set scrolloff 3
-set shell "zsh"
+set shell 'zsh'
+set shellopts '-eu:--shwordsplit'
 
 # commands
+
+cmd overwrite-async %{{
+  local load=$(lf -remote 'load')
+  local mode=$(echo "$load" | sed -n '1p')
+  local list=$(echo "$load" | sed '1d')
+  [[ $mode = 'copy' ]] && while IFS= read -r item; do cp -rf "$item" .; done <<< "$list"
+  [[ $mode = 'move' ]] && while IFS= read -r item; do mv -f "$item" .; done <<< "$list"
+  lf -remote 'send load'
+  lf -remote 'send clear'
+}}
+
+cmd trash ${{
+  while IFS= read -r item; do trash-put "$item"; done <<< "$fx"
+}}
+
+cmd open ${{
+  case $(file --mime-type "$f" -b) in
+    text/*|application/json|inode/symlink) $EDITOR "$fx";;
+    *) xdg-open "$f" & disown;;
+  esac
+}}
+
+cmd extract ${{
+  case "$f" in
+    *.gz) gzip --decompress "$f";;
+    *.zip) 7z x "$f";;
+    *) lf -remote "send $id echoerr 'unknown archive format'";;
+  esac
+}}
+
+cmd gzip %gzip "$f"
+cmd zip %7z a "$f.zip" "$f"
 
 cmd fzf ${{
   local res="$(fzf)"
   [[ $res ]] || return
-  [[ -f "$res" ]] && local cmd="select"
-  [[ -d "$res" ]] && local cmd="cd"
+  [[ -f "$res" ]] && local cmd='select'
+  [[ -d "$res" ]] && local cmd='cd'
   lf -remote "send $id $cmd \"$res\""
-}}
-
-cmd trash ${{
-  while IFS= read -r file; do trash-put "$file"; done <<< "$fx"
 }}
 
 # key bindings
 
-map <f-2> rename # r
+map D delete
+map md push %mkdir<space>
+map o overwrite-async
+map t trash
 
-map M push %mkdir<space>
-map <f-7> push %mkdir<space>
+map <enter> open
 
-map D trash
-map <f-8> trash
-map x delete
+map ae extract
+map ag gzip
+map az zip
 
 map <c-f> :fzf
-
-map <esc> quit
 
