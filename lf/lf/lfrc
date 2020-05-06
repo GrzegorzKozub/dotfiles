@@ -1,0 +1,40 @@
+# settings
+
+set color256
+set errorfmt "\033[31;1m%s\033[0m"
+set hidden
+set ifs "\n"
+set promptfmt "\033[36;1m%w/\033[0m\033[36;1m%f\033[0m"
+set ratios 2:3:4
+set scrolloff 3
+set shell "zsh"
+
+# commands
+
+cmd fzf ${{
+  local res="$(fzf)"
+  [[ $res ]] || return
+  [[ -f "$res" ]] && local cmd="select"
+  [[ -d "$res" ]] && local cmd="cd"
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd trash ${{
+  while IFS= read -r file; do trash-put "$file"; done <<< "$fx"
+}}
+
+# key bindings
+
+map <f-2> rename # r
+
+map M push %mkdir<space>
+map <f-7> push %mkdir<space>
+
+map D trash
+map <f-8> trash
+map x delete
+
+map <c-f> :fzf
+
+map <esc> quit
+

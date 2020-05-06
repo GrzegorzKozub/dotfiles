@@ -233,6 +233,27 @@ alias ls='ls --color=auto'
   bindkey -M vicmd "${alt}B" dirhistory_zle_dirhistory_down
 }
 
+# my-cd
+
+my-redraw-prompt() {
+  local precmd
+  for precmd in $precmd_functions; do
+    $precmd
+  done
+  zle reset-prompt
+}
+zle -N my-redraw-prompt
+
+function my-cd {
+  local temp_file=$1
+  if [[ -f "$temp_file" ]]; then
+    local target_dir="$(cat "$temp_file")"
+    rm -f "$temp_file"
+    [[ -d "$target_dir" && "$target_dir" != "$(pwd)" ]] && cd "$target_dir"
+  fi
+  zle my-redraw-prompt
+}
+
 # aws
 
 export AWS_CONFIG_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/config
@@ -253,11 +274,11 @@ alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 
 # fzf
 
-FZF_DEFAULT_OPTS="
+export FZF_DEFAULT_OPTS="
   --color dark,bg+:-1,fg:$MY_FZF_COLOR_LIGHT,fg+:-1,hl:$MY_FZF_COLOR_ACCENT,hl+:$MY_FZF_COLOR_ACCENT
   --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_ACCENT,pointer:$MY_FZF_COLOR_DARK,marker:$MY_FZF_COLOR_DARK
   --layout reverse-list
-  --margin 10%,0,0,0
+  --margin 0,0,0,0
   --marker $MY_FZF_CHAR_MARKER
   --no-bold
   --no-info
@@ -306,6 +327,18 @@ export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 
 export LESSHISTFILE=-
 
+# lf
+
+function my-lf-cd {
+  local temp_file="$(mktemp)"
+  lf -last-dir-path="$temp_file" "$@" < $TTY
+  my-cd $temp_file
+}
+zle -N my-lf-cd
+
+bindkey -M vicmd '\el' my-lf-cd
+bindkey -M viins '\el' my-lf-cd
+
 # node
 
 export NODE_REPL_HISTORY=''
@@ -318,24 +351,10 @@ export NG_CLI_ANALYTICS=ci
 
 # ranger
 
-my-redraw-prompt() {
-  local precmd
-  for precmd in $precmd_functions; do
-    $precmd
-  done
-  zle reset-prompt
-}
-zle -N my-redraw-prompt
-
 function my-ranger-cd {
   local temp_file="$(mktemp)"
   ranger --choosedir="$temp_file" "$@" < $TTY
-  if [[ -f "$temp_file" ]]; then
-    local target_dir="$(cat "$temp_file")"
-    rm -f "$temp_file"
-    [[ -d "$target_dir" && "$target_dir" != "$(pwd)" ]] && cd "$target_dir"
-  fi
-  zle my-redraw-prompt
+  my-cd $temp_file
 }
 zle -N my-ranger-cd
 
