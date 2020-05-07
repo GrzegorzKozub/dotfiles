@@ -33,7 +33,7 @@ cmd open ${{
   esac
 }}
 
-cmd extract ${{
+cmd extract %{{
   case "$f" in
     *.gz) gzip --decompress "$f";;
     *.zip) 7z x "$f";;
@@ -55,7 +55,7 @@ cmd fzf ${{
 # key bindings
 
 map D delete
-map md push %mkdir<space>
+map M push %mkdir<space>
 map o overwrite-async
 map t trash
 
@@ -66,4 +66,16 @@ map ag gzip
 map az zip
 
 map <c-f> :fzf
+
+map gxc cd ~/.config
+map gxa cd ~/.cache
+map gxd cd ~/.local/share
+
+map gc cd ~/code
+map ga cd ~/code/arch
+map gd cd ~/code/dotfiles
+map gk cd ~/code/keys
+map gm cd ~/code/mac
+map gp cd ~/code/passwords
+map gt cd ~/code/themes
 
