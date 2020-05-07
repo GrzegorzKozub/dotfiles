@@ -8,7 +8,6 @@ set promptfmt "\033[36;1m%w/\033[0m\033[36;1m%f\033[0m"
 set ratios 2:3:4
 set scrolloff 3
 set shell 'zsh'
-set shellopts '-eu:--shwordsplit'
 
 # commands
 
@@ -22,7 +21,7 @@ cmd overwrite-async %{{
   lf -remote 'send clear'
 }}
 
-cmd trash ${{
+cmd trash %{{
   while IFS= read -r item; do trash-put "$item"; done <<< "$fx"
 }}
 
