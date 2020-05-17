@@ -30,8 +30,6 @@ export XDG_CONFIG_HOME=~/.config
 
 [[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
 
-[[ -d ~/code/backups ]] || mkdir ~/code/backups
-
 # links
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \

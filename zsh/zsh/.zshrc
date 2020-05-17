@@ -198,19 +198,6 @@ setopt hist_verify # don't run command immediately
 setopt inc_append_history # add commands in the order of execution
 setopt share_history # share history between terminals
 
-backup-history() {
-  [[ -d $(dirname $1) ]] || return
-  [[ -f $HISTFILE ]] || touch $HISTFILE
-  [[ -f $1 ]] || touch $1
-  if [[ $(stat -c%s $HISTFILE) -gt $(stat -c%s $1) ]]; then
-    cp $HISTFILE $1
-  else
-    cp $1 $HISTFILE
-  fi
-}
-
-backup-history ~/code/backups/.zshhist
-
 # aliases
 
 [[ $LINUX ]] && alias clip='xclip -selection clipboard'
