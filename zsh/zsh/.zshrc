@@ -112,7 +112,7 @@ setopt pushd_minus # cd - goes to the previous dir
 
 stty -ixon # disable flow control (^s and ^c)
 
-export EDITOR='vim'
+export EDITOR='nvim'
 [[ $MAC ]] && export LC_ALL=en_US.UTF-8
 
 # colors
@@ -208,6 +208,7 @@ alias la='ls -lAh'
 alias less='less --raw-control-chars'
 alias ls='ls --color=auto'
 [[ $MAC ]] && alias pip='pip3'
+alias vim='nvim'
 
 # dirhistory
 
