@@ -89,7 +89,7 @@ zinit ice nocompile lucid \
 zinit light GrzegorzKozub/themes # after zsh-vim-mode and fast-syntax-highlighting
 
 zinit ice depth=1
-zinit light romkatv/powerlevel10k 
+zinit light romkatv/powerlevel10k
 
 zinit snippet PZT::modules/terminal/init.zsh
 
@@ -170,7 +170,7 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# up and down history completion 
+# up and down history completion
 
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 
@@ -356,10 +356,6 @@ export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
 # tmux
 
 alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
-
-# unison
-
-alias unison="unison -auto -log=false -ignore='Name dist' -ignore='Regex .*/node_modules/.*' -ignorenot='Regex .*/\.gitkeep'"
 
 # vim
 
