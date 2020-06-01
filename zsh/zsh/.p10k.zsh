@@ -153,8 +153,8 @@
 
   typeset -g POWERLEVEL9K_AWS_CLASSES=(
     '*prod*' PROD
-    '*beta*' PROD
-    '*stage*' TEST
+    '*beta*' TEST
+    '*stage*' DEV
     '*' DEV
   )
 
