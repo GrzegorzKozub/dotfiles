@@ -249,6 +249,8 @@ export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/credentials
 export AWS_PROFILE=apsis-waw-stage
 export AWS_SDK_LOAD_CONFIG=1
 
+[[ -f ~/.local/bin/aws_zsh_completer.sh ]] && source ~/.local/bin/aws_zsh_completer.sh
+
 # dotnet
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
