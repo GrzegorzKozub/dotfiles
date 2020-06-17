@@ -84,25 +84,13 @@ do
 done
 
 for PACKAGE_FOR_VIM in \
-  `#github.com/davidrjenni/reftools/cmd/fillstruct` \
-  `#github.com/fatih/gomodifytags` \
   github.com/fatih/motion \
-  `#github.com/go-delve/delve/cmd/dlv` \
   github.com/golangci/golangci-lint/cmd/golangci-lint \
-  `#github.com/josharian/impl` \
   github.com/jstemmer/gotags \
   github.com/kisielk/errcheck \
   github.com/klauspost/asmfmt/cmd/asmfmt \
   github.com/koron/iferr \
-  `#github.com/mdempsky/gocode` \
-  `#github.com/rogpeppe/godef` \
-  `#github.com/stamblerre/gocode` \
   github.com/zmb3/gogetdoc \
-  `#golang.org/x/lint/golint` \
-  `#golang.org/x/tools/cmd/goimports` \
-  `#golang.org/x/tools/cmd/gorename` \
-  `#golang.org/x/tools/cmd/guru` \
-  `#golang.org/x/tools/gopls` \
   honnef.co/go/tools/cmd/keyify
 do
   echo $PACKAGE_FOR_VIM
@@ -161,21 +149,11 @@ for EXTENSION in \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
-  `# humao.rest-client` \
   ms-azuretools.vscode-docker \
-  `# ms-kubernetes-tools.vscode-kubernetes-tools` \
-  `# ms-vscode-remote.remote-containers` \
-  `# ms-vscode-remote.remote-ssh` \
-  `# ms-vscode-remote.remote-wsl` \
-  `# ms-vscode.PowerShell` \
-  `# ms-vscode.azure-account` \
-  `# ms-vscode.csharp` \
   ms-vscode.go \
   ms-vscode.vscode-typescript-tslint-plugin \
-  `# msjsdiag.debugger-for-chrome` \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
-  sainnhe.forest-night \
   sainnhe.gruvbox-material
 do
   code --install-extension $EXTENSION --force
