@@ -120,13 +120,16 @@ npm install --global \
 [[ $MAC ]] && alias pip='pip3'
 
 pip install --user \
+  wheel
+
+pip install --user \
+  setuptools
+
+pip install --user \
   awscli \
   docker-compose \
   lastversion \
   pynvim
-
-# pip install --user \
-#   awsebcli
 
 pip install --user --pre \
   vim-vint
