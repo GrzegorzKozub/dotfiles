@@ -20,15 +20,9 @@ for plugin in $XDG_DATA_HOME/tmux/plugins/*; do
     $(echo $plugin | sed 's/^.*\///')
 done
 
-# elixir
+# elixir, go and ruby
 
-mix local.hex --force
-mix local.rebar --force
-mix archive.install hex phx_new --force
-
-# go
-
-go get -u -v all
+. `dirname $0`/clean.zsh
 
 # node
 
@@ -39,11 +33,6 @@ npm update --global
 pip list --outdated --format=freeze | \
   cut -d = -f 1 | \
   xargs -n1 pip install --upgrade
-
-# ruby
-
-gem install --user-install \
-  neovim
 
 # vim and neovim
 
