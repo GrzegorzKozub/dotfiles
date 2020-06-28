@@ -58,6 +58,25 @@ do
   go get -u $PACKAGE_FOR_VIM
 done
 
+# python
+
+[[ $MAC ]] && alias pip='pip3'
+
+pip install --user --force \
+  wheel
+
+pip install --user --force \
+  setuptools
+
+pip install --user --force \
+  awscli \
+  docker-compose \
+  lastversion \
+  pynvim
+
+pip install --user --pre --force \
+  vim-vint
+
 # ruby
 
 [[ -d ~/.gem ]] && rm -rf ~/.gem

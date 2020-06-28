@@ -39,7 +39,7 @@ tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
 ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
-# elixir, go and ruby
+# elixir, go, python and ruby
 
 . `dirname $0`/clean.zsh
 
@@ -60,25 +60,6 @@ npm install --global \
   rimraf \
   typescript \
   typescript-formatter
-
-# python
-
-[[ $MAC ]] && alias pip='pip3'
-
-pip install --user \
-  wheel
-
-pip install --user \
-  setuptools
-
-pip install --user \
-  awscli \
-  docker-compose \
-  lastversion \
-  pynvim
-
-pip install --user --pre \
-  vim-vint
 
 # vim and neovim
 
