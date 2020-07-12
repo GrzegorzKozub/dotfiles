@@ -20,9 +20,9 @@ for plugin in $XDG_DATA_HOME/tmux/plugins/*; do
     $(echo $plugin | sed 's/^.*\///')
 done
 
-# elixir, go, python and ruby
+# shared
 
-. `dirname $0`/clean.zsh
+. `dirname $0`/shared.zsh
 
 # node
 
@@ -31,9 +31,12 @@ npm update --global
 # vim and neovim
 
 nvim --headless +PlugUpdate +qall
+nvim --headless +GoUpdateBinaries +qall
 
 # vscode
 
 code --list-extensions | \
   xargs -n1 code --force --install-extension
+
+go get -u -v all
 
