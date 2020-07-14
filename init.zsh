@@ -10,7 +10,6 @@ git submodule update --init
 git submodule foreach --recursive git checkout master
 
 git update-index --assume-unchanged \
-  keepass.arch/keepassxc/keepassxc.ini \
   keepass.mac/KeePassXC/keepassxc.ini
 
 popd
