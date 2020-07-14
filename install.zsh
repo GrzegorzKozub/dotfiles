@@ -108,7 +108,7 @@ for PACKAGE in \
   golang.org/x/tools/gopls
 do
   echo $PACKAGE
-  go get -u -v $PACKAGE
+  go get -v $PACKAGE
 done
 
 # cleanup
