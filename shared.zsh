@@ -26,8 +26,10 @@ pip install --user --force \
 
 pip install --user --force \
   awscli \
+  cfn-lint \
   docker-compose \
   lastversion \
+  pydot \
   pynvim
 
 pip install --user --pre --force \
