@@ -71,6 +71,7 @@ nvim --headless +GoInstallBinaries +qall
 
 for EXTENSION in \
   JakeBecker.elixir-ls \
+  arjun.swagger-viewer \
   alexkrechik.cucumberautocomplete \
   aws-scripting-guy.cform \
   dbaeumer.vscode-eslint \
