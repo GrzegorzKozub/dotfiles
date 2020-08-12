@@ -51,6 +51,7 @@ export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
 
 npm install --global \
   @angular/cli \
+  autocannon \
   create-react-app \
   eslint \
   express-generator \
