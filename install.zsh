@@ -78,6 +78,7 @@ for EXTENSION in \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
   ms-azuretools.vscode-docker \
+  ms-python.python \
   ms-vscode.go \
   ms-vscode.vscode-typescript-tslint-plugin \
   pkief.material-icon-theme \

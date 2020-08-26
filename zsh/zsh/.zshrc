@@ -341,6 +341,10 @@ export PM2_HOME=${XDG_DATA_HOME:-~/.local/share}/pm2
 
 export NG_CLI_ANALYTICS=ci
 
+# python
+
+export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint
+
 # ranger
 
 function my-ranger-cd {

@@ -25,11 +25,15 @@ pip install --user --force \
   setuptools
 
 pip install --user --force \
+  autopep8 \
   awscli \
   cfn-lint \
   docker-compose \
+  ipykernel \
   lastversion \
+  locust \
   pydot \
+  pylint \
   pynvim
 
 pip install --user --pre --force \
