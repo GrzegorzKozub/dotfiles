@@ -345,18 +345,6 @@ export NG_CLI_ANALYTICS=ci
 
 export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint
 
-# ranger
-
-function my-ranger-cd {
-  local temp_file="$(mktemp)"
-  ranger --choosedir="$temp_file" "$@" < $TTY
-  my-cd $temp_file
-}
-zle -N my-ranger-cd
-
-bindkey -M vicmd '\er' my-ranger-cd
-bindkey -M viins '\er' my-ranger-cd
-
 # ripgrep
 
 export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
