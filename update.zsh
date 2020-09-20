@@ -28,6 +28,10 @@ done
 
 npm update --global
 
+# ruby
+
+gem update
+
 # vim and neovim
 
 nvim --headless +PlugUpdate +qall
