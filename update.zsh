@@ -28,10 +28,6 @@ done
 
 npm update --global
 
-# ruby
-
-gem update
-
 # vim and neovim
 
 nvim --headless +PlugUpdate +qall
@@ -41,6 +37,4 @@ nvim --headless +GoUpdateBinaries +qall
 
 code --list-extensions | \
   xargs -n1 code --force --install-extension
-
-go get -u -v all
 
