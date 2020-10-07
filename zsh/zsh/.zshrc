@@ -242,6 +242,32 @@ function my-cd {
   zle my-redraw-prompt
 }
 
+# my-git-checkout-branch
+
+function my-git-checkout-branch {
+  BUFFER='git checkout -b ch'
+  zle vi-end-of-line
+  zle vi-insert
+}
+zle -N my-git-checkout-branch
+
+bindkey -M vicmd '\egcb' my-git-checkout-branch
+bindkey -M viins '\egcb' my-git-checkout-branch
+
+# my-git-commit
+
+function my-git-commit {
+  BUFFER='git commit -m "[ch] "'
+  zle vi-end-of-line
+  zle vi-backward-word
+  zle vi-backward-word
+  zle vi-insert
+}
+zle -N my-git-commit
+
+bindkey -M vicmd '\egc' my-git-commit
+bindkey -M viins '\egc' my-git-commit
+
 # aws
 
 export AWS_CONFIG_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/config
