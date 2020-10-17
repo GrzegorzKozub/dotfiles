@@ -53,6 +53,8 @@ cmd fzf ${{
 
 # key bindings
 
+map <f-2> rename
+
 map D delete
 map M push %mkdir<space>
 map o overwrite-async
