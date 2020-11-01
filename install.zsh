@@ -67,6 +67,27 @@ npm install --global \
 nvim --headless +PlugInstall +qall
 nvim --headless +GoInstallBinaries +qall
 
+# vscode
+
+for EXTENSION in \
+  JakeBecker.elixir-ls \
+  arjun.swagger-viewer \
+  alexkrechik.cucumberautocomplete \
+  aws-scripting-guy.cform \
+  dbaeumer.vscode-eslint \
+  editorconfig.editorconfig \
+  esbenp.prettier-vscode \
+  ms-azuretools.vscode-docker \
+  ms-python.python \
+  ms-vscode.go \
+  ms-vscode.vscode-typescript-tslint-plugin \
+  pkief.material-icon-theme \
+  redhat.vscode-yaml \
+  sainnhe.gruvbox-material
+do
+  code --install-extension $EXTENSION --force
+done
+
 # cleanup
 
 unset LINUX MAC
