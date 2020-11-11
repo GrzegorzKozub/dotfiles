@@ -34,7 +34,8 @@ pip install --user --force \
   locust \
   pydot \
   pylint \
-  pynvim
+  pynvim \
+  rope
 
 pip install --user --pre --force \
   vim-vint
