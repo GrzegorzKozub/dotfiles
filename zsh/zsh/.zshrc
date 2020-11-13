@@ -207,8 +207,6 @@ alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias less='less --raw-control-chars'
 alias ls='ls --color=auto'
-[[ $MAC ]] && alias pip='pip3'
-alias vim='nvim'
 
 # dirhistory
 
@@ -287,6 +285,12 @@ export ERL_AFLAGS='-kernel shell_history enabled'
 export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
 
 alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
+
+# freerdp
+
+function rdp {
+  xfreerdp $1 /size:2560x1440 /dynamic-resolution /cert-ignore /drive:/home/greg/Downloads
+}
 
 # fzf
 
@@ -375,6 +379,8 @@ export NG_CLI_ANALYTICS=ci
 
 export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint
 
+[[ $MAC ]] && alias pip='pip3'
+
 # ripgrep
 
 export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
@@ -386,6 +392,8 @@ alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 # vim
 
 export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | source $MYVIMRC'
+
+alias vim='nvim'
 
 # zsh-vim-mode
 
