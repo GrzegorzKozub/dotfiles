@@ -9,3 +9,4 @@
 [submodule "azuredatastudio/azuredatastudio"]
 	path = azuredatastudio/azuredatastudio
 	url = git@github.com:GrzegorzKozub/azuredatastudio.git
+	branch = master
