@@ -51,6 +51,7 @@ if [[ $LINUX ]]; then
 
   stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
     alacritty.arch \
+    azuredatastudio \
     chrome \
     environment.arch \
     flameshot \

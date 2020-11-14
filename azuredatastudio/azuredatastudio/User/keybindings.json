@@ -1,0 +1,43 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  {
+    "key": "ctrl+shift+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "ctrl+alt+shift+n",
+    "command": "explorer.newFolder"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.files.saveAll"
+  },
+  {
+    "key": "ctrl+f4",
+    "command": "workbench.action.closeActiveEditor",
+  },
+  {
+    "key": "ctrl+w down",
+    "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": "ctrl+w left",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+w right",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+w up",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "alt+left",
+    "command": "workbench.action.navigateBack",
+  },
+  {
+    "key": "alt+right",
+    "command": "workbench.action.navigateForward",
+  }
+]
