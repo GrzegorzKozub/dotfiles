@@ -6,3 +6,6 @@
 	path = vscode/Code
 	url = git@github.com:GrzegorzKozub/vscode.git
 	branch = master
+[submodule "azuredatastudio/azuredatastudio"]
+	path = azuredatastudio/azuredatastudio
+	url = git@github.com:GrzegorzKozub/azuredatastudio.git
