@@ -72,6 +72,11 @@
   cmd = vim -d -c "VimDiff" "$LOCAL" "$REMOTE"
 [difftool "code"]
   cmd = code --wait --diff "$LOCAL" "$REMOTE"
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
+  required = true
+  smudge = git-lfs smudge -- %f
 [gc]
   auto = 1
 [github]
