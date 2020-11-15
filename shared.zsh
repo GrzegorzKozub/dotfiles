@@ -9,6 +9,7 @@ export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
 [[ -d $HEX_HOME ]] && rm -rf $HEX_HOME
 [[ -d $XDG_CACHE_HOME/rebar3 ]] && rm -rf $XDG_CACHE_HOME/rebar3
 [[ -d $XDG_DATA_HOME/mix ]] && rm -rf $XDG_DATA_HOME/mix
+[[ -d ~/.mix ]] && rm -rf ~/.mix # mix does not follow $XDG_DATA_HOME anymore
 
 mix local.hex --force
 mix local.rebar --force
