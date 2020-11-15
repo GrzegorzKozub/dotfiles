@@ -289,7 +289,7 @@ alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 # freerdp
 
 function rdp {
-  xfreerdp $1 /size:2560x1440 /dynamic-resolution /cert-ignore /drive:/home/greg/Downloads
+  xfreerdp $1 /size:1920x1080 /dynamic-resolution /cert-ignore /drive:/home/greg/Downloads
 }
 
 # fzf
