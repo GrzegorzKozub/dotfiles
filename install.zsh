@@ -73,12 +73,13 @@ for EXTENSION in \
   JakeBecker.elixir-ls \
   arjun.swagger-viewer \
   alexkrechik.cucumberautocomplete \
-  aws-scripting-guy.cform \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
+  kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
   ms-python.python \
+  ms-toolsai.jupyter \
   ms-vscode.go \
   ms-vscode.vscode-typescript-tslint-plugin \
   pkief.material-icon-theme \
