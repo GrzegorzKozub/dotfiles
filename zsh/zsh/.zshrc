@@ -367,8 +367,6 @@ export NPM_CONFIG_CACHE=${XDG_CACHE_HOME:-~/.cache}/npm
 export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
 export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
 
-export PM2_HOME=${XDG_DATA_HOME:-~/.local/share}/pm2
-
 export NG_CLI_ANALYTICS=ci
 
 # python
