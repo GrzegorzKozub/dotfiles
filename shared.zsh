@@ -30,6 +30,7 @@ pip install --user --force \
   awscli \
   cfn-lint \
   docker-compose \
+  glances \
   ipykernel \
   lastversion \
   locust \
