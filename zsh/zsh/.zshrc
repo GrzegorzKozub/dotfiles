@@ -300,11 +300,11 @@ export FZF_DEFAULT_OPTS="
   --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_ACCENT,pointer:$MY_FZF_COLOR_DARK,marker:$MY_FZF_COLOR_DARK
   --layout reverse-list
   --margin 0,0,0,0
-  --marker $MY_FZF_CHAR_MARKER
+  --marker '$MY_FZF_CHAR_MARKER'
   --no-bold
   --no-info
-  --pointer $MY_FZF_CHAR_POINTER
-  --prompt $MY_FZF_CHAR_PROMPT
+  --pointer '$MY_FZF_CHAR_POINTER'
+  --prompt '$MY_FZF_CHAR_PROMPT'
   --tabstop 2
 "
 
