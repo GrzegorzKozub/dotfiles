@@ -18,6 +18,7 @@ if [[ $LINUX ]]; then
 
   path=(
     ~/.local/bin
+    ~/.local/share/cargo/bin
     ~/.local/share/go/bin
     ~/.local/share/npm/bin
     ~/.gem/ruby/2.7.0/bin
@@ -379,6 +380,11 @@ export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint
 
 export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
 
+# rust
+
+export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
+export RUSTUP_HOME=${XDG_DATA_HOME:-~/.local/share}/rustup
+
 # tmux
 
 alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
@@ -388,6 +394,10 @@ alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | source $MYVIMRC'
 
 alias vim='nvim'
+
+# wget
+
+alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 
 # zsh-vim-mode
 
