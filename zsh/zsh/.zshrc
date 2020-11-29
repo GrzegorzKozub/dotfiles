@@ -416,3 +416,6 @@ MODE_CURSOR_SEARCH='steady underline'
 
 unset LINUX MAC
 
+# tmux
+
+[[ ! -z $TMUX ]] || tmux attach || tmux new
