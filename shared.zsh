@@ -48,6 +48,13 @@ pip install --user --pre --force \
 gem install --user-install \
   neovim
 
+# rust
+
+export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
+
+cargo install \
+  jwt-cli
+
 # vscode
 
 export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
