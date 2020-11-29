@@ -203,7 +203,6 @@ setopt share_history # share history between terminals
 
 [[ $LINUX ]] && alias clip='xclip -selection clipboard'
 alias diff='diff --color'
-alias glances='glances --theme-white'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias less='less --raw-control-chars'
