@@ -23,11 +23,7 @@ pip install --user --force \
   wheel
 
 pip install --user --force \
-  setuptools
-
-pip install --user --force \
   autopep8 \
-  awscli \
   cfn-lint \
   docker-compose \
   ipykernel \
@@ -36,9 +32,7 @@ pip install --user --force \
   pydot \
   pylint \
   pynvim \
-  rope
-
-pip install --user --pre --force \
+  rope \
   vim-vint
 
 # ruby
