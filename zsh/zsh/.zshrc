@@ -417,4 +417,4 @@ unset LINUX MAC
 
 # tmux
 
-[[ ! -z $TMUX ]] || tmux attach || tmux new
+[[ $TERM_PROGRAM = 'vscode' ]] || [[ ! -z $TMUX ]] || tmux attach || tmux new
