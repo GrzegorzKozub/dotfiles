@@ -26,6 +26,7 @@ pip install --user --upgrade \
   ipykernel \
   lastversion \
   locust \
+  pip-review \
   pydot \
   pylint \
   pynvim \
