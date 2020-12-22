@@ -51,10 +51,6 @@ cargo install \
 
 export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
 
-TMP="$(mktemp -d)"
-pushd $TMP
-echo 'module dotfiles' > $TMP/go.mod
-
 for PACKAGE in \
   github.com/mdempsky/gocode \
   github.com/uudashr/gopkgs/v2/cmd/gopkgs \
@@ -74,13 +70,27 @@ for PACKAGE in \
   golang.org/x/lint/golint \
   golang.org/x/tools/gopls
 do
+  TMP="$(mktemp -d)"
+  pushd $TMP
+  echo 'module dotfiles' > $TMP/go.mod
   go get -v $PACKAGE
+  popd
+  rm -rf $TMP
 done
 
+TMP="$(mktemp -d)"
+pushd $TMP
+echo 'module dotfiles' > $TMP/go.mod
 go get -v -d github.com/stamblerre/gocode
-go build -o $GOPATH/bin/gocode-gomod github.com/stamblerre/gocode
-
 popd
 rm -rf $TMP
+
+TMP="$(mktemp -d)"
+pushd $TMP
+echo 'module dotfiles' > $TMP/go.mod
+go build -o $GOPATH/bin/gocode-gomod github.com/stamblerre/gocode
+popd
+rm -rf $TMP
+
 unset TMP
 
