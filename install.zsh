@@ -78,6 +78,7 @@ for EXTENSION in \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
   ms-python.python \
+  ms-python.vscode-pylance \
   ms-toolsai.jupyter \
   ms-vscode.go \
   ms-vscode.vscode-typescript-tslint-plugin \
