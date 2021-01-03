@@ -20,6 +20,9 @@ mix archive.install hex phx_new --force
 [[ $MAC ]] && alias pip='pip3'
 
 pip install --user --upgrade \
+  wheel
+
+pip install --user --upgrade \
   autopep8 \
   cfn-lint \
   docker-compose \
