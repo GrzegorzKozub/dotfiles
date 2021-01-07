@@ -275,6 +275,8 @@ export AWS_SDK_LOAD_CONFIG=1
 
 [[ -f ~/.local/bin/aws_zsh_completer.sh ]] && source ~/.local/bin/aws_zsh_completer.sh
 
+alias myip="curl http://checkip.amazonaws.com/"
+
 # dotnet
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
