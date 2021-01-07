@@ -219,9 +219,17 @@ alias ls='ls --color=auto'
   bindkey -M vicmd "${alt}B" dirhistory_zle_dirhistory_down
 }
 
+# my-exit
+
+function my-exit { exit }
+zle -N my-exit
+
+bindkey -M vicmd '\ex' my-exit
+bindkey -M viins '\ex' my-exit
+
 # my-cd
 
-my-redraw-prompt() {
+function my-redraw-prompt {
   local precmd
   for precmd in $precmd_functions; do
     $precmd
