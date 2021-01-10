@@ -118,7 +118,7 @@ export EDITOR='nvim'
 
 # colors
 
-autoload -U colors && colors
+autoload -Uz colors && colors
 
 () {
   if [[ -z $LS_COLORS ]] && (( $+commands[dircolors] )); then
@@ -173,7 +173,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # up and down history completion
 
-autoload -U up-line-or-beginning-search down-line-or-beginning-search
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
@@ -281,7 +281,8 @@ export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/credentials
 export AWS_PROFILE=apsis-waw-stage
 export AWS_SDK_LOAD_CONFIG=1
 
-[[ -f ~/.local/bin/aws_zsh_completer.sh ]] && source ~/.local/bin/aws_zsh_completer.sh
+autoload -Uz bashcompinit && bashcompinit
+complete -C /usr/bin/aws_completer aws
 
 alias myip="curl http://checkip.amazonaws.com/"
 
