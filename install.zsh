@@ -84,7 +84,6 @@ for EXTENSION in \
   ms-vscode.vscode-typescript-tslint-plugin \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
-  sainnhe.forest-night \
   sainnhe.gruvbox-material
 do
   code --install-extension $EXTENSION --force
