@@ -26,7 +26,7 @@ cmd trash %{{
 
 cmd open ${{
   case $(file --mime-type "$f" -b) in
-    text/*|application/json|inode/symlink) $EDITOR "$fx";;
+    text/*|application/csv|application/json|inode/symlink) $EDITOR "$fx";;
     *) xdg-open "$f" & disown;;
   esac
 }}
