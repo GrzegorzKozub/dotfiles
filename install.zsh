@@ -81,7 +81,6 @@ for EXTENSION in \
   ms-python.vscode-pylance \
   ms-toolsai.jupyter \
   ms-vscode.go \
-  ms-vscode.vscode-typescript-tslint-plugin \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
   sainnhe.gruvbox-material
