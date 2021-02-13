@@ -3,7 +3,7 @@
 set errorfmt "\033[31;1m%s\033[0m"
 set hidden
 set ifs '\n'
-set promptfmt "\033[36;1m%w\033[0m\033[36;1m%f\033[0m"
+set promptfmt "\033[36;1m%w/\033[0m\033[36;1m%f\033[0m"
 set ratios 2:3:4
 set scrolloff 3
 set shell 'zsh'
