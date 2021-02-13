@@ -52,6 +52,7 @@ if [[ $LINUX ]]; then
   stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
     alacritty.arch \
     chrome \
+    chromium \
     environment.arch \
     flameshot \
     keepass.arch \
