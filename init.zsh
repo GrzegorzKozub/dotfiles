@@ -36,7 +36,6 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   iex \
   lf \
   mpv \
-  obs \
   ripgrep \
   tmux \
   vim \
