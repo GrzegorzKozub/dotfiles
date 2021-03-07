@@ -91,6 +91,7 @@ rm -rf $TMP
 TMP="$(mktemp -d)"
 pushd $TMP
 echo 'module dotfiles' > $TMP/go.mod
+go get github.com/stamblerre/gocode
 go build -o $GOPATH/bin/gocode-gomod github.com/stamblerre/gocode
 popd
 rm -rf $TMP
