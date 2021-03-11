@@ -286,6 +286,10 @@ complete -C /usr/bin/aws_completer aws
 
 alias myip="curl http://checkip.amazonaws.com/"
 
+# docker
+
+export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
+
 # dotnet
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
