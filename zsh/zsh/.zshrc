@@ -384,6 +384,10 @@ export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
 
 export NG_CLI_ANALYTICS=ci
 
+# pass
+
+export PASSWORD_STORE_DIR=${XDG_DATA_HOME:-~/.local/share}/pass
+
 # python
 
 export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint

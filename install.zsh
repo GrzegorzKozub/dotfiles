@@ -39,6 +39,18 @@ tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
 ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
+# pass
+
+gpg --batch --generate-key <<EOF
+Key-Type: 1
+Key-Length: 3072
+Name-Real: Grzegorz Kozub
+Name-Email: grzegorz.kozub@gmail.com
+Passphrase: passphrase
+EOF
+
+pass init grzegorz.kozub@gmail.com
+
 # shared
 
 . `dirname $0`/shared.zsh
