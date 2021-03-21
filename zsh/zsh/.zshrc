@@ -22,6 +22,7 @@ if [[ $LINUX ]]; then
     ~/.local/share/go/bin
     ~/.local/share/npm/bin
     ~/.gem/ruby/2.7.0/bin
+    ~/code/arch
     $path[@]
   )
 
