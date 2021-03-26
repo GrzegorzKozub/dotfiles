@@ -19,9 +19,9 @@ if [[ $LINUX ]]; then
   path=(
     ~/.local/bin
     ~/.local/share/cargo/bin
+    ~/.local/share/gem/ruby/2.7.0/bin
     ~/.local/share/go/bin
     ~/.local/share/npm/bin
-    ~/.gem/ruby/2.7.0/bin
     ~/code/arch
     $path[@]
   )
