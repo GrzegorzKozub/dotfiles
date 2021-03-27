@@ -14,13 +14,6 @@ git update-index --assume-unchanged \
 
 popd
 
-# os
-
-case $(uname -s) in
-  'Linux') LINUX=1;;
-  'Darwin') MAC=1;;
-esac
-
 # env
 
 export XDG_CONFIG_HOME=~/.config
@@ -47,43 +40,15 @@ stow --dir=`dirname $0` --target=$HOME --stow \
 [[ -d ${XDG_CONFIG_HOME:-~/.config}/nvim ]] && rm ${XDG_CONFIG_HOME:-~/.config}/nvim
 ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 
-if [[ $LINUX ]]; then
+stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+  alacritty \
+  chrome \
+  chromium \
+  environment \
+  flameshot \
+  keepass \
+  vscode
 
-  stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
-    alacritty.arch \
-    chrome \
-    chromium \
-    environment.arch \
-    flameshot \
-    keepass.arch \
-    vscode
-
-  stow --dir=`dirname $0` --target=$HOME --stow \
-    imwheel
-
-fi
-
-if [[ $MAC ]]; then
-
-  stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
-    alacritty.mac
-
-  stow --dir=`dirname $0` --target=$HOME/Library/LaunchAgents --stow \
-    environment.mac
-
-  launchctl unload ~/Library/LaunchAgents/environment.plist
-  launchctl load ~/Library/LaunchAgents/environment.plist
-
-  launchctl unload ~/Library/LaunchAgents/key-mapping.plist
-  launchctl load ~/Library/LaunchAgents/key-mapping.plist
-
-  stow --dir=`dirname $0` --target=$HOME/Library/Application\ Support --stow \
-    keepass.mac \
-    vscode
-
-fi
-
-# cleanup
-
-unset LINUX MAC
+stow --dir=`dirname $0` --target=$HOME --stow \
+  imwheel
 

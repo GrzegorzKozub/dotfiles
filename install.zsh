@@ -2,13 +2,6 @@
 
 set -e -o verbose
 
-# os
-
-case $(uname -s) in
-  'Linux') LINUX=1;;
-  'Darwin') MAC=1;;
-esac
-
 # env
 
 export XDG_CONFIG_HOME=~/.config
@@ -100,8 +93,4 @@ for EXTENSION in \
 do
   code --install-extension $EXTENSION --force
 done
-
-# cleanup
-
-unset LINUX MAC
 

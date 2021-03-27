@@ -1,10 +1,3 @@
-# os
-
-case $(uname -s) in
-  'Linux') LINUX=1;;
-  'Darwin') MAC=1;;
-esac
-
 # dirs
 
 [[ -d ${XDG_CACHE_HOME:-~/.cache}/zsh ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}/zsh
@@ -14,38 +7,15 @@ esac
 
 typeset -U path
 
-if [[ $LINUX ]]; then
-
-  path=(
-    ~/.local/bin
-    ~/.local/share/cargo/bin
-    ~/.local/share/gem/ruby/2.7.0/bin
-    ~/.local/share/go/bin
-    ~/.local/share/npm/bin
-    ~/code/arch
-    $path[@]
-  )
-
-fi
-
-if [[ $MAC ]]; then
-
-  path=(
-    /usr/local/opt/coreutils/libexec/gnubin
-    /usr/local/opt/findutils/libexec/gnubin
-    /usr/local/opt/gnu-sed/libexec/gnubin
-    /usr/local/opt/grep/libexec/gnubin
-    /usr/local/opt/curl/bin
-    /usr/local/opt/ncurses/bin
-    ~/.local/share/go/bin
-    ~/.local/share/npm/bin
-    ~/.dotnet/tools
-    ~/.gem/ruby/2.6.0/bin
-    ~/Library/Python/3.7/bin
-    $path[@]
-  )
-
-fi
+path=(
+  ~/.local/bin
+  ~/.local/share/cargo/bin
+  ~/.local/share/gem/ruby/2.7.0/bin
+  ~/.local/share/go/bin
+  ~/.local/share/npm/bin
+  ~/code/arch
+  $path[@]
+)
 
 # terminal
 
@@ -115,7 +85,6 @@ setopt pushd_minus # cd - goes to the previous dir
 stty -ixon # disable flow control (^s and ^c)
 
 export EDITOR='nvim'
-[[ $MAC ]] && export LC_ALL=en_US.UTF-8
 
 # colors
 
@@ -141,16 +110,6 @@ setopt prompt_subst
 # completion
 
 WORDCHARS=''
-
-if [[ $MAC ]]; then
-
-  typeset -U fpath
-  fpath=(
-    /usr/local/share/zsh/site-functions
-    $fpath[@]
-  )
-
-fi
 
 autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 
@@ -202,7 +161,7 @@ setopt share_history # share history between terminals
 
 # aliases
 
-[[ $LINUX ]] && alias clip='xclip -selection clipboard'
+alias clip='xclip -selection clipboard'
 alias diff='diff --color'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
@@ -212,7 +171,7 @@ alias ls='ls --color=auto'
 # dirhistory
 
 () {
-  if [[ $MAC ]]; then local alt='^[^[['; else local alt='^[[1;3'; fi
+  local alt='^[[1;3'
 
   bindkey -M vicmd "${alt}D" dirhistory_zle_dirhistory_back
   bindkey -M vicmd "${alt}C" dirhistory_zle_dirhistory_future
@@ -329,31 +288,27 @@ bindkey -M vicmd '^t' fzf-file-widget
 
 # gnome
 
-if [[ $LINUX ]]; then
+function fix-gnome-terminal {
+  local profile="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
+  case $MY_THEME in
+    'solarized-light')
+      dconf write "$profile/foreground-color" "'rgb(101,123,131)'"
+      dconf write "$profile/background-color" "'rgb(253,246,227)'"
+      ;;
+    'solarized-dark')
+      dconf write "$profile/foreground-color" "'rgb(131,148,150)'"
+      dconf write "$profile/background-color" "'rgb(0,43,54)'"
+      ;;
+  esac
+}
 
-  function fix-gnome-terminal {
-    local profile="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
-    case $MY_THEME in
-      'solarized-light')
-        dconf write "$profile/foreground-color" "'rgb(101,123,131)'"
-        dconf write "$profile/background-color" "'rgb(253,246,227)'"
-        ;;
-      'solarized-dark')
-        dconf write "$profile/foreground-color" "'rgb(131,148,150)'"
-        dconf write "$profile/background-color" "'rgb(0,43,54)'"
-        ;;
-    esac
-  }
-
-  function fonts {
-    if [[ $1 ]]; then
-      gsettings set org.gnome.desktop.interface text-scaling-factor $1
-    else
-      gsettings get org.gnome.desktop.interface text-scaling-factor
-    fi
-  }
-
-fi
+function fonts {
+  if [[ $1 ]]; then
+    gsettings set org.gnome.desktop.interface text-scaling-factor $1
+  else
+    gsettings get org.gnome.desktop.interface text-scaling-factor
+  fi
+}
 
 # gnupg
 
@@ -393,8 +348,6 @@ export PASSWORD_STORE_DIR=${XDG_DATA_HOME:-~/.local/share}/pass
 
 export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint
 
-[[ $MAC ]] && alias pip='pip3'
-
 # ripgrep
 
 export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
@@ -430,10 +383,6 @@ MODE_CURSOR_SEARCH='steady underline'
 # powerlevel10k
 
 [[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh ]] && source ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh
-
-# cleanup
-
-unset LINUX MAC
 
 # tmux
 

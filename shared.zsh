@@ -17,8 +17,6 @@ mix archive.install hex phx_new --force
 
 # python
 
-[[ $MAC ]] && alias pip='pip3'
-
 pip install --user --upgrade \
   wheel
 
