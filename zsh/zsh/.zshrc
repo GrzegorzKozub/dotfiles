@@ -286,16 +286,6 @@ bindkey -M vicmd '^[c' fzf-cd-widget
 bindkey -M vicmd '^r' fzf-history-widget
 bindkey -M vicmd '^t' fzf-file-widget
 
-# gnome
-
-function fonts {
-  if [[ $1 ]]; then
-    gsettings set org.gnome.desktop.interface text-scaling-factor $1
-  else
-    gsettings get org.gnome.desktop.interface text-scaling-factor
-  fi
-}
-
 # gnupg
 
 export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
