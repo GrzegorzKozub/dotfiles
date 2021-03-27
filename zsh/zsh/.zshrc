@@ -288,20 +288,6 @@ bindkey -M vicmd '^t' fzf-file-widget
 
 # gnome
 
-function fix-gnome-terminal {
-  local profile="/org/gnome/terminal/legacy/profiles:/:${"$(gsettings get org.gnome.Terminal.ProfilesList default)":1:-1}"
-  case $MY_THEME in
-    'solarized-light')
-      dconf write "$profile/foreground-color" "'rgb(101,123,131)'"
-      dconf write "$profile/background-color" "'rgb(253,246,227)'"
-      ;;
-    'solarized-dark')
-      dconf write "$profile/foreground-color" "'rgb(131,148,150)'"
-      dconf write "$profile/background-color" "'rgb(0,43,54)'"
-      ;;
-  esac
-}
-
 function fonts {
   if [[ $1 ]]; then
     gsettings set org.gnome.desktop.interface text-scaling-factor $1
