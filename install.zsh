@@ -81,12 +81,12 @@ for EXTENSION in \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
+  golang.Go \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
   ms-python.python \
   ms-python.vscode-pylance \
   ms-toolsai.jupyter \
-  ms-vscode.go \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
   sainnhe.gruvbox-material
