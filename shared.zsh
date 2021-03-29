@@ -5,11 +5,11 @@ set -e -o verbose
 # elixir
 
 export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
+export MIX_HOME=${XDG_DATA_HOME:-~/.local/share}/mix
 
 [[ -d $HEX_HOME ]] && rm -rf $HEX_HOME
+[[ -d $MIX_HOME ]] && rm -rf $MIX_HOME
 [[ -d $XDG_CACHE_HOME/rebar3 ]] && rm -rf $XDG_CACHE_HOME/rebar3
-[[ -d $XDG_DATA_HOME/mix ]] && rm -rf $XDG_DATA_HOME/mix
-[[ -d ~/.mix ]] && rm -rf ~/.mix # mix does not follow $XDG_DATA_HOME anymore
 
 mix local.hex --force
 mix local.rebar --force
@@ -36,7 +36,7 @@ pip install --user --upgrade \
 
 # ruby
 
-[[ -d ~/.gem ]] && rm -rf ~/.gem
+[[ -d ${XDG_DATA_HOME:-~/.local/share}/gem ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/gem
 
 gem install --user-install \
   neovim

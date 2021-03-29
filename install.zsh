@@ -32,7 +32,9 @@ tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
 ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
-# pass
+# gnupg
+
+export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 
 gpg --batch --generate-key <<EOF
 Key-Type: 1
@@ -42,6 +44,10 @@ Name-Email: grzegorz.kozub@gmail.com
 Passphrase: passphrase
 EOF
 
+# pass
+
+export PASSWORD_STORE_DIR=${XDG_DATA_HOME:-~/.local/share}/pass
+
 pass init grzegorz.kozub@gmail.com
 
 # shared
@@ -50,9 +56,11 @@ pass init grzegorz.kozub@gmail.com
 
 # node
 
-export NG_CLI_ANALYTICS=ci
 export NPM_CONFIG_CACHE=${XDG_CACHE_HOME:-~/.cache}/npm
 export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
+export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
+
+export NG_CLI_ANALYTICS=ci
 
 npm install --global \
   @angular/cli \
