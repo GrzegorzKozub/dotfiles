@@ -36,6 +36,9 @@ tmux kill-server
 
 export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 
+[[ -d $GNUPGHOME ]] && rm -rf $GNUPGHOME
+mkdir $GNUPGHOME && chmod 700 $GNUPGHOME
+
 gpg --batch --generate-key <<EOF
 Key-Type: 1
 Key-Length: 3072
