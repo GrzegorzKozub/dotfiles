@@ -20,14 +20,20 @@ export ZDOTDIR=${XDG_CONFIG_HOME:-~/.config}/zsh
 
 [[ -d ${XDG_DATA_HOME:-~/.local/share}/zinit ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/zinit
 mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zinit
+
 git clone https://github.com/zdharma/zinit.git ${XDG_DATA_HOME:-~/.local/share}/zinit/bin
+
+export TMUX=1
 zsh -c "source ${XDG_CONFIG_HOME:-~/.config}/zsh/.zshrc && exit"
+unset TMUX
 
 # tmux
 
 [[ -d ${XDG_DATA_HOME:-~/.local/share}/tmux ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/tmux
 mkdir -p ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins
+
 git clone https://github.com/tmux-plugins/tpm ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm
+
 tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
 ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
