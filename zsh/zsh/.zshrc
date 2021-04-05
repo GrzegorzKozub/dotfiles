@@ -82,7 +82,7 @@ setopt no_beep
 setopt pushd_ignore_dups
 setopt pushd_minus # cd - goes to the previous dir
 
-stty -ixon # disable flow control (^s and ^c)
+[[ -o login ]] && stty -ixon # disable flow control (^s and ^c)
 
 export EDITOR='nvim'
 
