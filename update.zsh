@@ -36,5 +36,5 @@ nvim --headless +GoUpdateBinaries +qall
 # vscode
 
 code --list-extensions | \
-  xargs -n1 code --force --install-extension
+  xargs -I '$' zsh -c 'ZDOTDIR= code --force --install-extension $'
 
