@@ -75,7 +75,6 @@ map gc cd ~/code
 map ga cd ~/code/arch
 map gd cd ~/code/dotfiles
 map gk cd ~/code/keys
-map gm cd ~/code/mac
 map gp cd ~/code/passwords
 map gt cd ~/code/themes
 
