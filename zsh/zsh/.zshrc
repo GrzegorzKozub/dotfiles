@@ -21,13 +21,6 @@ path=(
 
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
-function palette {
-   for color in {0..15}; do
-     print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
-   done
-   print '\n'
-}
-
 # theme
 
 export MY_THEME='solarized-light'
@@ -102,6 +95,13 @@ autoload -Uz colors && colors
   fi
 }
 
+function palette {
+   for color in {0..15}; do
+     print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
+   done
+   print '\n'
+}
+
 # prompt
 
 autoload -Uz promptinit && promptinit
@@ -131,15 +131,20 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# up and down history completion
+# up and down for muti-line commands in command mode
+
+bindkey -M vicmd '^[[A' up-line-or-history
+bindkey -M vicmd '^[[B' down-line-or-history
+
+# up and down history completion in insert mode
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-bindkey '^[[A' up-line-or-beginning-search
-bindkey '^[[B' down-line-or-beginning-search
+bindkey -M viins '^[[A' up-line-or-beginning-search
+bindkey -M viins '^[[B' down-line-or-beginning-search
 
 # history
 
