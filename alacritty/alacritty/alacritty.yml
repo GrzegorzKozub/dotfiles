@@ -28,7 +28,11 @@ key_bindings:
 
 schemes:
 
-  solarized_light: &light
+  # https://github.com/eendroroy/alacritty-theme
+
+  # https://ethanschoonover.com/solarized
+
+  solarized_light: &solarized_light
     primary:
       background:   '#fdf6e3' # base3
       foreground:   '#657b83' # base00
@@ -61,7 +65,7 @@ schemes:
       cyan:         '#93a1a1' # base1
       white:        '#fdf6e3' # base3
 
-  solarized_dark: &dark
+  solarized_dark: &solarized_dark
     primary:
       background:   '#002b36' # base03
       foreground:   '#839496' # base0
@@ -94,5 +98,42 @@ schemes:
       cyan:         '#93a1a1' # base1
       white:        '#fdf6e3' # base3
 
-colors: *light
+  # https://github.com/morhetz/gruvbox
+
+  gruvbox_dark: &gruvbox_dark
+    primary:
+      background:   '#32302f' # bg0_s
+      # background:   '#282828' # bg0
+      # background:   '#1d2021' # bg0_h
+      foreground:   '#ebdbb2' # fg
+    cursor:
+      text:         '#32302f' # bg0_s
+      cursor:       '#ebdbb2' # fg
+    search:
+      matches:
+        background: '#d79921' # yellow
+        foreground: '#32302f' # bg0_s
+      bar:
+        background: '#32302f' # bg0_s
+        foreground: '#7c6f64' # bg4
+    normal:
+      black:        '#282828' # bg
+      red:          '#cc241d' # red
+      green:        '#98971a' # green
+      yellow:       '#d79921' # yellow
+      blue:         '#458588' # blue
+      magenta:      '#b16286' # purple
+      cyan:         '#689d6a' # aqua
+      white:        '#a89984' # gray
+    bright:
+      black:        '#928374' # gray
+      red:          '#fb4934' # red
+      green:        '#b8bb26' # green
+      yellow:       '#fabd2f' # yellow
+      blue:         '#83a598' # blue
+      magenta:      '#d3869b' # purple
+      cyan:         '#8ec07c' # aqua
+      white:        '#ebdbb2' # fg
+
+colors: *gruvbox_dark
 
