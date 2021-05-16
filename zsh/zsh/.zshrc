@@ -77,6 +77,8 @@ setopt pushd_minus # cd - goes to the previous dir
 
 [[ -o login ]] && stty -ixon # disable flow control (^s and ^c)
 
+zle_bracketed_paste=() # don't select pasted text
+
 export EDITOR='nvim'
 
 # colors
