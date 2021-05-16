@@ -23,7 +23,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # theme
 
-export MY_THEME='solarized-light'
+export MY_THEME='gruvbox-dark'
 
 # plugins
 
