@@ -10,6 +10,8 @@ set shell 'zsh'
 
 # commands
 
+cmd q :quit
+
 cmd overwrite-async %{{
   local load=$(lf -remote 'load')
   local mode=$(echo "$load" | sed -n '1p')
