@@ -109,7 +109,7 @@ schemes:
       foreground:   '#504945' # (was fg) fg2
     cursor:
       text:         '#f2e5bc' # bg0_s
-      cursor:       '#504945' # (was fg) fg2
+      cursor:       '#7c6f64' # (was fg) fg4
     search:
       matches:
         background: '#d79921' # yellow
@@ -144,7 +144,7 @@ schemes:
       foreground:   '#d5c4a1' # (was fg) fg2
     cursor:
       text:         '#32302f' # bg0_s
-      cursor:       '#d5c4a1' # (was fg) fg2
+      cursor:       '#a89984' # (was fg) fg4
     search:
       matches:
         background: '#d79921' # yellow
