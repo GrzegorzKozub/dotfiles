@@ -38,7 +38,7 @@ schemes:
       foreground:   '#586e75' # base01
     cursor:
       text:         '#fdf6e3' # base3
-      cursor:       '#839496' # (was base01) base0
+      cursor:       '#839496' # base0
     search:
       matches:
         background: '#b58900' # yellow
@@ -68,7 +68,7 @@ schemes:
   solarized_dark: &solarized_dark
     primary:
       background:   '#002b36' # base03
-      foreground:   '#839496' # base0
+      foreground:   '#93a1a1' # (was base0) base1
     cursor:
       text:         '#002b36' # base03
       cursor:       '#839496' # base0
