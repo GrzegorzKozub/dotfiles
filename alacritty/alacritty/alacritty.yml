@@ -144,25 +144,25 @@ schemes:
       foreground:   '#d5c4a1' # (was fg) fg2
     cursor:
       text:         '#32302f' # bg0_s
-      cursor:       '#a89984' # (was fg) fg4
+      cursor:       '#928374' # gray
     search:
       matches:
         background: '#d79921' # yellow
         foreground: '#32302f' # bg0_s
       bar:
         background: '#32302f' # bg0_s
-        foreground: '#7c6f64' # bg4
+        foreground: '#665c54' # bg3
     normal:
-      black:        '#282828' # bg
+      black:        '#3c3836' # (was bg) bg1
       red:          '#cc241d' # red
       green:        '#98971a' # green
       yellow:       '#d79921' # yellow
       blue:         '#458588' # blue
       magenta:      '#b16286' # purple
       cyan:         '#689d6a' # aqua
-      white:        '#a89984' # gray
+      white:        '#928374' # gray (was fg4)
     bright:
-      black:        '#928374' # gray
+      black:        '#665c54' # (was gray) bg3
       red:          '#fb4934' # red
       green:        '#b8bb26' # green
       yellow:       '#fabd2f' # yellow
