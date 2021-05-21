@@ -99,7 +99,6 @@ schemes:
       white:        '#fdf6e3' # base3
 
   # https://github.com/morhetz/gruvbox
-  # switch between bg0_s, bg0 and bg0_h globally
 
   gruvbox_light: &gruvbox_light
     primary:
@@ -109,25 +108,25 @@ schemes:
       foreground:   '#504945' # (was fg) fg2
     cursor:
       text:         '#f2e5bc' # bg0_s
-      cursor:       '#7c6f64' # (was fg) fg4
+      cursor:       '#928374' # gray
     search:
       matches:
         background: '#d79921' # yellow
         foreground: '#f2e5bc' # bg0_s
       bar:
         background: '#f2e5bc' # bg0_s
-        foreground: '#a89984' # bg4
+        foreground: '#bdae93' # bg3
     normal:
-      black:        '#fbf1c7' # bg
+      black:        '#ebdbb2' # (was bg) bg1
       red:          '#cc241d' # red
       green:        '#98971a' # green
       yellow:       '#d79921' # yellow
       blue:         '#458588' # blue
       magenta:      '#b16286' # purple
       cyan:         '#689d6a' # aqua
-      white:        '#7c6f64' # gray
+      white:        '#928374' # (was fg4) gray
     bright:
-      black:        '#928374' # gray
+      black:        '#bdae93' # (was gray) bg3
       red:          '#9d0006' # red
       green:        '#79740e' # green
       yellow:       '#b57614' # yellow
