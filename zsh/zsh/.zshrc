@@ -10,7 +10,7 @@ typeset -U path
 path=(
   ~/.local/bin
   ~/.local/share/cargo/bin
-  ~/.local/share/gem/ruby/2.7.0/bin
+  ~/.local/share/gem/ruby/3.0.0/bin
   ~/.local/share/go/bin
   ~/.local/share/npm/bin
   ~/code/arch
