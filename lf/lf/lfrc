@@ -54,20 +54,22 @@ cmd fzf ${{
 
 # key bindings
 
+map <esc> quit
+map <enter> open
+
 map <f-2> rename
+map <f-7> push %mkdir<space>
+
+map <c-f> :fzf
 
 map D delete
 map M push %mkdir<space>
 map o overwrite-async
 map t trash
 
-map <enter> open
-
 map ae extract
 map ag gzip
 map az zip
-
-map <c-f> :fzf
 
 map gxc cd ~/.config
 map gxa cd ~/.cache
