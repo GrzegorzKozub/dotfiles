@@ -103,7 +103,6 @@ for EXTENSION in \
   ms-azuretools.vscode-docker \
   ms-python.python \
   ms-python.vscode-pylance \
-  ms-toolsai.jupyter \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
   sainnhe.gruvbox-material
