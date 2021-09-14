@@ -39,6 +39,7 @@ ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   alacritty \
+  brave \
   chrome \
   chromium \
   environment \
