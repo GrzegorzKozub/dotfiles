@@ -41,7 +41,6 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   alacritty \
   brave \
   chrome \
-  chromium \
   environment \
   flameshot \
   keepass \
