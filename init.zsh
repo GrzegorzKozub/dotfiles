@@ -22,30 +22,29 @@ export XDG_CONFIG_HOME=~/.config
 # links
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
-  git \
-  iex \
-  lf \
-  mpv \
-  ripgrep \
-  tmux \
-  vim \
-  zsh
-
-stow --dir=`dirname $0` --target=$HOME --stow \
-  zprofile
-
-[[ -d ${XDG_CONFIG_HOME:-~/.config}/nvim ]] && rm ${XDG_CONFIG_HOME:-~/.config}/nvim
-ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
-
-stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   alacritty \
   brave \
   chrome \
   environment \
   flameshot \
+  git \
+  iex \
   keepass \
-  vscode
+  lf \
+  mpv \
+  ripgrep \
+  tmux \
+  vim \
+  vscode \
+  zsh
 
 stow --dir=`dirname $0` --target=$HOME --stow \
-  imwheel
+  imwheel \
+  zprofile
+
+[[ -d ${XDG_CONFIG_HOME:-~/.config}/btop ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}/btop
+stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config}/btop --stow btop
+
+[[ -d ${XDG_CONFIG_HOME:-~/.config}/nvim ]] && rm ${XDG_CONFIG_HOME:-~/.config}/nvim
+ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 
