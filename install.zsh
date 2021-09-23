@@ -94,7 +94,6 @@ for EXTENSION in \
   JakeBecker.elixir-ls \
   antfu.icons-carbon \
   alexkrechik.cucumberautocomplete \
-  arjun.swagger-viewer \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
