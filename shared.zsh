@@ -32,7 +32,8 @@ pip install --user --upgrade \
   pylint \
   pynvim \
   rope \
-  vim-vint
+  vim-vint \
+  yamllint
 
 # ruby
 
