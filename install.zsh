@@ -100,6 +100,7 @@ for EXTENSION in \
   golang.Go \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
+  ms-dotnettools.csharp \
   ms-python.python \
   ms-python.vscode-pylance \
   pkief.material-icon-theme \
