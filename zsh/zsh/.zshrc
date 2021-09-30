@@ -260,6 +260,7 @@ export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
 # dotnet
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export OMNISHARPHOME=${XDG_DATA_HOME:-~/.local/share}/omnisharp
 
 # elixir
 
