@@ -17,7 +17,8 @@ export ZINIT[ZCOMPDUMP_PATH]=$XDG_CACHE_HOME/zsh/zcompdump
 
 source $ZINIT[HOME_DIR]/bin/zinit.zsh
 
-zinit update --all --quiet
+# https://gitter.im/zdharma/zinit?at=617c6d703f09d857364233e7
+# zinit update --all --quiet
 
 # tmux
 
