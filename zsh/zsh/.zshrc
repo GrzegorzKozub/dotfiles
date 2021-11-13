@@ -46,7 +46,7 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
 zinit ice lucid
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice nocompile lucid \
   atload"source ./zsh/$MY_THEME.sh" \

@@ -21,7 +21,7 @@ export ZDOTDIR=${XDG_CONFIG_HOME:-~/.config}/zsh
 [[ -d ${XDG_DATA_HOME:-~/.local/share}/zinit ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/zinit
 mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zinit
 
-git clone https://github.com/zdharma/zinit.git ${XDG_DATA_HOME:-~/.local/share}/zinit/bin
+git clone https://github.com/zdharma-continuum/zinit.git ${XDG_DATA_HOME:-~/.local/share}/zinit/bin
 
 export TMUX=1
 zsh -c "source ${XDG_CONFIG_HOME:-~/.config}/zsh/.zshrc && exit"
