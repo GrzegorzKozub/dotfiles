@@ -45,16 +45,19 @@ zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
-zinit ice lucid
+zinit ice lucid depth=1
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit ice nocompile lucid \
+zinit ice nocompile lucid depth=1 \
   atload"source ./zsh/$MY_THEME.sh" \
   atload"fast-theme ./fast-syntax-highlighting/$MY_THEME.ini --quiet"
 zinit light GrzegorzKozub/themes # after zsh-vim-mode and fast-syntax-highlighting
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
+
+zinit ice depth=1
+zinit light romkatv/zsh-defer
 
 zinit snippet PZT::modules/terminal/init.zsh
 
@@ -325,7 +328,7 @@ export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
 export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
 
 export NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm
-alias nvm-init="unset NPM_CONFIG_PREFIX && source /usr/share/nvm/init-nvm.sh"
+zsh-defer source $NVM_DIR/nvm.sh --no-use
 
 export NG_CLI_ANALYTICS=ci
 
