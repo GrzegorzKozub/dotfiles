@@ -57,6 +57,8 @@
   remoteBranch = 2
   unmerged = 1
   untracked = 9
+[commit]
+  template = ~/.config/git/message
 [core]
   editor = vim
   fscache = true
