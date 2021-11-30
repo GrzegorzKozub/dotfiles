@@ -2,7 +2,8 @@
   g = grep --context 3 --heading --line-number --show-function
   ls = log --graph --all --abbrev-commit --date=relative --format=format:'%C(3)%h %C(auto)%s %C(6)%an %C(12)%ar %C(auto)%D%C(reset)'
   ll = log --graph --all --abbrev-commit --format=format:'%C(3)%h %C(6)%an %C(12)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
-  p = ! [[ $(git config "branch.$(git branch --show-current).merge") ]] && git push || git push --set-upstream origin $(git branch --show-current)
+  pl = pull --prune
+  ps = ! [[ $(git config "branch.$(git branch --show-current).merge") ]] && git push || git push --set-upstream origin $(git branch --show-current)
 [color]
   branch = auto
   diff = auto

@@ -221,7 +221,7 @@ function my-cd {
 # my-git-checkout-branch
 
 function my-git-checkout-branch {
-  BUFFER='git checkout -b ch'
+  BUFFER='git checkout -b sc-'
   zle vi-end-of-line
   zle vi-insert
 }
@@ -233,10 +233,12 @@ bindkey -M viins '\egcb' my-git-checkout-branch
 # my-git-commit
 
 function my-git-commit {
-  BUFFER='git commit -m "[ch] "'
+  BUFFER='git commit -m " [sc-]"'
   zle vi-end-of-line
   zle vi-backward-word
   zle vi-backward-word
+  zle vi-backward-char
+  zle vi-backward-char
   zle vi-insert
 }
 zle -N my-git-commit
