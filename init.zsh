@@ -31,6 +31,7 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   keepass \
   lf \
   mpv \
+  npm \
   ripgrep \
   tmux \
   vim \
