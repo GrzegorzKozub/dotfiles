@@ -13,7 +13,6 @@ path=(
   ~/.local/share/gem/ruby/3.0.0/bin
   ~/.local/share/go/bin
   ~/.local/share/npm/bin
-  ~/code/apsis
   ~/code/arch
   $path[@]
 )
@@ -173,11 +172,14 @@ setopt share_history # share history between terminals
 # aliases
 
 alias clip='xclip -selection clipboard'
+alias df='df -h'
 alias diff='diff --color'
+alias du='du -hd1'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias less='less --raw-control-chars'
 alias ls='ls --color=auto'
+alias repos='. ~/code/apsis/repos.zsh'
 
 # dirhistory
 
