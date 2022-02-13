@@ -51,11 +51,6 @@ cargo install \
 
 # vscode
 
-export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
-
-go install github.com/go-delve/delve/cmd/dlv@master
-mv $GOPATH/bin/dlv $GOPATH/bin/dlv-dap
-
 for PACKAGE in \
   github.com/uudashr/gopkgs/v2/cmd/gopkgs \
   github.com/ramya-rao-a/go-outline \
