@@ -155,19 +155,21 @@ bindkey -M viins '^[[B' down-line-or-beginning-search
 # history
 
 HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
+
 HISTSIZE=50000
 SAVEHIST=10000
 
-setopt extended_history # record timestamps
+HISTORY_IGNORE="(#i)(exit|*secret*|*password*)"
+
 setopt hist_expire_dups_first
 setopt hist_find_no_dups
 setopt hist_ignore_all_dups
 setopt hist_ignore_dups
-setopt hist_ignore_space
+setopt hist_ignore_space # don't add commands prefixed with space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt hist_verify # don't run command immediately
-setopt inc_append_history # add commands in the order of execution
+setopt inc_append_history # add commands immediately
 setopt share_history # share history between terminals
 
 # aliases
