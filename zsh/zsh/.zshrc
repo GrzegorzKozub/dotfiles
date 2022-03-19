@@ -373,7 +373,6 @@ alias code='code \
 \
 --enable-accelerated-video-decode \
 --enable-gpu-rasterization \
---enable-native-gpu-memory-buffers \
 --enable-oop-rasterization \
 --enable-zero-copy \
 \
@@ -383,8 +382,7 @@ alias code='code \
 \
 --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization \
 --disable-features=UseOzonePlatform,UseChromeOSDirectVideoDecoder \
-\
---use-gl=desktop'
+2> /dev/null'
 
 # wget
 
