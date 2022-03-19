@@ -22,6 +22,7 @@ pip install --user --upgrade \
 
 pip install --user --upgrade \
   autopep8 \
+  awscli-local \
   cfn-lint \
   docker-compose \
   ipykernel \
