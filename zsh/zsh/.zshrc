@@ -365,6 +365,27 @@ export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | sourc
 
 alias vim='nvim'
 
+# vscode
+
+alias code='code \
+--disable-gpu-driver-bug-workarounds \
+--disable-gpu-vsync \
+\
+--enable-accelerated-video-decode \
+--enable-gpu-rasterization \
+--enable-native-gpu-memory-buffers \
+--enable-oop-rasterization \
+--enable-zero-copy \
+\
+--ignore-gpu-blocklist \
+\
+--use-vulkan \
+\
+--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization \
+--disable-features=UseOzonePlatform,UseChromeOSDirectVideoDecoder \
+\
+--use-gl=desktop'
+
 # wget
 
 alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
