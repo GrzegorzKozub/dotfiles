@@ -15,3 +15,7 @@ export XDG_CONFIG_HOME=~/.config
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   mangohud
 
+# mangohud
+
+cp /usr/share/fonts/TTF/FiraCode-Retina.ttf `dirname $0`/mangohud
+
