@@ -105,7 +105,8 @@ for EXTENSION in \
   ms-python.vscode-pylance \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
-  sainnhe.gruvbox-material
+  sainnhe.gruvbox-material \
+  streetsidesoftware.code-spell-checker
 do
   code --install-extension $EXTENSION --force
 done
