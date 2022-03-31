@@ -9,6 +9,8 @@ pushd `dirname $0`
 git submodule update --init
 git submodule foreach --recursive git checkout master
 
+git update-index --assume-unchanged btop/btop.conf
+
 popd
 
 # env
