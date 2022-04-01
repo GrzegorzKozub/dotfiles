@@ -78,7 +78,7 @@ map gxd cd ~/.local/share
 map gc cd ~/code
 map ga cd ~/code/arch
 map gd cd ~/code/dotfiles
-map gk cd ~/code/keys
-map gp cd ~/code/passwords
-map gt cd ~/code/themes
+
+map gt cd /run/media/greg/data
+map gg cd /run/media/greg/games
 
