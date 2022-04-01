@@ -222,6 +222,14 @@ function my-cd {
   zle my-redraw-prompt
 }
 
+function my-cd-code { cd ~/code; zle my-redraw-prompt }; zle -N my-cd-code
+bindkey -M vicmd '\ecc' my-cd-code
+bindkey -M viins '\ecc' my-cd-code
+
+function my-cd-arch { cd ~/code/arch; zle my-redraw-prompt }; zle -N my-cd-arch
+bindkey -M vicmd '\eca' my-cd-arch
+bindkey -M viins '\eca' my-cd-arch
+
 # my-git-checkout-branch
 
 function my-git-checkout-branch {
