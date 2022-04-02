@@ -101,7 +101,7 @@ autoload -Uz colors && colors
   fi
 }
 
-function palette {
+palette() {
    for color in {0..15}; do
      print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
    done
@@ -193,17 +193,9 @@ alias ls='ls --color=auto'
   bindkey -M vicmd "${alt}B" dirhistory_zle_dirhistory_down
 }
 
-# my-exit
+# macros
 
-function my-exit { exit }
-zle -N my-exit
-
-bindkey -M vicmd '\ex' my-exit
-bindkey -M viins '\ex' my-exit
-
-# my-cd
-
-function my-redraw-prompt {
+my-redraw-prompt() {
   local precmd
   for precmd in $precmd_functions; do
     $precmd
@@ -212,51 +204,22 @@ function my-redraw-prompt {
 }
 zle -N my-redraw-prompt
 
-function my-cd {
-  local temp_file=$1
-  if [[ -f "$temp_file" ]]; then
-    local target_dir="$(cat "$temp_file")"
-    rm -f "$temp_file"
-    [[ -d "$target_dir" && "$target_dir" != "$(pwd)" ]] && cd "$target_dir"
-  fi
-  zle my-redraw-prompt
+bind() {
+  zle -N $2
+  bindkey -M vicmd $1 $2
+  bindkey -M viins $1 $2
 }
 
-function my-cd-code { cd ~/code; zle my-redraw-prompt }; zle -N my-cd-code
-bindkey -M vicmd '\ecc' my-cd-code
-bindkey -M viins '\ecc' my-cd-code
+my-exit() { exit }; bind '\ex' my-exit
 
-function my-cd-arch { cd ~/code/arch; zle my-redraw-prompt }; zle -N my-cd-arch
-bindkey -M vicmd '\eca' my-cd-arch
-bindkey -M viins '\eca' my-cd-arch
+dir() { cd $1; zle my-redraw-prompt }
 
-# my-git-checkout-branch
+my-code() { dir ~/code }; bind '\ecode' my-code
+my-arch() { dir ~/code/arch }; bind '\earch' my-arch
+my-dotfiles() { dir ~/code/dotfiles }; bind '\edot' my-dotfiles
 
-function my-git-checkout-branch {
-  BUFFER='git checkout -b sc-'
-  zle vi-end-of-line
-  zle vi-insert
-}
-zle -N my-git-checkout-branch
-
-bindkey -M vicmd '\egcb' my-git-checkout-branch
-bindkey -M viins '\egcb' my-git-checkout-branch
-
-# my-git-commit
-
-function my-git-commit {
-  BUFFER='git commit -m " [sc-]"'
-  zle vi-end-of-line
-  zle vi-backward-word
-  zle vi-backward-word
-  zle vi-backward-char
-  zle vi-backward-char
-  zle vi-insert
-}
-zle -N my-git-commit
-
-bindkey -M vicmd '\egc' my-git-commit
-bindkey -M viins '\egc' my-git-commit
+my-data() { dir /run/media/greg/data }; bind '\edata' my-data
+my-games() { dir /run/media/greg/games }; bind '\egames' my-games
 
 # aws
 
@@ -290,7 +253,7 @@ alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 
 # freerdp
 
-function rdp {
+rdp() {
   xfreerdp $1 /size:1920x1080 /dynamic-resolution /cert-ignore /drive:/home/greg/Downloads
 }
 
@@ -313,6 +276,26 @@ bindkey -M vicmd '^[c' fzf-cd-widget
 bindkey -M vicmd '^r' fzf-history-widget
 bindkey -M vicmd '^t' fzf-file-widget
 
+# git
+
+my-git-checkout-branch() {
+  BUFFER='git checkout -b sc-'
+  zle vi-end-of-line
+  zle vi-insert
+}
+bind '\ebranch' my-git-checkout-branch
+
+my-git-commit() {
+  BUFFER='git commit -m " [sc-]"'
+  zle vi-end-of-line
+  zle vi-backward-word
+  zle vi-backward-word
+  zle vi-backward-char
+  zle vi-backward-char
+  zle vi-insert
+}
+bind '\ecommit' my-git-commit
+
 # gnupg
 
 export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
@@ -323,15 +306,22 @@ export LESSHISTFILE=-
 
 # lf
 
-function my-lf-cd {
+my-cd() {
+  local temp_file=$1
+  if [[ -f "$temp_file" ]]; then
+    local target_dir="$(cat "$temp_file")"
+    rm -f "$temp_file"
+    [[ -d "$target_dir" && "$target_dir" != "$(pwd)" ]] && cd "$target_dir"
+  fi
+  zle my-redraw-prompt
+}
+
+my-lf-cd() {
   local temp_file="$(mktemp)"
   lf -last-dir-path="$temp_file" "$@" < $TTY
   my-cd $temp_file
 }
-zle -N my-lf-cd
-
-bindkey -M vicmd '\el' my-lf-cd
-bindkey -M viins '\el' my-lf-cd
+bind '\el' my-lf-cd
 
 # node
 
