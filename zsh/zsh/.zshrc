@@ -218,8 +218,8 @@ my-code() { dir ~/code }; bind '\ecode' my-code
 my-arch() { dir ~/code/arch }; bind '\earch' my-arch
 my-dotfiles() { dir ~/code/dotfiles }; bind '\edot' my-dotfiles
 
-my-data() { dir /run/media/greg/data }; bind '\edata' my-data
-my-games() { dir /run/media/greg/games }; bind '\egames' my-games
+my-data() { dir /run/media/$USER/data }; bind '\edata' my-data
+my-games() { dir /run/media/$USER/games }; bind '\egames' my-games
 
 # aws
 
@@ -254,7 +254,7 @@ alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 # freerdp
 
 rdp() {
-  xfreerdp $1 /size:1920x1080 /dynamic-resolution /cert-ignore /drive:/home/greg/Downloads
+  xfreerdp $1 /size:1920x1080 /dynamic-resolution /cert-ignore /drive:/home/$USER/Downloads
 }
 
 # fzf
