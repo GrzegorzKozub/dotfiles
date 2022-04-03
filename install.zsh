@@ -103,6 +103,7 @@ for EXTENSION in \
   ms-dotnettools.csharp \
   ms-python.python \
   ms-python.vscode-pylance \
+  ms-vscode.hexeditor \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
   sainnhe.gruvbox-material \
