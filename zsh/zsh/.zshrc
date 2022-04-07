@@ -365,22 +365,7 @@ alias vim='nvim'
 
 # vscode
 
-alias code='code \
---disable-gpu-driver-bug-workarounds \
---disable-gpu-vsync \
-\
---enable-accelerated-video-decode \
---enable-gpu-rasterization \
---enable-oop-rasterization \
---enable-zero-copy \
-\
---ignore-gpu-blocklist \
-\
---use-vulkan \
-\
---enable-features=VaapiVideoDecoder,VaapiVideoEncoder,CanvasOopRasterization \
---disable-features=UseOzonePlatform,UseChromeOSDirectVideoDecoder \
-2> /dev/null'
+alias code='code 2> /dev/null'
 
 # wget
 

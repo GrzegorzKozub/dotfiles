@@ -25,7 +25,7 @@ export XDG_CONFIG_HOME=~/.config
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   alacritty \
-  brave \
+  flags \
   environment \
   flameshot \
   git \
