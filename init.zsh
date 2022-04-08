@@ -25,7 +25,6 @@ export XDG_CONFIG_HOME=~/.config
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   alacritty \
-  flags \
   environment \
   flameshot \
   git \
@@ -49,4 +48,16 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config}/btop --stow btop
 
 [[ -d ${XDG_CONFIG_HOME:-~/.config}/nvim ]] && rm ${XDG_CONFIG_HOME:-~/.config}/nvim
 ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
+
+if [[ $HOST = 'drifter' ]]; then
+
+  ln -sf $(dirname $(realpath $0))/flags/brave-flags.intel.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/code-flags.intel.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+
+else
+
+  ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+
+fi
 
