@@ -2,6 +2,10 @@
 
 set -e -o verbose
 
+# validation
+
+[[ $HOST = 'player' ]] || exit 1
+
 # env
 
 export XDG_CONFIG_HOME=~/.config
