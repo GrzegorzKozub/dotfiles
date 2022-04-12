@@ -288,13 +288,19 @@ bind '\ebranch' my-git-checkout-branch
 my-git-commit() {
   BUFFER='git commit -m " [sc-]"'
   zle vi-end-of-line
-  zle vi-backward-word
-  zle vi-backward-word
-  zle vi-backward-char
-  zle vi-backward-char
+  for i in $(seq 2); do zle vi-backward-word; done
+  for i in $(seq 2); do zle vi-backward-char; done
   zle vi-insert
 }
 bind '\ecommit' my-git-commit
+
+pull-request() {
+  [[ $(git status --porcelain) && $(git rev-parse --abbrev-ref HEAD) =~ '^master$|^main$' ]] || return
+  git checkout -b sc-$1-$2 && \
+  git add . && \
+  git commit -m "$3 [sc-$1]" && \
+  git ps
+}
 
 # gnupg
 
