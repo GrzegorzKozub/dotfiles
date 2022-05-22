@@ -37,6 +37,11 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\
 
 gaps inner 10
 
+#for_window [class="Brave-browser"] floating enable
+
+bindsym Alt+Tab focus next
+bindsym Alt+Shift+Tab focus prev
+
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace next
 #bindsym $mod+Alt+Tab workspace back_and_forth
@@ -95,17 +100,14 @@ bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+b splith
 bindsym $mod+v splitv
+bindsym $mod+a split toggle
 
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle all
 
 bindsym $mod+f fullscreen
 
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-
-bindsym $mod+a focus parent
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
@@ -129,7 +131,7 @@ mode 'resize' {
 
 bar {
   position top
-  status_command while date +'%d %b %I:%M %p'; do sleep 60; done
+  status_command while date +'%d %b %R %p'; do sleep 60; done
   colors {
     statusline #ffffff
     background #323232
