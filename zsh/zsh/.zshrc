@@ -179,7 +179,6 @@ alias diff='diff --color'
 alias du='du -hd1'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
-alias less='less --raw-control-chars'
 alias ls='ls --color=auto'
 
 # dirhistory
@@ -309,6 +308,12 @@ export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 # less
 
 export LESSHISTFILE=-
+
+# todo: bold blink reverse underline https://man.archlinux.org/man/less.1
+export MANPAGER="less +Gg -R -s --use-color -Ddy -Dub"
+export MANROFFOPT="-c"
+
+alias less='less --raw-control-chars'
 
 # lf
 
