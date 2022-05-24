@@ -308,10 +308,7 @@ export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 # less
 
 export LESSHISTFILE=-
-
-# todo: bold blink reverse underline https://man.archlinux.org/man/less.1
-export MANPAGER="less +Gg -R -s --use-color -Ddy -Dub"
-export MANROFFOPT="-c"
+export MANPAGER="less +Gg -R -s --use-color -DPw -DSkY -Ddy -Dsm -Dub"
 
 alias less='less --raw-control-chars'
 
