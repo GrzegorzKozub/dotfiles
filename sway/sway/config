@@ -38,6 +38,15 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\
 
 gaps inner 10
 
+client.focused #0033aaff #0033aaff #c0c0c0ff
+default_border pixel 2
+titlebar_border_thickness 2
+default_floating_border none
+#font pango:Fira Code Retina 12
+font pango:Cantarell Bold 12
+
+titlebar_padding 10 7
+
 #for_window [class="Brave-browser"] floating enable
 
 bindsym Alt+Tab focus next
@@ -130,19 +139,25 @@ mode 'resize' {
   bindsym Escape mode 'default'
 }
 
+
 bar {
+  height 30
+  workspace_min_width 30
   position top
   status_command while date +'%d %b %R %p'; do sleep 60; done
   colors {
     statusline #ffffff
     background #323232
-    inactive_workspace #32323200 #32323200 #5c5c5c
+    focused_workspace #323232 #323232 #ffffff
+    inactive_workspace #323232 #323232 #5c5c5c
   }
 }
 
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 #exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob --height 25 --anchor 'bottom' --bar-color '#c0c0c0'
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob --height 25 --width 250 --anchor 'bottom' --margin 25 --bar-color '#ffffffff' --border 2 --padding 2 --offset 0 --border-color '#4c7899ff' --background-color '#285577ff'
+
+#exec swaymsg -t subscribe -m '["window"]' | jq -r '.container.name'
 
 
 include /etc/sway/config.d/*
