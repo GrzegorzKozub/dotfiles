@@ -139,18 +139,8 @@ mode 'resize' {
   bindsym Escape mode 'default'
 }
 
-
 bar {
-  height 30
-  workspace_min_width 30
-  position top
-  status_command while date +'%d %b %R %p'; do sleep 60; done
-  colors {
-    statusline #ffffff
-    background #323232
-    focused_workspace #323232 #323232 #ffffff
-    inactive_workspace #323232 #323232 #5c5c5c
-  }
+  swaybar_command waybar
 }
 
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
