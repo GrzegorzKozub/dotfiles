@@ -2,16 +2,40 @@
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": ["clock"],
   "modules-right": ["tray", "pulseaudio", "network", "bluetooth", "backlight", "battery"],
-  "sway/mode": {
-    "format": "<span>{}</span>"
-  },
-  "tray": {
-    "spacing": 10
-  },
   "clock": {
     "format": "{:%d %B %R %p}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "{:%A}"
   },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰸈",
+    "format-bluetooth": "{icon}󰂯 {volume}%",
+    "format-bluetooth-muted": "󰝟󰂯",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎"
+    },
+    "tooltip-format": "{icon} {volume}%  {format_source}  {desc}",
+    "scroll-step": 0.5,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+  "network": {
+    "format-disconnected": "󰤭",
+    "format-wifi": "{icon}",
+    "tooltip-format-wifi": "{signalStrength}%  {essid}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+  },
+
+
+
   "backlight": {
     "format": "{percent}% {icon}",
     "format-icons": ["", "", "", "", "", "", "", "", ""]
@@ -27,31 +51,5 @@
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
-  },
-  "network": {
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
-  },
-  "pulseaudio": {
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
-    },
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   }
 }

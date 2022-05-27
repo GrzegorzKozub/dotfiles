@@ -36,7 +36,7 @@
 */
 
 * {
-  font-family: FontAwesome, Cantarell, sans-serif;
+  font-family: MaterialDesign, Cantarell, sans-serif;
   font-size: 16px;
   font-weight: bold;
 }
@@ -50,6 +50,16 @@ window#waybar {
 
 window#waybar.hidden {
   opacity: 0.2;
+}
+
+tooltip {
+  background: rgba(29, 32, 33, 1);
+  border: none;
+  border-radius: 8px;
+}
+
+tooltip label {
+  color: rgba(168, 153, 132, 1);
 }
 
 #workspaces button {
@@ -89,7 +99,20 @@ window#waybar.hidden {
 #bluetooth,
 #backlight,
 #battery {
-  padding: 0 10px;
+  padding: 0 15px;
+}
+
+#tray > .needs-attention {
+  box-shadow: inset 0 -2px #fe8019;
+}
+
+#pulseaudio.muted {
+  color: #665c54;
+}
+
+#network.disabled,
+#network.disconnected {
+  color: #665c54;
 }
 
 
@@ -118,38 +141,6 @@ window#waybar.hidden {
   animation-direction: alternate;
 }
 
-tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 10px solid rgba(100, 114, 125, 0.5);
-}
-tooltip label {
-  color: white;
-}
-label:focus {
-  background-color: #000000;
-}
 
-#network.disconnected {
-  color: #f53c3c;
-}
 
-#pulseaudio {
-  color: #ffffff;
-}
 
-#pulseaudio.muted {
-  color: #000000;
-}
-
-#tray {
-  background-color: #2980b9;
-}
-
-#tray>.passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray>.needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
-}
