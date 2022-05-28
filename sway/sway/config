@@ -140,5 +140,6 @@ bar {
   swaybar_command waybar
 }
 
+exec rfkill unblock bluetooth
 
 include /etc/sway/config.d/*
