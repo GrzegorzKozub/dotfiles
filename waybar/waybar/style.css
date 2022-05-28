@@ -68,6 +68,11 @@ tooltip label {
   padding: 0 10px;
 }
 
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
 #workspaces button.focused {
   color: rgba(235, 219, 178, 1);
 }
@@ -100,7 +105,7 @@ tooltip label {
   padding-right: 15px;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   background-color: #d79921;
 }
 
@@ -126,7 +131,7 @@ tooltip label {
 #battery.warning:not(.charging) {
   color: #fe8019;
 }
+
 #battery.critical:not(.charging) {
   color: #fb4934;
 }
-

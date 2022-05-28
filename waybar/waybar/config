@@ -2,6 +2,9 @@
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": ["clock"],
   "modules-right": ["tray", "pulseaudio", "network", "backlight", "battery"],
+  "sway/window": {
+    "tooltip": false
+  },
   "clock": {
     "format": "{:%d %B %R %p}",
     "tooltip-format": "󰃶  {:%A}"
