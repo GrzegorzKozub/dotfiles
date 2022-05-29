@@ -79,6 +79,7 @@ tooltip label {
 
 #workspaces button.urgent {
   background-color: #fe8019;
+  color: rgba(29, 32, 33, 1);
 }
 
 #mode {

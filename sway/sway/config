@@ -1,84 +1,52 @@
-set $mod Mod4
+# integrations
+
+bar {
+  swaybar_command waybar
+}
+
+set $menu bemenu-run --no-exec | xargs swaymsg exec --
+set $term alacritty
+
+# key bindings
+
+set $mod mod4
+
+bindsym $mod+return exec $term
+bindsym $mod+d exec $menu
+
+bindsym $mod+shift+c reload
+bindsym $mod+shift+q kill
 
 set $left h
 set $down j
 set $up k
 set $right l
 
-set $term alacritty
+bindsym alt+tab focus next
+bindsym alt+shift+tab focus prev
 
-set $menu bemenu-run --no-exec | xargs swaymsg exec --
-
-bar {
-  swaybar_command waybar
-}
-
-output * bg ~/.local/share/backgrounds/women.jpg fill
-
-exec swayidle -w \
-  timeout 300 'swaylock -f -c 000000' \
-  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 000000'
-
-input 'type:touchpad' {
-  dwt enabled
-  middle_emulation enabled
-  natural_scroll enabled
-  tap enabled
-}
-
-input 'type:keyboard' {
-  xkb_layout 'pl'
-}
-
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
-
-gaps inner 10
-
-client.focused #0033aaff #0033aaff #c0c0c0ff
-default_border pixel 2
-font pango:Cantarell Bold 12
-
-
-bindsym Alt+Tab focus next
-bindsym Alt+Shift+Tab focus prev
-
-bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+Tab workspace next
-
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
-bindsym $mod+d exec $menu
-
-floating_modifier $mod normal
-
-bindsym $mod+Shift+c reload
-
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Logout?' -B 'Yes' 'swaymsg exit'
+bindsym $mod+tab workspace next
+bindsym $mod+shift+tab workspace prev
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+left focus left
+bindsym $mod+down focus down
+bindsym $mod+up focus up
+bindsym $mod+right focus right
 
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+shift+$left move left
+bindsym $mod+shift+$down move down
+bindsym $mod+shift+$up move up
+bindsym $mod+shift+$right move right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+shift+left move left
+bindsym $mod+shift+down move down
+bindsym $mod+shift+up move up
+bindsym $mod+shift+right move right
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -91,30 +59,22 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
-
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+a split toggle
-
-bindsym $mod+e layout toggle all
+bindsym $mod+shift+1 move container to workspace number 1
+bindsym $mod+shift+2 move container to workspace number 2
+bindsym $mod+shift+3 move container to workspace number 3
+bindsym $mod+shift+4 move container to workspace number 4
+bindsym $mod+shift+5 move container to workspace number 5
+bindsym $mod+shift+6 move container to workspace number 6
+bindsym $mod+shift+7 move container to workspace number 7
+bindsym $mod+shift+8 move container to workspace number 8
+bindsym $mod+shift+9 move container to workspace number 9
+bindsym $mod+shift+0 move container to workspace number 10
 
 bindsym $mod+f fullscreen
+bindsym $mod+f11 fullscreen
 
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
 
 bindsym $mod+r mode 'resize'
 
@@ -133,6 +93,54 @@ mode 'resize' {
   bindsym Escape mode 'default'
 }
 
+# media keys
+
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+
+# looks
+
+output * bg ~/.local/share/backgrounds/women.jpg fill
+
+font pango:Cantarell Bold 12
+
+gaps inner 10
+
+default_border pixel 2
+
+client.focused #1d2021ff #1d2021ff #a89984ff #1d2021ff #1d2021ff
+client.focused_inactive #32302f00 #32302fff #665c54ff #32302f00 #32302f00
+client.unfocused #32302f00 #32302fff #665c54ff #32302f00 #32302f00
+client.urgent #fe8019ff #1d2021ff #a89984ff #fe8019ff #fe8019ff
+
+# idle, lock and logout
+
+exec swayidle -w \
+  timeout 300 'swaylock -f -c 000000' \
+  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -c 000000'
+
+bindsym $mod+shift+e exec swaynag -t warning -m 'Logout?' -B 'Yes' 'swaymsg exit'
+
+# devices
+
+input 'type:keyboard' {
+  xkb_layout 'pl'
+}
+
+input 'type:touchpad' {
+  dwt enabled
+  middle_emulation enabled
+  natural_scroll enabled
+  tap enabled
+}
+
 exec rfkill unblock bluetooth
 
+# other config
+
 include /etc/sway/config.d/*
+
