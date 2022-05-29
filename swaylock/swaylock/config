@@ -4,6 +4,9 @@ ignore-empty-password
 image=~/.local/share/backgrounds/women.jpg
 scaling=fill
 
+disable-caps-lock-text
+indicator-caps-lock
+
 color=000000
 
 separator-color=1d2021ff
@@ -11,15 +14,18 @@ separator-color=1d2021ff
 key-hl-color=98971aff
 bs-hl-color=98971aff
 
-text-color=1d2021ff
+caps-lock-key-hl-color=d65d0eff
+caps-lock-bs-hl-color=d65d0eff
+
+text-color=1d202100
 line-color=1d2021ff
 ring-color=98971aff
 inside-color=b8bb26ff
 
-text-caps-lock-color=1d2021ff
+text-caps-lock-color=1d202100
 line-caps-lock-color=1d2021ff
-ring-caps-lock-color=98971aff
-inside-caps-lock-color=b8bb26ff
+ring-caps-lock-color=d65d0eff
+inside-caps-lock-color=fe8019ff
 
 text-ver-color=1d202100
 line-ver-color=1d2021ff
