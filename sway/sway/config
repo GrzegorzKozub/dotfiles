@@ -17,31 +17,16 @@ bindsym $mod+d exec $menu
 bindsym $mod+shift+c reload
 bindsym $mod+shift+q kill
 
-set $left h
-set $down j
-set $up k
-set $right l
-
 bindsym alt+tab focus next
 bindsym alt+shift+tab focus prev
 
 bindsym $mod+tab workspace next
 bindsym $mod+shift+tab workspace prev
 
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
 bindsym $mod+left focus left
 bindsym $mod+down focus down
 bindsym $mod+up focus up
 bindsym $mod+right focus right
-
-bindsym $mod+shift+$left move left
-bindsym $mod+shift+$down move down
-bindsym $mod+shift+$up move up
-bindsym $mod+shift+$right move right
 
 bindsym $mod+shift+left move left
 bindsym $mod+shift+down move down
@@ -79,11 +64,6 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+r mode 'resize'
 
 mode 'resize' {
-  bindsym $left resize shrink width 10px
-  bindsym $down resize shrink height 10px
-  bindsym $up resize grow height 10px
-  bindsym $right resize grow width 10px
-
   bindsym Left resize shrink width 10px
   bindsym Down resize shrink height 10px
   bindsym Up resize grow height 10px
@@ -119,10 +99,11 @@ client.urgent #fe8019ff #1d2021ff #a89984ff #fe8019ff #fe8019ff
 # idle, lock and logout
 
 exec swayidle -w \
-  timeout 300 'swaylock -f -c 000000' \
+  timeout 300 'swaylock' \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -c 000000'
+  before-sleep 'swaylock'
 
+bindsym $mod+shift+l exec swaylock
 bindsym $mod+shift+e exec swaynag -t warning -m 'Logout?' -B 'Yes' 'swaymsg exit'
 
 # devices
