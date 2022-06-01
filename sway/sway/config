@@ -107,8 +107,8 @@ exec swayidle -w \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
   before-sleep 'swaylock'
 
-bindsym $mod+shift+l exec swaylock
-bindsym $mod+shift+e exec swaynag -t warning -m 'Logout?' -B 'Yes' 'swaymsg exit'
+bindsym $mod+l exec swaylock
+bindsym $mod+shift+l exec swaymsg exit
 
 # devices
 
