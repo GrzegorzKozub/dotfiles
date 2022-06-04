@@ -3,6 +3,10 @@ ignore-empty-password
 
 image=~/.local/share/backgrounds/women.jpg
 scaling=fill
+effect-blur=10x5
+
+fade-in=1
+grace=3
 
 disable-caps-lock-text
 indicator-caps-lock
