@@ -108,7 +108,7 @@ exec swayidle -w \
   before-sleep 'swaylock'
 
 bindsym $mod+l exec swaylock
-bindsym $mod+shift+l exec swaymsg exit
+bindsym $mod+shift+l exec waylogout
 
 # devices
 
