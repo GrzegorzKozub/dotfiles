@@ -4,7 +4,7 @@ bar {
   swaybar_command waybar
 }
 
-set $menu bemenu-run --no-exec | xargs swaymsg exec --
+set $menu wofi | xargs swaymsg exec --
 set $term alacritty
 
 # key bindings

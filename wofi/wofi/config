@@ -1,0 +1,9 @@
+show=run
+term=alacritty
+
+lines=10
+width=33%
+
+prompt=
+hide_scroll=true
+
