@@ -85,6 +85,10 @@ bindsym --locked XF86AudioRaiseVolume exec \
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
 
+# screenshots
+
+bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+
 # looks
 
 output * bg ~/.local/share/backgrounds/women.jpg fill

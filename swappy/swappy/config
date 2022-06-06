@@ -1,0 +1,8 @@
+[Default]
+line_size=5
+paint_mode=brush
+save_dir=~/Downloads
+save_filename_format=screenshot-%Y%m%d-%H%M.png
+show_panel=false
+text_font=DejaVu Sans Condensed
+text_size=25
