@@ -1,7 +1,6 @@
 #window {
-  border: none;
   background: #1d2021;
-  color: #a89984;
+  color: #665c54;
   font-family: Cantarell, sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -10,7 +9,7 @@
 #input {
   border: none;
   background: #1d2021;
-  color: #a89984;
+  color: #ebdbb2;
   margin: 2px;
 }
 
@@ -18,5 +17,11 @@
   padding: 2px;
 }
 
-#selected {
+#entry:selected {
+  background: #1d2021;
 }
+
+#text:selected {
+  color: #a89984;
+}
+
