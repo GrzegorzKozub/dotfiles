@@ -92,8 +92,9 @@ nvim --headless +GoInstallBinaries +qall
 
 for EXTENSION in \
   JakeBecker.elixir-ls \
-  antfu.icons-carbon \
+  alefragnani.Bookmarks \
   alexkrechik.cucumberautocomplete \
+  antfu.icons-carbon \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
