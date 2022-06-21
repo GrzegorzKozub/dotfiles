@@ -28,5 +28,14 @@
       </value>
       <value type="string" key="name">au-stage-reader</value>
     </value>
+    <value type="object" struct-name="db.mgmt.Connection" id="b1058e64-f135-11ec-8e21-2cfda1b6d6c8" struct-checksum="0x96ba47d8">
+      <link type="object" struct-name="db.mgmt.Driver" key="driver">com.mysql.rdbms.mysql.driver.native</link>
+      <value _ptr_="0x5560fd9aa510" type="dict" key="parameterValues">
+        <value type="string" key="hostName">localhost</value>
+        <value type="int" key="port">3309</value>
+        <value type="string" key="userName">user</value>
+      </value>
+      <value type="string" key="name">au-prod-reader</value>
+    </value>
   </value>
 </data>
