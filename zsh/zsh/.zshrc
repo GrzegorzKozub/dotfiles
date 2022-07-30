@@ -392,6 +392,10 @@ MODE_CURSOR_SEARCH='steady underline'
 
 [[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh ]] && source ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh
 
+# env
+
+[[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/env.zsh ]] && . ${XDG_CONFIG_HOME:-~/.config}/zsh/env.zsh
+
 # tmux
 
 [[ $TERM_PROGRAM = 'vscode' ]] || [[ ! -z $TMUX ]] || tmux attach || tmux new
