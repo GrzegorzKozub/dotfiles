@@ -95,8 +95,7 @@
   cmd = vim -d -c "VimMerge" "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
   trustExitCode = false
 [mergetool "code"]
-  cmd = code --wait "$MERGED"
-  trustExitCode = true
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [pack]
   packSizeLimit = 2g
 [pull]
