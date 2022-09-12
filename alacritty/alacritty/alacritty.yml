@@ -186,6 +186,9 @@ schemes:
       focused_match:
         background: '#d79921' # yellow
         foreground: '#32302f' # bg0_s
+      bar: # deprecated since 0.11.0
+        background: '#32302f' # bg0_s
+        foreground: '#d5c4a1' # (was fg) fg2
     line_indicator:
       background:   '#32302f' # bg0_s
       foreground:   '#d5c4a1' # (was fg) fg2
