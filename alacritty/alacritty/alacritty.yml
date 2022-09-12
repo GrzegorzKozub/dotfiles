@@ -1,3 +1,6 @@
+# yamllint disable rule:colons
+# yamllint disable rule:document-start
+
 env:
   TERM: xterm-256color
 
@@ -33,192 +36,189 @@ schemes:
 
   solarized_light: &solarized_light
     primary:
-      background:   '#fdf6e3' # base3
-      foreground:   '#586e75' # base01
+      background:   '#fdf6e3'  # base3
+      foreground:   '#586e75'  # base01
     cursor:
-      text:         '#fdf6e3' # base3
-      cursor:       '#839496' # base0
+      text:         '#fdf6e3'  # base3
+      cursor:       '#839496'  # base0
     vi_mode_cursor:
-      background:   '#fdf6e3' # base3
-      foreground:   '#586e75' # base01
+      background:   '#fdf6e3'  # base3
+      foreground:   '#586e75'  # base01
     search:
       matches:
-        background: '#b58900' # yellow
-        foreground: '#fdf6e3' # base3
+        background: '#b58900'  # yellow
+        foreground: '#fdf6e3'  # base3
       focused_match:
-        background: '#b58900' # yellow
-        foreground: '#fdf6e3' # base3
+        background: '#b58900'  # yellow
+        foreground: '#fdf6e3'  # base3
     line_indicator:
-      background:   '#fdf6e3' # base3
-      foreground:   '#93a1a1' # base1
+      background:   '#fdf6e3'  # base3
+      foreground:   '#93a1a1'  # base1
     footer_bar:
-      background:   '#fdf6e3' # base3
-      foreground:   '#93a1a1' # base1
+      background:   '#fdf6e3'  # base3
+      foreground:   '#93a1a1'  # base1
     selection:
-      background:   '#93a1a1' # base1
-      foreground:   '#fdf6e3' # base3
+      background:   '#93a1a1'  # base1
+      foreground:   '#fdf6e3'  # base3
     normal:
-      black:        '#eee8d5' # (was base02) base2
-      red:          '#dc322f' # red
-      green:        '#859900' # green
-      yellow:       '#b58900' # yellow
-      blue:         '#268bd2' # blue
-      magenta:      '#d33682' # magenta
-      cyan:         '#2aa198' # cyan
-      white:        '#839496' # (was base2) base0
+      black:        '#eee8d5'  # (was base02) base2
+      red:          '#dc322f'  # red
+      green:        '#859900'  # green
+      yellow:       '#b58900'  # yellow
+      blue:         '#268bd2'  # blue
+      magenta:      '#d33682'  # magenta
+      cyan:         '#2aa198'  # cyan
+      white:        '#839496'  # (was base2) base0
     bright:
-      black:        '#93a1a1' # (was base03) base1
-      red:          '#cb4b16' # orange
-      green:        '#586e75' # base01
-      yellow:       '#657b83' # base00
-      blue:         '#839496' # base0
-      magenta:      '#6c71c4' # violet
-      cyan:         '#93a1a1' # base1
-      white:        '#586e75' # (was base3) base01
+      black:        '#93a1a1'  # (was base03) base1
+      red:          '#cb4b16'  # orange
+      green:        '#586e75'  # base01
+      yellow:       '#657b83'  # base00
+      blue:         '#839496'  # base0
+      magenta:      '#6c71c4'  # violet
+      cyan:         '#93a1a1'  # base1
+      white:        '#586e75'  # (was base3) base01
 
   solarized_dark: &solarized_dark
     primary:
-      background:   '#002b36' # base03
-      foreground:   '#93a1a1' # (was base0) base1
+      background:   '#002b36'  # base03
+      foreground:   '#93a1a1'  # (was base0) base1
     cursor:
-      text:         '#002b36' # base03
-      cursor:       '#657b83' # base00
+      text:         '#002b36'  # base03
+      cursor:       '#657b83'  # base00
     vi_mode_cursor:
-      background:   '#002b36' # base03
-      foreground:   '#93a1a1' # (was base0) base1
+      background:   '#002b36'  # base03
+      foreground:   '#93a1a1'  # (was base0) base1
     search:
       matches:
-        background: '#b58900' # yellow
-        foreground: '#002b36' # base03
+        background: '#b58900'  # yellow
+        foreground: '#002b36'  # base03
       focused_match:
-        background: '#b58900' # yellow
-        foreground: '#002b36' # base03
+        background: '#b58900'  # yellow
+        foreground: '#002b36'  # base03
     line_indicator:
-      background:   '#002b36' # base03
-      foreground:   '#586e75' # base01
+      background:   '#002b36'  # base03
+      foreground:   '#586e75'  # base01
     footer_bar:
-      background:   '#002b36' # base03
-      foreground:   '#586e75' # base01
+      background:   '#002b36'  # base03
+      foreground:   '#586e75'  # base01
     normal:
-      black:        '#073642' # base02
-      red:          '#dc322f' # red
-      green:        '#859900' # green
-      yellow:       '#b58900' # yellow
-      blue:         '#268bd2' # blue
-      magenta:      '#d33682' # magenta
-      cyan:         '#2aa198' # cyan
-      white:        '#657b83' # (was base2) base00
+      black:        '#073642'  # base02
+      red:          '#dc322f'  # red
+      green:        '#859900'  # green
+      yellow:       '#b58900'  # yellow
+      blue:         '#268bd2'  # blue
+      magenta:      '#d33682'  # magenta
+      cyan:         '#2aa198'  # cyan
+      white:        '#657b83'  # (was base2) base00
     bright:
-      black:        '#586e75' # (was base03) base01
-      red:          '#cb4b16' # orange
-      green:        '#586e75' # base01
-      yellow:       '#657b83' # base00
-      blue:         '#839496' # base0
-      magenta:      '#6c71c4' # violet
-      cyan:         '#93a1a1' # base1
-      white:        '#93a1a1' # (was base3) base1
+      black:        '#586e75'  # (was base03) base01
+      red:          '#cb4b16'  # orange
+      green:        '#586e75'  # base01
+      yellow:       '#657b83'  # base00
+      blue:         '#839496'  # base0
+      magenta:      '#6c71c4'  # violet
+      cyan:         '#93a1a1'  # base1
+      white:        '#93a1a1'  # (was base3) base1
 
   # https://github.com/morhetz/gruvbox
 
   gruvbox_light: &gruvbox_light
     primary:
-      background:   '#f2e5bc' # bg0_s
-      # background: '#fbf1c7' # bg0
-      # background: '#f9f5d7' # bg0_h
-      foreground:   '#504945' # (was fg) fg2
+      background:   '#f2e5bc'  # bg0_s
+      # background: '#fbf1c7'  # bg0
+      # background: '#f9f5d7'  # bg0_h
+      foreground:   '#504945'  # (was fg) fg2
     cursor:
-      text:         '#f2e5bc' # bg0_s
-      cursor:       '#928374' # gray
+      text:         '#f2e5bc'  # bg0_s
+      cursor:       '#928374'  # gray
     vi_mode_cursor:
-      background:   '#f2e5bc' # bg0_s
-      foreground:   '#504945' # (was fg) fg2
+      background:   '#f2e5bc'  # bg0_s
+      foreground:   '#504945'  # (was fg) fg2
     search:
       matches:
-        background: '#d79921' # yellow
-        foreground: '#f2e5bc' # bg0_s
+        background: '#d79921'  # yellow
+        foreground: '#f2e5bc'  # bg0_s
       focused_match:
-        background: '#d79921' # yellow
-        foreground: '#f2e5bc' # bg0_s
+        background: '#d79921'  # yellow
+        foreground: '#f2e5bc'  # bg0_s
     line_indicator:
-      background:   '#f2e5bc' # bg0_s
-      foreground:   '#bdae93' # bg3
+      background:   '#f2e5bc'  # bg0_s
+      foreground:   '#bdae93'  # bg3
     footer_bar:
-      background:   '#f2e5bc' # bg0_s
-      foreground:   '#bdae93' # bg3
+      background:   '#f2e5bc'  # bg0_s
+      foreground:   '#bdae93'  # bg3
     selection:
-      background:   '#bdae93' # bg3
-      foreground:   '#f2e5bc' # bg0_s
+      background:   '#bdae93'  # bg3
+      foreground:   '#f2e5bc'  # bg0_s
     normal:
-      black:        '#ebdbb2' # (was bg) bg1
-      red:          '#cc241d' # red
-      green:        '#98971a' # green
-      yellow:       '#d79921' # yellow
-      blue:         '#458588' # blue
-      magenta:      '#b16286' # purple
-      cyan:         '#689d6a' # aqua
-      white:        '#928374' # (was fg4) gray
+      black:        '#ebdbb2'  # (was bg) bg1
+      red:          '#cc241d'  # red
+      green:        '#98971a'  # green
+      yellow:       '#d79921'  # yellow
+      blue:         '#458588'  # blue
+      magenta:      '#b16286'  # purple
+      cyan:         '#689d6a'  # aqua
+      white:        '#928374'  # (was fg4) gray
     bright:
-      black:        '#bdae93' # (was gray) bg3
-      red:          '#9d0006' # red
-      green:        '#79740e' # green
-      yellow:       '#b57614' # yellow
-      blue:         '#076678' # blue
-      magenta:      '#8f3f71' # purple
-      cyan:         '#427b58' # aqua
-      white:        '#504945' # (was fg) fg2
+      black:        '#bdae93'  # (was gray) bg3
+      red:          '#9d0006'  # red
+      green:        '#79740e'  # green
+      yellow:       '#b57614'  # yellow
+      blue:         '#076678'  # blue
+      magenta:      '#8f3f71'  # purple
+      cyan:         '#427b58'  # aqua
+      white:        '#504945'  # (was fg) fg2
 
   gruvbox_dark: &gruvbox_dark
     primary:
-      background:   '#32302f' # bg0_s
-      # background: '#282828' # bg0
-      # background: '#1d2021' # bg0_h
-      foreground:   '#d5c4a1' # (was fg) fg2
+      background:   '#32302f'  # bg0_s
+      # background: '#282828'  # bg0
+      # background: '#1d2021'  # bg0_h
+      foreground:   '#d5c4a1'  # (was fg) fg2
     cursor:
-      text:         '#32302f' # bg0_s
-      cursor:       '#928374' # gray
+      text:         '#32302f'  # bg0_s
+      cursor:       '#928374'  # gray
     vi_mode_cursor:
-      text:         '#32302f' # bg0_s
-      cursor:       '#d5c4a1' # (was fg) fg2
+      text:         '#32302f'  # bg0_s
+      cursor:       '#d5c4a1'  # (was fg) fg2
     search:
       matches:
-        background: '#d79921' # yellow
-        foreground: '#32302f' # bg0_s
+        background: '#d79921'  # yellow
+        foreground: '#32302f'  # bg0_s
       focused_match:
-        background: '#d79921' # yellow
-        foreground: '#32302f' # bg0_s
-      bar: # deprecated since 0.11.0
-        background: '#32302f' # bg0_s
-        foreground: '#d5c4a1' # (was fg) fg2
+        background: '#d79921'  # yellow
+        foreground: '#32302f'  # bg0_s
+      bar:  # deprecated since 0.11.0
+        background: '#32302f'  # bg0_s
+        foreground: '#d5c4a1'  # (was fg) fg2
     line_indicator:
-      background:   '#32302f' # bg0_s
-      foreground:   '#d5c4a1' # (was fg) fg2
+      background:   '#32302f'  # bg0_s
+      foreground:   '#d5c4a1'  # (was fg) fg2
     footer_bar:
-      background:   '#32302f' # bg0_s
-      foreground:   '#d5c4a1' # (was fg) fg2
+      background:   '#32302f'  # bg0_s
+      foreground:   '#d5c4a1'  # (was fg) fg2
     selection:
-      background:   '#d5c4a1' # (was fg) fg2
-      foreground:   '#32302f' # bg0_s
-    selection:
-      background:   '#32302f' # bg0_s
-      foreground:   '#d5c4a1' # (was fg) fg2
+      background:   '#d5c4a1'  # (was fg) fg2
+      foreground:   '#32302f'  # bg0_s
     normal:
-      black:        '#3c3836' # (was bg) bg1
-      red:          '#cc241d' # red
-      green:        '#98971a' # green
-      yellow:       '#d79921' # yellow
-      blue:         '#458588' # blue
-      magenta:      '#b16286' # purple
-      cyan:         '#689d6a' # aqua
-      white:        '#928374' # gray (was fg4)
+      black:        '#3c3836'  # (was bg) bg1
+      red:          '#cc241d'  # red
+      green:        '#98971a'  # green
+      yellow:       '#d79921'  # yellow
+      blue:         '#458588'  # blue
+      magenta:      '#b16286'  # purple
+      cyan:         '#689d6a'  # aqua
+      white:        '#928374'  # gray (was fg4)
     bright:
-      black:        '#665c54' # (was gray) bg3
-      red:          '#fb4934' # red
-      green:        '#b8bb26' # green
-      yellow:       '#fabd2f' # yellow
-      blue:         '#83a598' # blue
-      magenta:      '#d3869b' # purple
-      cyan:         '#8ec07c' # aqua
-      white:        '#d5c4a1' # (was fg) fg2
+      black:        '#665c54'  # (was gray) bg3
+      red:          '#fb4934'  # red
+      green:        '#b8bb26'  # green
+      yellow:       '#fabd2f'  # yellow
+      blue:         '#83a598'  # blue
+      magenta:      '#d3869b'  # purple
+      cyan:         '#8ec07c'  # aqua
+      white:        '#d5c4a1'  # (was fg) fg2
 
 colors: *gruvbox_dark
 
@@ -226,5 +226,4 @@ cursor:
   vi_mode_style: Block
 
 key_bindings:
-  - { key: F11, action: ToggleFullscreen }
-
+  - {key: F11, action: ToggleFullscreen}
