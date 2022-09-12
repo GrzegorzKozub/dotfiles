@@ -10,7 +10,6 @@ window:
     y: 5
 
 font:
-  size: 12
   normal:
     family: Fira Code
     style: Retina
@@ -20,11 +19,11 @@ font:
   italic:
     family: Fira Code
     style: Retina
-  use_thin_strokes: false
-
-key_bindings:
-  - { key: N, mods: Control|Shift, action: SpawnNewInstance }
-  - { key: F11, action: ToggleFullscreen }
+  bold_italic:
+    family: Fira Code
+    style: Retina
+  size: 12
+  builtin_box_drawing: false
 
 schemes:
 
@@ -39,13 +38,25 @@ schemes:
     cursor:
       text:         '#fdf6e3' # base3
       cursor:       '#839496' # base0
+    vi_mode_cursor:
+      background:   '#fdf6e3' # base3
+      foreground:   '#586e75' # base01
     search:
       matches:
         background: '#b58900' # yellow
         foreground: '#fdf6e3' # base3
-      bar:
-        background: '#fdf6e3' # base3
-        foreground: '#93a1a1' # base1
+      focused_match:
+        background: '#b58900' # yellow
+        foreground: '#fdf6e3' # base3
+    line_indicator:
+      background:   '#fdf6e3' # base3
+      foreground:   '#93a1a1' # base1
+    footer_bar:
+      background:   '#fdf6e3' # base3
+      foreground:   '#93a1a1' # base1
+    selection:
+      background:   '#93a1a1' # base1
+      foreground:   '#fdf6e3' # base3
     normal:
       black:        '#eee8d5' # (was base02) base2
       red:          '#dc322f' # red
@@ -72,13 +83,22 @@ schemes:
     cursor:
       text:         '#002b36' # base03
       cursor:       '#657b83' # base00
+    vi_mode_cursor:
+      background:   '#002b36' # base03
+      foreground:   '#93a1a1' # (was base0) base1
     search:
       matches:
         background: '#b58900' # yellow
         foreground: '#002b36' # base03
-      bar:
-        background: '#002b36' # base03
-        foreground: '#586e75' # base01
+      focused_match:
+        background: '#b58900' # yellow
+        foreground: '#002b36' # base03
+    line_indicator:
+      background:   '#002b36' # base03
+      foreground:   '#586e75' # base01
+    footer_bar:
+      background:   '#002b36' # base03
+      foreground:   '#586e75' # base01
     normal:
       black:        '#073642' # base02
       red:          '#dc322f' # red
@@ -109,13 +129,25 @@ schemes:
     cursor:
       text:         '#f2e5bc' # bg0_s
       cursor:       '#928374' # gray
+    vi_mode_cursor:
+      background:   '#f2e5bc' # bg0_s
+      foreground:   '#504945' # (was fg) fg2
     search:
       matches:
         background: '#d79921' # yellow
         foreground: '#f2e5bc' # bg0_s
-      bar:
-        background: '#f2e5bc' # bg0_s
-        foreground: '#bdae93' # bg3
+      focused_match:
+        background: '#d79921' # yellow
+        foreground: '#f2e5bc' # bg0_s
+    line_indicator:
+      background:   '#f2e5bc' # bg0_s
+      foreground:   '#bdae93' # bg3
+    footer_bar:
+      background:   '#f2e5bc' # bg0_s
+      foreground:   '#bdae93' # bg3
+    selection:
+      background:   '#bdae93' # bg3
+      foreground:   '#f2e5bc' # bg0_s
     normal:
       black:        '#ebdbb2' # (was bg) bg1
       red:          '#cc241d' # red
@@ -144,13 +176,28 @@ schemes:
     cursor:
       text:         '#32302f' # bg0_s
       cursor:       '#928374' # gray
+    vi_mode_cursor:
+      text:         '#32302f' # bg0_s
+      cursor:       '#d5c4a1' # (was fg) fg2
     search:
       matches:
         background: '#d79921' # yellow
         foreground: '#32302f' # bg0_s
-      bar:
-        background: '#32302f' # bg0_s
-        foreground: '#665c54' # bg3
+      focused_match:
+        background: '#d79921' # yellow
+        foreground: '#32302f' # bg0_s
+    line_indicator:
+      background:   '#32302f' # bg0_s
+      foreground:   '#d5c4a1' # (was fg) fg2
+    footer_bar:
+      background:   '#32302f' # bg0_s
+      foreground:   '#d5c4a1' # (was fg) fg2
+    selection:
+      background:   '#d5c4a1' # (was fg) fg2
+      foreground:   '#32302f' # bg0_s
+    selection:
+      background:   '#32302f' # bg0_s
+      foreground:   '#d5c4a1' # (was fg) fg2
     normal:
       black:        '#3c3836' # (was bg) bg1
       red:          '#cc241d' # red
@@ -171,4 +218,10 @@ schemes:
       white:        '#d5c4a1' # (was fg) fg2
 
 colors: *gruvbox_dark
+
+cursor:
+  vi_mode_style: Block
+
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
 
