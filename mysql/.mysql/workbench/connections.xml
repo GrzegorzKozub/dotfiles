@@ -28,6 +28,15 @@
       </value>
       <value type="string" key="name">au-stage-reader</value>
     </value>
+    <value type="object" struct-name="db.mgmt.Connection" id="c39ede08-40a0-11ed-a66b-2cfda1b6d6c8" struct-checksum="0x96ba47d8">
+      <link type="object" struct-name="db.mgmt.Driver" key="driver">com.mysql.rdbms.mysql.driver.native</link>
+      <value _ptr_="0x5560fd9aa510" type="dict" key="parameterValues">
+        <value type="string" key="hostName">localhost</value>
+        <value type="int" key="port">3311</value>
+        <value type="string" key="userName">user</value>
+      </value>
+      <value type="string" key="name">au-beta-reader</value>
+    </value>
     <value type="object" struct-name="db.mgmt.Connection" id="b1058e64-f135-11ec-8e21-2cfda1b6d6c8" struct-checksum="0x96ba47d8">
       <link type="object" struct-name="db.mgmt.Driver" key="driver">com.mysql.rdbms.mysql.driver.native</link>
       <value _ptr_="0x5560fd9aa510" type="dict" key="parameterValues">
@@ -36,6 +45,15 @@
         <value type="string" key="userName">user</value>
       </value>
       <value type="string" key="name">au-prod-reader</value>
+    </value>
+    <value type="object" struct-name="db.mgmt.Connection" id="47ee6d4c-409f-11ed-833d-2cfda1b6d6c8" struct-checksum="0x96ba47d8">
+      <link type="object" struct-name="db.mgmt.Driver" key="driver">com.mysql.rdbms.mysql.driver.native</link>
+      <value _ptr_="0x5560fd9aa510" type="dict" key="parameterValues">
+        <value type="string" key="hostName">localhost</value>
+        <value type="int" key="port">3310</value>
+        <value type="string" key="userName">user</value>
+      </value>
+      <value type="string" key="name">au-prod-apac-reader</value>
     </value>
   </value>
 </data>
