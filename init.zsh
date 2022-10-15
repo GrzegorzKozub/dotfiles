@@ -50,14 +50,17 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config}/btop --stow btop
 ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 
 if [[ $HOST = 'drifter' ]]; then
+  ln -sf $(dirname $(realpath $0))/flags/brave-flags.intel-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/code-flags.intel-wayland.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+fi
 
-  ln -sf $(dirname $(realpath $0))/flags/brave-flags.intel.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
-  ln -sf $(dirname $(realpath $0))/flags/code-flags.intel-x11.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
-
-else
-
+if [[ $HOST = 'player' ]]; then
   ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
   ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+fi
 
+if [[ $HOST = 'worker' ]]; then
+  ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia-wayland.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
 fi
 
