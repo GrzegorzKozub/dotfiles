@@ -52,12 +52,12 @@ ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 if [[ $HOST = 'drifter' ]]; then
 
   ln -sf $(dirname $(realpath $0))/flags/brave-flags.intel.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
-  ln -sf $(dirname $(realpath $0))/flags/code-flags.intel.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/code-flags.intel-x11.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
 
 else
 
-  ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
-  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
 
 fi
 
