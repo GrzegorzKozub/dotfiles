@@ -61,6 +61,6 @@ fi
 
 if [[ $HOST = 'worker' ]]; then
   ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
-  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia-wayland.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
 fi
 
