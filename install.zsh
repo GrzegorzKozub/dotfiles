@@ -113,3 +113,8 @@ do
   code --install-extension $EXTENSION --force
 done
 
+# docker
+
+docker run --privileged --rm tonistiigi/binfmt --install arm64
+docker buildx create --name builder --use
+
