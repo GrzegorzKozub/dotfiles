@@ -116,5 +116,7 @@ done
 # docker
 
 docker run --privileged --rm tonistiigi/binfmt --install arm64
+docker rmi $(docker images tonistiigi/binfmt -a -q)
+
 docker buildx create --name builder --use
 
