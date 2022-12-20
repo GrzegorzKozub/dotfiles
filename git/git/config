@@ -60,19 +60,21 @@
 [commit]
   template = ~/.config/git/message
 [core]
-  editor = vim
+  editor = nvim
   fscache = true
   symlinks = true
   whitespace = blank-at-eol,tab-in-indent
 [diff]
   algorithm = histogram
-  guitool = vim
+  guitool = nvim
   renames = copies
-  tool = vim
+  tool = nvim
 [difftool]
   prompt = false
 [difftool "vim"]
   cmd = vim -d -c "VimDiff" "$LOCAL" "$REMOTE"
+[difftool "nvim"]
+  cmd = nvim -d "$LOCAL" "$REMOTE"
 [difftool "code"]
   cmd = code --wait --diff "$LOCAL" "$REMOTE"
 [filter "lfs"]
@@ -85,15 +87,17 @@
 [github]
   user = GrzegorzKozub
 [merge]
-  guitool = vim
+  guitool = nvim
   renormalize = true
-  tool = vim
+  tool = nvim
 [mergetool]
   keepBackup = false
   prompt = false
 [mergetool "vim"]
   cmd = vim -d -c "VimMerge" "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
   trustExitCode = false
+[mergetool "nvim"]
+  cmd = nvim -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c "wincmd w" -c "wincmd J"
 [mergetool "code"]
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [pack]
