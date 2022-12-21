@@ -41,6 +41,8 @@ function M.use()
   vim.opt.fillchars:append({ vert = " " })
   vim.opt.shortmess:append("I")
   vim.opt.whichwrap:append("<,>,[,]")
+
+  vim.cmd.language(vim.fn.has("win32") == 1 and "English_US" or "en_US.utf8")
 end
 
 return M
