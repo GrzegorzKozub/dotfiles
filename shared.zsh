@@ -47,7 +47,8 @@ gem install --user-install \
 export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
 
 cargo install \
-  jwt-cli
+  jwt-cli \
+  stylua
 
 # vscode
 
