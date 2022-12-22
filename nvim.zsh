@@ -14,5 +14,3 @@ else
   stow --dir=`dirname $0` --target=$CONFIG --stow nvim
 fi
 
-
-
