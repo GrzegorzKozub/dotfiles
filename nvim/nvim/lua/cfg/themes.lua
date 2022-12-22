@@ -1,6 +1,6 @@
 local M = {}
 
-local function normalize_colors(wanted)
+local function normalize_colorscheme(wanted)
   local allowed = { solarized = "solarized8", gruvbox = "gruvbox8_soft" }
   return allowed[wanted] ~= nil and allowed[wanted] or "gruvbox8_soft"
 end
@@ -15,14 +15,14 @@ local function normalize_background(wanted)
 end
 
 local function theme()
-  local _, _, colors, background = string.find(vim.env.MY_THEME or "", "([%a%d]+)%-([%a%d]+)")
-  return normalize_colors(colors), normalize_background(background)
+  local _, _, colorscheme, background = string.find(vim.env.MY_THEME or "", "([%a%d]+)%-([%a%d]+)")
+  return normalize_colorscheme(colorscheme), normalize_background(background)
 end
 
 function M.init()
-  local colors, background = theme()
+  local colorscheme, background = theme()
   vim.opt.background = background
-  vim.cmd.colorscheme(colors)
+  vim.cmd.colorscheme(colorscheme)
 end
 
 return M

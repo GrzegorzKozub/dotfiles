@@ -1,7 +1,7 @@
 local M = {}
 
 function M.init()
-  local opts = {
+  local options = {
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
     expandtab = true,
@@ -33,7 +33,7 @@ function M.init()
     wrap = false,
   }
 
-  for k, v in pairs(opts) do
+  for k, v in pairs(options) do
     vim.opt[k] = v
   end
 
