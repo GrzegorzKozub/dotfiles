@@ -1,2 +1,3 @@
-require("cfg.options").use()
-require("cfg.packer").use()
+require("cfg.options").init()
+require("cfg.packer").init()
+require("cfg.themes").init()

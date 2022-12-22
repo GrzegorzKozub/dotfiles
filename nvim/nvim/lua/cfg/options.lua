@@ -1,6 +1,6 @@
 local M = {}
 
-function M.use()
+function M.init()
   local opts = {
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
