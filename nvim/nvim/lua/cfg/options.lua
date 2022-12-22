@@ -37,6 +37,7 @@ function M.use()
     vim.opt[k] = v
   end
 
+  vim.opt.backupdir:remove(".");
   vim.opt.diffopt:append({ "algorithm:histogram", "indent-heuristic", "context:3" })
   vim.opt.fillchars:append({ vert = " " })
   vim.opt.shortmess:append("I")
