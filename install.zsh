@@ -83,9 +83,9 @@ npm install --global \
   typescript \
   typescript-formatter
 
-# vim and neovim
+# neovim
 
-nvim --headless +PlugInstall +qall
+# nvim --headless +PlugInstall +qall
 nvim --headless +GoInstallBinaries +qall
 
 # vscode

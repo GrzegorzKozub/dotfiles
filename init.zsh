@@ -33,6 +33,7 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   lf \
   mpv \
   npm \
+  nvim \
   ripgrep \
   tmux \
   vim \
@@ -45,9 +46,6 @@ stow --dir=`dirname $0` --target=$HOME --stow \
 
 [[ -d ${XDG_CONFIG_HOME:-~/.config}/btop ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}/btop
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config}/btop --stow btop
-
-[[ -d ${XDG_CONFIG_HOME:-~/.config}/nvim ]] && rm ${XDG_CONFIG_HOME:-~/.config}/nvim
-ln -s $(dirname $(realpath $0))/vim/vim ${XDG_CONFIG_HOME:-~/.config}/nvim
 
 if [[ $HOST = 'drifter' ]]; then
   ln -sf $(dirname $(realpath $0))/flags/brave-flags.intel-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf

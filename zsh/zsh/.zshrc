@@ -331,6 +331,18 @@ my-lf-cd() {
 }
 bind '\el' my-lf-cd
 
+# neovim
+
+export VIMINIT="
+  if !has('nvim')
+    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/vim/vimrc'
+  else
+    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/nvim/init.lua'
+  endif
+  source \$MYVIMRC"
+
+alias vim='nvim'
+
 # node
 
 export NODE_REPL_HISTORY=''
@@ -364,18 +376,6 @@ export RUSTUP_HOME=${XDG_DATA_HOME:-~/.local/share}/rustup
 # tmux
 
 alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
-
-# vim
-
-export VIMINIT="
-  if !has('nvim')
-    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/vim/vimrc'
-  else
-    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/nvim/init.lua'
-  endif
-  source \$MYVIMRC"
-
-alias vim='nvim'
 
 # vscode
 

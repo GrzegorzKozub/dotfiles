@@ -34,9 +34,9 @@ done
 
 npm update --global
 
-# vim and neovim
+# neovim
 
-nvim --headless +PlugUpdate +qall
+# nvim --headless +PlugUpdate +qall
 nvim --headless +GoUpdateBinaries +qall
 
 # vscode
