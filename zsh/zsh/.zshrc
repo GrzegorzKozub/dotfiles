@@ -367,7 +367,13 @@ alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 
 # vim
 
-# export VIMINIT='let $MYVIMRC="'${XDG_CONFIG_HOME:-~/.config}'/vim/vimrc" | source $MYVIMRC'
+export VIMINIT="
+  if !has('nvim')
+    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/vim/vimrc'
+  else
+    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/nvim/init.lua'
+  endif
+  source \$MYVIMRC"
 
 alias vim='nvim'
 
