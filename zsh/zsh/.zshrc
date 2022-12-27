@@ -333,13 +333,13 @@ bind '\el' my-lf-cd
 
 # neovim
 
-export VIMINIT="
-  if !has('nvim')
-    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/vim/vimrc'
-  else
-    let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/nvim/init.lua'
-  endif
-  source \$MYVIMRC"
+# export VIMINIT="
+#   if !has('nvim')
+#     let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/vim/vimrc'
+#   else
+#     let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/nvim/init.lua'
+#   endif
+#   source \$MYVIMRC"
 
 alias vim='nvim'
 
