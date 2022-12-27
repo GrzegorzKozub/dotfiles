@@ -36,7 +36,7 @@ npm update --global
 
 # neovim
 
-# nvim --headless +PlugUpdate +qall
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 nvim --headless +GoUpdateBinaries +qall
 
 # vscode
