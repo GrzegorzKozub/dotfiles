@@ -31,10 +31,6 @@ font:
 
 schemes:
 
-  # https://github.com/eendroroy/alacritty-theme
-
-  # https://ethanschoonover.com/solarized
-
   solarized_light: &solarized_light
     primary:
       background:   '#fdf6e3'  # base3
@@ -121,8 +117,6 @@ schemes:
       magenta:      '#6c71c4'  # violet
       cyan:         '#93a1a1'  # base1
       white:        '#93a1a1'  # (was base3) base1
-
-  # https://github.com/morhetz/gruvbox
 
   gruvbox_light: &gruvbox_light
     primary:
@@ -218,7 +212,54 @@ schemes:
       cyan:         '#8ec07c'  # aqua
       white:        '#d5c4a1'  # (was fg) fg2
 
-colors: *gruvbox_dark
+  gruvbox_material_dark: &gruvbox_material_dark
+    primary:
+      background:   '#32302f'  # bg0_s
+      # background: '#282828'  # bg0
+      # background: '#1d2021'  # bg0_h
+      foreground:   '#d5c4a1'  # (was fg) fg2
+    cursor:
+      text:         '#32302f'  # bg0_s
+      cursor:       '#928374'  # gray
+    vi_mode_cursor:
+      text:         '#32302f'  # bg0_s
+      cursor:       '#d5c4a1'  # (was fg) fg2
+    search:
+      matches:
+        background: '#d79921'  # yellow
+        foreground: '#32302f'  # bg0_s
+      focused_match:
+        background: '#d79921'  # yellow
+        foreground: '#32302f'  # bg0_s
+    line_indicator:
+      background:   '#32302f'  # bg0_s
+      foreground:   '#d5c4a1'  # (was fg) fg2
+    footer_bar:
+      background:   '#32302f'  # bg0_s
+      foreground:   '#d5c4a1'  # (was fg) fg2
+    selection:
+      background:   '#d5c4a1'  # (was fg) fg2
+      foreground:   '#32302f'  # bg0_s
+    normal:
+      black:        '#3c3836'  # (was bg) bg1
+      red:          '#c14a4a'  # red
+      green:        '#6c782e'  # green
+      yellow:       '#b47109'  # yellow
+      blue:         '#458588'  # blue
+      magenta:      '#b16286'  # purple
+      cyan:         '#689d6a'  # aqua
+      white:        '#928374'  # gray (was fg4)
+    bright:
+      black:        '#665c54'  # (was gray) bg3
+      red:          '#fb4934'  # red
+      green:        '#b8bb26'  # green
+      yellow:       '#fabd2f'  # yellow
+      blue:         '#83a598'  # blue
+      magenta:      '#d3869b'  # purple
+      cyan:         '#8ec07c'  # aqua
+      white:        '#d5c4a1'  # (was fg) fg2
+
+colors: *gruvbox_material_dark
 
 cursor:
   vi_mode_style: Block
