@@ -19,17 +19,15 @@ font:
     style: Retina
   bold:
     family: Fira Code
-    style: Semibold
+    style: Retina
   italic:
     family: Fira Code
     style: Retina
   bold_italic:
     family: Fira Code
-    style: Semibold
+    style: Retina
   size: 12
   builtin_box_drawing: false
-
-draw_bold_text_with_bright_colors: true
 
 schemes:
 
