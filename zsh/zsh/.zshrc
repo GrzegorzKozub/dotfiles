@@ -259,8 +259,8 @@ rdp() {
 # fzf
 
 export FZF_DEFAULT_OPTS="
-  --color dark,bg+:-1,fg:$MY_FZF_COLOR_LIGHT,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL_PLUS
-  --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_DARK,marker:$MY_FZF_COLOR_DARK
+  --color dark,bg+:-1,fg:$MY_FZF_COLOR_FG,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL
+  --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER
   --layout reverse-list
   --margin 0,0,0,0
   --marker '$MY_FZF_CHAR_MARKER'
