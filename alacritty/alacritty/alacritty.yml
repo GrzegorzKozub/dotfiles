@@ -140,12 +140,12 @@ schemes:
         foreground: '#f2e5bc'  # bg0_s
     line_indicator:
       background:   '#f2e5bc'  # bg0_s
-      foreground:   '#bdae93'  # bg3
+      foreground:   '#504945'  # fg2
     footer_bar:
       background:   '#f2e5bc'  # bg0_s
-      foreground:   '#bdae93'  # bg3
+      foreground:   '#504945'  # fg2
     selection:
-      background:   '#bdae93'  # bg3
+      background:   '#504945'  # fg2
       foreground:   '#f2e5bc'  # bg0_s
     normal:
       black:        '#ebdbb2'  # bg1
