@@ -215,32 +215,32 @@ schemes:
   # https://github.com/sainnhe/gruvbox-material
   gruvbox_material_light: &gruvbox_material_light
     primary:
-      background:   '#32302f'  # bg0
-      foreground:   '#d4be98'  # fg0
+      background:   '#f2e5bc'  # bg0
+      foreground:   '#654735'  # fg0
     cursor:
-      text:         '#32302f'  # bg0
+      text:         '#f2e5bc'  # bg0
       cursor:       '#928374'  # grey1
     vi_mode_cursor:
-      text:         '#32302f'  # bg0
-      cursor:       '#d4be98'  # fg0
+      text:         '#f2e5bc'  # bg0
+      cursor:       '#654735'  # fg0
     search:
       matches:
-        background: '#b47109'  # yellow
-        foreground: '#32302f'  # bg0
+        background: '#d8a657'  # yellow
+        foreground: '#f2e5bc'  # bg0
       focused_match:
-        background: '#b47109'  # yellow
-        foreground: '#32302f'  # bg0
+        background: '#d8a657'  # yellow
+        foreground: '#f2e5bc'  # bg0
     line_indicator:
-      background:   '#32302f'  # bg0
-      foreground:   '#d4be98'  # fg0
+      background:   '#f2e5bc'  # bg0
+      foreground:   '#654735'  # fg0
     footer_bar:
-      background:   '#32302f'  # bg0
-      foreground:   '#d4be98'  # fg0
+      background:   '#f2e5bc'  # bg0
+      foreground:   '#654735'  # fg0
     selection:
-      background:   '#d4be98'  # fg0
-      foreground:   '#32302f'  # bg0
+      background:   '#654735'  # fg0
+      foreground:   '#f2e5bc'  # bg0
     normal:
-      black:        '#3c3836'  # bg1
+      black:        '#eddeb5'  # bg1
       red:          '#ea6962'  # red
       green:        '#a9b665'  # green
       yellow:       '#d8a657'  # yellow
@@ -249,14 +249,14 @@ schemes:
       cyan:         '#89b482'  # aqua
       white:        '#928374'  # grey1
     bright:
-      black:        '#665c54'  # bg5
+      black:        '#d5c4a1'  # bg5
       red:          '#c14a4a'  # red
       green:        '#6c782e'  # green
       yellow:       '#b47109'  # yellow
       blue:         '#45707a'  # blue
       magenta:      '#945e80'  # purple
       cyan:         '#4c7a5d'  # aqua
-      white:        '#d4be98'  # fg0
+      white:        '#654735'  # fg0
 
   # https://github.com/sainnhe/gruvbox-material
   gruvbox_material_dark: &gruvbox_material_dark

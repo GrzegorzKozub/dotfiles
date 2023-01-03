@@ -27,8 +27,8 @@
   stash = 5
 [color.diff]
   commit = 3
-  func = 5 ; 13 for solarized
-  frag = 4
+  func = 4
+  frag = 5 ; 13 for solarized
   meta = 6
   new = 2
   old = 1
@@ -37,7 +37,7 @@
 [color.grep]
   context = -1
   filename = 6
-  function = 5 ; 13 for solarized
+  function = 4
   linenumber = 8
   match = 3
   selected = -1
