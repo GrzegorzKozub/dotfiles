@@ -1,5 +1,5 @@
---colors=line:fg:12
---colors=match:fg:9
+--colors=line:fg:8
+--colors=match:fg:3
 --colors=path:fg:6
 
 --context=3
