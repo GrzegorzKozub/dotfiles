@@ -1,7 +1,7 @@
 [alias]
   g = grep --context 3 --heading --line-number --show-function
-  ls = log --graph --all --abbrev-commit --date=relative --format=format:'%C(3)%h %C(auto)%s %C(6)%an %C(12)%ar %C(auto)%D%C(reset)'
-  ll = log --graph --all --abbrev-commit --format=format:'%C(3)%h %C(6)%an %C(12)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
+  ls = log --graph --all --abbrev-commit --date=relative --format=format:'%C(3)%h %C(auto)%s %C(6)%an %C(7)%ar %C(auto)%D%C(reset)'
+  ll = log --graph --all --abbrev-commit --format=format:'%C(3)%h %C(6)%an %C(7)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
   pl = pull --prune
   ps = ! [[ $(git config "branch.$(git branch --show-current).merge") ]] && git push || git push --set-upstream origin $(git branch --show-current)
 [color]
@@ -20,16 +20,16 @@
   remote = 2
   upstream = 2
 [color.decorate]
-  HEAD = 9
+  HEAD = 1 ; 9 for solarized
   branch = 4
   remoteBranch = 2
-  tag = 13
+  tag = 5 ; 13 for solarized
   stash = 5
 [color.diff]
   commit = 3
-  func = 13
-  frag = 6
-  meta = 12
+  func = 5 ; 13 for solarized
+  frag = 4
+  meta = 6
   new = 2
   old = 1
   plain = -1
@@ -37,11 +37,11 @@
 [color.grep]
   context = -1
   filename = 6
-  function = 13
-  linenumber = 12
-  match = 9
+  function = 5 ; 13 for solarized
+  linenumber = 8
+  match = 3
   selected = -1
-  separator = 12
+  separator = 8
 [color.interactive]
   error = 1
   header = -1
@@ -56,7 +56,7 @@
   nobranch = 1
   remoteBranch = 2
   unmerged = 1
-  untracked = 9
+  untracked = 1
 [commit]
   template = ~/.config/git/message
 [core]
