@@ -31,6 +31,7 @@ font:
 
 schemes:
 
+  # https://ethanschoonover.com/solarized
   solarized_light: &solarized_light
     primary:
       background:   '#fdf6e3'  # base3
@@ -76,6 +77,7 @@ schemes:
       cyan:         '#93a1a1'  # base1
       white:        '#586e75'  # base01
 
+  # https://ethanschoonover.com/solarized
   solarized_dark: &solarized_dark
     primary:
       background:   '#002b36'  # base03
@@ -118,6 +120,7 @@ schemes:
       cyan:         '#93a1a1'  # base1
       white:        '#93a1a1'  # base1
 
+  # https://github.com/morhetz/gruvbox
   gruvbox_light: &gruvbox_light
     primary:
       background:   '#f2e5bc'  # bg0_s
@@ -163,6 +166,7 @@ schemes:
       cyan:         '#427b58'  # aqua
       white:        '#504945'  # fg2
 
+  # https://github.com/morhetz/gruvbox
   gruvbox_dark: &gruvbox_dark
     primary:
       background:   '#32302f'  # bg0_s
@@ -208,6 +212,53 @@ schemes:
       cyan:         '#8ec07c'  # aqua
       white:        '#d5c4a1'  # fg2
 
+  # https://github.com/sainnhe/gruvbox-material
+  gruvbox_material_light: &gruvbox_material_light
+    primary:
+      background:   '#32302f'  # bg0
+      foreground:   '#d4be98'  # fg0
+    cursor:
+      text:         '#32302f'  # bg0
+      cursor:       '#928374'  # grey1
+    vi_mode_cursor:
+      text:         '#32302f'  # bg0
+      cursor:       '#d4be98'  # fg0
+    search:
+      matches:
+        background: '#b47109'  # yellow
+        foreground: '#32302f'  # bg0
+      focused_match:
+        background: '#b47109'  # yellow
+        foreground: '#32302f'  # bg0
+    line_indicator:
+      background:   '#32302f'  # bg0
+      foreground:   '#d4be98'  # fg0
+    footer_bar:
+      background:   '#32302f'  # bg0
+      foreground:   '#d4be98'  # fg0
+    selection:
+      background:   '#d4be98'  # fg0
+      foreground:   '#32302f'  # bg0
+    normal:
+      black:        '#3c3836'  # bg1
+      red:          '#ea6962'  # red
+      green:        '#a9b665'  # green
+      yellow:       '#d8a657'  # yellow
+      blue:         '#7daea3'  # blue
+      magenta:      '#d3869b'  # purple
+      cyan:         '#89b482'  # aqua
+      white:        '#928374'  # grey1
+    bright:
+      black:        '#665c54'  # bg5
+      red:          '#c14a4a'  # red
+      green:        '#6c782e'  # green
+      yellow:       '#b47109'  # yellow
+      blue:         '#45707a'  # blue
+      magenta:      '#945e80'  # purple
+      cyan:         '#4c7a5d'  # aqua
+      white:        '#d4be98'  # fg0
+
+  # https://github.com/sainnhe/gruvbox-material
   gruvbox_material_dark: &gruvbox_material_dark
     primary:
       background:   '#32302f'  # bg0
