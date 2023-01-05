@@ -84,6 +84,7 @@ setopt pushd_minus # cd - goes to the previous dir
 zle_bracketed_paste=() # don't select pasted text
 
 export EDITOR='nvim'
+export DIFFPROG='nvim -d'
 
 # colors
 
