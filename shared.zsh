@@ -24,12 +24,9 @@ pip install --user --upgrade \
 pip install --user --upgrade \
   awscli-local \
   docker-compose \
-  ipykernel \
   lastversion \
   locust \
-  pydot \
-  pynvim \
-  rope
+  pynvim
 
 # pip install --user --upgrade \
 #   autopep8 \
