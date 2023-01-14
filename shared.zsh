@@ -22,18 +22,15 @@ pip install --user --upgrade \
   wheel
 
 pip install --user --upgrade \
+  autopep8 \
   awscli-local \
+  cfn-lint \
   docker-compose \
   lastversion \
   locust \
-  pynvim
-
-# pip install --user --upgrade \
-#   autopep8 \
-#   cfn-lint \
-#   pylint \
-#   vim-vint \
-#   yamllint
+  pylint \
+  pynvim \
+  yamllint
 
 # ruby
 
