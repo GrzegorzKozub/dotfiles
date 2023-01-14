@@ -14,6 +14,7 @@ export MIX_HOME=${XDG_DATA_HOME:-~/.local/share}/mix
 mix local.hex --force
 mix local.rebar --force
 mix archive.install hex phx_new --force
+mix escript.install hex credo --force
 
 # python
 
