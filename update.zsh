@@ -39,7 +39,6 @@ npm update --global
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 nvim --headless -c 'autocmd User MasonUpdateAllComplete quitall' -c 'MasonUpdateAll'
 nvim --headless +TSUpdate +qall
-nvim --headless +GoUpdateBinaries +qall
 
 # vscode
 

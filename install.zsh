@@ -86,7 +86,6 @@ npm install --global \
 # neovim
 
 nvim --headless -c 'autocmd User PackerComplete quitall'
-nvim --headless +GoInstallBinaries +qall
 
 # vscode
 
