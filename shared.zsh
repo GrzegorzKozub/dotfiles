@@ -48,8 +48,6 @@ cargo install \
 # vscode
 
 for PACKAGE in \
-  github.com/uudashr/gopkgs/v2/cmd/gopkgs \
-  github.com/ramya-rao-a/go-outline \
   github.com/cweill/gotests/gotests \
   github.com/fatih/gomodifytags \
   github.com/josharian/impl \
