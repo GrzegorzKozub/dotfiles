@@ -24,5 +24,5 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
 
 [[ -d ${XDG_DATA_HOME:-~/.local/share}/mangohud ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/mangohud
 
-cp /usr/share/fonts/TTF/FiraCode-Retina.ttf ${XDG_DATA_HOME:-~/.local/share}/mangohud
+cp /usr/share/fonts/OTF/CascadiaCode-SemiBold.otf ${XDG_DATA_HOME:-~/.local/share}/mangohud
 
