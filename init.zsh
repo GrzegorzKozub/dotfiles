@@ -30,6 +30,7 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   git \
   iex \
   keepass \
+  kitty \
   lf \
   mpv \
   npm \
