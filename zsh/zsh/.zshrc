@@ -295,14 +295,6 @@ my-git-commit() {
 }
 bind '\ecommit' my-git-commit
 
-pull-request() {
-  [[ $(git status --porcelain) && $(git rev-parse --abbrev-ref HEAD) =~ '^master$|^main$' ]] || return
-  git checkout -b sc-$1-$2 && \
-  git add . && \
-  git commit -m "$3 [sc-$1]" && \
-  git ps
-}
-
 # gnupg
 
 export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
