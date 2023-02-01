@@ -1,0 +1,65 @@
+COLORTERM ?*
+
+TERM tmux*
+TERM xterm*
+
+# NORMAL 00
+# FILE 00
+
+RESET 00
+DIR 36
+LINK 34
+FIFO 33 # chose colors for these three groups and red may be good for some
+SOCK 35
+DOOR 35
+BLK 33
+CHR 33
+ORPHAN 31
+MISSING 00
+EXEC 32
+
+
+# how to colors the below? do we need them?
+
+.7z 01;31
+.gz 01;31
+.rar 01;31
+.tar 01;31
+.wim 01;31
+.zip 01;31
+.fsa 01;31
+
+.img 01;33
+.iso 01;33
+.cow 01;33
+
+.yaml 00;35
+.yml 00;35
+.json 00;35
+.xml 00;35
+.toml 00;35
+.conf 00;35
+.ini 00;35
+
+.service 00;35
+.timer 00;35
+
+.md 00;37
+.txt 00;37
+
+.env 00;90
+.eslintrc 00;90
+.dockerignore 00;90
+
+.bak 00;90
+.old 00;90
+.orig 00;90
+.part 00;90
+.rej 00;90
+.swp 00;90
+.tmp 00;90
+.log 00;90
+.gitattributes 00;90
+.gitignore 00;90
+.gitmodules 00;90
+.editorconfig 00;90

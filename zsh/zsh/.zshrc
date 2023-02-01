@@ -103,7 +103,7 @@ autoload -Uz colors && colors
   fi
 }
 
-eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dircolors)
+eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dir_colors)
 
 palette() {
    for color in {0..15}; do
