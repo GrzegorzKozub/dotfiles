@@ -96,12 +96,14 @@ autoload -Uz colors && colors
     local colors_file=${XDG_CACHE_HOME:-~/.cache}/zsh/dir_colors
     if [[ ! -f $colors_file ]]; then
       dircolors --print-database > $colors_file
-      sed -i 's/ 01;/ 00;/' $colors_file
+      sed -i 's/ 01;/ 00;/' $colors_file # no bold
       sed -i 's/;01 /;00 /' $colors_file
     fi
     eval `dircolors -b $colors_file`
   fi
 }
+
+eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dircolors)
 
 palette() {
    for color in {0..15}; do
