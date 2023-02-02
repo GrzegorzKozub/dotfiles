@@ -97,7 +97,7 @@ autoload -Uz colors && colors
     if [[ ! -f $colors_file ]]; then
       dircolors --print-database > $colors_file
       sed -i 's/ 01;/ 00;/' $colors_file # no bold
-      sed -i 's/;01 /;00 /' $colors_file
+      sed -i 's/;01 /;00 /' $colors_file # no bold
     fi
     eval `dircolors -b $colors_file`
   fi
