@@ -36,6 +36,7 @@ EXEC 32
 
 .dockerignore 37
 .editorconfig 37
+.git 37
 .gitattributes 37
 .gitignore 37
 .gitmodules 37
