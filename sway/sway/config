@@ -5,7 +5,7 @@ bar {
 }
 
 set $menu wofi | xargs swaymsg exec --
-set $term alacritty
+set $term kitty
 
 # key bindings
 

@@ -1,5 +1,5 @@
 show=run
-term=alacritty
+term=kitty
 
 lines=10
 width=33%
