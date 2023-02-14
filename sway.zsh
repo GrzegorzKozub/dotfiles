@@ -13,7 +13,6 @@ export XDG_CONFIG_HOME=~/.config
 # links
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
-  swappy \
   sway \
   swaylock \
   waybar \
