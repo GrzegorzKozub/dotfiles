@@ -5,10 +5,10 @@
       <value type="int" key="DbSqlEditor:OutputAreaHidden">1</value>
       <value type="int" key="DbSqlEditor:SecondarySidebarHidden">1</value>
       <value type="int" key="HomeScreen:HeadingMessage">0</value>
-      <value type="string" key="workbench.general.Editor:Font">Fira Code Retina 11</value>
+      <value type="string" key="workbench.general.Editor:Font">Cascadia Code 11</value>
       <value type="string" key="workbench.general.Resultset:Font">Cantarell Regular 11</value>
-      <value type="string" key="workbench.scripting.ScriptingEditor:Font">Fira Code Retina 11</value>
-      <value type="string" key="workbench.scripting.ScriptingShell:Font">Fira Code Retina 11</value>
+      <value type="string" key="workbench.scripting.ScriptingEditor:Font">Cascadia Code 11</value>
+      <value type="string" key="workbench.scripting.ScriptingShell:Font">Cascadia Code 11</value>
     </value>
   </value>
 </data>
