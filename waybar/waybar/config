@@ -1,7 +1,7 @@
 {
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "pulseaudio", "network", "backlight", "battery"],
+  "modules-right": ["tray", "pulseaudio", "network", "backlight", "custom/nightlight", "battery"],
   "sway/window": {
     "tooltip": false
   },
@@ -48,6 +48,14 @@
   "backlight": {
     "format": "{icon}",
     "format-icons": ["󰌶", "󰌵"]
+  },
+  "custom/nightlight": {
+    "exec": "wl-gammarelay-rs watch '{ \"alt\": \"{t}\", \"class\": \"temp-{t}\" }'",
+    "return-type": "json",
+    "format": "",
+    "on-click": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 4000",
+    "on-click-right": "busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500",
+    "tooltip": false
   },
   "battery": {
     "states": {

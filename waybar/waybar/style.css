@@ -61,6 +61,7 @@ tooltip label {
 #network,
 #bluetooth,
 #backlight,
+#custom-nightlight,
 #battery {
   padding: 0 5px;
 }
@@ -85,6 +86,14 @@ tooltip label {
 
 #bluetooth.disabled,
 #bluetooth.off {
+  color: #665c54;
+}
+
+#custom-nightlight.temp-4000 {
+  color: rgba(168, 153, 132, 1);
+}
+
+#custom-nightlight.temp-6500 {
   color: #665c54;
 }
 
