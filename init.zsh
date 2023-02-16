@@ -40,8 +40,10 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   vscode \
   zsh
 
+# stow --dir=`dirname $0` --target=$HOME --stow \
+  # imwheel
+
 stow --dir=`dirname $0` --target=$HOME --stow \
-  imwheel \
   zprofile
 
 [[ -d ${XDG_CONFIG_HOME:-~/.config}/btop ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}/btop
