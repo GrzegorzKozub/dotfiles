@@ -60,7 +60,6 @@ tooltip label {
 #pulseaudio,
 #network,
 #bluetooth,
-#backlight,
 #battery {
   padding: 0 5px;
 }
@@ -88,8 +87,8 @@ tooltip label {
   color: #665c54;
 }
 
-#battery.charging,
-#battery.plugged {
+#battery.plugged,
+#battery.charging {
   color: #98971a;
 }
 
