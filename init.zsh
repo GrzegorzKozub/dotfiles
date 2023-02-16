@@ -40,14 +40,21 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   vscode \
   zsh
 
-# stow --dir=`dirname $0` --target=$HOME --stow \
-  # imwheel
-
 stow --dir=`dirname $0` --target=$HOME --stow \
   zprofile
 
 [[ -d ${XDG_CONFIG_HOME:-~/.config}/btop ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}/btop
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config}/btop --stow btop
+
+if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+
+  stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+    redshift
+
+  # stow --dir=`dirname $0` --target=$HOME --stow \
+    # imwheel
+
+fi
 
 if [[ $HOST = 'drifter' ]]; then
   ln -sf $(dirname $(realpath $0))/flags/brave-flags.intel-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
