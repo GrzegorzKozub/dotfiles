@@ -104,6 +104,10 @@ client.focused_inactive #32302f00 #32302fff #665c54ff #32302f00 #32302f00
 client.unfocused #32302f00 #32302fff #665c54ff #32302f00 #32302f00
 client.urgent #fe8019ff #1d2021ff #a89984ff #fe8019ff #fe8019ff
 
+# night light
+
+exec gammastep
+
 # idle, lock and logout
 
 exec sway-audio-idle-inhibit
