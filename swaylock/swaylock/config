@@ -1,7 +1,7 @@
 daemonize
 ignore-empty-password
 
-grace=1
+grace=5
 
 image=~/.local/share/backgrounds/women.jpg
 scaling=fill

@@ -106,6 +106,8 @@ client.urgent #fe8019ff #1d2021ff #a89984ff #fe8019ff #fe8019ff
 
 # idle, lock and logout
 
+exec sway-audio-idle-inhibit
+
 exec swayidle -w \
   timeout 300 'swaylock' \
   timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -115,6 +117,8 @@ bindsym $mod+l exec swaylock
 bindsym $mod+shift+l exec waylogout
 
 # devices
+
+output DP-3 scale 1.5
 
 input 'type:keyboard' {
   xkb_layout 'pl'
