@@ -28,9 +28,11 @@
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
   "network": {
+    "format-ethernet": "",
     "format-wifi": "{icon}",
     "format-disconnected": "󰤭",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+  	"tooltip-format-ethernet": "  {ifname}",
     "tooltip-format-wifi": "{icon} {signalStrength}%  󱄙 {essid}",
     "tooltip-format-disconnected": "󰤭  disconnected"
   },
