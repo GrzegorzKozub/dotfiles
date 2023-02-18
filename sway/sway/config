@@ -112,7 +112,7 @@ bindsym $mod+shift+n exec pkill -USR1 gammastep
 
 # idle, lock and logout
 
-exec sway-audio-idle-inhibit
+for_window [app_id=".*"] inhibit_idle fullscreen
 
 exec swayidle -w \
   timeout 300 'swaylock' \
