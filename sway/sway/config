@@ -108,6 +108,8 @@ client.urgent #fe8019ff #1d2021ff #a89984ff #fe8019ff #fe8019ff
 
 exec gammastep
 
+bindsym $mod+shift+n exec pkill -USR1 gammastep
+
 # idle, lock and logout
 
 exec sway-audio-idle-inhibit
@@ -122,6 +124,7 @@ bindsym $mod+shift+l exec waylogout
 
 # devices
 
+# player
 output DP-3 scale 1.5
 
 input 'type:keyboard' {
