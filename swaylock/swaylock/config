@@ -1,13 +1,8 @@
 daemonize
 ignore-empty-password
 
-grace=5
-
 image=~/.local/share/backgrounds/women.jpg
 scaling=fill
-effect-blur=10x5
-
-fade-in=0.25
 
 indicator-radius=40
 
