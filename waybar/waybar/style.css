@@ -42,12 +42,12 @@ tooltip label {
 }
 
 #workspaces button.urgent {
-  background-color: #fe8019;
+  background-color: #c35e0a;
   color: rgba(29, 32, 33, 1);
 }
 
 #mode {
-  background-color: #458588;
+  background-color: #45707a;
   color: rgba(235, 219, 178, 1);
   padding: 0 10px;
 }
@@ -70,7 +70,7 @@ tooltip label {
 }
 
 #tray>.needs-attention {
-  background-color: #d79921;
+  background-color: #b47109;
 }
 
 #pulseaudio.muted {
@@ -89,13 +89,13 @@ tooltip label {
 
 #battery.plugged,
 #battery.charging {
-  color: #98971a;
+  color: #6c782e;
 }
 
 #battery.warning:not(.charging) {
-  color: #fe8019;
+  color: #b47109;
 }
 
 #battery.critical:not(.charging) {
-  color: #fb4934;
+  color: #c14a4a;
 }
