@@ -1,17 +1,26 @@
 {
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "pulseaudio", "network", "bluetooth", "battery"],
+  "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "network", "bluetooth", "battery"],
   "sway/window": {
     "tooltip": false
   },
   "clock": {
     "format": "{:%d %B %R %p}",
-    "tooltip-format": "{:%A}"
+    "tooltip": false
   },
   "tray": {
     "show-passive-items": true,
     "spacing": 10
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "tooltip-format-activated": "{icon}  enabled",
+    "tooltip-format-deactivated": "{icon}  disabled"
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -33,7 +42,7 @@
     "format-wifi": "{icon}",
     "format-disconnected": "󰤭",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-  	"tooltip-format-ethernet": "  {ifname}",
+    "tooltip-format-ethernet": "  {ifname}",
     "tooltip-format-wifi": "{icon} {signalStrength}%  󱄙 {essid}",
     "tooltip-format-disconnected": "󰤭  disconnected",
     "on-click": "NO_TMUX=1 kitty zsh -c 'echo nmcli; nmcli device wifi; zsh -i'"
@@ -44,8 +53,8 @@
     "format-off": "󰂲",
     "format-connected": "󰂱",
     "format-disabled": "󰂲",
-    "tooltip-format-on": "󰂯 no connections",
-    "tooltip-format-off": "󰂲 turned off",
+    "tooltip-format-on": "󰂯 enabled",
+    "tooltip-format-off": "󰂲 disabled",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "󰂱 {device_alias}",
     "tooltip-format-disabled": "󰂲 disabled",

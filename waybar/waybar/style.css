@@ -57,6 +57,7 @@ tooltip label {
 }
 
 #tray,
+#idle_inhibitor,
 #pulseaudio,
 #network,
 #bluetooth,
@@ -71,6 +72,14 @@ tooltip label {
 
 #tray>.needs-attention {
   background-color: #b47109;
+}
+
+#idle_inhibitor.activated {
+  color: #b47109;
+}
+
+#idle_inhibitor.deactivated {
+  color: #665c54;
 }
 
 #pulseaudio.muted {
