@@ -388,4 +388,4 @@ MODE_CURSOR_SEARCH='steady underline'
 
 # tmux
 
-[[ $TERM_PROGRAM = 'vscode' ]] || [[ ! -z $TMUX ]] || tmux attach || tmux new
+[[ $ZSH_NO_TMUX = 1 ]] || [[ $TERM_PROGRAM = 'vscode' ]] || [[ ! -z $TMUX ]] || tmux attach || tmux new
