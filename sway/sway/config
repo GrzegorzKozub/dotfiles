@@ -61,17 +61,16 @@ bindsym $mod+f11 fullscreen
 bindsym $mod+shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
+bindsym $mod+r mode 'resize'
 mode 'resize' {
   bindsym Left resize shrink width 10px
   bindsym Down resize shrink height 10px
   bindsym Up resize grow height 10px
   bindsym Right resize grow width 10px
 
-  bindsym Return mode 'default'
   bindsym Escape mode 'default'
+  bindsym Return mode 'default'
 }
-
-bindsym $mod+r mode 'resize'
 
 # media keys
 
@@ -114,7 +113,7 @@ exec gammastep
 
 bindsym $mod+shift+n exec pkill -USR1 gammastep
 
-# idle, lock and logout
+# idle, lock, logout, reboot and shutdown
 
 for_window [app_id=".*"] inhibit_idle fullscreen
 
@@ -124,7 +123,30 @@ exec swayidle -w \
   before-sleep 'chayang && swaylock'
 
 bindsym $mod+l exec swaylock
-bindsym $mod+shift+l exec waylogout
+
+bindsym $mod+Shift+l mode 'logout?'
+mode 'logout?' {
+  bindsym y exit
+  bindsym n mode 'default'
+  bindsym Return exit
+  bindsym Escape mode 'default'
+}
+
+bindsym $mod+Shift+r mode 'reboot?'
+mode 'reboot?' {
+  bindsym y exec reboot
+  bindsym n mode 'default'
+  bindsym Return exec reboot
+  bindsym Escape mode 'default'
+}
+
+bindsym $mod+Shift+s mode 'shutdown?'
+mode 'shutdown?' {
+  bindsym y exec shutdown now
+  bindsym n mode 'default'
+  bindsym Return exec shutdown now
+  bindsym Escape mode 'default'
+}
 
 # displays
 
@@ -134,11 +156,13 @@ bindswitch --reload --locked lid:off output eDP-1 enable
 output eDP-1 scale 2
 output 'LG Electronics LG TV 0x00000101' scale 2
 
-# devices
+# keyboard
 
 input 'type:keyboard' {
   xkb_layout 'pl'
 }
+
+# touchpad
 
 input 'type:touchpad' {
   dwt enabled
@@ -147,23 +171,9 @@ input 'type:touchpad' {
   tap enabled
 }
 
+# bluetooth
+
 exec rfkill unblock bluetooth
-
-# todo
-
-set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
-mode "$mode_system" {
-    bindsym l exec swaylock, mode "default"
-    bindsym e exit
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-    bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+e mode "$mode_system"
 
 # other config
 
