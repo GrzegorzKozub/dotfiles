@@ -17,6 +17,5 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
   sway \
   swaylock \
   waybar \
-  waylogout \
   wofi
 
