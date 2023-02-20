@@ -131,7 +131,8 @@ bindsym $mod+shift+l exec waylogout
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
-output DP-3 scale 1.5
+output eDP-1 scale 2
+output 'LG Electronics LG TV 0x00000101' scale 2
 
 # devices
 
