@@ -106,7 +106,7 @@ default_border pixel 2
 client.focused #1d2021ff #1d2021ff #a89984ff #1d2021ff #1d2021ff
 client.focused_inactive #32302f00 #32302fff #665c54ff #32302f00 #32302f00
 client.unfocused #32302f00 #32302fff #665c54ff #32302f00 #32302f00
-client.urgent #c35e0aff #1d2021ff #a89984ff #c35e0aff #c35e0aff
+client.urgent #b47109ff #b47109ff #a89984ff #b47109ff #b47109ff
 
 # night light
 

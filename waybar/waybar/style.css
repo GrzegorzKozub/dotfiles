@@ -16,7 +16,7 @@ window#waybar.hidden {
 tooltip {
   background: rgba(29, 32, 33, 1);
   border: none;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 tooltip label {
@@ -28,7 +28,7 @@ tooltip label {
   border: none;
   border-radius: 0;
   box-shadow: none;
-  color: rgba(168, 153, 132, 1);
+  color: #665c54;
   padding: 0 10px;
 }
 
@@ -38,11 +38,11 @@ tooltip label {
 }
 
 #workspaces button.focused {
-  color: rgba(235, 219, 178, 1);
+  color: rgba(168, 153, 132, 1);
 }
 
 #workspaces button.urgent {
-  background-color: #c35e0a;
+  background-color: #b47109;
   color: rgba(29, 32, 33, 1);
 }
 
