@@ -58,6 +58,9 @@ bindsym $mod+shift+0 move container to workspace number 10
 bindsym $mod+ctrl+left move container to output left, focus output left
 bindsym $mod+ctrl+right move container to output right, focus output right
 
+
+bindsym $mod+ctrl+shift+right focus output right
+
 bindsym $mod+f fullscreen
 bindsym $mod+f11 fullscreen
 
@@ -133,13 +136,19 @@ mode 'logout' {
   bindsym Escape mode 'default'
 }
 
+bindsym $mod+Shift+s mode 'suspend'
+mode 'suspend' {
+  bindsym Return exec swaylock && systemctl suspend
+  bindsym Escape mode 'default'
+}
+
 bindsym $mod+Shift+r mode 'reboot'
 mode 'reboot' {
   bindsym Return exec reboot
   bindsym Escape mode 'default'
 }
 
-bindsym $mod+Shift+s mode 'shutdown'
+bindsym $mod+Shift+p mode 'shutdown'
 mode 'shutdown' {
   bindsym Return exec shutdown now
   bindsym Escape mode 'default'
