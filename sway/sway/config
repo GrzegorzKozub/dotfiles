@@ -67,8 +67,8 @@ bindsym $mod+f11 fullscreen
 bindsym $mod+shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+r mode 'resize'
-mode 'resize' {
+bindsym $mod+r mode '󰀽   resize'
+mode '󰀽   resize' {
   bindsym Left resize shrink width 10px
   bindsym Down resize shrink height 10px
   bindsym Up resize grow height 10px
@@ -130,26 +130,26 @@ exec swayidle -w \
 
 bindsym $mod+l exec swaylock
 
-bindsym $mod+Shift+l mode 'logout'
-mode 'logout' {
+bindsym $mod+Shift+l mode '󰀄  logout'
+mode '󰀄  logout' {
   bindsym Return exit
   bindsym Escape mode 'default'
 }
 
-bindsym $mod+Shift+s mode 'suspend'
-mode 'suspend' {
-  bindsym Return exec swaylock && systemctl suspend
+bindsym $mod+Shift+s mode '󱕴 󱕵  󰌾  󰒲 󰖔 suspend'
+mode '󱕴 󱕵  󰌾  󰒲 󰖔 suspend' {
+  bindsym Return exec swaylock && systemctl suspend, mode 'default'
   bindsym Escape mode 'default'
 }
 
-bindsym $mod+Shift+r mode 'reboot'
-mode 'reboot' {
+bindsym $mod+Shift+r mode '󰑙  reboot'
+mode '󰑙  reboot' {
   bindsym Return exec reboot
   bindsym Escape mode 'default'
 }
 
-bindsym $mod+Shift+p mode 'shutdown'
-mode 'shutdown' {
+bindsym $mod+Shift+p mode '󰤆  shutdown'
+mode '󰤆  shutdown' {
   bindsym Return exec shutdown now
   bindsym Escape mode 'default'
 }

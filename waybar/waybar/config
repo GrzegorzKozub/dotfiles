@@ -1,12 +1,31 @@
 {
-  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-left": ["sway/workspaces", "sway/window"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "network", "bluetooth", "battery"],
+  "modules-right": ["sway/mode", "tray", "idle_inhibitor", "pulseaudio", "network", "bluetooth", "battery"],
+  "sway/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "󰼏",
+      "2": "󰼐",
+      "3": "󰼑",
+      "4": "󰼓",
+      "5": "󰼓",
+      "6": "󰼕",
+      "7": "󰼕",
+      "8": "󰼖",
+      "9": "󰼗",
+      "10": "󰿪"
+    },
+    "disable-scroll": true
+  },
   "sway/window": {
     "tooltip": false
   },
   "clock": {
     "format": "{:%d %B %R %p}",
+    "tooltip": false
+  },
+  "sway/mode": {
     "tooltip": false
   },
   "tray": {
@@ -16,8 +35,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "󰛐",
-      "deactivated": "󰛑"
+      "activated": "󰈈",
+      "deactivated": "󰈉"
     },
     "tooltip-format-activated": "{icon}  enabled",
     "tooltip-format-deactivated": "{icon}  disabled"
@@ -43,7 +62,7 @@
     "format-disconnected": "󰤭",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format-ethernet": "󰌗 {ifname}",
-    "tooltip-format-wifi": "{icon} {signalStrength}%  󰐻 {essid}",
+    "tooltip-format-wifi": "{icon} {signalStrength}%  󱄙 {essid}",
     "tooltip-format-disconnected": "󰤭 disconnected",
     "on-click-right": "NO_TMUX=1 kitty zsh -c 'echo nmcli; nmcli device wifi; zsh -i'"
   },

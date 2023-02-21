@@ -47,8 +47,9 @@ tooltip label {
 }
 
 #mode {
-  background-color: #45707a;
+  background-color: #945e80;
   color: rgba(235, 219, 178, 1);
+  margin-right: 15px;
   padding: 0 10px;
 }
 
