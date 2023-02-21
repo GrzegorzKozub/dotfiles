@@ -55,6 +55,9 @@ bindsym $mod+shift+8 move container to workspace number 8
 bindsym $mod+shift+9 move container to workspace number 9
 bindsym $mod+shift+0 move container to workspace number 10
 
+bindsym $mod+ctrl+left move container to output left, focus output left
+bindsym $mod+ctrl+right move container to output right, focus output right
+
 bindsym $mod+f fullscreen
 bindsym $mod+f11 fullscreen
 
