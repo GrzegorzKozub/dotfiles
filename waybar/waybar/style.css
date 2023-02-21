@@ -1,5 +1,5 @@
 * {
-  font-family: MaterialDesign, Cantarell, sans-serif;
+  font-family: Cantarell, sans-serif;
   font-size: 16px;
   font-weight: 600;
 }
@@ -96,7 +96,6 @@ tooltip label {
   color: #665c54;
 }
 
-#battery.plugged,
 #battery.charging {
   color: #6c782e;
 }

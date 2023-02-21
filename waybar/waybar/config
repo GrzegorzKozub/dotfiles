@@ -16,15 +16,15 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": "󰛐",
+      "deactivated": "󰛑"
     },
     "tooltip-format-activated": "{icon}  enabled",
     "tooltip-format-deactivated": "{icon}  disabled"
   },
   "pulseaudio": {
     "format": "{icon}",
-    "format-muted": "󰸈",
+    "format-muted": "󰖁",
     "format-source": "󰍬 {volume}%",
     "format-source-muted": "󰍭",
     "format-icons": {
@@ -38,14 +38,14 @@
     "on-click-right": "pavucontrol"
   },
   "network": {
-    "format-ethernet": "",
+    "format-ethernet": "󰌗",
     "format-wifi": "{icon}",
     "format-disconnected": "󰤭",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-    "tooltip-format-ethernet": " {ifname}",
-    "tooltip-format-wifi": "{icon} {signalStrength}%  󱄙 {essid}",
+    "tooltip-format-ethernet": "󰌗 {ifname}",
+    "tooltip-format-wifi": "{icon} {signalStrength}%  󰐻 {essid}",
     "tooltip-format-disconnected": "󰤭 disconnected",
-    "on-click": "NO_TMUX=1 kitty zsh -c 'echo nmcli; nmcli device wifi; zsh -i'"
+    "on-click-right": "NO_TMUX=1 kitty zsh -c 'echo nmcli; nmcli device wifi; zsh -i'"
   },
   "bluetooth": {
     "format": "󰂯",
@@ -58,7 +58,7 @@
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "󰂱 {device_alias}",
     "tooltip-format-disabled": "󰂲 disabled",
-    "on-click": "kitty bluetoothctl"
+    "on-click-right": "kitty bluetoothctl"
   },
   "battery": {
     "format": "{icon}",
@@ -66,7 +66,7 @@
     "format-charging": "󱐋",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "tooltip-format": "󰁹 {capacity}%  󰥔 {time}",
-    "tooltip-format-plugged": "󰁹 {capacity}%",
+    "tooltip-format-plugged": "󰚥 {capacity}%",
     "states": {
       "warning": 30,
       "critical": 15
