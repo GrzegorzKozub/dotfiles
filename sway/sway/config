@@ -160,6 +160,8 @@ bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
 output eDP-1 scale 2
+output 'LG Electronics LG HDR 4K 0x00001C71' scale 1.5
+output 'LG Electronics LG Ultra HD 0x000084E2' scale 1.5
 output 'LG Electronics LG TV 0x00000101' scale 2
 
 # keyboard
