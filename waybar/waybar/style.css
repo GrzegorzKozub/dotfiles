@@ -43,11 +43,11 @@ tooltip label {
 
 #workspaces button.urgent {
   background-color: #b47109;
-  color: rgba(29, 32, 33, 1);
+  color: rgba(235, 219, 178, 1);
 }
 
 #mode {
-  background-color: #945e80;
+  background-color: #b47109;
   color: rgba(235, 219, 178, 1);
   margin-right: 15px;
   padding: 0 10px;

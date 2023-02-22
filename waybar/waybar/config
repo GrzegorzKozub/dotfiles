@@ -3,19 +3,6 @@
   "modules-center": ["clock"],
   "modules-right": ["sway/mode", "tray", "idle_inhibitor", "pulseaudio", "network", "bluetooth", "battery"],
   "sway/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "󰼏",
-      "2": "󰼐",
-      "3": "󰼑",
-      "4": "󰼓",
-      "5": "󰼓",
-      "6": "󰼕",
-      "7": "󰼕",
-      "8": "󰼖",
-      "9": "󰼗",
-      "10": "󰿪"
-    },
     "disable-scroll": true
   },
   "sway/window": {
@@ -63,8 +50,7 @@
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format-ethernet": "󰌗 {ifname}",
     "tooltip-format-wifi": "{icon} {signalStrength}%  󱄙 {essid}",
-    "tooltip-format-disconnected": "󰤭 disconnected",
-    "on-click-right": "NO_TMUX=1 kitty zsh -c 'echo nmcli; nmcli device wifi; zsh -i'"
+    "tooltip-format-disconnected": "󰤭 disconnected"
   },
   "bluetooth": {
     "format": "󰂯",
@@ -76,8 +62,7 @@
     "tooltip-format-off": "󰂲 disabled",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "󰂱 {device_alias}",
-    "tooltip-format-disabled": "󰂲 disabled",
-    "on-click-right": "kitty bluetoothctl"
+    "tooltip-format-disabled": "󰂲 disabled"
   },
   "battery": {
     "format": "{icon}",
