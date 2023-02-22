@@ -40,8 +40,9 @@
     },
     "tooltip-format": "{icon} {volume}%  {format_source}  󰓃 {desc}",
     "scroll-step": 0.5,
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "pavucontrol"
+    "on-click": "~/code/arch/sink.zsh",
+    "on-click-right": "~/code/arch/source.zsh",
+    "on-click-middle": "pavucontrol"
   },
   "network": {
     "format-ethernet": "󰌗",
