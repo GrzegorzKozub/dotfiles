@@ -40,8 +40,8 @@
     },
     "tooltip-format": "{icon} {volume}%  {format_source}  󰓃 {desc}",
     "scroll-step": 0.5,
-    "on-click": "~/code/arch/sink.zsh",
-    "on-click-right": "~/code/arch/source.zsh",
+    "on-click": "~/code/arch/audio.zsh sink",
+    "on-click-right": "~/code/arch/audio.zsh source",
     "on-click-middle": "pavucontrol"
   },
   "network": {
