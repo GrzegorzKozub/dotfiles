@@ -1,3 +1,7 @@
+# variables
+
+set $mod mod4
+
 # integrations
 
 bar {
@@ -7,16 +11,14 @@ bar {
 set $menu wofi | xargs swaymsg exec --
 set $term kitty
 
-# variabless
-
-set $mod mod4
-
 # displays
 
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
 output eDP-1 scale 2
+
+output 'LG Electronics LG ULTRAGEAR+ 105NTNH17527' scale 1.5
 output 'LG Electronics LG HDR 4K 0x00001C71' scale 1.5
 output 'LG Electronics LG Ultra HD 0x000084E2' scale 1.5
 output 'LG Electronics LG TV 0x00000101' scale 2
@@ -27,7 +29,7 @@ exec gammastep
 
 bindsym $mod+shift+n exec pkill -USR1 gammastep
 
-# back light
+# brightness
 
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
@@ -71,44 +73,45 @@ client.focused_inactive #32302f00 #32302fff #665c54ff #32302f00 #32302f00
 client.unfocused #32302f00 #32302fff #665c54ff #32302f00 #32302f00
 client.urgent #b47109ff #b47109ff #a89984ff #b47109ff #b47109ff
 
-
-
-
-
-
-
-
-
-
-
-
-# CLEAN keys
-
-focus_wrapping workspace
-
-bindsym $mod+shift+c reload
+# apps
 
 bindsym $mod+return exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+q kill
 
+# containers
+
+focus_wrapping workspace
+
 bindsym alt+tab focus next
 bindsym alt+shift+tab focus prev
 
-bindsym $mod+tab workspace next
-bindsym $mod+shift+tab workspace prev
-
-bindsym $mod+m focus output right
-
 bindsym $mod+left focus left
+bindsym $mod+right focus right
 bindsym $mod+down focus down
 bindsym $mod+up focus up
-bindsym $mod+right focus right
 
 bindsym $mod+shift+left move left
+bindsym $mod+shift+right move right
 bindsym $mod+shift+down move down
 bindsym $mod+shift+up move up
-bindsym $mod+shift+right move right
+
+bindsym $mod+r mode '󰀽  resize'
+
+mode '󰀽  resize' {
+  bindsym left resize shrink width 10px
+  bindsym right resize grow width 10px
+  bindsym down resize shrink height 10px
+  bindsym up resize grow height 10px
+
+  bindsym escape mode 'default'
+  bindsym return mode 'default'
+}
+
+# workspaces
+
+bindsym $mod+tab workspace next
+bindsym $mod+shift+tab workspace prev
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -132,78 +135,77 @@ bindsym $mod+shift+8 move container to workspace number 8, workspace 8
 bindsym $mod+shift+9 move container to workspace number 9, workspace 9
 bindsym $mod+shift+0 move container to workspace number 10, workspace 10
 
+# outputs
+
 bindsym $mod+ctrl+left move container to output left, focus output left
 bindsym $mod+ctrl+right move container to output right, focus output right
 
-
+bindsym $mod+ctrl+shift+left focus output left
 bindsym $mod+ctrl+shift+right focus output right
 
-bindsym $mod+f fullscreen
-bindsym $mod+f11 fullscreen
+# fullscreen
+
+bindsym $mod+f fullscreen toggle
+bindsym $mod+f11 fullscreen toggle
+
+# floating windows
 
 bindsym $mod+shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-
-bindsym $mod+r mode '󰀽   resize'
-mode '󰀽   resize' {
-  bindsym Left resize shrink width 10px
-  bindsym Down resize shrink height 10px
-  bindsym Up resize grow height 10px
-  bindsym Right resize grow width 10px
-
-  bindsym Escape mode 'default'
-  bindsym Return mode 'default'
-}
-
-# player
-
-bindsym --locked XF86AudioPlay exec playerctl play-pause
-bindsym --locked XF86AudioNext exec playerctl next
-bindsym --locked XF86AudioPrev exec playerctl previous
 
 # screenshots
 
 bindsym print exec flameshot gui
 
+# media player
+
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
 # idle
 
 for_window [app_id=".*"] inhibit_idle fullscreen
 
-exec swayidle -w \
-  timeout 300 'chayang && swaylock && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  before-sleep 'chayang && swaylock'
+exec_always swayidle -w \
+  timeout 300 'chayang && swaymsg "output * power off" && swaylock' resume 'swaymsg "output * power on"' \
+  timeout 600 'systemctl suspend' \
+  before-sleep 'swaylock'
 
 # lock
 
-bindsym $mod+l exec chayang && swaymsg "output * dpms off" && swaylock 
+bindsym $mod+l exec swaylock
 
-# CLEAN logout, reboot and shutdown
+# logout
 
-bindsym $mod+Shift+l mode '󰀄  logout'
+bindsym $mod+shift+l mode '󰀄  logout'
+
 mode '󰀄  logout' {
-  bindsym Return exit
-  bindsym Escape mode 'default'
+  bindsym return exit
+  bindsym escape mode 'default'
 }
 
-bindsym $mod+Shift+s mode '󱕴 󱕵  󰌾  󰒲 󰖔 suspend'
-mode '󱕴 󱕵  󰌾  󰒲 󰖔 suspend' {
-  bindsym Return exec swaylock && systemctl suspend, mode 'default'
-  bindsym Escape mode 'default'
-}
+# reboot
 
-bindsym $mod+Shift+r mode '󰑙  reboot'
+bindsym $mod+shift+r mode '󰑙  reboot'
+
 mode '󰑙  reboot' {
-  bindsym Return exec reboot
-  bindsym Escape mode 'default'
+  bindsym return exec reboot
+  bindsym escape mode 'default'
 }
 
-bindsym $mod+Shift+p mode '󰤆  shutdown'
+# shutdown
+
+bindsym $mod+shift+s mode '󰤆  shutdown'
+
 mode '󰤆  shutdown' {
-  bindsym Return exec shutdown now
-  bindsym Escape mode 'default'
+  bindsym return exec shutdown now
+  bindsym escape mode 'default'
 }
 
+# reload config
+
+bindsym $mod+shift+c reload
 
 # system config
 
