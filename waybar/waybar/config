@@ -25,8 +25,7 @@
       "activated": "󰈈",
       "deactivated": "󰈉"
     },
-    "tooltip-format-activated": "{icon}  enabled",
-    "tooltip-format-deactivated": "{icon}  disabled"
+    "tooltip": false
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -51,7 +50,7 @@
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format-ethernet": "󰌗 {ifname}",
     "tooltip-format-wifi": "{icon} {signalStrength}%  󱄙 {essid}",
-    "tooltip-format-disconnected": "󰤭 disconnected"
+    "tooltip-format-disconnected": "disconnected"
   },
   "bluetooth": {
     "format": "󰂯",
@@ -59,11 +58,11 @@
     "format-off": "󰂲",
     "format-connected": "󰂱",
     "format-disabled": "󰂲",
-    "tooltip-format-on": "󰂯 enabled",
-    "tooltip-format-off": "󰂲 disabled",
+    "tooltip-format-on": "enabled",
+    "tooltip-format-off": "disabled",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "󰂱 {device_alias}",
-    "tooltip-format-disabled": "󰂲 disabled"
+    "tooltip-format-disabled": "disabled"
   },
   "battery": {
     "format": "{icon}",
@@ -71,7 +70,7 @@
     "format-charging": "󱐋",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "tooltip-format": "󰁹 {capacity}%  󰥔 {time}",
-    "tooltip-format-plugged": "󰚥 {capacity}%",
+    "tooltip-format-plugged": "󰁹 {capacity}%",
     "states": {
       "warning": 30,
       "critical": 15
