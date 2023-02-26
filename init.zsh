@@ -24,7 +24,6 @@ export XDG_CONFIG_HOME=~/.config
 # links
 
 stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
-  alacritty \
   environment \
   flameshot \
   git \
@@ -52,7 +51,7 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
     redshift
 
   # stow --dir=`dirname $0` --target=$HOME --stow \
-    # imwheel
+  #   imwheel
 
 fi
 
