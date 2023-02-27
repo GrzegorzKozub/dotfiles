@@ -107,6 +107,14 @@ setopt prompt_subst
 
 # completion
 
+typeset -U fpath
+
+fpath=(
+  ~/code/apsis
+  ~/code/arch
+  $fpath[@]
+)
+
 WORDCHARS=''
 
 autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
