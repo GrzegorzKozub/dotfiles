@@ -122,12 +122,15 @@ autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 setopt always_to_end # put cursor at the end of completed word
 setopt auto_menu # show completion menu on 2nd tab
 setopt complete_aliases
-setopt complete_in_word # complete from both words ends
+setopt complete_in_word # complete from both ends of word
 setopt extended_glob
 setopt path_dirs # search for paths on commands with slashes
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
+
+# prefix and suffix completion pattern with * to match it as partial substring
+zstyle ':completion:*' matcher-list '+l:|=*' '+r:|=*'
 
 # complete environment variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
