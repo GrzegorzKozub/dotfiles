@@ -127,7 +127,7 @@ setopt extended_glob
 setopt path_dirs # search for paths on commands with slashes
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*:warnings' format '%F{red}no matches found%f'
+zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
 
 # complete environment variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
