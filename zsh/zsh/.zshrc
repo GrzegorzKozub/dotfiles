@@ -117,28 +117,46 @@ fpath=(
 
 WORDCHARS=''
 
+setopt ALWAYS_TO_END # put cursor at the end of completed word
+setopt AUTO_MENU # show completion menu after pressing tab second time
+setopt COMPLETE_ALIASES
+setopt COMPLETE_IN_WORD # complete from both ends of word
+setopt EXTENDED_GLOB
+setopt LIST_PACKED
+setopt MENU_COMPLETE # highlight first completion menu item
+setopt PATH_DIRS # search for paths on commands with slashes
+
 autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 
-setopt always_to_end # put cursor at the end of completed word
-setopt auto_menu # show completion menu on 2nd tab
-setopt complete_aliases
-setopt complete_in_word # complete from both ends of word
-setopt extended_glob
-setopt path_dirs # search for paths on commands with slashes
+zstyle ':completion:*' completer _complete _match _approximate
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
 
 zstyle ':completion:*' menu select
-zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
 
-# prefix and suffix completion pattern with * to match it as partial substring
-zstyle ':completion:*' matcher-list '+l:|=*' '+r:|=*'
+# complete not only for dir stack but also for options on -
+zstyle ':completion:*' complete-options true
+
+# try case-sensitive match first and match partial words
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # complete environment variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
+# expand // to /
+zstyle ':completion:*' squeeze-slashes true
+
 # correct single char typos
-zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# completion colors
+
+zstyle ':completion:*:messages' format '%F{white}%d%f'
+zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
+
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # up and down for muti-line commands in command mode
 
