@@ -126,14 +126,21 @@ setopt LIST_PACKED
 setopt MENU_COMPLETE # highlight first completion menu item
 setopt PATH_DIRS # search for paths on commands with slashes
 
+zmodload -i zsh/complist
 autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 
 zstyle ':completion:*' completer _complete _match _approximate
+
+# correct single char typos
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
 
 zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-separator ''
 
 # complete not only for dir stack but also for options on -
 zstyle ':completion:*' complete-options true
@@ -147,12 +154,9 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
 
-# correct single char typos
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
 # completion colors
 
+zstyle ':completion:*:descriptions' format '%F{white}%d%f'
 zstyle ':completion:*:messages' format '%F{white}%d%f'
 zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
 
