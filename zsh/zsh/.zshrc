@@ -19,7 +19,7 @@ path=(
   $path[@]
 )
 
-# terminal
+# terminal emulator title
 
 zstyle ':prezto:module:terminal' auto-title 'yes'
 
@@ -74,11 +74,11 @@ zinit snippet OMZ::plugins/pip/_pip
 
 # options
 
-setopt auto_pushd # pushd on every cd
-setopt correct_all
-setopt no_beep
-setopt pushd_ignore_dups
-setopt pushd_minus # cd - goes to the previous dir
+setopt AUTO_PUSHD # pushd on every cd
+setopt CORRECT_ALL
+setopt NO_BEEP
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_MINUS # cd - goes to the previous dir
 
 [[ -o login ]] && stty -ixon # disable flow control (^s and ^c)
 
@@ -86,6 +86,7 @@ zle_bracketed_paste=() # don't select pasted text
 
 export EDITOR='nvim'
 export DIFFPROG='nvim -d'
+export VISUAL='nvim'
 
 # colors
 
@@ -94,16 +95,16 @@ autoload -Uz colors && colors
 eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dir_colors)
 
 palette() {
-   for color in {0..15}; do
-     print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
-   done
-   print '\n'
+  for color in {0..15}; do
+    print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
+  done
+  print '\n'
 }
 
 # prompt
 
 autoload -Uz promptinit && promptinit
-setopt prompt_subst
+setopt PROMPT_SUBST
 
 # completion
 
@@ -129,24 +130,30 @@ setopt PATH_DIRS # search for paths on commands with slashes
 zmodload -i zsh/complist
 autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 
-zstyle ':completion:*' completer _complete _match _approximate
-
-# correct single char typos
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
 
-zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete _match _approximate
+
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-separator ''
+zstyle ':completion:*' menu select
+
+zstyle ':completion:*:default' list-colors '=(#b)*(  *)=37=38;5;8' '=*=37' 'ma=0' 'tc=37'
+
+zstyle ':completion:*:descriptions' format '%F{magenta}%d%f'
+zstyle ':completion:*:messages' format '%F{white}%d%f'
+zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
+
+# try case-sensitive match first and match partial words
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # complete not only for dir stack but also for options on -
 zstyle ':completion:*' complete-options true
 
-# try case-sensitive match first and match partial words
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# correct single char typos
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # complete environment variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
@@ -154,16 +161,7 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
 
-# completion colors
-
-zstyle ':completion:*:descriptions' format '%F{white}%d%f'
-zstyle ':completion:*:messages' format '%F{white}%d%f'
-zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
-
-# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
 # up and down for muti-line commands in command mode
-
 bindkey -M vicmd '^[[A' up-line-or-history
 bindkey -M vicmd '^[[B' down-line-or-history
 
@@ -186,15 +184,15 @@ SAVEHIST=10000 # history file limit
 
 HISTORY_IGNORE='(#i)(*bearer*|exit|*password*|*secret*|*token*)'
 
-setopt hist_expire_dups_first
-setopt hist_find_no_dups
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_ignore_space # don't add commands prefixed with space
-setopt hist_reduce_blanks
-setopt hist_save_no_dups
-setopt hist_verify # don't run command immediately
-setopt inc_append_history # add commands immediately
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE # don't add commands prefixed with space
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY # don't run command immediately
+setopt INC_APPEND_HISTORY # add commands immediately
 
 # aliases
 
