@@ -15,15 +15,15 @@ popd
 
 # env
 
-export XDG_CONFIG_HOME=~/.config
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 # dirs
 
-[[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
+[[ -d $XDG_CONFIG_HOME ]] || mkdir -p $XDG_CONFIG_HOME
 
 # links
 
-stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   environment \
   flameshot \
   git \
@@ -42,12 +42,12 @@ stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
 stow --dir=`dirname $0` --target=$HOME --stow \
   zprofile
 
-[[ -d ${XDG_CONFIG_HOME:-~/.config}/btop ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}/btop
-stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config}/btop --stow btop
+[[ -d $XDG_CONFIG_HOME/btop ]] || mkdir -p $XDG_CONFIG_HOME/btop
+stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME/btop --stow btop
 
 if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
-  stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+  stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
     redshift
 
   # stow --dir=`dirname $0` --target=$HOME --stow \
@@ -55,18 +55,20 @@ if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
 
 fi
 
+DIR=$(dirname $(realpath $0))
+
 if [[ $HOST = 'drifter' ]]; then
-  ln -sf $(dirname $(realpath $0))/flags/brave-flags.intel-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
-  ln -sf $(dirname $(realpath $0))/flags/code-flags.intel-wayland.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+  ln -sf $DIR/flags/brave-flags.intel-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
+  ln -sf $DIR/flags/code-flags.intel-wayland.conf $XDG_CONFIG_HOME/code-flags.conf
 fi
 
 if [[ $HOST = 'player' ]]; then
-  ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
-  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+  ln -sf $DIR/flags/brave-flags.nvidia-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
+  ln -sf $DIR/flags/code-flags.nvidia-x11.conf $XDG_CONFIG_HOME/code-flags.conf
 fi
 
 if [[ $HOST = 'worker' ]]; then
-  ln -sf $(dirname $(realpath $0))/flags/brave-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/brave-flags.conf
-  ln -sf $(dirname $(realpath $0))/flags/code-flags.nvidia-x11.conf ${XDG_CONFIG_HOME:-~/.config}/code-flags.conf
+  ln -sf $DIR/flags/brave-flags.nvidia-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
+  ln -sf $DIR/flags/code-flags.nvidia-x11.conf $XDG_CONFIG_HOME/code-flags.conf
 fi
 

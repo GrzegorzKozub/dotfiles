@@ -4,43 +4,43 @@ set -e -o verbose
 
 # env
 
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-~/.cache}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 
 # dirs
 
-[[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
-[[ -d ${XDG_CACHE_HOME:-~/.cache} ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}
-[[ -d ${XDG_DATA_HOME:-~/.local/share} ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}
+[[ -d $XDG_CONFIG_HOME ]] || mkdir -p $XDG_CONFIG_HOME
+[[ -d $XDG_CACHE_HOME ]] || mkdir -p $XDG_CACHE_HOME
+[[ -d $XDG_DATA_HOME ]] || mkdir -p $XDG_DATA_HOME
 
 # zsh
 
-export ZDOTDIR=${XDG_CONFIG_HOME:-~/.config}/zsh
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
-[[ -d ${XDG_DATA_HOME:-~/.local/share}/zinit ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/zinit
-mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zinit
+[[ -d $XDG_DATA_HOME/zinit ]] && rm -rf $XDG_DATA_HOME/zinit
+mkdir -p $XDG_DATA_HOME/zinit
 
-git clone https://github.com/zdharma-continuum/zinit.git ${XDG_DATA_HOME:-~/.local/share}/zinit/bin
+git clone https://github.com/zdharma-continuum/zinit.git $XDG_DATA_HOME/zinit/bin
 
 export TMUX=1
-zsh -c "source ${XDG_CONFIG_HOME:-~/.config}/zsh/.zshrc && exit"
+zsh -c "source $XDG_CONFIG_HOME/zsh/.zshrc && exit"
 unset TMUX
 
 # tmux
 
-[[ -d ${XDG_DATA_HOME:-~/.local/share}/tmux ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/tmux
-mkdir -p ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins
+[[ -d $XDG_DATA_HOME/tmux ]] && rm -rf $XDG_DATA_HOME/tmux
+mkdir -p $XDG_DATA_HOME/tmux/plugins
 
-git clone https://github.com/tmux-plugins/tpm ${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm $XDG_DATA_HOME/tmux/plugins/tpm
 
-tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf new-session -d
-${XDG_DATA_HOME:-~/.local/share}/tmux/plugins/tpm/bindings/install_plugins
+tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf new-session -d
+$XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
 # gnupg
 
-export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
 [[ -d $GNUPGHOME ]] && rm -rf $GNUPGHOME
 mkdir $GNUPGHOME && chmod 700 $GNUPGHOME
@@ -55,7 +55,7 @@ EOF
 
 # pass
 
-export PASSWORD_STORE_DIR=${XDG_DATA_HOME:-~/.local/share}/pass
+export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 
 pass init grzegorz.kozub@gmail.com
 
@@ -65,9 +65,9 @@ pass init grzegorz.kozub@gmail.com
 
 # node
 
-export NPM_CONFIG_CACHE=${XDG_CACHE_HOME:-~/.cache}/npm
-export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
-export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+export NPM_CONFIG_PREFIX=$XDG_DATA_HOME/npm
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 export NG_CLI_ANALYTICS=ci
 

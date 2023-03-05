@@ -4,8 +4,8 @@ set -e -o verbose
 
 # elixir
 
-export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
-export MIX_HOME=${XDG_DATA_HOME:-~/.local/share}/mix
+export HEX_HOME=$XDG_CACHE_HOME/hex
+export MIX_HOME=$XDG_DATA_HOME/mix
 
 [[ -d $HEX_HOME ]] && rm -rf $HEX_HOME
 [[ -d $MIX_HOME ]] && rm -rf $MIX_HOME
@@ -33,14 +33,14 @@ pip install --user --upgrade \
 
 # ruby
 
-[[ -d ${XDG_DATA_HOME:-~/.local/share}/gem ]] && rm -rf ${XDG_DATA_HOME:-~/.local/share}/gem
+[[ -d $XDG_DATA_HOME/gem ]] && rm -rf $XDG_DATA_HOME/gem
 
 gem install --user-install \
   neovim
 
 # rust
 
-export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
+export CARGO_HOME=$XDG_DATA_HOME/cargo
 
 cargo install \
   jwt-cli

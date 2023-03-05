@@ -8,15 +8,15 @@ set -e -o verbose
 
 # env
 
-export XDG_CONFIG_HOME=~/.config
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
 # dirs
 
-[[ -d ${XDG_CONFIG_HOME:-~/.config} ]] || mkdir -p ${XDG_CONFIG_HOME:-~/.config}
+[[ -d $XDG_CONFIG_HOME ]] || mkdir -p $XDG_CONFIG_HOME
 
 # links
 
-stow --dir=`dirname $0` --target=${XDG_CONFIG_HOME:-~/.config} --stow \
+stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   gamemode \
   mangohud
 
