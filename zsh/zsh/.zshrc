@@ -135,10 +135,10 @@ zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
 
 zstyle ':completion:*' completer _complete _match _approximate
 
-zstyle ':completion:*' list-separator ''
+zstyle ':completion:*' list-separator '-'
 zstyle ':completion:*' menu select
 
-zstyle ':completion:*:default' list-colors '=(#b)*(  *)=37=38;5;8' '=*=37' 'ma=0' 'tc=37'
+zstyle ':completion:*:default' list-colors '=(#b)*( - *)=37=38;5;8' '=*=37' 'ma=0' 'tc=37'
 
 zstyle ':completion:*:messages' format '%F{white}%d%f'
 zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
