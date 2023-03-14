@@ -17,6 +17,9 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
+[Containments][66][Wallpaper][org.kde.image][General]
+Image=file:///home/greg/.local/share/wallpapers/women.jpg
+
 [Containments][67]
 ItemGeometries-3840x2160=
 ItemGeometriesHorizontal=
@@ -28,6 +31,9 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
+[Containments][67][Wallpaper][org.kde.image][General]
+Image=file:///home/greg/.local/share/wallpapers/women.jpg
+
 [Containments][68]
 activityId=
 formfactor=2
@@ -37,23 +43,18 @@ location=4
 plugin=org.kde.panel
 wallpaperplugin=org.kde.image
 
-[Containments][68][Applets][69]
-immutability=1
-plugin=org.kde.plasma.kickoff
-
-[Containments][68][Applets][69][Configuration][General]
-favoritesPortedToKAstats=true
-
-[Containments][68][Applets][69][Configuration][Shortcuts]
-global=Alt+F1
-
-[Containments][68][Applets][70]
-immutability=1
-plugin=org.kde.plasma.pager
-
 [Containments][68][Applets][71]
 immutability=1
 plugin=org.kde.plasma.icontasks
+
+[Containments][68][Applets][71][Configuration][ConfigDialog]
+DialogHeight=930
+DialogWidth=1240
+
+[Containments][68][Applets][71][Configuration][General]
+iconSpacing=3
+indicateAudioStreams=false
+launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
 
 [Containments][68][Applets][72]
 immutability=1
@@ -64,19 +65,32 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][68][Applets][73][Configuration]
-PreloadWeight=55
+PreloadWeight=70
 SystrayContainmentId=74
 
 [Containments][68][Applets][82]
 immutability=1
 plugin=org.kde.plasma.digitalclock
 
-[Containments][68][Applets][83]
-immutability=1
-plugin=org.kde.plasma.showdesktop
+[Containments][68][Applets][82][Configuration][Appearance]
+autoFontAndSize=false
+customDateFormat=d MMM
+dateFormat=custom
+fontFamily=Noto Sans
+fontSize=14
+fontStyleName=Regular
+showDate=false
+
+[Containments][68][Applets][82][Configuration][ConfigDialog]
+DialogHeight=930
+DialogWidth=1240
+
+[Containments][68][ConfigDialog]
+DialogHeight=118
+DialogWidth=3840
 
 [Containments][68][General]
-AppletOrder=69;70;71;72;73;82;83
+AppletOrder=71;72;73;82
 
 [Containments][74]
 activityId=
@@ -85,6 +99,8 @@ immutability=1
 lastScreen=0
 location=4
 plugin=org.kde.plasma.private.systemtray
+popupHeight=768
+popupWidth=768
 wallpaperplugin=org.kde.image
 
 [Containments][74][Applets][75]
@@ -102,9 +118,8 @@ migrated=true
 immutability=1
 plugin=org.kde.plasma.notifications
 
-[Containments][74][Applets][78]
-immutability=1
-plugin=org.kde.kscreen
+[Containments][74][Applets][78][Configuration]
+PreloadWeight=42
 
 [Containments][74][Applets][79]
 immutability=1
@@ -134,8 +149,14 @@ plugin=org.kde.plasma.networkmanagement
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
+[Containments][74][ConfigDialog]
+DialogHeight=930
+DialogWidth=1240
+
 [Containments][74][General]
-extraItems=org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.devicenotifier,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.bluetooth
+extraItems=org.kde.plasma.networkmanagement,org.kde.plasma.devicenotifier,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.bluetooth
+hiddenItems=org.kde.plasma.clipboard,org.kde.plasma.keyboardlayout,org.kde.plasma.notifications
+iconSpacing=1
 knownItems=org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.devicenotifier,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.bluetooth
 
 [ScreenMapping]
