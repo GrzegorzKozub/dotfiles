@@ -51,6 +51,10 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.plasma.icontasks
 
+[Containments][68][Applets][71][Configuration][ConfigDialog]
+DialogHeight=930
+DialogWidth=1240
+
 [Containments][68][Applets][71][Configuration][General]
 iconSpacing=3
 indicateAudioStreams=false
@@ -77,6 +81,10 @@ fontSize=14
 fontStyleName=Regular
 showDate=false
 
+[Containments][68][Applets][82][Configuration][ConfigDialog]
+DialogHeight=930
+DialogWidth=1240
+
 [Containments][68][Applets][88]
 immutability=1
 plugin=org.kde.plasma.panelspacer
@@ -84,6 +92,10 @@ plugin=org.kde.plasma.panelspacer
 [Containments][68][Applets][89]
 immutability=1
 plugin=org.kde.plasma.panelspacer
+
+[Containments][68][ConfigDialog]
+DialogHeight=118
+DialogWidth=3840
 
 [Containments][68][General]
 AppletOrder=89;71;88;73;82
@@ -144,6 +156,10 @@ plugin=org.kde.plasma.networkmanagement
 [Containments][74][Applets][87]
 immutability=1
 plugin=org.kde.plasma.bluetooth
+
+[Containments][74][ConfigDialog]
+DialogHeight=930
+DialogWidth=1240
 
 [Containments][74][General]
 extraItems=org.kde.plasma.networkmanagement,org.kde.plasma.devicenotifier,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.bluetooth
