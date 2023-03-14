@@ -17,6 +17,10 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
+[Containments][66][General]
+ToolBoxButtonState=topcenter
+ToolBoxButtonX=1069
+
 [Containments][66][Wallpaper][org.kde.image][General]
 Image=file:///home/greg/.local/share/wallpapers/women.jpg
 
@@ -47,18 +51,10 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.plasma.icontasks
 
-[Containments][68][Applets][71][Configuration][ConfigDialog]
-DialogHeight=930
-DialogWidth=1240
-
 [Containments][68][Applets][71][Configuration][General]
 iconSpacing=3
 indicateAudioStreams=false
 launchers=applications:org.kde.dolphin.desktop,applications:kitty.desktop,applications:code.desktop,applications:postman.desktop,applications:brave-browser.desktop,applications:org.keepassxc.KeePassXC.desktop
-
-[Containments][68][Applets][72]
-immutability=1
-plugin=org.kde.plasma.marginsseparator
 
 [Containments][68][Applets][73]
 immutability=1
@@ -81,16 +77,16 @@ fontSize=14
 fontStyleName=Regular
 showDate=false
 
-[Containments][68][Applets][82][Configuration][ConfigDialog]
-DialogHeight=930
-DialogWidth=1240
+[Containments][68][Applets][88]
+immutability=1
+plugin=org.kde.plasma.panelspacer
 
-[Containments][68][ConfigDialog]
-DialogHeight=118
-DialogWidth=3840
+[Containments][68][Applets][89]
+immutability=1
+plugin=org.kde.plasma.panelspacer
 
 [Containments][68][General]
-AppletOrder=71;72;73;82
+AppletOrder=89;71;88;73;82
 
 [Containments][74]
 activityId=
@@ -148,10 +144,6 @@ plugin=org.kde.plasma.networkmanagement
 [Containments][74][Applets][87]
 immutability=1
 plugin=org.kde.plasma.bluetooth
-
-[Containments][74][ConfigDialog]
-DialogHeight=930
-DialogWidth=1240
 
 [Containments][74][General]
 extraItems=org.kde.plasma.networkmanagement,org.kde.plasma.devicenotifier,org.kde.plasma.volume,org.kde.plasma.notifications,org.kde.plasma.clipboard,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.bluetooth
