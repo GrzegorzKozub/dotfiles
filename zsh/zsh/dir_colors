@@ -31,6 +31,7 @@ EXEC 32
 
 .cow 35
 .fsa 35
+.mrimg 35
 .iso 35
 .wim 35
 
@@ -41,10 +42,12 @@ EXEC 32
 .gitignore 37
 .gitmodules 37
 
+.backup 90
 .bak 90
 .log 90
 .old 90
 .orig 90
+.original 90
 .part 90
 .swp 90
 .tmp 90
