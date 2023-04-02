@@ -234,12 +234,14 @@ my-exit() { exit }; bind '\ex' my-exit
 
 dir() { cd $1; zle my-redraw-prompt }
 
-my-code() { dir ~/code }; bind '\ecode' my-code
-my-arch() { dir ~/code/arch }; bind '\earch' my-arch
-my-dotfiles() { dir ~/code/dotfiles }; bind '\edot' my-dotfiles
+my-config() { dir $XDG_CONFIG_HOME }; bind '^gxc' my-config
+my-cache() { dir $XDG_CACHE_HOME }; bind '^gxa' my-cache
+my-config() { dir $XDG_DATA_HOME }; bind '^gxd' my-data
 
-my-data() { dir /run/media/$USER/data }; bind '\edata' my-data
-my-games() { dir /run/media/$USER/games }; bind '\egames' my-games
+my-code() { dir ~/code }; bind '^gc' my-code
+
+my-data() { dir /run/media/$USER/data }; bind '^gd' my-data
+my-games() { dir /run/media/$USER/games }; bind '^gg' my-games
 
 # aws
 
