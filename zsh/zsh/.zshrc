@@ -284,11 +284,13 @@ rdp() {
 export FZF_DEFAULT_OPTS="
   --color dark,bg+:-1,fg:$MY_FZF_COLOR_FG,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL
   --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER
+  --ellipsis '…'
   --layout reverse-list
   --margin 0,0,0,0
   --marker '$MY_FZF_CHAR_MARKER'
   --no-bold
   --no-info
+  --no-scrollbar
   --pointer '$MY_FZF_CHAR_POINTER'
   --prompt '$MY_FZF_CHAR_PROMPT'
   --tabstop 2
