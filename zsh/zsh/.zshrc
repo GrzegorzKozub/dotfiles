@@ -294,10 +294,10 @@ export FZF_DEFAULT_OPTS="
   --tabstop 2
 "
 
-bindkey -M viins '^f' fzf-cd-widget
-bindkey -M vicmd '^f' fzf-cd-widget
-bindkey -M vicmd '^r' fzf-history-widget # already bound in viins
-bindkey -M vicmd '^t' fzf-file-widget # already bound in viins
+# default bindings in vicmd and viins:
+# ^[c  fzf-cd-widget
+# ^r   fzf-history-widget
+# ^t   fzf-file-widget
 
 # git
 
