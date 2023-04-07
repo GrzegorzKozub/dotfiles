@@ -40,7 +40,7 @@ autoload -Uz _zinit
 zinit ice depth=1
 zinit light romkatv/zsh-defer
 
-zinit light softmoth/zsh-vim-mode
+zsh-defer zinit light softmoth/zsh-vim-mode
 
 # zinit ice wait lucid
 # zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
@@ -396,6 +396,8 @@ MODE_CURSOR_VISUAL=$MODE_CURSOR_VICMD
 MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
 MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
 MODE_CURSOR_SEARCH='steady underline'
+
+print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar 
 
 # powerlevel10k
 
