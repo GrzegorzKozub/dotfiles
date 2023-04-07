@@ -37,15 +37,18 @@ source $ZINIT[HOME_DIR]/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+zinit ice depth=1
+zinit light romkatv/zsh-defer
+
 zinit light softmoth/zsh-vim-mode
 
 # zinit ice wait lucid
 # zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
 
-zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
+zsh-defer zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 
-zinit ice wait lucid
-zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
+zsh-defer zinit ice wait lucid
+zsh-defer zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after zsh-vim-mode
 
 zinit ice lucid depth=1
 zinit light zdharma-continuum/fast-syntax-highlighting
@@ -58,19 +61,16 @@ zinit light GrzegorzKozub/themes # after zsh-vim-mode and fast-syntax-highlighti
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-zinit ice depth=1
-zinit light romkatv/zsh-defer
+zsh-defer zinit snippet PZT::modules/terminal/init.zsh
 
-zinit snippet PZT::modules/terminal/init.zsh
-
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/docker/_docker
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/docker-compose/_docker-compose
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/docker-machine/_docker-machine
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/pip/_pip
+zsh-defer zinit ice wait lucid as'completion'
+zsh-defer zinit snippet OMZ::plugins/docker/_docker
+zsh-defer zinit ice wait lucid as'completion'
+zsh-defer zinit snippet OMZ::plugins/docker-compose/_docker-compose
+zsh-defer zinit ice wait lucid as'completion'
+zsh-defer zinit snippet OMZ::plugins/docker-machine/_docker-machine
+zsh-defer zinit ice wait lucid as'completion'
+zsh-defer zinit snippet OMZ::plugins/pip/_pip
 
 # options
 
@@ -239,8 +239,9 @@ export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/credentials
 export AWS_PROFILE=apsis-waw-stage
 export AWS_SDK_LOAD_CONFIG=1
 
-autoload -Uz bashcompinit && bashcompinit
-complete -C /usr/bin/aws_completer aws
+zsh-defer autoload -Uz bashcompinit
+zsh-defer bashcompinit
+zsh-defer complete -C /usr/bin/aws_completer aws
 
 alias myip="curl http://checkip.amazonaws.com/"
 
