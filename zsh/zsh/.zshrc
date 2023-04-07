@@ -39,8 +39,8 @@ autoload -Uz _zinit
 
 zinit light softmoth/zsh-vim-mode
 
-zinit ice wait lucid
-zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
+# zinit ice wait lucid
+# zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
 
 zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 
@@ -202,17 +202,6 @@ alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias ls='ls --color=auto'
 
-# dirhistory
-
-() {
-  local alt='^[[1;3'
-
-  bindkey -M vicmd "${alt}D" dirhistory_zle_dirhistory_back
-  bindkey -M vicmd "${alt}C" dirhistory_zle_dirhistory_future
-  bindkey -M vicmd "${alt}A" dirhistory_zle_dirhistory_up
-  bindkey -M vicmd "${alt}B" dirhistory_zle_dirhistory_down
-}
-
 # macros
 
 my-redraw-prompt() {
@@ -280,6 +269,9 @@ rdp() {
 }
 
 # fzf
+
+zsh-defer source /usr/share/fzf/completion.zsh
+zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 export FZF_DEFAULT_OPTS="
   --color dark,bg+:-1,fg:$MY_FZF_COLOR_FG,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL
@@ -350,14 +342,6 @@ my-lf-cd() {
 bind '\el' my-lf-cd
 
 # neovim
-
-# export VIMINIT="
-#   if !has('nvim')
-#     let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/vim/vimrc'
-#   else
-#     let \$MYVIMRC='${XDG_CONFIG_HOME:-~/.config}/nvim/init.lua'
-#   endif
-#   source \$MYVIMRC"
 
 alias vim='nvim'
 
