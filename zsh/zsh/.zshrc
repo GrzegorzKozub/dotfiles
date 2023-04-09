@@ -12,7 +12,6 @@ path=(
   ~/.local/share/cargo/bin
   ~/.local/share/gem/ruby/3.0.0/bin
   ~/.local/share/go/bin
-  ~/.local/share/mix/escripts
   ~/.local/share/npm/bin
   ~/code/apsis
   ~/code/arch
@@ -414,7 +413,7 @@ MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
 MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
 MODE_CURSOR_SEARCH='steady underline'
 
-print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar 
+print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar
 
 # powerlevel10k
 
