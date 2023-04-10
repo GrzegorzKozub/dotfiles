@@ -378,6 +378,10 @@ export NG_CLI_ANALYTICS=ci
 
 export PASSWORD_STORE_DIR=${XDG_DATA_HOME:-~/.local/share}/pass
 
+# pkgfile
+
+zsh-defer source /usr/share/doc/pkgfile/command-not-found.zsh
+
 # python
 
 export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint
