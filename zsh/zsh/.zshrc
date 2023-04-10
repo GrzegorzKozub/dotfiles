@@ -39,10 +39,8 @@ autoload -Uz _zinit
 zinit ice depth=1
 zinit light romkatv/zsh-defer
 
-zsh-defer zinit light softmoth/zsh-vim-mode
-
-# zinit ice wait lucid
-# zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh # after zsh-vim-mode
+# zsh-defer zinit light softmoth/zsh-vim-mode
+zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh # don't defer
 
 zsh-defer zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 
@@ -399,6 +397,12 @@ export RUSTUP_HOME=${XDG_DATA_HOME:-~/.local/share}/rustup
 
 alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 
+# vi-mode
+
+VI_MODE_CURSOR_VISUAL=2
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
 # vscode
 
 alias code='code 2> /dev/null'
@@ -409,14 +413,14 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 
 # zsh-vim-mode
 
-MODE_CURSOR_VIINS='blinking bar'
-MODE_CURSOR_VICMD='blinking block'
-MODE_CURSOR_VISUAL=$MODE_CURSOR_VICMD
-MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
-MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
-MODE_CURSOR_SEARCH='steady underline'
+# MODE_CURSOR_VIINS='blinking bar'
+# MODE_CURSOR_VICMD='blinking block'
+# MODE_CURSOR_VISUAL=$MODE_CURSOR_VICMD
+# MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
+# MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
+# MODE_CURSOR_SEARCH='steady underline'
 
-print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar
+# print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar
 
 # powerlevel10k
 
