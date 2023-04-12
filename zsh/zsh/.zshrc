@@ -431,6 +431,8 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 # remaining habits:
 # - up/down arrows search-complete with colors
 # - cursor shape changes
+# - change/delete/surround within...
+# - ctrl+c from continuation prompt
 
 bindkey -M vicmd '^[[1;5D' backward-word # ctrl+left
 bindkey -M viins '^[[1;5D' backward-word # ctrl+left
