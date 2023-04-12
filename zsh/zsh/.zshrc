@@ -40,7 +40,11 @@ zinit ice depth=1
 zinit light romkatv/zsh-defer
 
 # zsh-defer zinit light softmoth/zsh-vim-mode
-zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh # don't defer
+
+# zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh # don't defer
+
+# zinit ice depth=1
+# zinit light jeffreytse/zsh-vi-mode
 
 zsh-defer zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 
@@ -399,9 +403,9 @@ alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
 
 # vi-mode
 
-VI_MODE_CURSOR_VISUAL=2
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
+# VI_MODE_CURSOR_VISUAL=2
+# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+# VI_MODE_SET_CURSOR=true
 
 # vscode
 
@@ -421,6 +425,37 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 # MODE_CURSOR_SEARCH='steady underline'
 
 # print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar
+
+# my own vi mode
+
+# remaining habits:
+# - up/down arrows search-complete with colors
+# - cursor shape changes
+
+bindkey -M vicmd '^[[1;5D' backward-word # ctrl+left
+bindkey -M viins '^[[1;5D' backward-word # ctrl+left
+
+bindkey -M vicmd '^[[1;5C' forward-word # ctrl+right
+bindkey -M viins '^[[1;5C' forward-word # ctrl+right
+
+bindkey -M vicmd '^[[1~' beginning-of-line # home
+bindkey -M viins '^[[1~' beginning-of-line # home
+
+bindkey -M vicmd '^[[4~' end-of-line # end
+bindkey -M viins '^[[4~' end-of-line # end
+
+bindkey -M vicmd '^[[3~' delete-char # delete
+bindkey -M viins '^[[3~' delete-char # delete
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'vv' edit-command-line
+
+bindkey -M vicmd '^P' up-history # ctrl+p
+bindkey -M viins '^P' up-history # ctrl+p
+
+bindkey -M vicmd '^N' down-history # ctrl+n
+bindkey -M viins '^N' down-history # ctrl+n
 
 # powerlevel10k
 
