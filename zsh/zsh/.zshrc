@@ -39,13 +39,28 @@ autoload -Uz _zinit
 zinit ice depth=1
 zinit light romkatv/zsh-defer
 
-# zsh-defer zinit light softmoth/zsh-vim-mode
+
+
+
+
+
+#
+#
+
+
+ # zsh-defer zinit light softmoth/zsh-vim-mode
 
 # zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh # don't defer
 
-# zinit ice depth=1
-# zinit light jeffreytse/zsh-vi-mode
+ zinit ice depth=1
+ zinit light jeffreytse/zsh-vi-mode
 
+     autoload -Uz add-zsh-hook
+     autoload -Uz add-zle-hook-widget
+#
+      vim-mode-line-pre-redraw  () {  }
+#
+     add-zle-hook-widget line-pre-redraw vim-mode-line-pre-redraw
 zsh-defer zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 
 zsh-defer zinit ice wait lucid
@@ -417,12 +432,12 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 
 # zsh-vim-mode
 
-# MODE_CURSOR_VIINS='blinking bar'
-# MODE_CURSOR_VICMD='blinking block'
-# MODE_CURSOR_VISUAL=$MODE_CURSOR_VICMD
-# MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
-# MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
-# MODE_CURSOR_SEARCH='steady underline'
+MODE_CURSOR_VIINS='blinking bar'
+MODE_CURSOR_VICMD='blinking block'
+MODE_CURSOR_VISUAL=$MODE_CURSOR_VICMD
+MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
+MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
+MODE_CURSOR_SEARCH='steady underline'
 
 # print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar
 
@@ -432,32 +447,67 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 # - up/down arrows search-complete with colors
 # - cursor shape changes
 # - change/delete/surround within...
-# - ctrl+c from continuation prompt
 
-bindkey -M vicmd '^[[1;5D' backward-word # ctrl+left
-bindkey -M viins '^[[1;5D' backward-word # ctrl+left
+# bindkey -M vicmd '^[[1;5D' backward-word # ctrl+left
+# bindkey -M viins '^[[1;5D' backward-word # ctrl+left
+#
+# bindkey -M vicmd '^[[1;5C' forward-word # ctrl+right
+# bindkey -M viins '^[[1;5C' forward-word # ctrl+right
+#
+# bindkey -M vicmd '^[[1~' beginning-of-line # home
+# bindkey -M viins '^[[1~' beginning-of-line # home
+#
+# bindkey -M vicmd '^[[4~' end-of-line # end
+# bindkey -M viins '^[[4~' end-of-line # end
+#
+# bindkey -M vicmd '^[[3~' delete-char # delete
+# bindkey -M viins '^[[3~' delete-char # delete
+#
+# autoload -Uz edit-command-line
+# zle -N edit-command-line
+# bindkey -M vicmd 'vv' edit-command-line
+#
+# bindkey -M vicmd '^P' up-history # ctrl+p
+# bindkey -M viins '^P' up-history # ctrl+p
+#
+# bindkey -M vicmd '^N' down-history # ctrl+n
+# bindkey -M viins '^N' down-history # ctrl+n
+#
+#
+# # bindkey -v
+# autoload -U select-quoted select-bracketed surround
+# zle -N select-quoted
+# zle -N select-bracketed
+# zle -N delete-surround surround
+# zle -N add-surround surround
+# zle -N change-surround surround
+#
+# for m in visual viopp; do
+#     for c in {a,i}{\',\",\`}; do
+#         bindkey -M $m $c select-quoted
+#     done
+#     for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+#         bindkey -M $m $c select-bracketed
+#     done
+# done
+# bindkey -a cs change-surround # make these two vicmd
+# bindkey -a ds delete-surround
+# bindkey -M visual S add-surround
+#
 
-bindkey -M vicmd '^[[1;5C' forward-word # ctrl+right
-bindkey -M viins '^[[1;5C' forward-word # ctrl+right
 
-bindkey -M vicmd '^[[1~' beginning-of-line # home
-bindkey -M viins '^[[1~' beginning-of-line # home
 
-bindkey -M vicmd '^[[4~' end-of-line # end
-bindkey -M viins '^[[4~' end-of-line # end
 
-bindkey -M vicmd '^[[3~' delete-char # delete
-bindkey -M viins '^[[3~' delete-char # delete
 
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd 'vv' edit-command-line
 
-bindkey -M vicmd '^P' up-history # ctrl+p
-bindkey -M viins '^P' up-history # ctrl+p
 
-bindkey -M vicmd '^N' down-history # ctrl+n
-bindkey -M viins '^N' down-history # ctrl+n
+
+
+
+
+
+
+
 
 # powerlevel10k
 
