@@ -1,3 +1,5 @@
+# perf check: for i in $(seq 1 10); do time zsh -i -c exit; done;
+
 # dirs
 
 [[ -d ${XDG_CACHE_HOME:-~/.cache}/zsh ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}/zsh
