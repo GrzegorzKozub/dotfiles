@@ -1,4 +1,8 @@
-# perf check: for i in $(seq 1 10); do time zsh -i -c exit; done;
+# notes
+
+# perf check:     for i in $(seq 1 10); do time zsh -i -c exit; done
+# key sequence:   cat -v
+#                 showkey -a
 
 # dirs
 
@@ -28,64 +32,74 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 export MY_THEME='gruvbox-dark'
 
-# vim mode
+# helpers
 
-bindkey -M vicmd '^[[1;5D' backward-word # ctrl+left
-bindkey -M viins '^[[1;5D' backward-word # ctrl+left
+my-bindkey() {
+  for keymap in vicmd viins; do bindkey -M $keymap $1 $2; done
+}
 
-bindkey -M vicmd '^[[1;5C' forward-word # ctrl+right
-bindkey -M viins '^[[1;5C' forward-word # ctrl+right
+my-redraw-prompt() {
+  for precmd in $precmd_functions; do $precmd; done
+  zle reset-prompt
+}
+zle -N my-redraw-prompt
 
-bindkey -M vicmd '^[[1~' beginning-of-line # home
-bindkey -M viins '^[[1~' beginning-of-line # home
+# vi mode
 
-bindkey -M vicmd '^[[4~' end-of-line # end
-bindkey -M viins '^[[4~' end-of-line # end
+my-bindkey '^[[1;5D' backward-word # ctrl+left
+my-bindkey '^[[1;5C' forward-word # ctrl+right
+my-bindkey '^[[1~' beginning-of-line # home
+my-bindkey '^[[4~' end-of-line # end
+my-bindkey '^[[3~' delete-char # delete
+my-bindkey '^P' up-history # ctrl+p
+my-bindkey '^N' down-history # ctrl+n
 
-bindkey -M vicmd '^[[3~' delete-char # delete
-bindkey -M viins '^[[3~' delete-char # delete
+# complete from history
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey -M viins '^[[A' up-line-or-beginning-search # up
+bindkey -M viins '^[[B' down-line-or-beginning-search # down
+
+# handle muti-line commands
+bindkey -M vicmd '^[[A' up-line-or-history # up
+bindkey -M vicmd '^[[B' down-line-or-history # down
+
+autoload -U select-bracketed select-quoted surround
+zle -N select-bracketed
+zle -N select-quoted
+zle -N add-surround surround
+zle -N delete-surround surround
+zle -N change-surround surround
+
+for keymap in viopp visual; do
+  for sequence in {a,i}${(s..)^:-'()[]{}<>bB'}; do bindkey -M $keymap $sequence select-bracketed; done
+  for sequence in {a,i}{\',\",\`}; do bindkey -M $keymap $sequence select-quoted; done
+done
+
+bindkey -M visual 'S' add-surround
+bindkey -M vicmd 'cs' change-surround
+bindkey -M vicmd 'ds' delete-surround
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'vv' edit-command-line
 
-bindkey -M vicmd '^P' up-history # ctrl+p
-bindkey -M viins '^P' up-history # ctrl+p
+# vi mode cursor
 
-bindkey -M vicmd '^N' down-history # ctrl+n
-bindkey -M viins '^N' down-history # ctrl+n
+function my-cursor() {
+  case ${1:-'main'} in vicmd|viopp|visual) local shape=2;; main|viins|*) local shape=6;; esac
+  printf $'\e[%d q' $shape
+}
 
-# cat -v or showkey -a
-# bindkey -v
-autoload -U select-quoted select-bracketed surround
-zle -N select-quoted
-zle -N select-bracketed
-zle -N delete-surround surround
-zle -N add-surround surround
-zle -N change-surround surround
+function zle-keymap-select() { my-cursor $KEYMAP }
+zle -N zle-keymap-select
 
-for m in visual viopp; do
-    for c in {a,i}{\',\",\`}; do
-        bindkey -M $m $c select-quoted
-    done
-    for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-        bindkey -M $m $c select-bracketed
-    done
-done
-bindkey -a cs change-surround # make these two vicmd
-bindkey -a ds delete-surround
-bindkey -M visual S add-surround
+function zle-line-init() { my-cursor main }
+zle -N zle-line-init
 
-autoload -Uz add-zsh-hook
-autoload -Uz add-zle-hook-widget
-vim-mode-line-pre-redraw  () {  }
-add-zle-hook-widget line-pre-redraw vim-mode-line-pre-redraw
- vim-mode-precmd           () {  }
-    add-zsh-hook precmd vim-mode-precmd
-
-
-
-
+function my-visual-mode { my-cursor visual && zle .visual-mode }
+zle -N visual-mode my-visual-mode
 
 # plugins
 
@@ -106,15 +120,15 @@ zinit light romkatv/zsh-defer
 zinit ice wait lucid
 zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 
-zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after vim mode; don't defer
+zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after vi mode; don't defer
 
 zinit ice lucid depth=1
-zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting # after vi mode
 
 zinit ice nocompile lucid depth=1 \
   atload"source ./zsh/$MY_THEME.sh" \
   atload"fast-theme ./fast-syntax-highlighting/$MY_THEME.ini --quiet"
-zinit light GrzegorzKozub/themes # after vim mode and fast-syntax-highlighting
+zinit light GrzegorzKozub/themes # after fast-syntax-highlighting
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
@@ -215,20 +229,6 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
 
-# up and down for muti-line commands in command mode
-bindkey -M vicmd '^[[A' up-line-or-history
-bindkey -M vicmd '^[[B' down-line-or-history
-
-# up and down history completion in insert mode
-
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
-bindkey -M viins '^[[A' up-line-or-beginning-search
-bindkey -M viins '^[[B' down-line-or-beginning-search
-
 # history
 
 HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
@@ -258,35 +258,18 @@ alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias ls='ls --color=auto'
 
-# macros
+# dir shortcuts
 
-my-redraw-prompt() {
-  local precmd
-  for precmd in $precmd_functions; do
-    $precmd
-  done
-  zle reset-prompt
-}
-zle -N my-redraw-prompt
+my-dir() { cd $1; zle my-redraw-prompt }
 
-bind() {
-  zle -N $2
-  bindkey -M vicmd $1 $2
-  bindkey -M viins $1 $2
-}
+my-cache() { my-dir $XDG_CACHE_HOME }; zle -N my-cache; my-bindkey '^gxa' my-cache
+my-config() { my-dir $XDG_CONFIG_HOME }; zle -N my-config; my-bindkey '^gxc' my-config
+my-share() { my-dir $XDG_DATA_HOME }; zle -N my-share; my-bindkey '^gxd' my-share
 
-my-exit() { exit }; bind '\ex' my-exit
+my-code() { my-dir ~/code }; zle -N my-code; my-bindkey '^gc' my-code
 
-dir() { cd $1; zle my-redraw-prompt }
-
-my-config() { dir $XDG_CONFIG_HOME }; bind '^gxc' my-config
-my-cache() { dir $XDG_CACHE_HOME }; bind '^gxa' my-cache
-my-config() { dir $XDG_DATA_HOME }; bind '^gxd' my-data
-
-my-code() { dir ~/code }; bind '^gc' my-code
-
-my-data() { dir /run/media/$USER/data }; bind '^gd' my-data
-my-games() { dir /run/media/$USER/games }; bind '^gg' my-games
+my-data() { my-dir /run/media/$USER/data }; zle -N my-data; my-bindkey '^gd' my-data
+my-games() { my-dir /run/media/$USER/games }; zle -N my-games; my-bindkey '^gg' my-games
 
 # aws
 
@@ -299,7 +282,7 @@ zsh-defer autoload -Uz bashcompinit
 zsh-defer bashcompinit
 zsh-defer complete -C /usr/bin/aws_completer aws
 
-alias myip="curl http://checkip.amazonaws.com/"
+alias myip='curl http://checkip.amazonaws.com/'
 
 # dirhistory
 
@@ -370,8 +353,7 @@ fzf-history-widget-no-numbers() {
   return $ret
 }
 zsh-defer zle -N fzf-history-widget-no-numbers
-zsh-defer bindkey -M vicmd '^r' fzf-history-widget-no-numbers
-zsh-defer bindkey -M viins '^r' fzf-history-widget-no-numbers
+zsh-defer my-bindkey '^r' fzf-history-widget-no-numbers
 
 # git
 
@@ -380,16 +362,18 @@ my-git-checkout-branch() {
   zle vi-end-of-line
   zle vi-insert
 }
-bind '\ebranch' my-git-checkout-branch
+zle -N my-git-checkout-branch
+my-bindkey '\ebranch' my-git-checkout-branch viins vicmd
 
 my-git-commit() {
-  BUFFER='git commit -m " [sc-]"'
+  BUFFER="git commit -m ' [sc-]'"
   zle vi-end-of-line
   for i in $(seq 2); do zle vi-backward-word; done
   for i in $(seq 2); do zle vi-backward-char; done
   zle vi-insert
 }
-bind '\ecommit' my-git-commit
+zle -N my-git-commit
+my-bindkey '\ecommit' my-git-commit viins vicmd
 
 # gnupg
 
@@ -419,7 +403,8 @@ my-lf-cd() {
   lf -last-dir-path="$temp_file" "$@" < $TTY
   my-cd $temp_file
 }
-bind '\el' my-lf-cd
+zle -N my-lf-cd
+my-bindkey '\el' my-lf-cd viins vicmd
 
 # neovim
 
