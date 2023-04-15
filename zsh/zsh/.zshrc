@@ -117,8 +117,7 @@ zinit light romkatv/zsh-defer
 # zsh-defer zinit light softmoth/zsh-vim-mode
 # zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh # don't defer
 
-zinit ice wait lucid
-zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
+zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh # don't defer
 
 zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after vi mode; don't defer
 
