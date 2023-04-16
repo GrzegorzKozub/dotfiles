@@ -1,38 +1,33 @@
-# notes
-
-# perf check:     for i in $(seq 1 10); do time zsh -i -c exit; done
-# key sequence:   cat -v
-#                 showkey -a
+# perf check: for i in $(seq 1 10); do time zsh -i -c exit; done
+# key scan: cat -v or showkey -a
 
 # dirs
 
 [[ -d ${XDG_CACHE_HOME:-~/.cache}/zsh ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}/zsh
 [[ -d ${XDG_DATA_HOME:-~/.local/share}/zsh ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zsh
 
-# paths
+# plugin support
 
-typeset -U path
+declare -A ZINIT
+export ZINIT[HOME_DIR]=${XDG_DATA_HOME:-~/.local/share}/zinit
+export ZINIT[ZCOMPDUMP_PATH]=${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
 
-path=(
-  ~/.local/bin
-  ~/.local/share/cargo/bin
-  ~/.local/share/gem/ruby/3.0.0/bin
-  ~/.local/share/go/bin
-  ~/.local/share/npm/bin
-  ~/code/apsis
-  ~/code/arch
-  $path[@]
-)
+source $ZINIT[HOME_DIR]/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# terminal emulator title
+# delay support
 
-zstyle ':prezto:module:terminal' auto-title 'yes'
+zinit ice depth=1 && zinit light romkatv/zsh-defer
 
 # theme
 
 export MY_THEME='gruvbox-dark'
 
-# helpers
+zinit ice nocompile lucid depth=1 atload"source ./zsh/$MY_THEME.sh"
+zinit light GrzegorzKozub/themes
+
+# functions
 
 my-bindkey() {
   for keymap in vicmd viins; do bindkey -M $keymap $1 $2; done
@@ -44,7 +39,17 @@ my-redraw-prompt() {
 }
 zle -N my-redraw-prompt
 
+palette() {
+  for color in {0..15}; do
+    print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
+  done
+  print '\n'
+}
+
 # vi mode
+
+# zsh-defer zinit light softmoth/zsh-vim-mode
+# zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
 
 my-bindkey '^[[1;5D' backward-word # ctrl+left
 my-bindkey '^[[1;5C' forward-word # ctrl+right
@@ -101,46 +106,6 @@ zle -N zle-line-init
 function my-visual-mode { my-cursor visual && zle .visual-mode }
 zle -N visual-mode my-visual-mode
 
-# plugins
-
-declare -A ZINIT
-export ZINIT[HOME_DIR]=${XDG_DATA_HOME:-~/.local/share}/zinit
-export ZINIT[ZCOMPDUMP_PATH]=${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
-
-source $ZINIT[HOME_DIR]/bin/zinit.zsh
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-zinit ice depth=1
-zinit light romkatv/zsh-defer
-
-# zsh-defer zinit light softmoth/zsh-vim-mode
-# zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh # don't defer
-
-zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh # don't defer
-
-zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh # after vi mode; don't defer
-
-zinit ice lucid depth=1
-zinit light zdharma-continuum/fast-syntax-highlighting # after vi mode
-
-zinit ice nocompile lucid depth=1 \
-  atload"source ./zsh/$MY_THEME.sh" \
-  atload"fast-theme ./fast-syntax-highlighting/$MY_THEME.ini --quiet"
-zinit light GrzegorzKozub/themes # after fast-syntax-highlighting
-
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
-
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/docker/_docker
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/docker-compose/_docker-compose
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/docker-machine/_docker-machine
-zinit ice wait lucid as'completion'
-zinit snippet OMZ::plugins/pip/_pip
-
 # options
 
 setopt AUTO_PUSHD # pushd on every cd
@@ -153,27 +118,41 @@ setopt PUSHD_MINUS # cd - goes to the previous dir
 
 zle_bracketed_paste=() # don't select pasted text
 
-export EDITOR='nvim'
-export DIFFPROG='nvim -d'
-export VISUAL='nvim'
-
-# colors
-
-autoload -Uz colors && colors
-
-eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dir_colors)
-
-palette() {
-  for color in {0..15}; do
-    print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
-  done
-  print '\n'
-}
+zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # prompt
 
 autoload -Uz promptinit && promptinit
+
 setopt PROMPT_SUBST
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+# aliases
+
+alias clip='xclip -selection clipboard'
+alias df='df -h'
+alias diff='diff --color'
+alias du='du -hd1'
+alias grep='grep --color=auto --exclude-dir={.git}'
+alias la='ls -lAh'
+alias ls='ls --color=auto'
+
+# paths
+
+typeset -U path
+
+path=(
+  ~/.local/bin
+  ~/.local/share/cargo/bin
+  ~/.local/share/gem/ruby/3.0.0/bin
+  ~/.local/share/go/bin
+  ~/.local/share/npm/bin
+  ~/code/apsis
+  ~/code/arch
+  $path[@]
+)
 
 # completion
 
@@ -196,8 +175,9 @@ setopt LIST_PACKED
 setopt MENU_COMPLETE # highlight first completion menu item
 setopt PATH_DIRS # search for paths on commands with slashes
 
-zmodload -i zsh/complist
-autoload -Uz compinit && compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
+zsh-defer zmodload -i zsh/complist
+zsh-defer autoload -Uz compinit && zsh-defer compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
+zsh-defer autoload -Uz bashcompinit && zsh-defer bashcompinit # required by aws
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
@@ -228,6 +208,11 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
 
+zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/docker/_docker
+zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/docker-compose/_docker-compose
+zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/docker-machine/_docker-machine
+zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/pip/_pip
+
 # history
 
 HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
@@ -247,15 +232,53 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY # don't run command immediately
 setopt INC_APPEND_HISTORY # add commands immediately
 
-# aliases
+# fzf
 
-alias clip='xclip -selection clipboard'
-alias df='df -h'
-alias diff='diff --color'
-alias du='du -hd1'
-alias grep='grep --color=auto --exclude-dir={.git}'
-alias la='ls -lAh'
-alias ls='ls --color=auto'
+zsh-defer source /usr/share/fzf/completion.zsh
+zsh-defer source /usr/share/fzf/key-bindings.zsh
+
+export FZF_DEFAULT_OPTS="
+  --color dark,bg+:-1,fg:$MY_FZF_COLOR_FG,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL
+  --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER
+  --ellipsis '…'
+  --layout reverse-list
+  --margin 0,0,0,0
+  --marker '$MY_FZF_CHAR_MARKER'
+  --no-bold
+  --no-info
+  --no-scrollbar
+  --pointer '$MY_FZF_CHAR_POINTER'
+  --prompt '$MY_FZF_CHAR_PROMPT'
+  --tabstop 2
+"
+
+fzf-history-widget-no-numbers() {
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  local opts="--height ${FZF_TMUX_HEIGHT:-40%}
+    $FZF_DEFAULT_OPTS --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore
+    $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m"
+  local selected=( $( fc -rln 1 | FZF_DEFAULT_OPTS=$opts $(__fzfcmd) ) )
+  local ret=$?
+  BUFFER=$selected
+  zle vi-end-of-line
+  zle reset-prompt
+  return $ret
+}
+zsh-defer zle -N fzf-history-widget-no-numbers
+zsh-defer my-bindkey '^r' fzf-history-widget-no-numbers
+
+# last working dir
+
+zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
+
+# dir history
+
+zsh-defer zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
+
+zsh-defer bindkey -r '^[^[[D' # esc+left
+zsh-defer bindkey -r '^[^[[C' # esc+right
+zsh-defer bindkey -r '^[^[[B' # esc+up
+zsh-defer bindkey -r '^[^[[A' # esc+down
 
 # dir shortcuts
 
@@ -270,6 +293,37 @@ my-code() { my-dir ~/code }; zle -N my-code; my-bindkey '^gc' my-code
 my-data() { my-dir /run/media/$USER/data }; zle -N my-data; my-bindkey '^gd' my-data
 my-games() { my-dir /run/media/$USER/games }; zle -N my-games; my-bindkey '^gg' my-games
 
+# lf
+
+my-cd() {
+  local temp_file=$1
+  if [[ -f "$temp_file" ]]; then
+    local target_dir="$(cat "$temp_file")"
+    rm -f "$temp_file"
+    [[ -d "$target_dir" && "$target_dir" != "$(pwd)" ]] && cd "$target_dir"
+  fi
+  zle my-redraw-prompt
+}
+
+my-lf-cd() {
+  local temp_file="$(mktemp)"
+  lf -last-dir-path="$temp_file" "$@" < $TTY
+  my-cd $temp_file
+}
+zle -N my-lf-cd
+my-bindkey '\el' my-lf-cd viins vicmd
+
+# dir colors
+
+autoload -Uz colors && colors
+
+eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dir_colors)
+
+# syntax highlighting
+
+zinit ice wait lucid depth=1 atload"fast-theme XDG:$MY_THEME --quiet"
+zinit light zdharma-continuum/fast-syntax-highlighting
+
 # aws
 
 export AWS_CONFIG_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/config
@@ -277,18 +331,9 @@ export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/credentials
 export AWS_PROFILE=apsis-waw-stage
 export AWS_SDK_LOAD_CONFIG=1
 
-zsh-defer autoload -Uz bashcompinit
-zsh-defer bashcompinit
 zsh-defer complete -C /usr/bin/aws_completer aws
 
 alias myip='curl http://checkip.amazonaws.com/'
-
-# dirhistory
-
-bindkey -r '^[^[[D' # esc+left
-bindkey -r '^[^[[C' # esc+right
-bindkey -r '^[^[[B' # esc+up
-bindkey -r '^[^[[A' # esc+down
 
 # docker
 
@@ -313,46 +358,6 @@ alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 rdp() {
   xfreerdp $1 /size:1920x1080 /dynamic-resolution /cert-ignore /drive:/home/$USER/Downloads
 }
-
-# fzf
-
-zsh-defer source /usr/share/fzf/completion.zsh
-zsh-defer source /usr/share/fzf/key-bindings.zsh
-
-export FZF_DEFAULT_OPTS="
-  --color dark,bg+:-1,fg:$MY_FZF_COLOR_FG,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL
-  --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER
-  --ellipsis '…'
-  --layout reverse-list
-  --margin 0,0,0,0
-  --marker '$MY_FZF_CHAR_MARKER'
-  --no-bold
-  --no-info
-  --no-scrollbar
-  --pointer '$MY_FZF_CHAR_POINTER'
-  --prompt '$MY_FZF_CHAR_PROMPT'
-  --tabstop 2
-"
-
-# default bindings:
-# alt+c   ^[c  fzf-cd-widget
-# ctrl+r  ^r   fzf-history-widget
-# ctrl+t  ^t   fzf-file-widget
-
-fzf-history-widget-no-numbers() {
-  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  local opts="--height ${FZF_TMUX_HEIGHT:-40%}
-    $FZF_DEFAULT_OPTS --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore
-    $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m"
-  local selected=( $( fc -rln 1 | FZF_DEFAULT_OPTS=$opts $(__fzfcmd) ) )
-  local ret=$?
-  BUFFER=$selected
-  zle vi-end-of-line
-  zle reset-prompt
-  return $ret
-}
-zsh-defer zle -N fzf-history-widget-no-numbers
-zsh-defer my-bindkey '^r' fzf-history-widget-no-numbers
 
 # git
 
@@ -385,27 +390,11 @@ export MANPAGER="less +Gg -R -s --use-color -DPw -DSkY -Ddy -Dsm -Dub"
 
 alias less='less --raw-control-chars'
 
-# lf
-
-my-cd() {
-  local temp_file=$1
-  if [[ -f "$temp_file" ]]; then
-    local target_dir="$(cat "$temp_file")"
-    rm -f "$temp_file"
-    [[ -d "$target_dir" && "$target_dir" != "$(pwd)" ]] && cd "$target_dir"
-  fi
-  zle my-redraw-prompt
-}
-
-my-lf-cd() {
-  local temp_file="$(mktemp)"
-  lf -last-dir-path="$temp_file" "$@" < $TTY
-  my-cd $temp_file
-}
-zle -N my-lf-cd
-my-bindkey '\el' my-lf-cd viins vicmd
-
 # neovim
+
+export EDITOR='nvim'
+export DIFFPROG='nvim -d'
+export VISUAL='nvim'
 
 alias vim='nvim'
 

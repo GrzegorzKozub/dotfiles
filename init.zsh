@@ -26,6 +26,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   environment \
   flameshot \
+  fsh \
   git \
   iex \
   keepass \
