@@ -4,14 +4,14 @@ set -e -o verbose
 
 # repo
 
-pushd `dirname $0`
+[[ ${0:a:h} = $(pwd) ]] || SWITCHED=1 && pushd ${0:a:h}
 
 git submodule update --init
 git submodule foreach --recursive git checkout master
 
 git update-index --assume-unchanged btop/btop.conf
 
-popd
+[[ $SWITCHED = 1 ]] && popd
 
 # env
 
