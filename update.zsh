@@ -26,9 +26,9 @@ for plugin in $XDG_DATA_HOME/tmux/plugins/*; do
     $(echo $plugin | sed 's/^.*\///')
 done
 
-# init
+# links
 
-. `dirname $0`/init.zsh
+. `dirname $0`/links.zsh
 
 # shared
 
