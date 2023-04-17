@@ -23,9 +23,7 @@ zinit ice depth=1 && zinit light romkatv/zsh-defer
 # theme
 
 export MY_THEME='gruvbox-dark'
-
-zinit ice nocompile lucid depth=1 atload"source ./zsh/$MY_THEME.sh"
-zinit light GrzegorzKozub/themes
+source ${XDG_CONFIG_HOME:-~/.config}/zsh/$MY_THEME.zsh
 
 # functions
 
