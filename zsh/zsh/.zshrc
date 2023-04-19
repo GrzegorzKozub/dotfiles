@@ -206,10 +206,11 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
 
-zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/docker/_docker
-zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/docker-compose/_docker-compose
-zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/docker-machine/_docker-machine
-zinit ice wait lucid as'completion' && zinit snippet OMZ::plugins/pip/_pip
+zinit wait lucid as'completion' for \
+  OMZ::plugins/docker/_docker \
+  OMZ::plugins/docker-compose/_docker-compose \
+  OMZ::plugins/docker-machine/_docker-machine \
+  OMZ::plugins/pip/_pip
 
 # history
 
