@@ -320,8 +320,9 @@ eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dir_colors)
 
 # syntax highlighting
 
-zinit ice wait lucid depth=1 atload"fast-theme XDG:$MY_THEME --quiet"
-zinit light zdharma-continuum/fast-syntax-highlighting
+# using zinit's wait ice instead of zsh-defer causes delays when typing zinit command
+zsh-defer zinit ice lucid depth=1 atload"fast-theme XDG:$MY_THEME --quiet"
+zsh-defer zinit light zdharma-continuum/fast-syntax-highlighting
 
 # aws
 
