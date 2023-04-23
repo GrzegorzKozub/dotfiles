@@ -12,21 +12,6 @@ set shell 'zsh'
 
 cmd q :quit
 
-cmd overwrite-async %{{
-  set -f
-  local mode=$(head -1 ~/.local/share/lf/files)
-  local list=$(sed 1d ~/.local/share/lf/files)
-  set -- _ $list; shift
-  [ $# -gt 0 ] || exit
-  case $mode in
-    copy) rsync -r "$@" ./;;
-    move) rsync -r --remove-source-files "$@" ./;;
-  esac
-  lf -remote 'save\nmove\n'
-  lf -remote "send $id load"
-  lf -remote "send $id echo \"\033[32mOverwrote successfully\033[0m\""
-}}
-
 cmd trash %{{
   while IFS= read -r item; do trash-put "$item"; done <<< "$fx"
 }}
@@ -69,7 +54,6 @@ map <c-f> :fzf
 
 map D delete
 map M push %mkdir<space>
-map o overwrite-async
 map t trash
 
 map ae extract

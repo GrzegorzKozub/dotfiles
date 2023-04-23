@@ -129,7 +129,6 @@ zinit light romkatv/powerlevel10k
 
 # aliases
 
-alias clip='xclip -selection clipboard'
 alias df='df -h'
 alias diff='diff --color'
 alias du='du -hd1'
