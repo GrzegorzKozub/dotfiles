@@ -71,6 +71,7 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 nvm install node --latest-npm
 # nvm install-latest-npm
+nvm cache clear
 
 npm install --global \
   autocannon \
