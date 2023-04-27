@@ -66,15 +66,14 @@ pass init grzegorz.kozub@gmail.com
 # node
 
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
-export NPM_CONFIG_PREFIX=$XDG_DATA_HOME/npm
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+# export NPM_CONFIG_PREFIX=$XDG_DATA_HOME/npm
 
-export NG_CLI_ANALYTICS=ci
+nvm install node --latest-npm
+# nvm install-latest-npm
 
 npm install --global \
-  @angular/cli \
   autocannon \
-  create-react-app \
   eslint \
   express-generator \
   js-beautify \

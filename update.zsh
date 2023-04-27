@@ -42,6 +42,9 @@ done
 
 # node
 
+nvm install node --reinstall-packages-from=node --latest-npm
+# nvm install-latest-npm
+
 npm update --global
 
 # neovim
