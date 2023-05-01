@@ -70,7 +70,7 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 # export NPM_CONFIG_PREFIX=$XDG_DATA_HOME/npm
 
 nvm install node --latest-npm
-# nvm install-latest-npm
+nvm install-latest-npm
 nvm cache clear
 
 npm install --global \

@@ -43,7 +43,7 @@ done
 # node
 
 nvm install node --reinstall-packages-from=node --latest-npm
-# nvm install-latest-npm
+nvm install-latest-npm
 nvm cache clear
 
 npm update --global
