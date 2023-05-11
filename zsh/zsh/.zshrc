@@ -34,6 +34,7 @@ my-bindkey() {
 my-redraw-prompt() {
   for precmd in $precmd_functions; do $precmd; done
   zle reset-prompt
+  zle zle-keymap-select
 }
 zle -N my-redraw-prompt
 
