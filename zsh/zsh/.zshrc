@@ -52,11 +52,15 @@ palette() {
 
 my-bindkey '^[[1;5D' backward-word # ctrl+left
 my-bindkey '^[[1;5C' forward-word # ctrl+right
+
 my-bindkey '^[[1~' beginning-of-line # home
 my-bindkey '^[[4~' end-of-line # end
-my-bindkey '^[[3~' delete-char # delete
+
 my-bindkey '^P' up-history # ctrl+p
 my-bindkey '^N' down-history # ctrl+n
+
+my-bindkey '^[[3~' delete-char # delete
+bindkey -M viins '^?' backward-delete-char # backspace
 
 # complete from history
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
