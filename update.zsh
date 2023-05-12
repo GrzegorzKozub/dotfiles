@@ -11,13 +11,14 @@ git submodule foreach --recursive git pull
 
 # zsh
 
+set +o verbose
+
 declare -A ZINIT
 export ZINIT[HOME_DIR]=$XDG_DATA_HOME/zinit
 export ZINIT[ZCOMPDUMP_PATH]=$XDG_CACHE_HOME/zsh/zcompdump
 
-source $ZINIT[HOME_DIR]/bin/zinit.zsh
 
-set +o verbose
+source $ZINIT[HOME_DIR]/bin/zinit.zsh
 
 zinit self-update
 zinit update --all
@@ -42,9 +43,20 @@ done
 
 # node
 
+set +o verbose
+
+export NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm
+source $NVM_DIR/nvm.sh
+
 nvm install node --reinstall-packages-from=node --latest-npm
 nvm install-latest-npm
 nvm cache clear
+
+for version in $(nvm ls --no-alias --no-colors | sed 's/ //g' | sed 's/\*//'); do
+  [[ $version =~ '->' ]] || nvm uninstall $version
+done
+
+set -o verbose
 
 npm update --global
 
