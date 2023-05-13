@@ -1,5 +1,6 @@
 # settings
 
+set cursorpreviewfmt ''
 set errorfmt "\033[31m%s\033[0m"
 set hidden
 set ifs '\n'
