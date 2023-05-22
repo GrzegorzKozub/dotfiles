@@ -412,7 +412,12 @@ export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
 # export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
 
 export NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm
-zsh-defer source $NVM_DIR/nvm.sh # --no-use
+zsh-defer source $NVM_DIR/nvm.sh --no-use
+
+nvm-use-node() {
+  [[ -f package.json ]] && (( ! $+commands[node] )) && zsh-defer nvm use node
+}
+add-zsh-hook chpwd nvm-use-node && nvm-use-node
 
 # pass
 
