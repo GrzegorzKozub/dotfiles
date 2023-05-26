@@ -21,6 +21,8 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   vscode \
   zsh
 
+  # alacritty \
+
 stow --dir=`dirname $0` --target=$HOME --stow \
   zprofile
 
