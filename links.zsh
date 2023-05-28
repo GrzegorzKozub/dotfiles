@@ -22,6 +22,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   zsh
 
   # alacritty \
+  # foot \
 
 stow --dir=`dirname $0` --target=$HOME --stow \
   zprofile
