@@ -9,7 +9,7 @@ bar {
 }
 
 set $menu wofi | xargs swaymsg exec --
-set $term kitty
+set $term foot
 
 # displays
 
@@ -54,6 +54,10 @@ input 'type:touchpad' {
   middle_emulation enabled
   natural_scroll enabled
   tap enabled
+}
+
+input '9610:8209:Glorious_Model_O_Wireless' {
+  pointer_accel -0.75
 }
 
 exec rfkill unblock bluetooth
