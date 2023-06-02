@@ -349,6 +349,16 @@ export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export OMNISHARPHOME=${XDG_DATA_HOME:-~/.local/share}/omnisharp
 
+_dotnet_zsh_complete() {
+  local completions=("$(dotnet complete "$words")")
+  if [ -z "$completions" ]; then
+    _arguments '*::arguments: _normal'
+    return
+  fi
+  _values = "${(ps:\n:)completions}"
+}
+zsh-defer compdef _dotnet_zsh_complete dotnet
+
 # elixir
 
 export ERL_AFLAGS='-kernel shell_history enabled'
