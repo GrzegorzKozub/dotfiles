@@ -21,24 +21,30 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   vscode \
   zsh
 
-  # alacritty \
-  # foot \
+  # alacritty
 
-stow --dir=`dirname $0` --target=$HOME --stow \
-  zprofile
+if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
-[[ -d $XDG_CONFIG_HOME/btop ]] || mkdir -p $XDG_CONFIG_HOME/btop
-stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME/btop --stow btop
+  stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
+    foot
 
-if [[ $HOST = 'player' || $HOST = 'worker' ]]; then
+fi
+
+if [[ $HOST = 'player' ]]; then
 
   stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
     redshift
 
-  # stow --dir=`dirname $0` --target=$HOME --stow \
-  #   imwheel
-
 fi
+
+stow --dir=`dirname $0` --target=$HOME --stow \
+  zprofile
+
+# stow --dir=`dirname $0` --target=$HOME --stow \
+#   imwheel
+
+[[ -d $XDG_CONFIG_HOME/btop ]] || mkdir -p $XDG_CONFIG_HOME/btop
+stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME/btop --stow btop
 
 DIR=$(dirname $(realpath $0))
 
