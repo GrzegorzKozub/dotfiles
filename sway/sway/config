@@ -163,7 +163,7 @@ bindsym $mod+space focus mode_toggle
 
 # screenshots
 
-# bindsym print exec flameshot gui
+bindsym print exec slurp | grim -g - - | wl-copy
 
 # media player
 
