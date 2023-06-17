@@ -212,7 +212,6 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 zstyle ':completion:*' squeeze-slashes true
 
 zinit wait lucid as'completion' for \
-  OMZ::plugins/docker/_docker \
   OMZ::plugins/docker-compose/_docker-compose \
   OMZ::plugins/docker-machine/_docker-machine \
   OMZ::plugins/pip/_pip
@@ -343,6 +342,13 @@ alias myip='curl http://checkip.amazonaws.com/'
 # docker
 
 export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
+
+if [[ ! -f "${XDG_CACHE_HOME:-~/.cache}/zsh/_docker" ]]; then
+  typeset -g -A _comps
+  autoload -Uz _docker
+  _comps[docker]=_docker
+fi
+zsh-defer docker completion zsh >| "${XDG_CACHE_HOME:-~/.cache}/zsh/_docker"
 
 # dotnet
 
