@@ -17,10 +17,10 @@ mix archive.install hex phx_new --force
 
 # python
 
-pip install --user --upgrade \
+pip install --user --upgrade --break-system-packages \
   wheel
 
-pip install --user --upgrade \
+pip install --user --upgrade --break-system-packages \
   autopep8 \
   awscli-local \
   cfn-lint \
