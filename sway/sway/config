@@ -56,6 +56,10 @@ input 'type:touchpad' {
   tap enabled
 }
 
+input '2362:33322:GLORIOUS_Model_O_2_Wireless_Mouse' {
+  pointer_accel -0.75
+}
+
 input '9610:8209:Glorious_Model_O_Wireless' {
   pointer_accel -0.75
 }
