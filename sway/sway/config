@@ -8,7 +8,7 @@ bar {
   swaybar_command waybar
 }
 
-set $menu wofi | xargs swaymsg exec --
+set $menu wofi --show drun | xargs swaymsg exec --
 set $term foot
 
 # displays
@@ -68,7 +68,7 @@ exec rfkill unblock bluetooth
 
 # appearance
 
-output * bg ~/.local/share/backgrounds/women.jpg fill
+output * bg ~/code/arch/home/greg/.local/share/backgrounds/women.jpg fill
 
 font pango:Cantarell Bold 12
 
@@ -84,7 +84,7 @@ client.urgent #b47109ff #b47109ff #a89984ff #b47109ff #b47109ff
 # apps
 
 bindsym $mod+return exec $term
-bindsym $mod+d exec $menu
+bindsym $mod+space exec $menu
 bindsym $mod+q kill
 
 # containers
@@ -96,8 +96,8 @@ bindsym alt+shift+tab focus prev
 
 bindsym $mod+left focus left
 bindsym $mod+right focus right
-bindsym $mod+down focus down
 bindsym $mod+up focus up
+bindsym $mod+down focus down
 
 bindsym $mod+shift+left move left
 bindsym $mod+shift+right move right
@@ -115,6 +115,11 @@ mode '󰀽  resize' {
   bindsym escape mode 'default'
   bindsym return mode 'default'
 }
+
+bindsym $mod+f11 fullscreen toggle
+
+bindsym $mod+f floating toggle
+bindsym $mod+shift+f focus mode_toggle
 
 # workspaces
 
@@ -150,16 +155,6 @@ bindsym $mod+ctrl+right move container to output right, focus output right
 
 bindsym $mod+ctrl+shift+left focus output left
 bindsym $mod+ctrl+shift+right focus output right
-
-# fullscreen
-
-bindsym $mod+f fullscreen toggle
-bindsym $mod+f11 fullscreen toggle
-
-# floating windows
-
-bindsym $mod+shift+space floating toggle
-bindsym $mod+space focus mode_toggle
 
 # screenshots
 
