@@ -6,6 +6,15 @@
   font-weight: 600;
 }
 
+#entry {
+  color: #665c54;
+}
+
+#entry:selected {
+  background: #1d2021;
+  color: #a89984;
+}
+
 #input {
   border: none;
   background: #1d2021;
@@ -17,11 +26,15 @@
   padding: 2px;
 }
 
-#entry:selected {
-  background: #1d2021;
+#img {
+  padding: 2px 7px 2px 5px;
 }
 
 #text:selected {
   color: #a89984;
+}
+
+expander list {
+  background: #1d2021;
 }
 

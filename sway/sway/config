@@ -8,7 +8,7 @@ bar {
   swaybar_command waybar
 }
 
-set $menu wofi --show drun | xargs swaymsg exec --
+set $menu wofi | xargs swaymsg exec --
 set $term foot
 
 # displays
@@ -72,13 +72,13 @@ output * bg ~/code/arch/home/greg/.local/share/backgrounds/women.jpg fill
 
 font pango:Cantarell Bold 12
 
-gaps inner 10
+gaps inner 20
 
 default_border pixel 2
 
 client.focused #1d2021ff #1d2021ff #a89984ff #1d2021ff #1d2021ff
-client.focused_inactive #32302f00 #32302fff #665c54ff #32302f00 #32302f00
-client.unfocused #32302f00 #32302fff #665c54ff #32302f00 #32302f00
+client.focused_inactive #1d202133 #1d202133 #665c54ff #1d202133 #1d202133
+client.unfocused #1d202133 #1d202133 #665c54ff #1d202133 #1d202133
 client.urgent #b47109ff #b47109ff #a89984ff #b47109ff #b47109ff
 
 # apps
@@ -87,9 +87,12 @@ bindsym $mod+return exec $term
 bindsym $mod+space exec $menu
 bindsym $mod+q kill
 
-# containers
+# windows
 
 focus_wrapping workspace
+
+floating_modifier $mod
+tiling_drag enable
 
 bindsym alt+tab focus next
 bindsym alt+shift+tab focus prev
@@ -115,6 +118,8 @@ mode '󰀽  resize' {
   bindsym escape mode 'default'
   bindsym return mode 'default'
 }
+
+bindsym $mod+s layout toggle split
 
 bindsym $mod+f11 fullscreen toggle
 

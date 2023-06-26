@@ -5,8 +5,8 @@
 }
 
 window#waybar {
-  background: rgba(29, 32, 33, 1);
-  color: rgba(168, 153, 132, 1);
+  background: #1d2021;
+  color: #a89984;
 }
 
 window#waybar.hidden {
@@ -14,13 +14,17 @@ window#waybar.hidden {
 }
 
 tooltip {
-  background: rgba(29, 32, 33, 1);
+  background: #1d2021;
   border: none;
-  border-radius: 0px;
+  border-radius: 8px;
 }
 
 tooltip label {
-  color: rgba(168, 153, 132, 1);
+  color: #a89984;
+}
+
+#workspaces {
+  padding: 0;
 }
 
 #workspaces button {
@@ -29,7 +33,7 @@ tooltip label {
   border-radius: 0;
   box-shadow: none;
   color: #665c54;
-  padding: 0 10px;
+  padding: 8px 8px;
 }
 
 #workspaces button:hover {
@@ -37,24 +41,18 @@ tooltip label {
   text-shadow: inherit;
 }
 
+#workspaces button.active,
 #workspaces button.focused {
-  color: rgba(168, 153, 132, 1);
+  color: #a89984;
 }
 
 #workspaces button.urgent {
   background-color: #b47109;
-  color: rgba(235, 219, 178, 1);
-}
-
-#mode {
-  background-color: #b47109;
-  color: rgba(235, 219, 178, 1);
-  margin-right: 15px;
-  padding: 0 10px;
+  color: #ebdbb2;
 }
 
 #window {
-  padding: 8px 10px;
+  padding: 8px 0;
 }
 
 #tray,
@@ -63,12 +61,14 @@ tooltip label {
 #network,
 #bluetooth,
 #battery {
-  padding: 0 5px;
+  padding: 8px 8px;
 }
 
-#tray,
-#battery {
-  padding-right: 15px;
+#mode,
+#submap {
+  background-color: #b47109;
+  color: #ebdbb2;
+  padding: 8px 12px;
 }
 
 #tray>.needs-attention {
@@ -97,6 +97,10 @@ tooltip label {
   color: #665c54;
 }
 
+#battery {
+  padding-right: 16px;
+}
+
 #battery.charging {
   color: #6c782e;
 }
@@ -108,3 +112,8 @@ tooltip label {
 #battery.critical:not(.charging) {
   color: #c14a4a;
 }
+
+#custom-space {
+  padding: 8px 4px;
+}
+

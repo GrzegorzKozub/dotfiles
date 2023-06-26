@@ -1,7 +1,24 @@
 {
-  "modules-left": ["sway/workspaces", "sway/window"],
+  "layer": "top",
+  "modules-left": [
+    "wlr/workspaces",
+    "sway/workspaces",
+    "custom/space",
+    "hyprland/window",
+    "sway/window"
+  ],
   "modules-center": ["clock"],
-  "modules-right": ["sway/mode", "tray", "idle_inhibitor", "pulseaudio", "network", "bluetooth", "battery"],
+  "modules-right": [
+    "hyprland/submap",
+    "sway/mode",
+    "custom/space",
+    "tray",
+    "idle_inhibitor",
+    "pulseaudio",
+    "network",
+    "bluetooth",
+    "battery"
+  ],
   "sway/workspaces": {
     "disable-scroll": true
   },
@@ -10,6 +27,9 @@
   },
   "clock": {
     "format": "{:%d %B %R %p}",
+    "tooltip": false
+  },
+  "hyprland/submap": {
     "tooltip": false
   },
   "sway/mode": {
@@ -75,5 +95,8 @@
       "warning": 30,
       "critical": 15
     }
+  },
+  "custom/space": {
+    "format": " "
   }
 }
