@@ -1,7 +1,7 @@
 daemonize
 ignore-empty-password
 
-image=~/.local/share/backgrounds/women.jpg
+image=~/code/walls/women.jpg
 scaling=fill
 
 indicator-radius=40

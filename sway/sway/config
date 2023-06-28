@@ -68,7 +68,7 @@ exec rfkill unblock bluetooth
 
 # appearance
 
-output * bg ~/code/arch/home/greg/.local/share/backgrounds/women.jpg fill
+output * bg ~/code/walls/women.jpg fill
 
 font pango:Cantarell Bold 12
 
