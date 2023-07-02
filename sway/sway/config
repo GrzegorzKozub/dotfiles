@@ -163,7 +163,8 @@ bindsym $mod+ctrl+shift+right focus output right
 
 # screenshots
 
-bindsym print exec slurp | grim -g - - | wl-copy
+bindsym print exec flameshot gui
+bindsym ctrl+print exec slurp | grim -g - - | wl-copy
 
 # media player
 
