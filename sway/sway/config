@@ -36,12 +36,10 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
 
 # sound
 
-bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMute exec ~/code/arch/volume.zsh
 
-bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym --locked XF86AudioRaiseVolume exec \
-  [ $(pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]\{1,3\}%' | head -n 1 | sed 's/%//') -lt 100 ] \
-  && pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec ~/code/arch/volume.zsh down
+bindsym --locked XF86AudioRaiseVolume exec ~/code/arch/volume.zsh up
 
 # devices
 
