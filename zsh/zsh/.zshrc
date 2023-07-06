@@ -4,7 +4,7 @@
 # dirs
 
 [[ -d ${XDG_CACHE_HOME:-~/.cache}/zsh ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}/zsh
-[[ -d ${XDG_DATA_HOME:-~/.local/share}/zsh ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zsh
+# [[ -d ${XDG_DATA_HOME:-~/.local/share}/zsh ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zsh
 
 # plugin support
 
@@ -218,12 +218,13 @@ zinit wait lucid as'completion' for \
 
 # history
 
-HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
+# HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
+HISTFILE=~/code/history/$HOST/history
 
 HISTSIZE=10000 # history memory limit
 SAVEHIST=10000 # history file limit
 
-HISTORY_IGNORE='(#i)(*bearer*|exit|*password*|*secret*|*token*)'
+HISTORY_IGNORE='(#i)(*bearer*|*password*|*secret*|*token*)'
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
