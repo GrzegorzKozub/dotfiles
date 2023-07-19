@@ -69,8 +69,8 @@ fi
 if [[ $HOST = 'worker' ]]; then
 
   # xwayland
-  ln -sf $DIR/flags/brave-flags.nvidia-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
-  ln -sf $DIR/flags/code-flags.nvidia-x11.conf $XDG_CONFIG_HOME/code-flags.conf
+  ln -sf $DIR/flags/brave-flags.amd-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
+  ln -sf $DIR/flags/code-flags.amd-x11.conf $XDG_CONFIG_HOME/code-flags.conf
 
 fi
 
