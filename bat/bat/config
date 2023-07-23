@@ -1,8 +1,9 @@
 --italic-text=always
+--pager='less --mouse --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub'
 --style=numbers
 --tabs=2
 
 # converted from https://github.com/sainnhe/gruvbox-material-vscode
 # using https://github.com/tobiastimm/code-theme-converter
---theme="gruvbox-material-dark"
+--theme=gruvbox-material-dark
 

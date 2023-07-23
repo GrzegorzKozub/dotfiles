@@ -408,9 +408,9 @@ export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 # less
 
 export LESSHISTFILE=-
-export MANPAGER="less --mouse --quit-if-one-screen --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub"
+export MANPAGER='less --mouse --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub'
 
-alias less='less --mouse --quit-if-one-screen --RAW-CONTROL-CHARS'
+alias less='less --mouse --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub'
 
 # neovim
 
