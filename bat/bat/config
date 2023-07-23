@@ -1,5 +1,5 @@
 --italic-text=always
---pager='less --mouse --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub'
+--pager='less --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub'
 --style=numbers
 --tabs=2
 
