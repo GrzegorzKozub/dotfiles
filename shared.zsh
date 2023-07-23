@@ -2,6 +2,10 @@
 
 set -e -o verbose
 
+# bat
+
+bat cache --build
+
 # elixir
 
 export HEX_HOME=$XDG_CACHE_HOME/hex

@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+case "$1" in
+  *.7z|*.iso|*.rar|*.zip)
+    7z l -ba "$1" | tr -s ' ' | cut -d' ' -f6 | grep .
+    ;;
+  *.pdf)
+    pdftotext "$1" -
+    ;;
+  *.tar*)
+    tar -tf "$1"
+    ;;
+  *)
+    MIME=$(file --brief --mime-type "$1")
+    if [[ $MIME == text* || $MIME == *json ]]; then
+      bat --force-colorization --paging=never "$1" || true # --terminal-width $(($2 - 2))
+    else
+      file --brief "$1" | fold -w $(($2 - 2)) -s
+    fi
+    ;;
+esac
+

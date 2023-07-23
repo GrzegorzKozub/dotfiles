@@ -1,0 +1,8 @@
+--italic-text=always
+--style=numbers
+--tabs=2
+
+# converted from https://github.com/sainnhe/gruvbox-material-vscode
+# using https://github.com/tobiastimm/code-theme-converter
+--theme="gruvbox-material-dark"
+

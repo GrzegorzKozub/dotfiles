@@ -4,6 +4,7 @@ set cursorpreviewfmt ''
 set errorfmt "\033[31m%s\033[0m"
 set hidden
 set ifs '\n'
+set previewer ~/.config/lf/previewer
 set promptfmt "\033[36m%d\033[0m\033[36m%f\033[0m"
 set ratios 2:3:4
 set scrolloff 3
@@ -69,4 +70,8 @@ map gc cd ~/code
 
 map gd cd /run/media/greg/data
 map gg cd /run/media/greg/games
+
+# pager
+
+map i $~/.config/lf/previewer $f | less --mouse --quit-if-one-screen --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub
 
