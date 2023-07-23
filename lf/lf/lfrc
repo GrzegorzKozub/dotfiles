@@ -73,5 +73,5 @@ map gg cd /run/media/greg/games
 
 # pager
 
-map i $~/.config/lf/previewer $f | less --RAW-CONTROL-CHARS +Gg -s --use-color -DPw -DSkY -Ddy -Dsm -Dub
+map i $~/.config/lf/previewer $f | less --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub
 

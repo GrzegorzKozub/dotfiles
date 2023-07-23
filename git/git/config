@@ -62,6 +62,7 @@
 [core]
   editor = nvim
   fscache = true
+  pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub
   symlinks = true
   whitespace = blank-at-eol,tab-in-indent
 [diff]
