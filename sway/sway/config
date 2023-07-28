@@ -156,9 +156,6 @@ bindsym $mod+shift+0 move container to workspace number 10, workspace 10
 bindsym $mod+ctrl+left move container to output left, focus output left
 bindsym $mod+ctrl+right move container to output right, focus output right
 
-bindsym $mod+ctrl+shift+left focus output left
-bindsym $mod+ctrl+shift+right focus output right
-
 # screenshots
 
 bindsym print exec flameshot gui
