@@ -27,7 +27,7 @@ font:
   bold_italic:
     family: Cascadia Code
     style: Semibold Italic
-  size: 13
+  size: 21
   builtin_box_drawing: false
 
 schemes:
