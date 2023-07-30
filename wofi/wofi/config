@@ -1,5 +1,5 @@
-show=drun
-term=foot
+show=run
+term=foot --override=include=~/.config/foot/$HOST.ini
 
 lines=10
 width=33%
