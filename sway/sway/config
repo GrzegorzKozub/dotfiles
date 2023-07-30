@@ -172,10 +172,10 @@ bindsym --locked XF86AudioPrev exec playerctl previous
 for_window [app_id=".*"] inhibit_idle fullscreen
 
 exec_always swayidle -w \
-  timeout 60 'brightnessctl set 0% --save' resume 'brightnessctl --restore' \
+  timeout 60 'brightnessctl set 10% --save' resume 'brightnessctl --restore' \
   timeout 300 'chayang && swaymsg "output * power off" && swaylock' resume 'swaymsg "output * power on"' \
   timeout 600 'systemctl suspend' \
-  before-sleep 'swaylock'
+  before-sleep 'pidof swaylock || swaylock'
 
 # lock
 
