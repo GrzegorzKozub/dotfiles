@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if [[ $(grep 'open' /proc/acpi/button/lid/LID0/state) ]]; then
   hyprctl keyword monitor 'eDP-1, preferred, auto, 2'

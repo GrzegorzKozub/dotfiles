@@ -9,7 +9,7 @@ bar {
 }
 
 set $menu wofi | xargs swaymsg exec --
-set $term foot
+set $term foot --override=include=~/.config/foot/$HOST.ini
 
 # displays
 
