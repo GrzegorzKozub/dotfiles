@@ -102,6 +102,7 @@ for EXTENSION in \
   ms-azuretools.vscode-docker \
   ms-dotnettools.csharp \
   ms-python.python \
+  ms-python.pylint \
   ms-python.vscode-pylance \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
