@@ -19,3 +19,11 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   swaylock \
   waybar \
   wofi
+
+if [[ $HOST = 'player' ]]; then
+
+  stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
+    foot
+
+fi
+
