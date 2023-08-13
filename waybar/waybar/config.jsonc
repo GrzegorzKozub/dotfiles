@@ -2,15 +2,12 @@
   "layer": "top",
   "modules-left": [
     "wlr/workspaces",
-    "sway/workspaces",
     "custom/space",
-    "hyprland/window",
-    "sway/window"
+    "hyprland/window"
   ],
   "modules-center": ["clock"],
   "modules-right": [
     "hyprland/submap",
-    "sway/mode",
     "custom/space",
     "tray",
     "idle_inhibitor",
@@ -19,20 +16,11 @@
     "bluetooth",
     "battery"
   ],
-  "sway/workspaces": {
-    "disable-scroll": true
-  },
-  "sway/window": {
-    "tooltip": false
-  },
   "clock": {
     "format": "{:%d %B %R %p}",
     "tooltip": false
   },
   "hyprland/submap": {
-    "tooltip": false
-  },
-  "sway/mode": {
     "tooltip": false
   },
   "tray": {
