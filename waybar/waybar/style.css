@@ -24,6 +24,7 @@ tooltip label {
 }
 
 #workspaces {
+  margin-right: 8px;
   padding: 0;
 }
 
@@ -62,6 +63,11 @@ tooltip label {
 #bluetooth,
 #battery {
   padding: 8px 8px;
+}
+
+#tray,
+#idle_inhibitor {
+  margin-left: 8px;
 }
 
 #mode,
@@ -111,9 +117,5 @@ tooltip label {
 
 #battery.critical:not(.charging) {
   color: #c14a4a;
-}
-
-#custom-space {
-  padding: 8px 4px;
 }
 

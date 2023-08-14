@@ -2,13 +2,11 @@
   "layer": "top",
   "modules-left": [
     "wlr/workspaces",
-    "custom/space",
     "hyprland/window"
   ],
   "modules-center": ["clock"],
   "modules-right": [
     "hyprland/submap",
-    "custom/space",
     "tray",
     "idle_inhibitor",
     "pulseaudio",
@@ -83,8 +81,5 @@
       "warning": 30,
       "critical": 15
     }
-  },
-  "custom/space": {
-    "format": " "
   }
 }
