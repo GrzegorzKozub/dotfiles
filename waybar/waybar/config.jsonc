@@ -64,6 +64,7 @@
     "format-off": "󰂲",
     "format-connected": "󰂱",
     "format-disabled": "󰂲",
+    "on-click-middle": "foot --override=include=~/.config/foot/$HOST-$XDG_CURRENT_DESKTOP.ini bluetoothctl",
     "tooltip-format-on": "enabled",
     "tooltip-format-off": "disabled",
     "tooltip-format-connected": "{device_enumerate}",
