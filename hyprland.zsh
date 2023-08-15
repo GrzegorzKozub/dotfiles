@@ -16,6 +16,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   foot \
   gammastep \
   hyprland \
+  swayimg \
   swaylock \
   waybar \
   wofi
