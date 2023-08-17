@@ -6,6 +6,7 @@ set -e -o verbose
 
 stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   bat \
+  cava \
   environment \
   flameshot \
   fsh \

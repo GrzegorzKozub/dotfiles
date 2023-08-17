@@ -1,0 +1,16 @@
+[general]
+sleep_timer = 5
+
+[input]
+method = pipewire
+
+[output]
+channels = mono
+
+[color]
+background = default
+foreground = yellow
+
+[smoothing]
+noise_reduction = 85
+
