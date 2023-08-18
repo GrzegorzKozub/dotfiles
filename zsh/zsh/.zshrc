@@ -340,6 +340,10 @@ zsh-defer complete -C /usr/bin/aws_completer aws
 
 alias myip='curl http://checkip.amazonaws.com/'
 
+# cava
+
+alias cava='TERM=st-256color cava'
+
 # docker
 
 export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
