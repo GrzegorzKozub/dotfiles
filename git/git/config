@@ -4,6 +4,7 @@
   ll = log --graph --all --abbrev-commit --format=format:'%C(3)%h %C(6)%an %C(7)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
   pl = pull --prune
   ps = ! [[ $(git config "branch.$(git branch --show-current).merge") ]] && git push || git push --set-upstream origin $(git branch --show-current)
+  lt = describe --abbrev=0 --tags
 [color]
   branch = auto
   diff = auto
