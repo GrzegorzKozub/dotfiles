@@ -119,5 +119,6 @@
 [user]
   email = grzegorz.kozub@gmail.com
   name = greg
-;[url "git@github.com:"]
-  ;insteadOf = https://github.com/
+# [url "git@github.com:"]
+# [url "https://<github personal access token>:@github.com/"]
+  # insteadOf = https://github.com/
