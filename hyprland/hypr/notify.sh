@@ -13,5 +13,18 @@ volume() {
     "$icon $vol%"
 }
 
+device() {
+  local name=$(~/code/arch/audio.zsh $1)
+  dunstify \
+    -h string:x-canonical-private-synchronous:audio \
+    -t 1000 \
+    "$2 $name"
+}
+
+# brightness() { string:x-canonical-private-synchronous:brightness }
+
 [[ $1 = 'volume' ]] && volume $2
+[[ $1 = 'sink' ]] && device $1 '󰓃'
+[[ $1 = 'source' ]] && device $1 '󰍬'
+[[ $1 = 'brightness' ]] && brightness $2
 
