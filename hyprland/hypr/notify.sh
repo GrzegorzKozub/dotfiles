@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 volume() {
-  ~/code/arch/audio.zsh $1
-  local vol=$(~/code/arch/audio.zsh)
+  local vol=$(~/code/arch/audio.zsh $1)
   if (( $vol < 33 )); then local icon="󰕿"
   elif (( $vol > 66 )); then local icon="󰕾"
   else local icon="󰖀"; fi

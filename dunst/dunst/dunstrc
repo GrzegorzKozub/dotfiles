@@ -1,4 +1,5 @@
 [global]
+  follow = keyboard
   width = (0, 512)
   height = 256
   offset = 10x10
