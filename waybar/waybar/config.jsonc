@@ -45,9 +45,7 @@
     },
     "tooltip-format": "{icon} {volume}%  {format_source}  󰓃 {desc}",
     "scroll-step": 0.5,
-    "on-click": "~/code/arch/audio.zsh sink",
-    "on-click-right": "~/code/arch/audio.zsh source",
-    "on-click-middle": "pavucontrol"
+    "on-click": "pavucontrol"
   },
   "network": {
     "format-ethernet": "󰌗",
@@ -64,7 +62,7 @@
     "format-off": "󰂲",
     "format-connected": "󰂱",
     "format-disabled": "󰂲",
-    "on-click-middle": "foot --override=include=~/.config/foot/$HOST-$XDG_CURRENT_DESKTOP.ini bluetoothctl",
+    "on-click": "foot --override=include=~/.config/foot/$HOST-$XDG_CURRENT_DESKTOP.ini bluetoothctl",
     "tooltip-format-on": "enabled",
     "tooltip-format-off": "disabled",
     "tooltip-format-connected": "{device_enumerate}",
