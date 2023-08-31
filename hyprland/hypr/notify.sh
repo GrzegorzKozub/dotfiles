@@ -30,7 +30,19 @@ device() {
     "$icon $name"
 }
 
-# brightness() { string:x-canonical-private-synchronous:brightness }
+brightness() {
+  [[ $1 = 'up' ]] && local step='+5%' || local step='5%-' # else down
+  local bright=$(brightnessctl set $step)
+  dunstify \
+    -h string:x-canonical-private-synchronous:brightness \
+    -h int:value:50 \
+    -t 1000 \
+    "$bright"
+
+# brightnessctl set +50% | grep 'Current brightness' | sed -e 's/.*\((.*)\)/{\1}/'
+
+
+}
 
 [[ $1 = 'mute' ]] && mute
 [[ $1 = 'volume' ]] && volume $2
