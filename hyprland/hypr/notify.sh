@@ -31,17 +31,12 @@ device() {
 }
 
 brightness() {
-  [[ $1 = 'up' ]] && local step='+5%' || local step='5%-' # else down
-  local bright=$(brightnessctl set $step)
+  local brightness=$(~/code/arch/brightness.zsh $1)
   dunstify \
     -h string:x-canonical-private-synchronous:brightness \
-    -h int:value:50 \
+    -h int:value:$brightness \
     -t 1000 \
-    "$bright"
-
-# brightnessctl set +50% | grep 'Current brightness' | sed -e 's/.*\((.*)\)/{\1}/'
-
-
+    "󰌵 $brightness%"
 }
 
 [[ $1 = 'mute' ]] && mute
