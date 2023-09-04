@@ -12,7 +12,7 @@ case "$1" in
     ;;
   *)
     MIME=$(file --brief --mime-type "$1")
-    if [[ $MIME == text* || $MIME == *json ]]; then
+    if [[ $MIME == text* || $MIME == *javascript || $MIME == *json ]]; then
       bat --force-colorization --paging=never --plain "$1" || true # --terminal-width $(($2 - 2))
     else
       file --brief "$1" | fold -w $(($2 - 2)) -s
