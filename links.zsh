@@ -16,7 +16,6 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   kitty \
   lf \
   mpv \
-  ncdu \
   npm \
   nvim \
   ripgrep \
@@ -24,7 +23,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   vscode \
   zsh
 
-  # alacritty
+  # alacritty ncdu
 
 if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
