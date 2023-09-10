@@ -62,9 +62,9 @@ npm update --global
 
 # neovim
 
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless -c 'Lazy! sync' -c 'quitall'
+nvim --headless -c 'TSUpdateSync' -c 'quitall'
 nvim --headless -c 'autocmd User MasonUpdateAllComplete quitall' -c 'MasonUpdateAll'
-nvim --headless +TSUpdate +qall
 
 # vscode
 
