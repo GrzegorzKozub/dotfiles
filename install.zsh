@@ -85,7 +85,7 @@ npm install --global \
 
 # neovim
 
-nvim -c 'autocmd User LazyInstall lua require("lazy").load({ plugins = { "mason-lspconfig.nvim", "mason-null-ls.nvim" } })'
+nvim -c 'autocmd User VeryLazy lua require("lazy").load({ plugins = { "mason-lspconfig.nvim", "mason-null-ls.nvim" } })'
 
 # vscode
 

@@ -17,7 +17,6 @@ declare -A ZINIT
 export ZINIT[HOME_DIR]=$XDG_DATA_HOME/zinit
 export ZINIT[ZCOMPDUMP_PATH]=$XDG_CACHE_HOME/zsh/zcompdump
 
-
 source $ZINIT[HOME_DIR]/bin/zinit.zsh
 
 zinit self-update
@@ -65,6 +64,17 @@ npm update --global
 nvim --headless -c 'Lazy! sync' -c 'quitall'
 nvim --headless -c 'TSUpdateSync' -c 'quitall'
 nvim --headless -c 'autocmd User MasonUpdateAllComplete quitall' -c 'MasonUpdateAll'
+
+LOCK='lazy-lock.json'
+MESSAGE='update neovim plugins'
+pushd `dirname $0`/nvim/nvim
+if [[ $(git status --porcelain | grep $LOCK) ]]; then
+  git add $LOCK && git commit -m "$MESSAGE" && git push
+  popd
+  git add nvim && git commit -m "$MESSAGE" && git push
+else
+  popd
+fi
 
 # vscode
 

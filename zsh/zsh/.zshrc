@@ -1,8 +1,5 @@
-# perf check:
-#   for i in $(seq 1 10); do time zsh -i -c exit; done
-#   hyperfine 'zsh -i -c exit' --warmup 10
-# key scan:
-#   cat -v or showkey -a
+# perf check: hyperfine 'zsh -i -c exit' --warmup 10
+# key scan: cat -v or showkey -a
 
 # dirs
 
