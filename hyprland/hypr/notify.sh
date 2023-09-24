@@ -18,7 +18,7 @@ volume() {
     -h string:x-canonical-private-synchronous:volume \
     -h int:value:$vol \
     -t 1000 \
-    "$icon $vol%"
+    "$icon  $vol%"
 }
 
 device() {
@@ -27,16 +27,22 @@ device() {
   dunstify \
     -h string:x-canonical-private-synchronous:device \
     -t 1000 \
-    "$icon $name"
+    "$icon  $name"
 }
 
 brightness() {
   local brightness=$(~/code/arch/brightness.zsh $1)
+  if (( $brightness < 20 )); then local icon='󰌶'
+  elif (( $brightness < 35 )); then local icon='󱩏'
+  elif (( $brightness < 50 )); then local icon='󱩑'
+  elif (( $brightness < 65 )); then local icon='󱩓'
+  elif (( $brightness < 80 )); then local icon='󱩕'
+  else local icon='󰛨'; fi
   dunstify \
     -h string:x-canonical-private-synchronous:brightness \
     -h int:value:$brightness \
     -t 1000 \
-    "󰌵 $brightness%"
+    "$icon  $brightness%"
 }
 
 [[ $1 = 'mute' ]] && mute

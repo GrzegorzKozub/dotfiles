@@ -1,9 +1,6 @@
 {
   "layer": "top",
-  "modules-left": [
-    "wlr/workspaces",
-    "hyprland/window"
-  ],
+  "modules-left": ["wlr/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
   "modules-right": [
     "hyprland/submap",
@@ -12,6 +9,7 @@
     "pulseaudio",
     "network",
     "bluetooth",
+    "backlight",
     "battery"
   ],
   "clock": {
@@ -36,25 +34,25 @@
   "pulseaudio": {
     "format": "{icon}",
     "format-muted": "󰖁",
-    "format-source": "󰍬 {volume}%",
+    "format-source": "󰍬  {volume}%",
     "format-source-muted": "󰍭",
     "format-icons": {
       "default": ["󰕿", "󰖀", "󰕾"],
       "headphone": "󰋋",
       "headset": "󰋎"
     },
-    "tooltip-format": "{icon} {volume}%  {format_source}  󰓃 {desc}",
+    "tooltip-format": "{icon}  {volume}%  {format_source}  󰓃  {desc}",
     "scroll-step": 0.5,
     "on-click": "pavucontrol"
   },
   "network": {
-    "format-ethernet": "󰌗",
+    "format-ethernet": "󰈀",
     "format-wifi": "{icon}",
     "format-disconnected": "󰤭",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "on-click": "foot --override=include=~/.config/foot/$HOST-$XDG_CURRENT_DESKTOP.ini iwctl",
-    "tooltip-format-ethernet": "󰌗 {ifname}",
-    "tooltip-format-wifi": "{icon} {signalStrength}%  󱄙 {essid}",
+    "tooltip-format-ethernet": "󰈀  {ifname}",
+    "tooltip-format-wifi": "{icon}  {signalStrength}%  󱄙  {essid}",
     "tooltip-format-disconnected": "disconnected"
   },
   "bluetooth": {
@@ -67,16 +65,21 @@
     "tooltip-format-on": "enabled",
     "tooltip-format-off": "disabled",
     "tooltip-format-connected": "{device_enumerate}",
-    "tooltip-format-enumerate-connected": "󰂱 {device_alias}",
+    "tooltip-format-enumerate-connected": "󰂱  {device_alias}",
     "tooltip-format-disabled": "disabled"
+  },
+  "backlight": {
+    "format": "{icon}",
+    "format-icons": ["󰌶", "󱩏", "󱩑", "󱩓", "󱩕", "󰛨"],
+    "tooltip-format": "{icon}  {percent}%"
   },
   "battery": {
     "format": "{icon}",
     "format-plugged": "󰚥",
-    "format-charging": "󱐋",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "tooltip-format": "󰁹 {capacity}%  󰥔 {time}",
-    "tooltip-format-plugged": "󰁹 {capacity}%",
+    "format-charging": "󰂄",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "󰉁  {capacity}%  󱑆  {time}",
+    "tooltip-format-plugged": "󰉁  {capacity}%",
     "states": {
       "warning": 30,
       "critical": 15

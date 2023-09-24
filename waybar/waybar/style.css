@@ -61,6 +61,7 @@ tooltip label {
 #pulseaudio,
 #network,
 #bluetooth,
+#backlight,
 #battery {
   padding: 8px 8px;
 }
