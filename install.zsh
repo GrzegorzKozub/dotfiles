@@ -98,6 +98,7 @@ for EXTENSION in \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
   golang.Go \
+  hoovercj.vscode-settings-cycler \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
   ms-dotnettools.csharp \
