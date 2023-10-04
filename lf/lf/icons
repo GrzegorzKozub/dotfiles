@@ -1,0 +1,36 @@
+# vim: filetype=conf
+
+fi 󰈤  # nf-md-file_outline
+di 󰝰  # nf-md-folder_open
+ow 󰝰
+ln 󰝰
+
+*.bat 󰑷  # nf-md-script_outline
+*.cmd 󰑷
+*.exe 󰘔  # nf-md-application_outline
+*.ps1 󰑷
+
+*.001 󰏗  # nf-md-package_variant_closed
+*.002 󰏗
+*.003 󰏗
+*.7z 󰏗
+*.rar 󰏗
+*.zip 󰏗
+
+*.mrimg 󰋊  # nf-md-harddisk
+*.iso 󰗮  # nf-md-disc
+*.wim 󰋊
+
+*.dockerignore 󰘓  # nf-md-file_hidden
+*.editorconfig 󰘓
+*.gitattributes 󰘓
+*.gitignore 󰘓
+*.gitmodules 󰘓
+
+*.backup 󰘓
+*.bak 󰘓
+*.log 󰘓
+*.original 󰘓
+*.part 󰘓
+*.tmp 󰘓
+
