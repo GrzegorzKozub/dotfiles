@@ -21,6 +21,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   ripgrep \
   tmux \
   vscode \
+  zellij \
   zsh
 
   # alacritty ncdu
