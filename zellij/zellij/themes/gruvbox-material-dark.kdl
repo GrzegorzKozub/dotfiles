@@ -1,15 +1,15 @@
 themes {
  	gruvbox-material-dark {
- 		fg "#D5C4A1"
- 		bg "#282828"
- 		black "#3C3836"
- 		red "#CC241D"
- 		green "#98971A"
- 		yellow "#D79921"
- 		blue "#3C8588"
- 		magenta "#B16286"
- 		cyan "#689D6A"
- 		white "#FBF1C7"
- 		orange "#D65D0E"
+ 		fg      "#d4be98"
+ 		bg      "#32302f"
+ 		black   "#3c3836"
+ 		red     "#c14a4a"
+ 		green   "#6c782e"
+ 		yellow  "#b47109"
+ 		blue    "#45707a"
+ 		magenta "#945e80"
+ 		cyan    "#4c7a5d"
+ 		white   "#928374"
+ 		orange  "#b47109"
  	}
 }
