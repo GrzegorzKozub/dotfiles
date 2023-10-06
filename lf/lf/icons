@@ -1,23 +1,40 @@
 # vim: filetype=conf
 
-fi 󰈤  # nf-md-file_outline
 di 󰝰  # nf-md-folder_open
+ln 󰌷  # nf-md-link
+pi 󰈤  # nf-md-file_outline
+so 󰈤
+do 󰈤
+bd 󰈤
+cd 󰈤
+or 󰌸  # nf-md-link_off
+mi 󰈤
+tw 󰝰
 ow 󰝰
-ln 󰝰
+st 󰝰
+ex 󰈤
+fi 󰈤
+ow 󰝰
 
 *.bat 󰑷  # nf-md-script_outline
 *.cmd 󰑷
 *.exe 󰘔  # nf-md-application_outline
 *.ps1 󰑷
+*.sh 󰑷
+*.zsh 󰑷
 
 *.001 󰏗  # nf-md-package_variant_closed
 *.002 󰏗
 *.003 󰏗
 *.7z 󰏗
+*.gz 󰏗
 *.rar 󰏗
+*.tar 󰏗
 *.zip 󰏗
 
-*.mrimg 󰋊  # nf-md-harddisk
+*.cow 󰋊  # nf-md-harddisk
+*.fsa 󰋊
+*.mrimg 󰋊
 *.iso 󰗮  # nf-md-disc
 *.wim 󰋊
 
@@ -30,7 +47,10 @@ ln 󰝰
 *.backup 󰘓
 *.bak 󰘓
 *.log 󰘓
+*.old 󰘓
+*.orig 󰘓
 *.original 󰘓
 *.part 󰘓
+*.swp 󰘓
 *.tmp 󰘓
 
