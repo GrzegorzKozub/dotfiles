@@ -5,6 +5,7 @@ MY_COLOR_DARK='colour15'
 MY_COLOR_WARNING='colour3'
 MY_COLOR_ERROR='colour9'
 MY_COLOR_PREFIX='colour3'
+MY_COLOR_ZOOM='colour5'
 
 MY_COLOR_SEARCH_FG='colour0'
 MY_COLOR_SEARCH_BG='colour3'

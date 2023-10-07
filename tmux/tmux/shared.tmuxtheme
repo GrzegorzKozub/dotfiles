@@ -42,13 +42,13 @@ set -g display-panes-active-colour $MY_COLOR_LIGHT
 
 setw -g window-status-style fg=$MY_COLOR_WATERMARK,bg=default
 setw -g window-status-current-style fg=$MY_COLOR_LIGHT,bg=default
-setw -g window-status-format "#I:#W"
-setw -g window-status-current-format "#I:#W"
+setw -g window-status-format "#{window_index}:#{window_name}"
+setw -g window-status-current-format "#{window_index}:#{window_name}"
 setw -g window-status-separator " "
 
 set -g status-style fg=$MY_COLOR_LIGHT,bg=default
 set -g status-left-length 64
-set -g status-left "#[#{?client_prefix,fg=$MY_COLOR_PREFIX,fg=$MY_COLOR_LIGHT}]$MY_CHAR_PREFIX #[fg=$MY_COLOR_LIGHT]#S #I:#P "
+set -g status-left "#[#{?client_prefix,fg=$MY_COLOR_PREFIX,#{?window_zoomed_flag,fg=$MY_COLOR_ZOOM,fg=$MY_COLOR_LIGHT}}]$MY_CHAR_PREFIX #[fg=$MY_COLOR_LIGHT]#{session_name} #{window_index}:#{pane_index} "
 set -g status-right-length 24
 set -g status-right "#{sysstat_cpu} #{sysstat_mem}#{?#{==:#{battery_percentage},0%},, #{battery_color_fg}#[bg=default]#{battery_percentage}}"
 
