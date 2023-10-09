@@ -1,9 +1,0 @@
-default_layout "my"
-pane_frames false
-theme "gruvbox-material-dark"
-ui {
-  pane_frames {
-    hide_session_name true
-    rounded_corners true
-  }
-}

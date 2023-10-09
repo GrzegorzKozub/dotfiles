@@ -23,7 +23,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   vscode \
   zsh
 
-  # alacritty ncdu zellij
+  # alacritty ncdu
 
 if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
