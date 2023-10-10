@@ -1,7 +1,3 @@
-[submodule "vim/vim"]
-	path = vim/vim
-	url = git@github.com:GrzegorzKozub/vim.git
-	branch = master
 [submodule "nvim/nvim"]
 	path = nvim/nvim
 	url = git@github.com:GrzegorzKozub/nvim.git
