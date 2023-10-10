@@ -1,6 +1,7 @@
---colors=line:fg:8
---colors=match:fg:3
---colors=path:fg:6
+--colors=line:fg:black
+--colors=line:style:intense
+--colors=match:fg:yellow
+--colors=path:fg:cyan
 
 --context=3
 --context-separator=''
