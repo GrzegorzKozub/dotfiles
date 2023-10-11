@@ -1,0 +1,13 @@
+MY_COLOR_WATERMARK='black'
+MY_COLOR_LIGHT='brightblack'
+MY_COLOR_DARK='brightwhite'
+
+MY_COLOR_WARNING='yellow'
+MY_COLOR_ERROR='red'
+MY_COLOR_PREFIX='yellow'
+MY_COLOR_ZOOM='magenta'
+
+MY_COLOR_SEARCH_FG='black'
+MY_COLOR_SEARCH_BG='yellow'
+
+MY_CHAR_PREFIX='●•'

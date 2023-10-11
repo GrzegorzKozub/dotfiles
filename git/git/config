@@ -21,15 +21,15 @@
   remote = green
   upstream = green
 [color.decorate]
-  HEAD = red ; bold for solarized
+  HEAD = red
   branch = blue
   remoteBranch = green
-  tag = magenta ; bold for solarized
+  tag = magenta
   stash = magenta
 [color.diff]
   commit = yellow
   func = blue
-  frag = magenta ; bold for solarized
+  frag = magenta
   meta = cyan
   new = green
   old = red
