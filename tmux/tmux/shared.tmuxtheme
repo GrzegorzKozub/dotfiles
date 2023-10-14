@@ -1,17 +1,19 @@
+# vim: filetype=tmux
+
 # tmux-battery
 
-set -g @batt_color_status_primary_charged $MY_COLOR_WATERMARK
-set -g @batt_color_status_primary_charging $MY_COLOR_WATERMARK
-set -g @batt_color_status_primary_unknown $MY_COLOR_WATERMARK
+set -g @batt_color_status_primary_charged $MY_TMUX_COLOR_WATERMARK
+set -g @batt_color_status_primary_charging $MY_TMUX_COLOR_WATERMARK
+set -g @batt_color_status_primary_unknown $MY_TMUX_COLOR_WATERMARK
 
-set -g @batt_color_charge_primary_tier8 $MY_COLOR_LIGHT
-set -g @batt_color_charge_primary_tier7 $MY_COLOR_LIGHT
-set -g @batt_color_charge_primary_tier6 $MY_COLOR_LIGHT
-set -g @batt_color_charge_primary_tier5 $MY_COLOR_LIGHT
-set -g @batt_color_charge_primary_tier4 $MY_COLOR_WARNING
-set -g @batt_color_charge_primary_tier3 $MY_COLOR_WARNING
-set -g @batt_color_charge_primary_tier2 $MY_COLOR_ERROR
-set -g @batt_color_charge_primary_tier1 $MY_COLOR_ERROR
+set -g @batt_color_charge_primary_tier8 $MY_TMUX_COLOR_SUBTLE
+set -g @batt_color_charge_primary_tier7 $MY_TMUX_COLOR_SUBTLE
+set -g @batt_color_charge_primary_tier6 $MY_TMUX_COLOR_SUBTLE
+set -g @batt_color_charge_primary_tier5 $MY_TMUX_COLOR_SUBTLE
+set -g @batt_color_charge_primary_tier4 $MY_TMUX_COLOR_WARNING
+set -g @batt_color_charge_primary_tier3 $MY_TMUX_COLOR_WARNING
+set -g @batt_color_charge_primary_tier2 $MY_TMUX_COLOR_ERROR
+set -g @batt_color_charge_primary_tier1 $MY_TMUX_COLOR_ERROR
 
 # tux-plugin-sysstat
 
@@ -21,42 +23,52 @@ set -g @sysstat_cpu_stress_threshold '75'
 set -g @sysstat_mem_medium_threshold '50'
 set -g @sysstat_mem_stress_threshold '75'
 
-set -g @sysstat_cpu_color_low $MY_COLOR_LIGHT
-set -g @sysstat_cpu_color_medium $MY_COLOR_WARNING
-set -g @sysstat_cpu_color_stress $MY_COLOR_ERROR
+set -g @sysstat_cpu_color_low $MY_TMUX_COLOR_SUBTLE
+set -g @sysstat_cpu_color_medium $MY_TMUX_COLOR_WARNING
+set -g @sysstat_cpu_color_stress $MY_TMUX_COLOR_ERROR
 
-set -g @sysstat_mem_color_low $MY_COLOR_LIGHT
-set -g @sysstat_mem_color_medium $MY_COLOR_WARNING
-set -g @sysstat_mem_color_stress $MY_COLOR_ERROR
+set -g @sysstat_mem_color_low $MY_TMUX_COLOR_SUBTLE
+set -g @sysstat_mem_color_medium $MY_TMUX_COLOR_WARNING
+set -g @sysstat_mem_color_stress $MY_TMUX_COLOR_ERROR
 
 set -g @sysstat_cpu_view_tmpl '#[fg=#{cpu.color}]#{cpu.pused}#[default]'
 set -g @sysstat_mem_view_tmpl '#[fg=#{mem.color}]#{mem.free}#[default]'
 
 # tmux
 
-set -g pane-border-style fg=$MY_COLOR_WATERMARK
-set -g pane-active-border-style fg=$MY_COLOR_WATERMARK
+set -g pane-border-indicators off
+set -g pane-border-style fg=$MY_TMUX_COLOR_WATERMARK
+set -g pane-active-border-style fg=$MY_TMUX_COLOR_WATERMARK
 
-set -g display-panes-colour $MY_COLOR_WATERMARK
-set -g display-panes-active-colour $MY_COLOR_LIGHT
+set -g popup-style fg=default,bg=default
+set -g popup-border-style fg=$MY_TMUX_COLOR_SUBTLE,bg=default
 
-setw -g window-status-style fg=$MY_COLOR_WATERMARK,bg=default
-setw -g window-status-current-style fg=$MY_COLOR_LIGHT,bg=default
-setw -g window-status-format "#{window_index}:#{window_name}"
-setw -g window-status-current-format "#{window_index}:#{window_name}"
-setw -g window-status-separator " "
+set -g status-style fg=$MY_TMUX_COLOR_SUBTLE,bg=default
 
-set -g status-style fg=$MY_COLOR_LIGHT,bg=default
 set -g status-left-length 64
-set -g status-left "#[#{?client_prefix,fg=$MY_COLOR_PREFIX,#{?window_zoomed_flag,fg=$MY_COLOR_ZOOM,fg=$MY_COLOR_LIGHT}}]$MY_CHAR_PREFIX #[fg=$MY_COLOR_LIGHT]#{session_name} #{window_index}:#{pane_index} "
+set -g status-left "#[#{?client_prefix,fg=$MY_TMUX_COLOR_PREFIX,#{?window_zoomed_flag,fg=$MY_TMUX_COLOR_ZOOM,fg=$MY_TMUX_COLOR_SUBTLE}}]$MY_TMUX_CHAR_PREFIX #[fg=$MY_TMUX_COLOR_SUBTLE]#{session_name} #{window_index}:#{pane_index} "
 set -g status-right-length 24
-set -g status-right "#{sysstat_cpu} #{sysstat_mem}#{?#{==:#{battery_percentage},0%},, #{battery_color_fg}#[bg=default]#{battery_percentage}}"
+set -g status-right '#{sysstat_cpu} #{sysstat_mem}#{?#{==:#{battery_percentage},0%},, #{battery_color_fg}#[bg=default]#{battery_percentage}}'
 
-set -g message-command-style fg=$MY_COLOR_LIGHT,bg=default
-set -g message-style fg=$MY_COLOR_DARK,bg=default
+set -g window-status-style fg=$MY_TMUX_COLOR_WATERMARK,bg=default
+set -g window-status-last-style fg=$MY_TMUX_COLOR_WATERMARK,bg=default
+set -g window-status-current-style fg=$MY_TMUX_COLOR_SUBTLE,bg=default
+set -g window-status-activity-style fg=$MY_TMUX_COLOR_ACTIVITY,bg=default
+set -g window-status-bell-style fg=$MY_TMUX_COLOR_BELL,bg=default
 
-set -g mode-style fg=$MY_COLOR_DARK,bg=$MY_COLOR_WATERMARK
+set -g window-status-format '#{window_index}:#{window_name}'
+set -g window-status-current-format '#{window_index}:#{window_name}'
+set -g window-status-separator ' '
 
-set -g copy-mode-match-style fg=$MY_COLOR_SEARCH_FG,bg=$MY_COLOR_SEARCH_BG
-set -g copy-mode-current-match-style fg=$MY_COLOR_SEARCH_FG,bg=$MY_COLOR_SEARCH_BG
+set -g message-style fg=$MY_TMUX_COLOR_CONTRAST,bg=default
+set -g message-command-style fg=$MY_TMUX_COLOR_SUBTLE,bg=default
 
+set -g mode-style fg=$MY_TMUX_COLOR_SUBTLE,bg=default
+
+set -g copy-mode-match-style fg=$MY_TMUX_COLOR_SEARCH_FG,bg=$MY_TMUX_COLOR_SEARCH_BG
+set -g copy-mode-current-match-style fg=$MY_TMUX_COLOR_SEARCH_FG,bg=$MY_TMUX_COLOR_SEARCH_CURRENT_BG
+
+set -g copy-mode-mark-style bg=$MY_TMUX_COLOR_MARK,fg=default
+
+set -g display-panes-colour $MY_TMUX_COLOR_WATERMARK
+set -g display-panes-active-colour $MY_TMUX_COLOR_SUBTLE
