@@ -72,3 +72,6 @@ set -g copy-mode-mark-style bg=$MY_TMUX_COLOR_MARK,fg=default
 
 set -g display-panes-colour $MY_TMUX_COLOR_WATERMARK
 set -g display-panes-active-colour $MY_TMUX_COLOR_SUBTLE
+
+set -g clock-mode-colour $MY_TMUX_COLOR_CONTRAST
+
