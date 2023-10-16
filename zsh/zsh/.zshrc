@@ -253,6 +253,7 @@ export FZF_DEFAULT_OPTS="
   --color dark,bg+:-1,fg:$MY_FZF_COLOR_FG,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL
   --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER
   --ellipsis '…'
+  --height 50%
   --layout reverse-list
   --margin 0,0,0,0
   --marker '$MY_FZF_CHAR_MARKER'
@@ -266,7 +267,7 @@ export FZF_DEFAULT_OPTS="
 
 fzf-history-widget-no-numbers() {
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  local opts="--height ${FZF_TMUX_HEIGHT:-40%}
+  local opts="
     $FZF_DEFAULT_OPTS --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore
     $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m"
   local selected=( $( fc -rln 1 | FZF_DEFAULT_OPTS=$opts $(__fzfcmd) ) )
