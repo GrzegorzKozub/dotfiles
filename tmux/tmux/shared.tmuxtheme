@@ -60,7 +60,7 @@ set -g window-status-format '#{window_index}:#{window_name}'
 set -g window-status-current-format '#{window_index}:#{window_name}'
 set -g window-status-separator ' '
 
-set -g message-style fg=default,bg=default
+set -g message-style fg=$MY_TMUX_COLOR_CONTRAST,bg=default
 set -g message-command-style fg=$MY_TMUX_COLOR_SUBTLE,bg=default
 
 set -g mode-style fg=$MY_TMUX_COLOR_CONTRAST,reverse,bg=default
