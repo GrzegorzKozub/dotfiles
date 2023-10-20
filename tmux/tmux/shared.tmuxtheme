@@ -36,10 +36,6 @@ set -g @sysstat_mem_view_tmpl '#[fg=#{mem.color}]#{mem.free}#[default]'
 
 # tmux
 
-set -g pane-border-indicators off
-set -g pane-border-style fg=$MY_TMUX_COLOR_WATERMARK
-set -g pane-active-border-style fg=$MY_TMUX_COLOR_WATERMARK
-
 set -g popup-style fg=default,bg=default
 set -g popup-border-style fg=$MY_TMUX_COLOR_SUBTLE,bg=default
 
@@ -69,9 +65,6 @@ set -g copy-mode-match-style fg=$MY_TMUX_COLOR_WATERMARK,bg=$MY_TMUX_COLOR_SEARC
 set -g copy-mode-current-match-style fg=$MY_TMUX_COLOR_WATERMARK,bg=$MY_TMUX_COLOR_SEARCH_CURRENT
 
 set -g copy-mode-mark-style bg=$MY_TMUX_COLOR_MARK,fg=default
-
-set -g display-panes-colour $MY_TMUX_COLOR_SUBTLE
-set -g display-panes-active-colour $MY_TMUX_COLOR_CONTRAST
 
 set -g clock-mode-colour $MY_TMUX_COLOR_CONTRAST
 
