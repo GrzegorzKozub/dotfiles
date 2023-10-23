@@ -11,7 +11,9 @@ window:
   padding:
     x: 5
     y: 5
+  dynamic_padding: true
   decorations: none
+  opacity: 0.95
   decorations_theme_variant: Dark
 
 font:
@@ -77,6 +79,7 @@ schemes:
       magenta:      '#6c71c4'  # violet
       cyan:         '#93a1a1'  # base1
       white:        '#586e75'  # base01
+    transparent_background_colors: true
 
   # https://ethanschoonover.com/solarized
   solarized_dark: &solarized_dark
@@ -120,6 +123,7 @@ schemes:
       magenta:      '#6c71c4'  # violet
       cyan:         '#93a1a1'  # base1
       white:        '#93a1a1'  # base1
+    transparent_background_colors: true
 
   # https://github.com/morhetz/gruvbox
   gruvbox_light: &gruvbox_light
@@ -166,6 +170,7 @@ schemes:
       magenta:      '#8f3f71'  # purple
       cyan:         '#427b58'  # aqua
       white:        '#504945'  # fg2
+    transparent_background_colors: true
 
   # https://github.com/morhetz/gruvbox
   gruvbox_dark: &gruvbox_dark
@@ -212,6 +217,7 @@ schemes:
       magenta:      '#d3869b'  # purple
       cyan:         '#8ec07c'  # aqua
       white:        '#d5c4a1'  # fg2
+    transparent_background_colors: true
 
   # https://github.com/sainnhe/gruvbox-material
   gruvbox_material_light: &gruvbox_material_light
@@ -258,6 +264,7 @@ schemes:
       magenta:      '#945e80'  # purple
       cyan:         '#4c7a5d'  # aqua
       white:        '#654735'  # fg0
+    transparent_background_colors: true
 
   # https://github.com/sainnhe/gruvbox-material
   gruvbox_material_dark: &gruvbox_material_dark
@@ -269,7 +276,7 @@ schemes:
       cursor:       '#928374'  # grey1
     vi_mode_cursor:
       text:         '#32302f'  # bg0
-      cursor:       '#d4be98'  # fg0
+      cursor:       '#928374'  # grey1
     search:
       matches:
         background: '#b47109'  # yellow
@@ -279,10 +286,10 @@ schemes:
         foreground: '#32302f'  # bg0
     line_indicator:
       background:   '#32302f'  # bg0
-      foreground:   '#d4be98'  # fg0
+      foreground:   '#665c54'  # bg5
     footer_bar:
       background:   '#32302f'  # bg0
-      foreground:   '#d4be98'  # fg0
+      foreground:   '#665c54'  # bg5
     selection:
       background:   '#d4be98'  # fg0
       foreground:   '#32302f'  # bg0
@@ -304,11 +311,11 @@ schemes:
       magenta:      '#d3869b'  # purple
       cyan:         '#89b482'  # aqua
       white:        '#d4be98'  # fg0
+    transparent_background_colors: true
 
 colors: *gruvbox_material_dark
 
 cursor:
-  vi_mode_style: Block
   unfocused_hollow: false
 
 key_bindings:
