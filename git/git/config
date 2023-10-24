@@ -73,8 +73,6 @@
   tool = nvim
 [difftool]
   prompt = false
-[difftool "vim"]
-  cmd = vim -d -c "VimDiff" "$LOCAL" "$REMOTE"
 [difftool "nvim"]
   cmd = nvim -d "$LOCAL" "$REMOTE"
 [difftool "code"]
@@ -95,9 +93,6 @@
 [mergetool]
   keepBackup = false
   prompt = false
-[mergetool "vim"]
-  cmd = vim -d -c "VimMerge" "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
-  trustExitCode = false
 [mergetool "nvim"]
   cmd = nvim -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c "wincmd w" -c "wincmd J"
 [mergetool "code"]
