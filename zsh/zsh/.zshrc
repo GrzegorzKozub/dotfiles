@@ -219,6 +219,8 @@ zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-va
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
 
+zsh-defer bindkey -M menuselect '^[[Z' reverse-menu-complete # shift+tab
+
 zinit wait lucid as'completion' for \
   OMZ::plugins/docker-compose/_docker-compose \
   OMZ::plugins/docker-machine/_docker-machine \
