@@ -58,8 +58,6 @@
   remoteBranch = green
   unmerged = red
   untracked = red
-[commit]
-  template = ~/.config/git/message
 [core]
   editor = nvim
   fscache = true
