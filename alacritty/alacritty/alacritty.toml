@@ -1,63 +1,21 @@
-[colors]
-transparent_background_colors = true
-
-[colors.bright]
-black = "#665c54"
-blue = "#7daea3"
-cyan = "#89b482"
-green = "#a9b665"
-magenta = "#d3869b"
-red = "#ea6962"
-white = "#d4be98"
-yellow = "#d8a657"
-
-[colors.cursor]
-cursor = "#928374"
-text = "#32302f"
-
-[colors.footer_bar]
-background = "#32302f"
-foreground = "#665c54"
-
-[colors.line_indicator]
-background = "#32302f"
-foreground = "#665c54"
-
-[colors.normal]
-black = "#3c3836"
-blue = "#45707a"
-cyan = "#4c7a5d"
-green = "#6c782e"
-magenta = "#945e80"
-red = "#c14a4a"
-white = "#928374"
-yellow = "#b47109"
-
-[colors.primary]
-background = "#32302f"
-foreground = "#d4be98"
-
-[colors.search.focused_match]
-background = "#b47109"
-foreground = "#32302f"
-
-[colors.search.matches]
-background = "#b47109"
-foreground = "#32302f"
-
-[colors.selection]
-background = "#d4be98"
-foreground = "#32302f"
-
-[colors.vi_mode_cursor]
-cursor = "#928374"
-text = "#32302f"
-
-[cursor]
-unfocused_hollow = false
+import = ["~/.config/alacritty/gruvbox-material-dark.toml"]
 
 [env]
 TERM = "xterm-256color"
+
+[window]
+decorations = "None"
+decorations_theme_variant = "Dark"
+dynamic_padding = true
+opacity = 0.95
+
+[window.dimensions]
+columns = 160
+lines = 40
+
+[window.padding]
+x = 5
+y = 5
 
 [font]
 builtin_box_drawing = false
@@ -79,20 +37,12 @@ style = "Italic"
 family = "Cascadia Code"
 style = "Regular"
 
+[colors]
+transparent_background_colors = true
+
+[cursor]
+unfocused_hollow = false
+
 [[keyboard.bindings]]
 action = "ToggleFullscreen"
 key = "F11"
-
-[window]
-decorations = "none"
-decorations_theme_variant = "Dark"
-dynamic_padding = true
-opacity = 0.95
-
-[window.dimensions]
-columns = 160
-lines = 40
-
-[window.padding]
-x = 5
-y = 5
