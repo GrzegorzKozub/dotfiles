@@ -513,3 +513,6 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 
 [[ $TERM_PROGRAM = 'vscode' ]] || [[ ! -z $TMUX ]] || tmux attach || tmux new
 
+# zellij
+
+# [[ $TERM_PROGRAM = 'vscode' ]] || [[ ! -z $ZELLIJ ]] || zellij attach -c || zellij
