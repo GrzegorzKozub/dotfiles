@@ -91,15 +91,17 @@ nvim -c 'autocmd User VeryLazy lua require("lazy").load({ plugins = { "mason-lsp
 
 for EXTENSION in \
   JakeBecker.elixir-ls \
-  alexkrechik.cucumberautocomplete \
   antfu.icons-carbon \
+  CucumberOpen.cucumber-official \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
   golang.Go \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
+  ms-dotnettools.csdevkit \
   ms-dotnettools.csharp \
+  ms-dotnettools.vscode-dotnet-runtime \
   ms-python.python \
   ms-python.pylint \
   ms-python.vscode-pylance \
