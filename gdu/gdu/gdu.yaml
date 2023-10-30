@@ -1,0 +1,5 @@
+no-mouse: true
+style:
+  selected-row:
+    text-color: "#d4be98"
+    background-color: "#2479d0"
