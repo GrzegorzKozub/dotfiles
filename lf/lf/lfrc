@@ -49,6 +49,7 @@ cmd fzf ${{
 
 map <esc> quit
 map <enter> open
+map <delete> delete
 
 map <f-2> rename
 map <f-7> push %mkdir<space>
