@@ -1,0 +1,3 @@
+--cookies-from-browser brave
+--output "%(title)s%(artist& - {}|)s"
+--playlist-random
