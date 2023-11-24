@@ -30,9 +30,7 @@ pip install --user --upgrade --break-system-packages \
   docker-compose \
   lastversion \
   locust \
-  pylint \
-  pynvim \
-  yamllint
+  pynvim
 
 # ruby
 
