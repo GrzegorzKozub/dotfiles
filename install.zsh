@@ -103,6 +103,7 @@ for EXTENSION in \
   ms-dotnettools.csharp \
   ms-dotnettools.vscode-dotnet-runtime \
   ms-python.black-formatter \
+  ms-python.isort \
   ms-python.python \
   ms-python.pylint \
   ms-python.vscode-pylance \
