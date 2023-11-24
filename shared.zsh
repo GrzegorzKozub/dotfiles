@@ -25,7 +25,6 @@ pip install --user --upgrade --break-system-packages \
   wheel
 
 pip install --user --upgrade --break-system-packages \
-  autopep8 \
   awscli-local \
   cfn-lint \
   docker-compose \
