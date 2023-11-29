@@ -38,6 +38,18 @@ ow 󰝰
 *.iso 󰗮  # nf-md-disc
 *.wim 󰋊
 
+*.jpeg 󰥶  # nf-md-image_outline
+*.jpg 󰥶
+*.png 󰥶
+
+*.mp3 󰝚  # nf-md-music
+*.ogg 󰝚
+*.opus 󰝚
+
+*.mkv 󰷝  # nf-md-movie_outline
+*.mp4 󰷝
+*.webm 󰷝
+
 *.dockerignore 󰘓  # nf-md-file_hidden
 *.editorconfig 󰘓
 *.gitattributes 󰘓
