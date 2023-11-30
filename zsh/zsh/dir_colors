@@ -35,6 +35,18 @@ EXEC 32
 .iso 35
 .wim 35
 
+.jpeg 35
+.jpg 35
+.png 35
+
+.mp3 35
+.ogg 35
+.opus 35
+
+.mkv 35
+.mp4 35
+.webm 35
+
 .dockerignore 37
 .editorconfig 37
 .gitattributes 37
