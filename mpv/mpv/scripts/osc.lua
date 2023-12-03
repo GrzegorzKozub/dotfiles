@@ -94,6 +94,7 @@ local osc_styles = {
     wcButtons = "{\\1c&HFFFFFF\\fs24\\fnmpv-osd-symbols}",
     wcTitle = "{\\1c&HFFFFFF\\fs24\\q2}",
     wcBar = "{\\1c&H000000}",
+    Ctrl1 = '{\\blur0\\bord0\\1c&HFFFFFF&\\3c&HFFFFFF&\\fs36\\fnCaskaydiaCove NF}',
 }
 
 -- internal states, do not touch
@@ -1282,7 +1283,10 @@ layouts["box"] = function ()
     lo = add_layout("playpause")
     lo.geometry =
         {x = posX, y = bigbtnrowY, an = 5, w = 40, h = 40}
-    lo.style = osc_styles.bigButtons
+    --lo.style = osc_styles.bigButtons
+    lo.style = osc_styles.Ctrl1
+
+
 
     lo = add_layout("skipback")
     lo.geometry =
@@ -1551,12 +1555,12 @@ function bar_layout(direction)
     -- Playlist prev/next
     geo = { x = osc_geo.x + padX, y = line1,
             an = 4, w = 18, h = 18 - padY }
-    lo = add_layout("pl_prev")
+    -- lo = add_layout("pl_prev")
     lo.geometry = geo
     lo.style = osc_styles.topButtonsBar
 
     geo = { x = geo.x + geo.w + padX, y = geo.y, an = geo.an, w = geo.w, h = geo.h }
-    lo = add_layout("pl_next")
+    -- lo = add_layout("pl_next")
     lo.geometry = geo
     lo.style = osc_styles.topButtonsBar
 
@@ -1574,7 +1578,7 @@ function bar_layout(direction)
     -- Title
     geo = { x = t_l, y = geo.y, an = 4,
             w = t_r - t_l, h = geo.h }
-    lo = add_layout("title")
+   -- lo = add_layout("title")
     lo.geometry = geo
     lo.style = string.format("%s{\\clip(%f,%f,%f,%f)}",
         osc_styles.vidtitleBar,
@@ -1586,7 +1590,8 @@ function bar_layout(direction)
             w = buttonW, h = 36 - padY*2}
     lo = add_layout("playpause")
     lo.geometry = geo
-    lo.style = osc_styles.smallButtonsBar
+    -- lo.style = osc_styles.smallButtonsBar
+    lo.style = osc_styles.Ctrl1
 
     geo = { x = geo.x + geo.w + padX, y = geo.y, an = geo.an, w = geo.w, h = geo.h }
     lo = add_layout("ch_prev")
@@ -1850,9 +1855,9 @@ function osc_init()
 
     ne.content = function ()
         if mp.get_property("pause") == "yes" then
-            return ("\238\132\129")
+            return ("")
         else
-            return ("\238\128\130")
+            return ("")
         end
     end
     ne.eventresponder["mbtn_left_up"] =
