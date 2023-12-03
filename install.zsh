@@ -110,7 +110,8 @@ for EXTENSION in \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
   sainnhe.gruvbox-material \
-  streetsidesoftware.code-spell-checker
+  streetsidesoftware.code-spell-checker \
+  sumneko.lua
 do
   code --install-extension $EXTENSION --force
 done
