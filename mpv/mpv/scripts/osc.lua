@@ -1301,33 +1301,39 @@ layouts["box"] = function ()
     lo = add_layout("ch_prev")
     lo.geometry =
         {x = posX - (bigbtndist * 2), y = bigbtnrowY, an = 5, w = 40, h = 40}
-    lo.style = osc_styles.bigButtons
+    -- lo.style = osc_styles.bigButtons
+    lo.style = osc_styles.Ctrl1
 
     lo = add_layout("ch_next")
     lo.geometry =
         {x = posX + (bigbtndist * 2), y = bigbtnrowY, an = 5, w = 40, h = 40}
-    lo.style = osc_styles.bigButtons
+    -- lo.style = osc_styles.bigButtons
+    lo.style = osc_styles.Ctrl1
 
     lo = add_layout("cy_audio")
     lo.geometry =
         {x = posX - pos_offsetX, y = bigbtnrowY, an = 1, w = 70, h = 18}
-    lo.style = osc_styles.smallButtonsL
+    -- lo.style = osc_styles.smallButtonsL
+    lo.style = osc_styles.Ctrl1
 
     lo = add_layout("cy_sub")
     lo.geometry =
         {x = posX - pos_offsetX, y = bigbtnrowY, an = 7, w = 70, h = 18}
-    lo.style = osc_styles.smallButtonsL
+    -- lo.style = osc_styles.smallButtonsL
+    lo.style = osc_styles.Ctrl1
 
     lo = add_layout("tog_fs")
     lo.geometry =
         {x = posX+pos_offsetX - 25, y = bigbtnrowY, an = 4, w = 25, h = 25}
-    lo.style = osc_styles.smallButtonsR
+    -- lo.style = osc_styles.smallButtonsR
+    lo.style = osc_styles.Ctrl1
 
     lo = add_layout("volume")
     lo.geometry =
         {x = posX+pos_offsetX - (25 * 2) - osc_geo.p,
          y = bigbtnrowY, an = 4, w = 25, h = 25}
-    lo.style = osc_styles.smallButtonsR
+    -- lo.style = osc_styles.smallButtonsR
+    lo.style = osc_styles.Ctrl1
 
     --
     -- Seekbar
@@ -1596,12 +1602,14 @@ function bar_layout(direction)
     geo = { x = geo.x + geo.w + padX, y = geo.y, an = geo.an, w = geo.w, h = geo.h }
     lo = add_layout("ch_prev")
     lo.geometry = geo
-    lo.style = osc_styles.smallButtonsBar
+    -- lo.style = osc_styles.smallButtonsBar
+    lo.style = osc_styles.Ctrl1
 
     geo = { x = geo.x + geo.w + padX, y = geo.y, an = geo.an, w = geo.w, h = geo.h }
     lo = add_layout("ch_next")
     lo.geometry = geo
-    lo.style = osc_styles.smallButtonsBar
+    -- lo.style = osc_styles.smallButtonsBar
+    lo.style = osc_styles.Ctrl1
 
     -- Left timecode
     geo = { x = geo.x + geo.w + padX + tcW, y = geo.y, an = 6,
@@ -1610,32 +1618,36 @@ function bar_layout(direction)
     lo.geometry = geo
     lo.style = osc_styles.timecodesBar
 
-    local sb_l = geo.x + padX
+    -- local sb_l = geo.x + padX
+    local sb_l = 5
 
     -- Fullscreen button
     geo = { x = osc_geo.x + osc_geo.w - buttonW - padX - padwc_r, y = geo.y, an = 4,
             w = buttonW, h = geo.h }
     lo = add_layout("tog_fs")
     lo.geometry = geo
-    lo.style = osc_styles.smallButtonsBar
+    -- lo.style = osc_styles.smallButtonsBar
+    lo.style = osc_styles.Ctrl1
 
     -- Volume
     geo = { x = geo.x - geo.w - padX, y = geo.y, an = geo.an, w = geo.w, h = geo.h }
     lo = add_layout("volume")
     lo.geometry = geo
-    lo.style = osc_styles.smallButtonsBar
+    -- lo.style = osc_styles.smallButtonsBar
+    lo.style = osc_styles.Ctrl1
 
     -- Track selection buttons
     geo = { x = geo.x - tsW - padX, y = geo.y, an = geo.an, w = tsW, h = geo.h }
     lo = add_layout("cy_sub")
     lo.geometry = geo
-    lo.style = osc_styles.smallButtonsBar
+    -- lo.style = osc_styles.smallButtonsBar
+    lo.style = osc_styles.Ctrl1
 
     geo = { x = geo.x - geo.w - padX, y = geo.y, an = geo.an, w = geo.w, h = geo.h }
     lo = add_layout("cy_audio")
     lo.geometry = geo
-    lo.style = osc_styles.smallButtonsBar
-
+    -- lo.style = osc_styles.smallButtonsBar
+    lo.style = osc_styles.Ctrl1
 
     -- Right timecode
     geo = { x = geo.x - padX - tcW - 10, y = geo.y, an = geo.an,
@@ -1644,20 +1656,23 @@ function bar_layout(direction)
     lo.geometry = geo
     lo.style = osc_styles.timecodesBar
 
-    local sb_r = geo.x - padX
+    -- local sb_r = geo.x - padX
+    local sb_r = osc_geo.x + osc_geo.w -5
 
 
     -- Seekbar
-    geo = { x = sb_l, y = geo.y, an = geo.an,
-            w = math.max(0, sb_r - sb_l), h = geo.h }
+    -- geo = { x = sb_l, y = geo.y, an = geo.an,
+    --         w = math.max(0, sb_r - sb_l), h = geo.h }
+    geo = { x = sb_l, y = geo.y - 30, an = geo.an,
+            w = math.max(0, sb_r - sb_l), h = 8 }
     new_element("bgbar1", "box")
     lo = add_layout("bgbar1")
 
     lo.geometry = geo
     lo.layer = 15
     lo.style = osc_styles.timecodesBar
-    lo.alpha[1] =
-        math.min(255, user_opts.boxalpha + (255 - user_opts.boxalpha)*0.8)
+    lo.alpha[1] = 196
+        -- math.min(255, user_opts.boxalpha + (255 - user_opts.boxalpha)*0.8)
     if user_opts["seekbarstyle"] ~= "bar" then
         lo.box.radius = geo.h / 2
         lo.box.hexagon = user_opts["seekbarstyle"] == "diamond"
@@ -1855,9 +1870,9 @@ function osc_init()
 
     ne.content = function ()
         if mp.get_property("pause") == "yes" then
-            return ("")
+            return ("󰐊")
         else
-            return ("")
+            return ("󰏤")
         end
     end
     ne.eventresponder["mbtn_left_up"] =
@@ -1891,7 +1906,7 @@ function osc_init()
     ne = new_element("ch_prev", "button")
 
     ne.enabled = have_ch
-    ne.content = "\238\132\132"
+    ne.content = "󰒮"
     ne.eventresponder["mbtn_left_up"] =
         function ()
             mp.commandv("add", "chapter", -1)
@@ -1908,7 +1923,7 @@ function osc_init()
     ne = new_element("ch_next", "button")
 
     ne.enabled = have_ch
-    ne.content = "\238\132\133"
+    ne.content = "󰒭"
     ne.eventresponder["mbtn_left_up"] =
         function ()
             mp.commandv("add", "chapter", 1)
@@ -1933,7 +1948,7 @@ function osc_init()
         if get_track("audio") ~= 0 then
             aid = get_track("audio")
         end
-        return ("\238\132\134" .. osc_styles.smallButtonsLlabel
+        return ("󰭹" .. osc_styles.smallButtonsLlabel
             .. " " .. aid .. "/" .. #tracks_osc.audio)
     end
     ne.eventresponder["mbtn_left_up"] =
@@ -1956,7 +1971,7 @@ function osc_init()
         if get_track("sub") ~= 0 then
             sid = get_track("sub")
         end
-        return ("\238\132\135" .. osc_styles.smallButtonsLlabel
+        return ("󰅞" .. osc_styles.smallButtonsLlabel
             .. " " .. sid .. "/" .. #tracks_osc.sub)
     end
     ne.eventresponder["mbtn_left_up"] =
@@ -1974,9 +1989,9 @@ function osc_init()
     ne = new_element("tog_fs", "button")
     ne.content = function ()
         if state.fullscreen then
-            return ("\238\132\137")
+            return ("󰊔")
         else
-            return ("\238\132\136")
+            return ("󰊓")
         end
     end
     ne.eventresponder["mbtn_left_up"] =
@@ -2134,12 +2149,12 @@ function osc_init()
     ne.content = function()
         local volume = mp.get_property_number("volume", 0)
         local mute = mp.get_property_native("mute")
-        local volicon = {"\238\132\139", "\238\132\140",
-                         "\238\132\141", "\238\132\142"}
+        local volicon = {"󰕿", "󰖀",
+                         "󰕾"}
         if volume == 0 or mute then
-            return "\238\132\138"
+            return "󰝟"
         else
-            return volicon[math.min(4,math.ceil(volume / (100/3)))]
+            return volicon[math.min(3,math.ceil(volume / (100/3)))]
         end
     end
     ne.eventresponder["mbtn_left_up"] =
