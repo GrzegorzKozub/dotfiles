@@ -3,19 +3,7 @@ local msg = require 'mp.msg'
 local opt = require 'mp.options'
 local utils = require 'mp.utils'
 
---
--- Parameters
---
--- default user option values
--- do not touch, change them in osc.conf
 local user_opts = {
-    showwindowed = true,        -- show OSC when windowed?
-    showfullscreen = true,      -- show OSC when fullscreen?
-    idlescreen = true,          -- show mpv logo on idle
-    scalewindowed = 1,          -- scaling of the controller when windowed
-    scalefullscreen = 1,        -- scaling of the controller when fullscreen
-    scaleforcedwindow = 2,      -- scaling when rendered on a forced window
-    vidscale = true,            -- scale the controller with the video?
     valign = 0.8,               -- vertical alignment, -1 (top) to 1 (bottom)
     halign = 0,                 -- horizontal alignment, -1 (left) to 1 (right)
     barmargin = 0,              -- vertical margin of top/bottombar
@@ -26,37 +14,20 @@ local user_opts = {
                                 -- user, but internally negative is "always-on".
     fadeduration = 200,         -- duration of fade out in ms, 0 = no fade
     deadzonesize = 0.5,         -- size of deadzone
-    minmousemove = 0,           -- minimum amount of pixels the mouse has to
                                 -- move between ticks to make the OSC show up
-    iamaprogrammer = false,     -- use native mpv values and disable OSC
-                                -- internal track list management (and some
                                 -- functions that depend on it)
-    layout = "bottombar",
-    seekbarstyle = "bar",       -- bar, diamond or knob
-    seekbarhandlesize = 0.6,    -- size ratio of the diamond and knob handle
-    seekrangestyle = "inverted",-- bar, line, slider, inverted or none
     seekrangeseparate = true,   -- whether the seekranges overlay on the bar-style seekbar
     seekrangealpha = 200,       -- transparency of seekranges
     seekbarkeyframes = true,    -- use keyframes when dragging the seekbar
     title = "${media-title}",   -- string compatible with property-expansion
                                 -- to be shown as OSC title
     tooltipborder = 1,          -- border of tooltip in bottom/topbar
-    timetotal = false,          -- display total time instead of remaining time?
-    remaining_playtime = true,  -- display the remaining time in playtime or video-time mode
                                 -- playtime takes speed into account, whereas video-time doesn't
-    timems = false,             -- display timecodes with milliseconds?
     tcspace = 100,              -- timecode spacing (compensate font size estimation)
-    visibility = "auto",        -- only used at init to set visibility_mode(...)
     boxmaxchars = 80,           -- title crop threshold for box layout
     boxvideo = false,           -- apply osc_param.video_margins to video
-    windowcontrols = "auto",    -- whether to show window controls
-    windowcontrols_alignment = "right", -- which side to show window controls on
-    greenandgrumpy = false,     -- disable santa hat
-    livemarkers = true,         -- update seekbar chapter markers on duration change
-    chapters_osd = true,        -- whether to show chapters OSD on next/prev
-    playlist_osd = true,        -- whether to show playlist OSD on next/prev
     chapter_fmt = "Chapter: %s", -- chapter print format for seekbar-hover. "no" to disable
-    unicodeminus = false,       -- whether to use the Unicode minus sign character
+    symbol_font = 'CaskaydiaCove NF',
 }
 
 -- read options from config and command-line
@@ -94,7 +65,8 @@ local osc_styles = {
     wcButtons = "{\\1c&HFFFFFF\\fs24\\fnmpv-osd-symbols}",
     wcTitle = "{\\1c&HFFFFFF\\fs24\\q2}",
     wcBar = "{\\1c&H000000}",
-    Ctrl1 = '{\\blur0\\bord0\\1c&HFFFFFF&\\3c&HFFFFFF&\\fs36\\fnCaskaydiaCove NF}',
+    -- Ctrl1 = '{\\blur0\\bord0\\1c&HFFFFFF&\\3c&HFFFFFF&\\fs36\\fnCaskaydiaCove NF}',
+    Ctrl1 = '{\\blur0\\bord0\\1c&HFFFFFF&\\3c&HFFFFFF&\\fs36\\fn' .. user_opts.symbol_font .. '}',
 }
 
 -- internal states, do not touch
@@ -107,8 +79,7 @@ local state = {
     mouse_down_counter = 0,                 -- used for softrepeat
     active_element = nil,                   -- nil = none, 0 = background, 1+ = see elements[]
     active_event_source = nil,              -- the "button" that issued the current event
-    rightTC_trem = not user_opts.timetotal, -- if the right timecode should display total or remaining time
-    tc_ms = user_opts.timems,               -- Should the timecodes display their time with milliseconds
+    rightTC_trem = true, -- if the right timecode should display total or remaining time
     mp_screen_sizeX, mp_screen_sizeY,       -- last screen-resolution, to detect resolution changes to issue reINITs
     initREQ = false,                        -- is a re-init request pending?
     marginsREQ = false,                     -- is a margins update pending?
@@ -281,9 +252,7 @@ function get_slider_value(element)
 end
 
 function countone(val)
-    if not user_opts.iamaprogrammer then
         val = val + 1
-    end
     return val
 end
 
@@ -433,19 +402,7 @@ function get_track(type)
     return 0
 end
 
--- WindowControl helpers
-function window_controls_enabled()
-    val = user_opts.windowcontrols
-    if val == "auto" then
-        return not state.border
-    else
-        return val ~= "no"
-    end
-end
 
-function window_controls_alignment()
-    return user_opts.windowcontrols_alignment
-end
 
 --
 -- Element Management
@@ -702,7 +659,7 @@ function render_elements(master_ass)
                 xp = get_slider_ele_pos_for(element, pos)
 
                 if slider_lo.stype ~= "bar" then
-                    local r = (user_opts.seekbarhandlesize * innerH) / 2
+                    local r = (0.6 * innerH) / 2
                     ass_draw_rr_h_cw(elem_ass, xp - r, foH - r,
                                      xp + r, foH + r,
                                      r, slider_lo.stype == "diamond")
@@ -900,45 +857,7 @@ function limited_list(prop, pos)
     return count, reslist
 end
 
-function get_playlist()
-    local pos = mp.get_property_number('playlist-pos', 0) + 1
-    local count, limlist = limited_list('playlist', pos)
-    if count == 0 then
-        return 'Empty playlist.'
-    end
 
-    local message = string.format('Playlist [%d/%d]:\n', pos, count)
-    for i, v in ipairs(limlist) do
-        local title = v.title
-        local _, filename = utils.split_path(v.filename)
-        if title == nil then
-            title = filename
-        end
-        message = string.format('%s %s %s\n', message,
-            (v.current and '●' or '○'), title)
-    end
-    return message
-end
-
-function get_chapterlist()
-    local pos = mp.get_property_number('chapter', 0) + 1
-    local count, limlist = limited_list('chapter-list', pos)
-    if count == 0 then
-        return 'No chapters.'
-    end
-
-    local message = string.format('Chapters [%d/%d]:\n', pos, count)
-    for i, v in ipairs(limlist) do
-        local time = mp.format_time(v.time)
-        local title = v.title
-        if title == nil then
-            title = string.format('Chapter %02d', i)
-        end
-        message = string.format('%s[%s] %s %s\n', message, time,
-            (v.current and '●' or '○'), title)
-    end
-    return message
-end
 
 function show_message(text, duration)
 
@@ -1051,433 +970,8 @@ function add_layout(name)
     end
 end
 
--- Window Controls
-function window_controls(topbar)
-    local wc_geo = {
-        x = 0,
-        y = 30 + user_opts.barmargin,
-        an = 1,
-        w = osc_param.playresx,
-        h = 30,
-    }
 
-    local alignment = window_controls_alignment()
-    local controlbox_w = window_control_box_width
-    local titlebox_w = wc_geo.w - controlbox_w
 
-    -- Default alignment is "right"
-    local controlbox_left = wc_geo.w - controlbox_w
-    local titlebox_left = wc_geo.x
-    local titlebox_right = wc_geo.w - controlbox_w
-
-    if alignment == "left" then
-        controlbox_left = wc_geo.x
-        titlebox_left = wc_geo.x + controlbox_w
-        titlebox_right = wc_geo.w
-    end
-
-    add_area("window-controls",
-             get_hitbox_coords(controlbox_left, wc_geo.y, wc_geo.an,
-                               controlbox_w, wc_geo.h))
-
-    local lo
-
-    -- Background Bar
-    new_element("wcbar", "box")
-    lo = add_layout("wcbar")
-    lo.geometry = wc_geo
-    lo.layer = 10
-    lo.style = osc_styles.wcBar
-    lo.alpha[1] = user_opts.boxalpha
-
-    local button_y = wc_geo.y - (wc_geo.h / 2)
-    local first_geo =
-        {x = controlbox_left + 5, y = button_y, an = 4, w = 25, h = 25}
-    local second_geo =
-        {x = controlbox_left + 30, y = button_y, an = 4, w = 25, h = 25}
-    local third_geo =
-        {x = controlbox_left + 55, y = button_y, an = 4, w = 25, h = 25}
-
-    -- Window control buttons use symbols in the custom mpv osd font
-    -- because the official unicode codepoints are sufficiently
-    -- exotic that a system might lack an installed font with them,
-    -- and libass will complain that they are not present in the
-    -- default font, even if another font with them is available.
-
-    -- Close: 🗙
-    ne = new_element("close", "button")
-    ne.content = "\238\132\149"
-    ne.eventresponder["mbtn_left_up"] =
-        function () mp.commandv("quit") end
-    lo = add_layout("close")
-    lo.geometry = alignment == "left" and first_geo or third_geo
-    lo.style = osc_styles.wcButtons
-
-    -- Minimize: 🗕
-    ne = new_element("minimize", "button")
-    ne.content = "\238\132\146"
-    ne.eventresponder["mbtn_left_up"] =
-        function () mp.commandv("cycle", "window-minimized") end
-    lo = add_layout("minimize")
-    lo.geometry = alignment == "left" and second_geo or first_geo
-    lo.style = osc_styles.wcButtons
-
-    -- Maximize: 🗖 /🗗
-    ne = new_element("maximize", "button")
-    if state.maximized or state.fullscreen then
-        ne.content = "\238\132\148"
-    else
-        ne.content = "\238\132\147"
-    end
-    ne.eventresponder["mbtn_left_up"] =
-        function ()
-            if state.fullscreen then
-                mp.commandv("cycle", "fullscreen")
-            else
-                mp.commandv("cycle", "window-maximized")
-            end
-        end
-    lo = add_layout("maximize")
-    lo.geometry = alignment == "left" and third_geo or second_geo
-    lo.style = osc_styles.wcButtons
-
-    -- deadzone below window controls
-    local sh_area_y0, sh_area_y1
-    sh_area_y0 = user_opts.barmargin
-    sh_area_y1 = wc_geo.y + get_align(1 - (2 * user_opts.deadzonesize),
-                                      osc_param.playresy - wc_geo.y, 0, 0)
-    add_area("showhide_wc", wc_geo.x, sh_area_y0, wc_geo.w, sh_area_y1)
-
-    if topbar then
-        -- The title is already there as part of the top bar
-        return
-    else
-        -- Apply boxvideo margins to the control bar
-        osc_param.video_margins.t = wc_geo.h / osc_param.playresy
-    end
-
-    -- Window Title
-    ne = new_element("wctitle", "button")
-    ne.content = function ()
-        local title = mp.command_native({"expand-text", user_opts.title})
-        -- escape ASS, and strip newlines and trailing slashes
-        title = title:gsub("\\n", " "):gsub("\\$", ""):gsub("{","\\{")
-        return not (title == "") and title or "mpv"
-    end
-    local left_pad = 5
-    local right_pad = 10
-    lo = add_layout("wctitle")
-    lo.geometry =
-        { x = titlebox_left + left_pad, y = wc_geo.y - 3, an = 1,
-          w = titlebox_w, h = wc_geo.h }
-    lo.style = string.format("%s{\\clip(%f,%f,%f,%f)}",
-        osc_styles.wcTitle,
-        titlebox_left + left_pad, wc_geo.y - wc_geo.h,
-        titlebox_right - right_pad , wc_geo.y + wc_geo.h)
-
-    add_area("window-controls-title",
-             titlebox_left, 0, titlebox_right, wc_geo.h)
-end
-
---
--- Layouts
---
-
-local layouts = {}
-
--- Classic box layout
-layouts["box"] = function ()
-
-    local osc_geo = {
-        w = 550,    -- width
-        h = 138,    -- height
-        r = 10,     -- corner-radius
-        p = 15,     -- padding
-    }
-
-    -- make sure the OSC actually fits into the video
-    if osc_param.playresx < (osc_geo.w + (2 * osc_geo.p)) then
-        osc_param.playresy = (osc_geo.w + (2 * osc_geo.p)) / osc_param.display_aspect
-        osc_param.playresx = osc_param.playresy * osc_param.display_aspect
-    end
-
-    -- position of the controller according to video aspect and valignment
-    local posX = math.floor(get_align(user_opts.halign, osc_param.playresx,
-        osc_geo.w, 0))
-    local posY = math.floor(get_align(user_opts.valign, osc_param.playresy,
-        osc_geo.h, 0))
-
-    -- position offset for contents aligned at the borders of the box
-    local pos_offsetX = (osc_geo.w - (2*osc_geo.p)) / 2
-    local pos_offsetY = (osc_geo.h - (2*osc_geo.p)) / 2
-
-    osc_param.areas = {} -- delete areas
-
-    -- area for active mouse input
-    add_area("input", get_hitbox_coords(posX, posY, 5, osc_geo.w, osc_geo.h))
-
-    -- area for show/hide
-    local sh_area_y0, sh_area_y1
-    if user_opts.valign > 0 then
-        -- deadzone above OSC
-        sh_area_y0 = get_align(-1 + (2*user_opts.deadzonesize),
-            posY - (osc_geo.h / 2), 0, 0)
-        sh_area_y1 = osc_param.playresy
-    else
-        -- deadzone below OSC
-        sh_area_y0 = 0
-        sh_area_y1 = (posY + (osc_geo.h / 2)) +
-            get_align(1 - (2*user_opts.deadzonesize),
-            osc_param.playresy - (posY + (osc_geo.h / 2)), 0, 0)
-    end
-    add_area("showhide", 0, sh_area_y0, osc_param.playresx, sh_area_y1)
-
-    -- fetch values
-    local osc_w, osc_h, osc_r, osc_p =
-        osc_geo.w, osc_geo.h, osc_geo.r, osc_geo.p
-
-    local lo
-
-    --
-    -- Background box
-    --
-
-    new_element("bgbox", "box")
-    lo = add_layout("bgbox")
-
-    lo.geometry = {x = posX, y = posY, an = 5, w = osc_w, h = osc_h}
-    lo.layer = 10
-    lo.style = osc_styles.box
-    lo.alpha[1] = user_opts.boxalpha
-    lo.alpha[3] = user_opts.boxalpha
-    lo.box.radius = osc_r
-
-    --
-    -- Title row
-    --
-
-    local titlerowY = posY - pos_offsetY - 10
-
-    lo = add_layout("title")
-    lo.geometry = {x = posX, y = titlerowY, an = 8, w = 496, h = 12}
-    lo.style = osc_styles.vidtitle
-    lo.button.maxchars = user_opts.boxmaxchars
-
-    lo = add_layout("pl_prev")
-    lo.geometry =
-        {x = (posX - pos_offsetX), y = titlerowY, an = 7, w = 12, h = 12}
-    lo.style = osc_styles.topButtons
-
-    lo = add_layout("pl_next")
-    lo.geometry =
-        {x = (posX + pos_offsetX), y = titlerowY, an = 9, w = 12, h = 12}
-    lo.style = osc_styles.topButtons
-
-    --
-    -- Big buttons
-    --
-
-    local bigbtnrowY = posY - pos_offsetY + 35
-    local bigbtndist = 60
-
-    lo = add_layout("playpause")
-    lo.geometry =
-        {x = posX, y = bigbtnrowY, an = 5, w = 40, h = 40}
-    --lo.style = osc_styles.bigButtons
-    lo.style = osc_styles.Ctrl1
-
-
-
-    lo = add_layout("skipback")
-    lo.geometry =
-        {x = posX - bigbtndist, y = bigbtnrowY, an = 5, w = 40, h = 40}
-    lo.style = osc_styles.bigButtons
-
-    lo = add_layout("skipfrwd")
-    lo.geometry =
-        {x = posX + bigbtndist, y = bigbtnrowY, an = 5, w = 40, h = 40}
-    lo.style = osc_styles.bigButtons
-
-    lo = add_layout("ch_prev")
-    lo.geometry =
-        {x = posX - (bigbtndist * 2), y = bigbtnrowY, an = 5, w = 40, h = 40}
-    -- lo.style = osc_styles.bigButtons
-    lo.style = osc_styles.Ctrl1
-
-    lo = add_layout("ch_next")
-    lo.geometry =
-        {x = posX + (bigbtndist * 2), y = bigbtnrowY, an = 5, w = 40, h = 40}
-    -- lo.style = osc_styles.bigButtons
-    lo.style = osc_styles.Ctrl1
-
-    lo = add_layout("cy_audio")
-    lo.geometry =
-        {x = posX - pos_offsetX, y = bigbtnrowY, an = 1, w = 70, h = 18}
-    -- lo.style = osc_styles.smallButtonsL
-    lo.style = osc_styles.Ctrl1
-
-    lo = add_layout("cy_sub")
-    lo.geometry =
-        {x = posX - pos_offsetX, y = bigbtnrowY, an = 7, w = 70, h = 18}
-    -- lo.style = osc_styles.smallButtonsL
-    lo.style = osc_styles.Ctrl1
-
-    lo = add_layout("tog_fs")
-    lo.geometry =
-        {x = posX+pos_offsetX - 25, y = bigbtnrowY, an = 4, w = 25, h = 25}
-    -- lo.style = osc_styles.smallButtonsR
-    lo.style = osc_styles.Ctrl1
-
-    lo = add_layout("volume")
-    lo.geometry =
-        {x = posX+pos_offsetX - (25 * 2) - osc_geo.p,
-         y = bigbtnrowY, an = 4, w = 25, h = 25}
-    -- lo.style = osc_styles.smallButtonsR
-    lo.style = osc_styles.Ctrl1
-
-    --
-    -- Seekbar
-    --
-
-    lo = add_layout("seekbar")
-    lo.geometry =
-        {x = posX, y = posY+pos_offsetY-22, an = 2, w = pos_offsetX*2, h = 15}
-    lo.style = osc_styles.timecodes
-    lo.slider.tooltip_style = osc_styles.vidtitle
-    lo.slider.stype = user_opts["seekbarstyle"]
-    lo.slider.rtype = user_opts["seekrangestyle"]
-
-    --
-    -- Timecodes + Cache
-    --
-
-    local bottomrowY = posY + pos_offsetY - 5
-
-    lo = add_layout("tc_left")
-    lo.geometry =
-        {x = posX - pos_offsetX, y = bottomrowY, an = 4, w = 110, h = 18}
-    lo.style = osc_styles.timecodes
-
-    lo = add_layout("tc_right")
-    lo.geometry =
-        {x = posX + pos_offsetX, y = bottomrowY, an = 6, w = 110, h = 18}
-    lo.style = osc_styles.timecodes
-
-    lo = add_layout("cache")
-    lo.geometry =
-        {x = posX, y = bottomrowY, an = 5, w = 110, h = 18}
-    lo.style = osc_styles.timecodes
-
-end
-
--- slim box layout
-layouts["slimbox"] = function ()
-
-    local osc_geo = {
-        w = 660,    -- width
-        h = 70,     -- height
-        r = 10,     -- corner-radius
-    }
-
-    -- make sure the OSC actually fits into the video
-    if osc_param.playresx < (osc_geo.w) then
-        osc_param.playresy = (osc_geo.w) / osc_param.display_aspect
-        osc_param.playresx = osc_param.playresy * osc_param.display_aspect
-    end
-
-    -- position of the controller according to video aspect and valignment
-    local posX = math.floor(get_align(user_opts.halign, osc_param.playresx,
-        osc_geo.w, 0))
-    local posY = math.floor(get_align(user_opts.valign, osc_param.playresy,
-        osc_geo.h, 0))
-
-    osc_param.areas = {} -- delete areas
-
-    -- area for active mouse input
-    add_area("input", get_hitbox_coords(posX, posY, 5, osc_geo.w, osc_geo.h))
-
-    -- area for show/hide
-    local sh_area_y0, sh_area_y1
-    if user_opts.valign > 0 then
-        -- deadzone above OSC
-        sh_area_y0 = get_align(-1 + (2*user_opts.deadzonesize),
-            posY - (osc_geo.h / 2), 0, 0)
-        sh_area_y1 = osc_param.playresy
-    else
-        -- deadzone below OSC
-        sh_area_y0 = 0
-        sh_area_y1 = (posY + (osc_geo.h / 2)) +
-            get_align(1 - (2*user_opts.deadzonesize),
-            osc_param.playresy - (posY + (osc_geo.h / 2)), 0, 0)
-    end
-    add_area("showhide", 0, sh_area_y0, osc_param.playresx, sh_area_y1)
-
-    local lo
-
-    local tc_w, ele_h, inner_w = 100, 20, osc_geo.w - 100
-
-    -- styles
-    local styles = {
-        box = "{\\rDefault\\blur0\\bord1\\1c&H000000\\3c&HFFFFFF}",
-        timecodes = "{\\1c&HFFFFFF\\3c&H000000\\fs20\\bord2\\blur1}",
-        tooltip = "{\\1c&HFFFFFF\\3c&H000000\\fs12\\bord1\\blur0.5}",
-    }
-
-
-    new_element("bgbox", "box")
-    lo = add_layout("bgbox")
-
-    lo.geometry = {x = posX, y = posY - 1, an = 2, w = inner_w, h = ele_h}
-    lo.layer = 10
-    lo.style = osc_styles.box
-    lo.alpha[1] = user_opts.boxalpha
-    lo.alpha[3] = 0
-    if user_opts["seekbarstyle"] ~= "bar" then
-        lo.box.radius = osc_geo.r
-        lo.box.hexagon = user_opts["seekbarstyle"] == "diamond"
-    end
-
-
-    lo = add_layout("seekbar")
-    lo.geometry =
-        {x = posX, y = posY - 1, an = 2, w = inner_w, h = ele_h}
-    lo.style = osc_styles.timecodes
-    lo.slider.border = 0
-    lo.slider.gap = 1.5
-    lo.slider.tooltip_style = styles.tooltip
-    lo.slider.stype = user_opts["seekbarstyle"]
-    lo.slider.rtype = user_opts["seekrangestyle"]
-    lo.slider.adjust_tooltip = false
-
-    --
-    -- Timecodes
-    --
-
-    lo = add_layout("tc_left")
-    lo.geometry =
-        {x = posX - (inner_w/2) + osc_geo.r, y = posY + 1,
-        an = 7, w = tc_w, h = ele_h}
-    lo.style = styles.timecodes
-    lo.alpha[3] = user_opts.boxalpha
-
-    lo = add_layout("tc_right")
-    lo.geometry =
-        {x = posX + (inner_w/2) - osc_geo.r, y = posY + 1,
-        an = 9, w = tc_w, h = ele_h}
-    lo.style = styles.timecodes
-    lo.alpha[3] = user_opts.boxalpha
-
-    -- Cache
-
-    lo = add_layout("cache")
-    lo.geometry =
-        {x = posX, y = posY + 1,
-        an = 8, w = tc_w, h = ele_h}
-    lo.style = styles.timecodes
-    lo.alpha[3] = user_opts.boxalpha
-
-
-end
 
 function bar_layout(direction)
     local osc_geo = {
@@ -1491,7 +985,7 @@ function bar_layout(direction)
     local padX = 9
     local padY = 3
     local buttonW = 27
-    local tcW = (state.tc_ms) and 170 or 110
+    local tcW = 110
     if user_opts.tcspace >= 50 and user_opts.tcspace <= 200 then
         -- adjust our hardcoded font size estimation
         tcW = tcW * user_opts.tcspace / 100
@@ -1501,18 +995,8 @@ function bar_layout(direction)
     local minW = (buttonW + padX)*5 + (tcW + padX)*4 + (tsW + padX)*2
 
     -- Special topbar handling when window controls are present
-    local padwc_l
-    local padwc_r
-    if direction < 0 or not window_controls_enabled() then
-        padwc_l = 0
-        padwc_r = 0
-    elseif window_controls_alignment() == "left" then
-        padwc_l = window_control_box_width
-        padwc_r = 0
-    else
-        padwc_l = 0
-        padwc_r = window_control_box_width
-    end
+    local padwc_l = 0
+    local padwc_r = 0
 
     if osc_param.display_aspect > 0 and osc_param.playresx < minW then
         osc_param.playresy = minW / osc_param.display_aspect
@@ -1671,12 +1155,9 @@ function bar_layout(direction)
     lo.geometry = geo
     lo.layer = 15
     lo.style = osc_styles.timecodesBar
-    lo.alpha[1] = 196
-        -- math.min(255, user_opts.boxalpha + (255 - user_opts.boxalpha)*0.8)
-    if user_opts["seekbarstyle"] ~= "bar" then
+    lo.alpha[1] = math.min(255, user_opts.boxalpha + (255 - user_opts.boxalpha)*0.8)
         lo.box.radius = geo.h / 2
-        lo.box.hexagon = user_opts["seekbarstyle"] == "diamond"
-    end
+        lo.box.hexagon = false
 
     lo = add_layout("seekbar")
     lo.geometry = geo
@@ -1685,8 +1166,8 @@ function bar_layout(direction)
     lo.slider.gap = 2
     lo.slider.tooltip_style = osc_styles.timePosBar
     lo.slider.tooltip_an = 5
-    lo.slider.stype = user_opts["seekbarstyle"]
-    lo.slider.rtype = user_opts["seekrangestyle"]
+    lo.slider.stype = "bar"
+    lo.slider.rtype = "inverted"
 
     if direction < 0 then
         osc_param.video_margins.b = osc_geo.h / osc_param.playresy
@@ -1695,64 +1176,13 @@ function bar_layout(direction)
     end
 end
 
-layouts["bottombar"] = function()
-    bar_layout(-1)
-end
 
-layouts["topbar"] = function()
-    bar_layout(1)
-end
 
 -- Validate string type user options
-function validate_user_opts()
-    if layouts[user_opts.layout] == nil then
-        msg.warn("Invalid setting \""..user_opts.layout.."\" for layout")
-        user_opts.layout = "bottombar"
-    end
-
-    if user_opts.seekbarstyle ~= "bar" and
-       user_opts.seekbarstyle ~= "diamond" and
-       user_opts.seekbarstyle ~= "knob" then
-        msg.warn("Invalid setting \"" .. user_opts.seekbarstyle
-            .. "\" for seekbarstyle")
-        user_opts.seekbarstyle = "bar"
-    end
-
-    if user_opts.seekrangestyle ~= "bar" and
-       user_opts.seekrangestyle ~= "line" and
-       user_opts.seekrangestyle ~= "slider" and
-       user_opts.seekrangestyle ~= "inverted" and
-       user_opts.seekrangestyle ~= "none" then
-        msg.warn("Invalid setting \"" .. user_opts.seekrangestyle
-            .. "\" for seekrangestyle")
-        user_opts.seekrangestyle = "inverted"
-    end
-
-    if user_opts.seekrangestyle == "slider" and
-       user_opts.seekbarstyle == "bar" then
-        msg.warn("Using \"slider\" seekrangestyle together with \"bar\" seekbarstyle is not supported")
-        user_opts.seekrangestyle = "inverted"
-    end
-
-    if user_opts.windowcontrols ~= "auto" and
-       user_opts.windowcontrols ~= "yes" and
-       user_opts.windowcontrols ~= "no" then
-        msg.warn("windowcontrols cannot be \"" ..
-                user_opts.windowcontrols .. "\". Ignoring.")
-        user_opts.windowcontrols = "auto"
-    end
-    if user_opts.windowcontrols_alignment ~= "right" and
-       user_opts.windowcontrols_alignment ~= "left" then
-        msg.warn("windowcontrols_alignment cannot be \"" ..
-                user_opts.windowcontrols_alignment .. "\". Ignoring.")
-        user_opts.windowcontrols_alignment = "right"
-    end
-end
 
 function update_options(list)
-    validate_user_opts()
     request_tick()
-    visibility_mode(user_opts.visibility, true)
+    visibility_mode("auto", true)
     update_duration_watch()
     request_init()
 end
@@ -1768,19 +1198,8 @@ function osc_init()
     local display_w, display_h, display_aspect = mp.get_osd_size()
     local scale = 1
 
-    if mp.get_property("video") == "no" then -- dummy/forced window
-        scale = user_opts.scaleforcedwindow
-    elseif state.fullscreen then
-        scale = user_opts.scalefullscreen
-    else
-        scale = user_opts.scalewindowed
-    end
 
-    if user_opts.vidscale then
-        osc_param.unscaled_y = baseResY
-    else
-        osc_param.unscaled_y = display_h
-    end
+    osc_param.unscaled_y = baseResY
     osc_param.playresy = osc_param.unscaled_y / scale
     if display_aspect > 0 then
         osc_param.display_aspect = display_aspect
@@ -1836,14 +1255,7 @@ function osc_init()
     ne.eventresponder["mbtn_left_up"] =
         function ()
             mp.commandv("playlist-prev", "weak")
-            if user_opts.playlist_osd then
-                show_message(get_playlist(), 3)
-            end
         end
-    ne.eventresponder["shift+mbtn_left_up"] =
-        function () show_message(get_playlist(), 3) end
-    ne.eventresponder["mbtn_right_up"] =
-        function () show_message(get_playlist(), 3) end
 
     --next
     ne = new_element("pl_next", "button")
@@ -1853,14 +1265,7 @@ function osc_init()
     ne.eventresponder["mbtn_left_up"] =
         function ()
             mp.commandv("playlist-next", "weak")
-            if user_opts.playlist_osd then
-                show_message(get_playlist(), 3)
-            end
         end
-    ne.eventresponder["shift+mbtn_left_up"] =
-        function () show_message(get_playlist(), 3) end
-    ne.eventresponder["mbtn_right_up"] =
-        function () show_message(get_playlist(), 3) end
 
 
     -- big buttons
@@ -1910,14 +1315,7 @@ function osc_init()
     ne.eventresponder["mbtn_left_up"] =
         function ()
             mp.commandv("add", "chapter", -1)
-            if user_opts.chapters_osd then
-                show_message(get_chapterlist(), 3)
-            end
         end
-    ne.eventresponder["shift+mbtn_left_up"] =
-        function () show_message(get_chapterlist(), 3) end
-    ne.eventresponder["mbtn_right_up"] =
-        function () show_message(get_chapterlist(), 3) end
 
     --ch_next
     ne = new_element("ch_next", "button")
@@ -1927,14 +1325,7 @@ function osc_init()
     ne.eventresponder["mbtn_left_up"] =
         function ()
             mp.commandv("add", "chapter", 1)
-            if user_opts.chapters_osd then
-                show_message(get_chapterlist(), 3)
-            end
         end
-    ne.eventresponder["shift+mbtn_left_up"] =
-        function () show_message(get_chapterlist(), 3) end
-    ne.eventresponder["mbtn_right_up"] =
-        function () show_message(get_chapterlist(), 3) end
 
     --
     update_tracklist()
@@ -2027,9 +1418,6 @@ function osc_init()
         end
     end
     ne.slider.seekRangesF = function()
-        if user_opts.seekrangestyle == "none" then
-            return nil
-        end
         local cache_state = state.cache_state
         if not cache_state then
             return nil
@@ -2083,15 +1471,7 @@ function osc_init()
     ne = new_element("tc_left", "button")
 
     ne.content = function ()
-        if state.tc_ms then
-            return (mp.get_property_osd("playback-time/full"))
-        else
             return (mp.get_property_osd("playback-time"))
-        end
-    end
-    ne.eventresponder["mbtn_left_up"] = function ()
-        state.tc_ms = not state.tc_ms
-        request_init()
     end
 
     -- tc_right (total/remaining time)
@@ -2100,20 +1480,12 @@ function osc_init()
     ne.visible = (mp.get_property_number("duration", 0) > 0)
     ne.content = function ()
         if state.rightTC_trem then
-            local minus = user_opts.unicodeminus and UNICODE_MINUS or "-"
-            local property = user_opts.remaining_playtime and "playtime-remaining"
-                                                           or "time-remaining"
-            if state.tc_ms then
-                return (minus..mp.get_property_osd(property .. "/full"))
-            else
+            local minus =  "-"
+            local property = "playtime-remaining"
+
                 return (minus..mp.get_property_osd(property))
-            end
         else
-            if state.tc_ms then
-                return (mp.get_property_osd("duration/full"))
-            else
                 return (mp.get_property_osd("duration"))
-            end
         end
     end
     ne.eventresponder["mbtn_left_up"] =
@@ -2166,13 +1538,10 @@ function osc_init()
         function () mp.commandv("osd-auto", "add", "volume", -5) end
 
 
-    -- load layout
-    layouts[user_opts.layout]()
 
-    -- load window controls
-    if window_controls_enabled() then
-        window_controls(user_opts.layout == "topbar")
-    end
+    bar_layout(-1)
+
+
 
     --do something with the elements
     prepare_elements()
@@ -2193,9 +1562,7 @@ function update_margins()
     local margins = osc_param.video_margins
 
     -- Don't use margins if it's visible only temporarily.
-    if not state.osc_visible or get_hidetimeout() >= 0 or
-       (state.fullscreen and not user_opts.showfullscreen) or
-       (not state.fullscreen and not user_opts.showwindowed)
+    if not state.osc_visible or get_hidetimeout() >= 0
     then
         margins = {l = 0, r = 0, t = 0, b = 0}
     end
@@ -2563,14 +1930,7 @@ function process_event(source, what)
         state.mouse_in_window = true
 
         local mouseX, mouseY = get_virt_mouse_pos()
-        if user_opts.minmousemove == 0 or
-            ((state.last_mouseX ~= nil and state.last_mouseY ~= nil) and
-                ((math.abs(mouseX - state.last_mouseX) >= user_opts.minmousemove)
-                    or (math.abs(mouseY - state.last_mouseY) >= user_opts.minmousemove)
-                )
-            ) then
             show_osc()
-        end
         state.last_mouseX, state.last_mouseY = mouseX, mouseY
 
         local n = state.active_element
@@ -2584,30 +1944,7 @@ function process_event(source, what)
 end
 
 
-local logo_lines = {
-    -- White border
-    "{\\c&HE5E5E5&\\p6}m 895 10 b 401 10 0 410 0 905 0 1399 401 1800 895 1800 1390 1800 1790 1399 1790 905 1790 410 1390 10 895 10 {\\p0}",
-    -- Purple fill
-    "{\\c&H682167&\\p6}m 925 42 b 463 42 87 418 87 880 87 1343 463 1718 925 1718 1388 1718 1763 1343 1763 880 1763 418 1388 42 925 42{\\p0}",
-    -- Darker fill
-    "{\\c&H430142&\\p6}m 1605 828 b 1605 1175 1324 1456 977 1456 631 1456 349 1175 349 828 349 482 631 200 977 200 1324 200 1605 482 1605 828{\\p0}",
-    -- White fill
-    "{\\c&HDDDBDD&\\p6}m 1296 910 b 1296 1131 1117 1310 897 1310 676 1310 497 1131 497 910 497 689 676 511 897 511 1117 511 1296 689 1296 910{\\p0}",
-    -- Triangle
-    "{\\c&H691F69&\\p6}m 762 1113 l 762 708 b 881 776 1000 843 1119 911 1000 978 881 1046 762 1113{\\p0}",
-}
 
-local santa_hat_lines = {
-    -- Pompoms
-    "{\\c&HC0C0C0&\\p6}m 500 -323 b 491 -322 481 -318 475 -311 465 -312 456 -319 446 -318 434 -314 427 -304 417 -297 410 -290 404 -282 395 -278 390 -274 387 -267 381 -265 377 -261 379 -254 384 -253 397 -244 409 -232 425 -228 437 -228 446 -218 457 -217 462 -216 466 -213 468 -209 471 -205 477 -203 482 -206 491 -211 499 -217 508 -222 532 -235 556 -249 576 -267 584 -272 584 -284 578 -290 569 -305 550 -312 533 -309 523 -310 515 -316 507 -321 505 -323 503 -323 500 -323{\\p0}",
-    "{\\c&HE0E0E0&\\p6}m 315 -260 b 286 -258 259 -240 246 -215 235 -210 222 -215 211 -211 204 -188 177 -176 172 -151 170 -139 163 -128 154 -121 143 -103 141 -81 143 -60 139 -46 125 -34 129 -17 132 -1 134 16 142 30 145 56 161 80 181 96 196 114 210 133 231 144 266 153 303 138 328 115 373 79 401 28 423 -24 446 -73 465 -123 483 -174 487 -199 467 -225 442 -227 421 -232 402 -242 384 -254 364 -259 342 -250 322 -260 320 -260 317 -261 315 -260{\\p0}",
-    -- Main cap
-    "{\\c&H0000F0&\\p6}m 1151 -523 b 1016 -516 891 -458 769 -406 693 -369 624 -319 561 -262 526 -252 465 -235 479 -187 502 -147 551 -135 588 -111 1115 165 1379 232 1909 761 1926 800 1952 834 1987 858 2020 883 2053 912 2065 952 2088 1000 2146 962 2139 919 2162 836 2156 747 2143 662 2131 615 2116 567 2122 517 2120 410 2090 306 2089 199 2092 147 2071 99 2034 64 1987 5 1928 -41 1869 -86 1777 -157 1712 -256 1629 -337 1578 -389 1521 -436 1461 -476 1407 -509 1343 -507 1284 -515 1240 -519 1195 -521 1151 -523{\\p0}",
-    -- Cap shadow
-    "{\\c&H0000AA&\\p6}m 1657 248 b 1658 254 1659 261 1660 267 1669 276 1680 284 1689 293 1695 302 1700 311 1707 320 1716 325 1726 330 1735 335 1744 347 1752 360 1761 371 1753 352 1754 331 1753 311 1751 237 1751 163 1751 90 1752 64 1752 37 1767 14 1778 -3 1785 -24 1786 -45 1786 -60 1786 -77 1774 -87 1760 -96 1750 -78 1751 -65 1748 -37 1750 -8 1750 20 1734 78 1715 134 1699 192 1694 211 1689 231 1676 246 1671 251 1661 255 1657 248 m 1909 541 b 1914 542 1922 549 1917 539 1919 520 1921 502 1919 483 1918 458 1917 433 1915 407 1930 373 1942 338 1947 301 1952 270 1954 238 1951 207 1946 214 1947 229 1945 239 1939 278 1936 318 1924 356 1923 362 1913 382 1912 364 1906 301 1904 237 1891 175 1887 150 1892 126 1892 101 1892 68 1893 35 1888 2 1884 -9 1871 -20 1859 -14 1851 -6 1854 9 1854 20 1855 58 1864 95 1873 132 1883 179 1894 225 1899 273 1908 362 1910 451 1909 541{\\p0}",
-    -- Brim and tip pompom
-    "{\\c&HF8F8F8&\\p6}m 626 -191 b 565 -155 486 -196 428 -151 387 -115 327 -101 304 -47 273 2 267 59 249 113 219 157 217 213 215 265 217 309 260 302 285 283 373 264 465 264 555 257 608 252 655 292 709 287 759 294 816 276 863 298 903 340 972 324 1012 367 1061 394 1125 382 1167 424 1213 462 1268 482 1322 506 1385 546 1427 610 1479 662 1510 690 1534 725 1566 752 1611 796 1664 830 1703 880 1740 918 1747 986 1805 1005 1863 991 1897 932 1916 880 1914 823 1945 777 1961 725 1979 673 1957 622 1938 575 1912 534 1862 515 1836 473 1790 417 1755 351 1697 305 1658 266 1633 216 1593 176 1574 138 1539 116 1497 110 1448 101 1402 77 1371 37 1346 -16 1295 15 1254 6 1211 -27 1170 -62 1121 -86 1072 -104 1027 -128 976 -133 914 -130 851 -137 794 -162 740 -181 679 -168 626 -191 m 2051 917 b 1971 932 1929 1017 1919 1091 1912 1149 1923 1214 1970 1254 2000 1279 2027 1314 2066 1325 2139 1338 2212 1295 2254 1238 2281 1203 2287 1158 2282 1116 2292 1061 2273 1006 2229 970 2206 941 2167 938 2138 918{\\p0}",
-}
 
 -- called by mpv on every frame
 function tick()
@@ -2634,27 +1971,9 @@ function tick()
 
         local ass = assdraw.ass_new()
         -- mpv logo
-        if user_opts.idlescreen then
-            for i, line in ipairs(logo_lines) do
-                ass:new_event()
-                ass:append(line_prefix .. line)
-            end
-        end
 
         -- Santa hat
-        if is_december and user_opts.idlescreen and not user_opts.greenandgrumpy then
-            for i, line in ipairs(santa_hat_lines) do
-                ass:new_event()
-                ass:append(line_prefix .. line)
-            end
-        end
 
-        if user_opts.idlescreen then
-            ass:new_event()
-            ass:pos(display_w / 2, icon_y + 65)
-            ass:an(8)
-            ass:append("Drop files or URLs to play here.")
-        end
         set_osd(display_w, display_h, ass.text, -1000)
 
         if state.showhide_enabled then
@@ -2664,8 +1983,7 @@ function tick()
         end
 
 
-    elseif state.fullscreen and user_opts.showfullscreen
-        or (not state.fullscreen and user_opts.showwindowed) then
+    elseif state.fullscreen or not state.fullscreen then
 
         -- render the OSC
         render()
@@ -2723,7 +2041,7 @@ function on_duration() request_init() end
 
 local duration_watched = false
 function update_duration_watch()
-    local want_watch = user_opts.livemarkers and
+    local want_watch = true and
                        (mp.get_property_number("chapters", 0) or 0) > 0 and
                        true or false  -- ensure it's a boolean
 
@@ -2737,7 +2055,6 @@ function update_duration_watch()
     end
 end
 
-validate_user_opts()
 update_duration_watch()
 
 mp.register_event("shutdown", shutdown)
@@ -2753,12 +2070,6 @@ mp.observe_property("chapter-list", "native", function(_, list)
 end)
 
 mp.register_script_message("osc-message", show_message)
-mp.register_script_message("osc-chapterlist", function(dur)
-    show_message(get_chapterlist(), dur)
-end)
-mp.register_script_message("osc-playlist", function(dur)
-    show_message(get_playlist(), dur)
-end)
 mp.register_script_message("osc-tracklist", function(dur)
     local msg = {}
     for k,v in pairs(nicetypes) do
@@ -2843,21 +2154,9 @@ mp.set_key_bindings({
 mp.enable_key_bindings("window-controls")
 
 function get_hidetimeout()
-    if user_opts.visibility == "always" then
-        return -1 -- disable autohide
-    end
     return user_opts.hidetimeout
 end
 
-function always_on(val)
-    if state.enabled then
-        if val then
-            show_osc()
-        else
-            hide_osc()
-        end
-    end
-end
 
 -- mode can be auto/always/never/cycle
 -- the modes only affect internal variables and not stored on its own.
@@ -2865,32 +2164,16 @@ function visibility_mode(mode, no_osd)
     if mode == "cycle" then
         if not state.enabled then
             mode = "auto"
-        elseif user_opts.visibility ~= "always" then
-            mode = "always"
         else
             mode = "never"
         end
     end
 
     if mode == "auto" then
-        always_on(false)
         enable_osc(true)
-    elseif mode == "always" then
-        enable_osc(true)
-        always_on(true)
-    elseif mode == "never" then
-        enable_osc(false)
-    else
-        msg.warn("Ignoring unknown visibility mode '" .. mode .. "'")
-        return
     end
 
-    user_opts.visibility = mode
-    mp.set_property_native("user-data/osc/visibility", mode)
 
-    if not no_osd and tonumber(mp.get_property("osd-level")) >= 1 then
-        mp.osd_message("OSC visibility: " .. mode)
-    end
 
     -- Reset the input state on a mode change. The input state will be
     -- recalculated on the next render cycle, except in 'never' mode where it
@@ -2903,35 +2186,11 @@ function visibility_mode(mode, no_osd)
     request_tick()
 end
 
-function idlescreen_visibility(mode, no_osd)
-    if mode == "cycle" then
-        if user_opts.idlescreen then
-            mode = "no"
-        else
-            mode = "yes"
-        end
-    end
 
-    if mode == "yes" then
-        user_opts.idlescreen = true
-    else
-        user_opts.idlescreen = false
-    end
-
-    mp.set_property_native("user-data/osc/idlescreen", user_opts.idlescreen)
-
-    if not no_osd and tonumber(mp.get_property("osd-level")) >= 1 then
-        mp.osd_message("OSC logo visibility: " .. tostring(mode))
-    end
-
-    request_tick()
-end
-
-visibility_mode(user_opts.visibility, true)
+visibility_mode("auto", true)
 mp.register_script_message("osc-visibility", visibility_mode)
 mp.add_key_binding(nil, "visibility", function() visibility_mode("cycle") end)
 
-mp.register_script_message("osc-idlescreen", idlescreen_visibility)
 
 set_virt_mouse_area(0, 0, 0, 0, "input")
 set_virt_mouse_area(0, 0, 0, 0, "window-controls")
