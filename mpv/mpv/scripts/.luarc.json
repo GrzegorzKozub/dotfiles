@@ -1,0 +1,15 @@
+{
+  "diagnostics": {
+    "disable": [
+      "lowercase-global"
+    ],
+    "globals": [
+      "mp"
+    ],
+    "unusedLocalExclude": [
+      "name",
+      "pos",
+      "self"
+    ]
+  }
+}
