@@ -1,8 +1,8 @@
 -- https://github.com/maoiscat/mpv-osc-framework
 -- luacheck: ignore 111 112 113 212
 
-require 'oscf'
 require 'expansion'
+require 'oscf'
 
 opts = {
   scale = 2,
@@ -82,38 +82,22 @@ local styles = {
   },
 }
 
-local env
-env = newElement 'env'
+local env = newElement 'env'
 env.layer = 1000
 env.visible = false
-env.updateTime = function()
-  dispatchEvent 'time'
-end
 env.init = function(self)
-  self.slowTimer = mp.add_periodic_timer(0.25, self.updateTime)
+  self.slowTimer = mp.add_periodic_timer(0.5, self.updateTime)
   mp.observe_property('track-list/count', 'native', function(name, val)
     if val == 0 then
       return
     end
+    player.chapters = getChapterList()
     player.tracks = getTrackList()
     player.playlist = getPlaylist()
-    player.chapters = getChapterList()
     player.playlistPos = getPlaylistPos()
     player.duration = mp.get_property_number 'duration'
-    showOsc()
+    -- showOsc()
     dispatchEvent 'file-loaded'
-  end)
-  mp.observe_property('pause', 'bool', function(name, val)
-    player.paused = val
-    dispatchEvent 'pause'
-  end)
-  mp.observe_property('fullscreen', 'bool', function(name, val)
-    player.fullscreen = val
-    dispatchEvent 'fullscreen'
-  end)
-  mp.observe_property('window-maximized', 'bool', function(name, val)
-    player.maximized = val
-    dispatchEvent 'window-maximized'
   end)
   mp.observe_property('current-tracks/audio/id', 'number', function(name, val)
     if val then
@@ -131,6 +115,10 @@ env.init = function(self)
     end
     dispatchEvent 'sub-changed'
   end)
+  mp.observe_property('pause', 'bool', function(name, val)
+    player.paused = val
+    dispatchEvent 'pause'
+  end)
   mp.observe_property('mute', 'bool', function(name, val)
     player.muted = val
     dispatchEvent 'mute'
@@ -139,60 +127,66 @@ env.init = function(self)
     player.volume = val
     dispatchEvent 'volume'
   end)
+  mp.observe_property('window-maximized', 'bool', function(name, val)
+    player.maximized = val
+    dispatchEvent 'window-maximized'
+  end)
+  mp.observe_property('fullscreen', 'bool', function(name, val)
+    player.fullscreen = val
+    dispatchEvent 'fullscreen'
+  end)
+end
+env.updateTime = function()
+  dispatchEvent 'time'
 end
 env.tick = function(self)
   player.percentPos = mp.get_property_number 'percent-pos'
   player.timePos = mp.get_property_number 'time-pos'
   player.timeRem = mp.get_property_number 'time-remaining'
-  return ''
 end
 env.responder['resize'] = function(self)
   player.geo.refX = player.geo.width / 2
   player.geo.refY = player.geo.height - 40
-  setPlayActiveArea('bg1', 0, player.geo.height - 120, player.geo.width, player.geo.height)
+  setPlayActiveArea('background', 0, player.geo.height - 120, player.geo.width, player.geo.height)
   if player.fullscreen then
-    setPlayActiveArea('wc1', player.geo.width - 200, 0, player.geo.width, 48)
+    setPlayActiveArea('window-controls', player.geo.width - 200, 0, player.geo.width, 48)
   else
-    setPlayActiveArea('wc1', -1, -1, -1, -1)
-  end
-  return false
-end
-env.responder['pause'] = function(self)
-  if player.idle then
-    return
-  end
-  if player.paused then
-    setVisibility 'always'
-  else
-    setVisibility 'normal'
+    setPlayActiveArea('window-controls', -1, -1, -1, -1)
   end
 end
-env.responder['idle'] = function(self)
-  if player.idle then
-    setVisibility 'always'
-  else
-    setVisibility 'normal'
-  end
-  return false
-end
+-- env.responder['pause'] = function(self)
+--   if player.idle then
+--     return
+--   end
+--   if player.paused then
+--     setVisibility 'always'
+--   else
+--     setVisibility 'normal'
+--   end
+-- end
+-- env.responder['idle'] = function(self)
+--   if player.idle then
+--     setVisibility 'always'
+--   else
+--     setVisibility 'normal'
+--   end
+-- end
 env:init()
 addToPlayLayout 'env'
 
 -- background
 local ne
 ne = newElement('background', 'box')
+ne.style = clone(styles.background)
+ne.layer = 5
 ne.geo.h = 1
 ne.geo.an = 8
-ne.layer = 5
--- DO NOT directly assign a shared style tabe!!
-ne.style = clone(styles.background)
 ne.responder['resize'] = function(self)
   self.geo.x = player.geo.refX
   self.geo.y = player.geo.height
   self.geo.w = player.geo.width
   self.setPos(self)
   self.render(self)
-  return false
 end
 ne:init()
 addToPlayLayout 'background'
