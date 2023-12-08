@@ -10,37 +10,32 @@ opts = {
   fadeDuration = 0.5,
 }
 
+-- color: bgr, foreground, border, background, border
+
 local styles = {
   background = {
     color = { '0', '0', '0', '0' },
     alpha = { 255, 255, 0, 0 },
-    border = 140,
-    blur = 140,
+    border = 150,
+    blur = 150,
   },
   tooltip = {
-    color = { 'FFFFFF', 'FFFFFF', '0', '0' },
-    border = 0.5,
-    blur = 1,
-    fontsize = 18,
-    wrap = 2,
-  },
-  button1 = {
-    color1 = { 'FFFFFF', 'FFFFFF', 'FFFFFF', 'FFFFFF' },
-    color2 = { '999999', '999999', '999999', '999999' },
-    fontsize = 36,
-    border = 0,
-    blur = 0,
-    font = 'monospace',
-    wrap = 2,
-  },
-  button2 = {
-    color1 = { 'FFFFFF', 'FFFFFF', 'FFFFFF', 'FFFFFF' },
-    color2 = { '999999', '999999', '999999', '999999' },
-    border = 0,
-    blur = 0,
+    color = { 'ffffff', 'ffffff', '0', '0' },
+    font = 'sans-serif',
     fontsize = 24,
+    border = 0.75,
+  },
+  big_button = {
+    color1 = { 'ffffff', 'ffffff', 'ffffff', 'ffffff' },
+    color2 = { '999999', '999999', '999999', '999999' },
     font = 'monospace',
-    wrap = 2,
+    fontsize = 48,
+  },
+  button = {
+    color1 = { 'ffffff', 'ffffff', 'ffffff', 'ffffff' },
+    color2 = { '999999', '999999', '999999', '999999' },
+    font = 'monospace',
+    fontsize = 32,
   },
   seekbarFg = {
     color1 = { 'E39C42', 'E39C42', '0', '0' },
@@ -174,292 +169,231 @@ end
 env:init()
 addToPlayLayout 'env'
 
--- background
-local ne
-ne = newElement('background', 'box')
-ne.style = clone(styles.background)
-ne.layer = 5
-ne.geo.h = 1
-ne.geo.an = 8
-ne.responder['resize'] = function(self)
+local background = newElement('background', 'box')
+background.style = clone(styles.background)
+background.layer = 5
+background.geo.h = 1
+background.geo.an = 8
+background.responder['resize'] = function(self)
   self.geo.x = player.geo.refX
   self.geo.y = player.geo.height
   self.geo.w = player.geo.width
   self.setPos(self)
   self.render(self)
 end
-ne:init()
+background:init()
 addToPlayLayout 'background'
 
--- a shared tooltip
-ne = newElement('tip', 'tooltip')
-ne.layer = 20
-ne.style = clone(styles.tooltip)
-ne:init()
-addToPlayLayout 'tip'
-local tooltip = ne
+local tooltip = newElement('tooltip', 'tooltip')
+tooltip.style = clone(styles.tooltip)
+tooltip.layer = 20
+tooltip:init()
+addToPlayLayout 'tooltip'
 
--- playpause button
-ne = newElement('btnPlay', 'button')
-ne.layer = 10
-ne.style = clone(styles.button1)
-ne.geo.w = 45
-ne.geo.h = 45
-ne.geo.an = 5
-ne.responder['resize'] = function(self)
+local play = newElement('play', 'button')
+play.style = clone(styles.big_button)
+play.layer = 10
+play.geo.w = 45
+play.geo.h = 45
+play.geo.an = 5
+play.responder['resize'] = function(self)
   self.geo.x = player.geo.refX
   self.geo.y = player.geo.refY
   self:setPos()
   self:setHitBox()
-  return false
 end
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.enabled and self:isInside(pos) then
-    mp.commandv('cycle', 'pause')
-    return true
-  end
-  return false
-end
-ne.responder['pause'] = function(self)
+play.responder['pause'] = function(self)
   if player.paused then
     self.text = '󰐊'
   else
     self.text = '󰏤'
   end
   self:render()
-  return false
 end
-ne:init()
-addToPlayLayout 'btnPlay'
+play.responder['mbtn_left_up'] = function(self, pos)
+  if self.enabled and self:isInside(pos) then
+    mp.commandv('cycle', 'pause')
+  end
+end
+play:init()
+addToPlayLayout 'play'
 
--- skip back button
-ne = newElement('btnBack', 'button')
-ne.layer = 10
-ne.style = clone(styles.button2)
-ne.geo.w = 30
-ne.geo.h = 24
-ne.geo.an = 5
-ne.text = '\xEF\x8E\xA0'
-ne.responder['resize'] = function(self)
+local prev = newElement('prev', 'button')
+prev.style = clone(styles.button)
+prev.layer = 10
+prev.geo.w = 30
+prev.geo.h = 24
+prev.geo.an = 5
+prev.text = '󰒮'
+prev.responder['mbtn_left_up'] = function(self, pos)
+  if self.enabled and self:isInside(pos) then
+    mp.commandv('playlist-prev', 'weak')
+  end
+end
+prev.responder['resize'] = function(self)
   self.geo.x = player.geo.refX - 60
   self.geo.y = player.geo.refY
   self:setPos()
   self:setHitBox()
-  return false
 end
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.enabled and self:isInside(pos) then
-    mp.commandv('seek', -5, 'relative', 'keyframes')
-    return true
-  end
-  return false
-end
-ne:init()
--- addToPlayLayout('btnBack')
-
--- skip forward button
-ne = newElement('btnForward', 'btnBack')
-ne.text = '\xEF\x8E\x9F'
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.enabled and self:isInside(pos) then
-    mp.commandv('seek', 5, 'relative', 'keyframes')
-    return true
-  end
-  return false
-end
-ne.responder['resize'] = function(self)
-  self.geo.x = player.geo.refX + 60
-  self.geo.y = player.geo.refY
-  self:setPos()
-  self:setHitBox()
-  return false
-end
-ne:init()
--- addToPlayLayout('btnForward')
-
--- play previous file button
-ne = newElement('btnPrev', 'button')
-ne.layer = 10
-ne.style = clone(styles.button2)
-ne.geo.w = 30
-ne.geo.h = 24
-ne.geo.an = 5
-ne.text = '\xEF\x8E\xB5'
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.enabled and self:isInside(pos) then
-    mp.commandv('playlist-prev', 'weak')
-    return true
-  end
-  return false
-end
-ne.responder['resize'] = function(self)
-  self.geo.x = player.geo.refX - 120
-  self.geo.y = player.geo.refY
-  self:setPos()
-  self:setHitBox()
-  return false
-end
-ne.responder['file-loaded'] = function(self)
+prev.responder['file-loaded'] = function(self)
   if player.playlistPos <= 1 and player.loopPlaylist == 'no' then
     self:disable()
   else
     self:enable()
   end
-  return false
 end
-ne:init()
--- addToPlayLayout('btnPrev')
+prev:init()
+addToPlayLayout('prev')
 
--- play next file button
-ne = newElement('btnNext', 'btnPrev')
-ne.text = '\xEF\x8E\xB4'
-ne.responder['mbtn_left_up'] = function(self, pos)
+local next = newElement('next', 'button')
+next.style = clone(styles.button)
+next.layer = 10
+next.geo.w = 30
+next.geo.h = 24
+next.geo.an = 5
+next.text = '󰒭'
+next.responder['mbtn_left_up'] = function(self, pos)
   if self.enabled and self:isInside(pos) then
     mp.commandv('playlist-next', 'weak')
-    return true
   end
-  return false
 end
-ne.responder['resize'] = function(self)
-  self.geo.x = player.geo.refX + 120
+next.responder['resize'] = function(self)
+  self.geo.x = player.geo.refX + 60
   self.geo.y = player.geo.refY
   self:setPos()
   self:setHitBox()
-  return false
 end
-ne.responder['file-loaded'] = function(self)
+next.responder['file-loaded'] = function(self)
   if player.playlistPos >= #player.playlist and player.loopPlaylist == 'no' then
     self:disable()
   else
     self:enable()
   end
-  return false
 end
-ne:init()
--- addToPlayLayout('btnNext')
+next:init()
+addToPlayLayout('next')
 
--- cycle audio button
-ne = newElement('cycleAudio', 'button')
-ne.layer = 10
-ne.style = clone(styles.button2)
-ne.geo.w = 30
-ne.geo.h = 24
-ne.geo.an = 5
-ne.text = '\xEF\x8E\xB7'
-ne.tipText = ''
-ne.responder['resize'] = function(self)
+local audio = newElement('audio', 'button')
+audio.style = clone(styles.button)
+audio.style.fontsize = 24
+audio.layer = 10
+audio.geo.w = 30
+audio.geo.h = 24
+audio.geo.an = 5
+audio.text = '󰭹'
+audio.responder['resize'] = function(self)
   self.geo.x = 37
   self.geo.y = player.geo.refY
   self.visible = player.geo.width >= 540
   self:setPos()
   self:setHitBox()
-  return false
 end
-ne.responder['mouse_move'] = function(self, pos)
+audio.responder['mouse_move'] = function(self, pos)
   if self.enabled and self:isInside(pos) then
     tooltip:show(self.tipText, { self.geo.x, self.geo.y + 30 }, self)
-    return true
   else
     tooltip:hide(self)
-    return false
   end
 end
-ne.responder['file-loaded'] = function(self)
+audio.responder['file-loaded'] = function(self)
   if #player.tracks.audio > 0 then
     self:enable()
   else
     self:disable()
   end
 end
-ne.responder['audio-changed'] = function(self)
+audio.responder['audio-changed'] = function(self)
   if player.tracks then
     local lang
     if player.audioTrack == 0 then
-      lang = 'OFF'
+      lang = 'unknown'
     else
       lang = player.tracks.audio[player.audioTrack].lang
     end
     if not lang then
       lang = 'unknown'
     end
-    self.tipText = string.format('[%s/%s][%s]', player.audioTrack, #player.tracks.audio, lang)
+    self.tipText = string.format('%s/%s %s', player.audioTrack, #player.tracks.audio, lang)
     tooltip:update(self.tipText, self)
   end
-  return false
 end
-ne.responder['mbtn_left_up'] = function(self, pos)
+audio.responder['mbtn_left_up'] = function(self, pos)
   if self.enabled and self:isInside(pos) then
     cycleTrack 'audio'
-    return true
   end
-  return false
 end
-ne.responder['mbtn_right_up'] = function(self, pos)
+audio.responder['mbtn_right_up'] = function(self, pos)
   if self.enabled and self:isInside(pos) then
     cycleTrack('audio', 'prev')
-    return true
   end
-  return false
 end
-ne:init()
-addToPlayLayout 'cycleAudio'
+audio:init()
+addToPlayLayout 'audio'
 
--- cycle sub button
-ne = newElement('cycleSub', 'cycleAudio')
-ne.text = '\xEF\x8F\x93'
-ne.responder['resize'] = function(self)
+local subtitles = newElement('subtitles', 'button')
+subtitles.style = clone(styles.button)
+subtitles.layer = 10
+subtitles.geo.w = 30
+subtitles.geo.h = 24
+subtitles.geo.an = 5
+subtitles.text = '󰅞'
+subtitles.responder['resize'] = function(self)
   self.geo.x = 87
   self.geo.y = player.geo.refY
   self.visible = player.geo.width >= 600
   self:setPos()
   self:setHitBox()
-  return false
 end
-ne.responder['file-loaded'] = function(self)
+subtitles.responder['mouse_move'] = function(self, pos)
+  if self.enabled and self:isInside(pos) then
+    tooltip:show(self.tipText, { self.geo.x, self.geo.y + 30 }, self)
+  else
+    tooltip:hide(self)
+  end
+end
+subtitles.responder['file-loaded'] = function(self)
   if #player.tracks.sub > 0 then
     self:enable()
   else
     self:disable()
   end
 end
-ne.responder['audio-changed'] = nil
-ne.responder['sub-changed'] = function(self)
+subtitles.responder['sub-changed'] = function(self)
   if player.tracks then
     local title
     if player.subTrack == 0 then
-      title = 'OFF'
+      title = 'unknown'
     else
       title = player.tracks.sub[player.subTrack].title
     end
     if not title then
       title = 'unknown'
     end
-    self.tipText = string.format('[%s/%s][%s]', player.subTrack, #player.tracks.sub, title)
+    self.tipText = string.format('%s/%s %s', player.subTrack, #player.tracks.sub, title)
     tooltip:update(self.tipText, self)
   end
-  return false
 end
-ne.responder['mbtn_left_up'] = function(self, pos)
+subtitles.responder['mbtn_left_up'] = function(self, pos)
   if self.enabled and self:isInside(pos) then
     cycleTrack 'sub'
-    return true
   end
-  return false
 end
-ne.responder['mbtn_right_up'] = function(self, pos)
+subtitles.responder['mbtn_right_up'] = function(self, pos)
   if self.enabled and self:isInside(pos) then
     cycleTrack('sub', 'prev')
-    return true
   end
-  return false
 end
-ne:init()
-addToPlayLayout 'cycleSub'
+subtitles:init()
+addToPlayLayout 'subtitles'
+
+
+
 
 -- toggle mute
 ne = newElement('togMute', 'button')
 ne.layer = 10
-ne.style = clone(styles.button2)
+ne.style = clone(styles.button)
 ne.geo.x = 137
 ne.geo.w = 30
 ne.geo.h = 24
@@ -480,9 +414,9 @@ ne.responder['mbtn_left_up'] = function(self, pos)
 end
 ne.responder['mute'] = function(self)
   if player.muted then
-    self.text = '\xEF\x8E\xBB'
+    self.text = '󰝟'
   else
-    self.text = '\xEF\x8E\xBC'
+    self.text = '󰕾'
   end
   self:render()
   return false
@@ -590,43 +524,21 @@ end
 ne:init()
 addToPlayLayout 'volumeSlider'
 
--- toggle info
-ne = newElement('togInfo', 'button')
+-- toggle fullscreen
+ne = newElement('togFs', 'button')
 ne.layer = 10
-ne.style = clone(styles.button2)
+ne.style = clone(styles.button)
 ne.geo.w = 30
 ne.geo.h = 24
 ne.geo.an = 5
-ne.text = '\xEF\x87\xB7'
-ne.responder['resize'] = function(self)
-  self.geo.x = player.geo.width - 87
-  self.geo.y = player.geo.refY
-  self.visible = player.geo.width >= 640
-  self:setPos()
-  self:setHitBox()
-  return false
-end
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.enabled and self:isInside(pos) then
-    mp.commandv('script-binding', 'stats/display-stats-toggle')
-    return true
-  end
-  return false
-end
-ne:init()
-addToPlayLayout 'togInfo'
-
--- toggle fullscreen
-ne = newElement('togFs', 'togInfo')
-ne.text = '\xEF\x85\xAD'
 ne.responder['resize'] = function(self)
   self.geo.x = player.geo.width - 37
   self.geo.y = player.geo.refY
   self.visible = player.geo.width >= 600
   if player.fullscreen then
-    self.text = '\xEF\x85\xAC'
+    self.text = '󰊔'
   else
-    self.text = '\xEF\x85\xAD'
+    self.text = '󰊓'
   end
   self:render()
   self:setPos()
@@ -828,126 +740,4 @@ end
 ne:init()
 addToPlayLayout 'time2'
 
--- title
-ne = newElement 'title'
-ne.layer = 10
-ne.style = clone(styles.title)
-ne.geo.x = 20
-ne.geo.an = 1
-ne.visible = false
-ne.title = ''
-ne.render = function(self)
-  local maxchars = player.geo.width / 23
-  local text = self.title
-  -- 估计1个中文字符约等于1.5个英文字符
-  local charcount = (text:len() + select(2, text:gsub('[^\128-\193]', '')) * 2) / 3
-  if not (maxchars == nil) and (charcount > maxchars) then
-    local limit = math.max(0, maxchars - 3)
-    if charcount > limit then
-      while charcount > limit do
-        text = text:gsub('.[\128-\191]*$', '')
-        charcount = (text:len() + select(2, text:gsub('[^\128-\193]', '')) * 2) / 3
-      end
-      text = text .. '...'
-    end
-  end
-  self.pack[4] = text
-end
-ne.tick = function(self)
-  if not self.visible then
-    return ''
-  end
-  if self.trans >= 0.9 then
-    self.visible = false
-  end
-  return table.concat(self.pack)
-end
-ne.responder['resize'] = function(self)
-  self.geo.y = player.geo.refY - 92
-  self:setPos()
-  self:render()
-  self.visible = self.visible and (player.geo.height >= 320)
-end
-ne.responder['pause'] = function(self)
-  self.visible = (self.visible or player.paused) and (player.geo.height >= 320)
-end
-ne.responder['file-loaded'] = function(self)
-  local title = mp.command_native { 'expand-text', '${media-title}' }
-  title = title:gsub('\\n', ' '):gsub('\\$', ''):gsub('{', '\\{')
-  self.title = title
-  self:render()
-  self.visible = true
-end
-ne.responder['idle'] = function(self)
-  self.visible = not player.idle
-  return false
-end
-ne:init()
-addToPlayLayout 'title'
 
--- window controllers
-ne = newElement('winClose', 'button')
-ne.layer = 10
-ne.style = clone(styles.winControl)
-ne.geo.y = 16
-ne.geo.w = 40
-ne.geo.h = 32
-ne.geo.an = 5
-ne.text = '\238\132\149'
-ne.responder['resize'] = function(self)
-  self.geo.x = player.geo.width - 20
-  self:init()
-end
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.visible and self:isInside(pos) then
-    mp.commandv 'quit'
-    return true
-  end
-  return false
-end
-ne.responder['fullscreen'] = function(self)
-  self.visible = player.fullscreen
-end
-ne:init()
-addToPlayLayout 'winClose'
-
-ne = newElement('winMax', 'winClose')
-ne.text = ''
-ne.responder['resize'] = function(self)
-  self.geo.x = player.geo.width - 60
-  if player.maximized or player.fullscreen then
-    self.text = '\238\132\148'
-  else
-    self.text = '\238\132\147'
-  end
-  self:init()
-end
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.visible and self:isInside(pos) then
-    if player.fullscreen then
-      mp.commandv('cycle', 'fullscreen')
-    else
-      mp.commandv('cycle', 'window-maximized')
-    end
-    return true
-  end
-  return false
-end
-ne:init()
-addToPlayLayout 'winMax'
-
-ne = newElement('winMin', 'winClose')
-ne.text = '\238\132\146'
-ne.responder['resize'] = function(self)
-  self.geo.x = player.geo.width - 100
-  self:init()
-end
-ne.responder['mbtn_left_up'] = function(self, pos)
-  if self.visible and self:isInside(pos) then
-    mp.commandv('cycle', 'window-minimized')
-    return true
-  end
-  return false
-end
-ne:init()
-addToPlayLayout 'winMin'
