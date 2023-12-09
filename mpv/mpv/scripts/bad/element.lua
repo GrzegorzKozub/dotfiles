@@ -11,11 +11,8 @@ function M.render(el)
     string.format('\\1a&H%x&\\2a&H%x&\\3a&H%x&\\4a&H%x&', el.alpha[1], el.alpha[2], el.alpha[3], el.alpha[4]),
     string.format('\\1c&H%s&\\2c&H%s&\\3c&H%s&\\4c&H%s&', el.color[1], el.color[2], el.color[3], el.color[4]),
     string.format('\\bord%.2f', el.border.size),
-    string.format('\\blur%.2f', el.border.blur),
-    string.format('\\shad%.2f', el.border.shadow),
     '\\fn' .. el.font.name,
     string.format('\\fs%.2f', el.font.size),
-    string.format('\\q%d', el.font.wrap),
     '}',
   }
 
