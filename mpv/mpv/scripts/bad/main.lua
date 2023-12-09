@@ -1,23 +1,17 @@
-mp.commandv("set", "osc", "no")
-local ex = require("element")
-local osd = mp.create_osd_overlay("ass-events")
+-- luacheck: ignore 113
 
-local function setOsd(text)
-  if text == osd.data then
-    return
-  end
-  osd.data = text
-  osd:update()
-end
+mp.commandv('set', 'osc', 'no')
 
+local elements = require 'elements'
+local osd = require 'osd'
+local window = require 'window'
 
-local window = require('window')
-local elements = require('elements').get(window)
-window.set_size()
-mp.observe_property('osd-dimensions', 'native',
-	function(name, val)
-		window.set_size()
-setOsd(ex.render(elements.background()) .. '\n' .. ex.render(elements.test)  )
-  end)
+window.update()
+osd.setup(window)
 
-setOsd(ex.render(elements.background()) .. '\n' .. ex.render(elements.test)  )
+mp.observe_property('osd-dimensions', 'native', function()
+  window.update()
+  osd.setup(window)
+end)
+
+osd.update(elements.background(window) .. '\n' .. elements.play(window) .. '\n' .. elements.next(window))

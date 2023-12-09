@@ -1,31 +1,41 @@
 local M = {}
+local draw = require 'draw'
+local format = require 'format'
 
-function M.get(window)
-  return {
-    background = function()
-      return {
-        type = 'box',
-        layer = 5,
-        position = { x = window.get_size().width / 2, y = window.get_size().height / 2, align = 7 },
-        size = { width = 200, height = 100 },
-        color = { '00ff00', '000000', '000000', '000000' },
-        alpha = { 0, 0, 0, 0 },
-        border = { size = 0, blur = 0, shadow = 0, radius = 0 },
-        font = { name = '', size = 0, wrap = 2 },
-      }
-    end,
-    test = {
-      type = '',
-      text = 'test',
-      layer = 10,
-      position = { x = 150, y = 30, align = 7 },
-      size = { width = 100, height = 100 },
-      color = { 'ff0000', '000000', '000000', '000000' },
-      alpha = { 0, 0, 0, 0 },
-      border = { size = 0, blur = 0, shadow = 0, radius = 0 },
-      font = { name = 'monospace', size = 80, wrap = 2 },
-    },
+function M.background(window)
+  local fmt = {
+    position = { x = 0, y = window.height(), align = 7 },
+    color = { '000000', '000000', '000000', '000000' },
+    alpha = { 0, 0, 0, 0 },
+    border = 128,
+    blur = 128,
+    font = { name = '', size = 0 },
   }
+  return format.tag(fmt) .. draw.box(window.width(), 1)
+end
+
+function M.play(window)
+  local fmt = {
+    position = { x = window.width() / 2, y = window.height() - 64, align = 5 },
+    color = { 'ffffff', '000000', '000000', '000000' },
+    alpha = { 32, 0, 0, 0 },
+    border = 0,
+    blur = 1,
+    font = { name = 'monospace', size = 64 },
+  }
+  return format.tag(fmt) .. '󰐊'
+end
+
+function M.next(window)
+  local fmt = {
+    position = { x = window.width() / 2 + 64, y = window.height() - 64, align = 5 },
+    color = { 'ffffff', '000000', '000000', '000000' },
+    alpha = { 32, 0, 0, 0 },
+    border = 0,
+    blur = 1,
+    font = { name = 'monospace', size = 64 },
+  }
+  return format.tag(fmt) .. '󰒭'
 end
 
 return M
