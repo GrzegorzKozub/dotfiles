@@ -1,5 +1,3 @@
--- https://aegisub.org/docs/latest/ass_tags/
-
 local M = {}
 
 function M.get(data)

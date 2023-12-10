@@ -4,12 +4,15 @@ local M = {}
 
 local draw = require 'draw'
 local hitbox = require 'hitbox'
+local mouse = require 'mouse'
+local osd = require 'osd'
 local tags = require 'tags'
+local window = require 'window'
 
 local elements = {}
 
-local function background(window)
-  local data = function(window)
+local function background()
+  local data = function()
     return {
       geo = { x = 0, y = window.height(), width = window.width(), height = 1, align = 7 },
       color = { '000000', '000000', '000000', '000000' },
@@ -20,9 +23,9 @@ local function background(window)
     }
   end
   return {
-    data = data(window),
-    refresh = function(self, window)
-      self.data = data(window)
+    data = data(),
+    refresh = function(self)
+      self.data = data()
     end,
     osd = function(self)
       return tags.get(self.data) .. draw.box(self.data.geo.width, self.data.geo.height)
@@ -34,8 +37,8 @@ local function background(window)
   }
 end
 
-local function play_pause(window)
-  local data = function(window)
+local function play_pause()
+  local data = function()
     return {
       geo = { x = window.width() / 2, y = window.height() - 64, width = 32, height = 32, align = 5 },
       color = { 'ffffff', '000000', '000000', '000000' },
@@ -47,9 +50,9 @@ local function play_pause(window)
     }
   end
   return {
-    data = data(window),
-    refresh = function(self, window)
-      self.data = data(window)
+    data = data(),
+    refresh = function(self)
+      self.data = data()
     end,
     osd = function(self)
       return tags.get(self.data) .. self.data.text
@@ -67,11 +70,11 @@ local function play_pause(window)
   }
 end
 
-function M.init(window, osd, mouse)
-  elements = { background(window), play_pause(window) }
+function M.init()
+  elements = { background(), play_pause() }
   mp.observe_property('pause', 'bool', function()
-    elements[2]:refresh(window)
-    osd.update(M.osd())
+    elements[2]:refresh()
+    M.redraw()
   end)
   for _, event in ipairs { 'mbtn_left_up' } do
     for _, element in ipairs(elements) do
@@ -84,16 +87,16 @@ function M.init(window, osd, mouse)
   end
 end
 
-function M.refresh(window)
+function M.refresh()
   for _, element in ipairs(elements) do
     if element.refresh then
-      element:refresh(window)
+      element:refresh()
     end
   end
 end
 
-function M.osd()
-  return elements[1]:osd() .. '\n' .. elements[2]:osd() .. '\n'
+function M.redraw()
+  osd.update(elements[1]:osd() .. '\n' .. elements[2]:osd() .. '\n')
 end
 
 return M

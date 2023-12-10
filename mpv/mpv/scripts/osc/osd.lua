@@ -4,7 +4,9 @@ local M = {}
 
 local osd = mp.create_osd_overlay 'ass-events'
 
-function M.setup(window)
+local window = require 'window'
+
+function M.setup()
   osd.res_x = window.width()
   osd.res_y = window.height()
 end

@@ -1,5 +1,6 @@
-local assdraw = require 'mp.assdraw'
 local M = {}
+
+local assdraw = require 'mp.assdraw'
 
 function M.box(width, height)
   local ass = assdraw.ass_new()

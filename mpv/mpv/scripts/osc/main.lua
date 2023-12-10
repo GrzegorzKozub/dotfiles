@@ -1,4 +1,5 @@
 -- https://github.com/mpv-player/mpv/blob/master/DOCS/man/lua.rst
+-- https://aegisub.org/docs/latest/ass_tags/
 
 -- luacheck: ignore 113
 
@@ -11,19 +12,19 @@ local window = require 'window'
 
 local shown = false
 
-elements.init(window, osd, mouse)
+elements.init()
 
 mp.observe_property('osd-dimensions', 'native', function()
   window.update()
-  osd.setup(window)
-  elements.refresh(window)
+  osd.setup()
+  elements.refresh()
   if shown then
-    osd.update(elements.osd())
+    elements.redraw()
   end
 end)
 
 mouse.on_move(function()
-  osd.update(elements.osd())
+  elements.redraw()
   require('timer').delay(3, function()
     osd.update ''
     shown = false
@@ -31,3 +32,4 @@ mouse.on_move(function()
   shown = true
 end)
 
+-- bug: when (un)pausing, the osc shows up and does not hide
