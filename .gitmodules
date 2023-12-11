@@ -10,3 +10,7 @@
 	path = azuredatastudio/azuredatastudio
 	url = git@github.com:GrzegorzKozub/azuredatastudio.git
 	branch = master
+[submodule "mpv/mpv"]
+	path = mpv/mpv
+	url = git@github.com:GrzegorzKozub/mpv.git
+	branch = master
