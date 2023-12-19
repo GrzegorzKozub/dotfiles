@@ -52,12 +52,14 @@ ow 󰝰
 
 *.dockerignore 󰘓  # nf-md-file_hidden
 *.editorconfig 󰘓
+*.git 󰘓
 *.gitattributes 󰘓
 *.gitignore 󰘓
 *.gitmodules 󰘓
 
 *.backup 󰘓
 *.bak 󰘓
+*.disabled 󰘓
 *.log 󰘓
 *.old 󰘓
 *.orig 󰘓
