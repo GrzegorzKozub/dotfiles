@@ -85,6 +85,7 @@ npm install --global \
 
 # neovim
 
+# nvim -c 'autocmd User VeryLazy lua require("lazy").load({ plugins = { "mason-lspconfig.nvim", "mason-nvim-lint" } })'
 nvim -c 'autocmd User VeryLazy lua require("lazy").load({ plugins = { "mason-lspconfig.nvim", "mason-null-ls.nvim" } })'
 
 # docker
