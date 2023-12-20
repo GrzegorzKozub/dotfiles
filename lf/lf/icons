@@ -59,8 +59,8 @@ ow 󰝰
 
 *.backup 󰘓
 *.bak 󰘓
-*.disabled 󰘓
 *.log 󰘓
+*.off 󰘓
 *.old 󰘓
 *.orig 󰘓
 *.original 󰘓

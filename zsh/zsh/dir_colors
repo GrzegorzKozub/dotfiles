@@ -56,8 +56,8 @@ EXEC 32
 
 .backup 90
 .bak 90
-.disabled 90
 .log 90
+.off 90
 .old 90
 .orig 90
 .original 90
