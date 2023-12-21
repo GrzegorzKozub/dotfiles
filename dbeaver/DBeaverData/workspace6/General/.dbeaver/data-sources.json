@@ -1,0 +1,125 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-18c8b42ad69-6f5bf4cfc214d7e1": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "au-stage-writer",
+			"configuration": {
+				"host": "localhost",
+				"port": "3307",
+				"url": "jdbc:mysql://localhost:3307/",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-18c8b5b8b21-582dbcb1d92fb9d2": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "au-stage-reader",
+			"read-only": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3308",
+				"url": "jdbc:mysql://localhost:3308/",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-18c8b5e377b-4c77553226de6305": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost",
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-18c8b5ebbac-5c0ca74f3f947349": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "au-beta-reader",
+			"read-only": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3311",
+				"url": "jdbc:mysql://localhost:3311/",
+				"configurationType": "MANUAL",
+				"type": "test",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-18c8b604822-52eb84778e11c061": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "au-prod-reader",
+			"read-only": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3309",
+				"url": "jdbc:mysql://localhost:3309/",
+				"configurationType": "MANUAL",
+				"type": "prod",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-18c8b610267-71430e3b3ff5beea": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "au-prod-apac-reader",
+			"read-only": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3310",
+				"url": "jdbc:mysql://localhost:3310/",
+				"configurationType": "MANUAL",
+				"type": "prod",
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800
+		},
+		"test": {
+			"name": "Test",
+			"color": "org.jkiss.dbeaver.color.connectionType.qa.background",
+			"description": "Test (QA) database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": true,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800
+		},
+		"prod": {
+			"name": "Production",
+			"color": "org.jkiss.dbeaver.color.connectionType.prod.background",
+			"description": "Production database",
+			"auto-commit": false,
+			"confirm-execute": true,
+			"confirm-data-change": true,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 600
+		}
+	}
+}
