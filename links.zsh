@@ -5,6 +5,7 @@ set -e -o verbose
 # links
 
 stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
+  alacritty \
   bat \
   cava \
   environment \
@@ -24,7 +25,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   yt-dlp \
   zsh
 
-  # alacritty gdu ncdu zellij
+  # gdu ncdu zellij
 
 if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
