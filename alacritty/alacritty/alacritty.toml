@@ -4,7 +4,7 @@ import = ["~/.config/alacritty/gruvbox-material-dark.toml"]
 TERM = "xterm-256color"
 
 [window]
-decorations = "None"
+decorations = "none"
 decorations_theme_variant = "Dark"
 dynamic_padding = true
 opacity = 0.95
@@ -19,7 +19,7 @@ y = 5
 
 [font]
 builtin_box_drawing = false
-size = 21
+size = 12
 
 [font.bold]
 family = "Cascadia Code"
