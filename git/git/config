@@ -92,7 +92,7 @@
   keepBackup = false
   prompt = false
 [mergetool "nvim"]
-  cmd = nvim -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c "wincmd w" -c "wincmd J"
+  cmd = nvim -d "$LOCAL" "$MERGED" "$BASE" "$REMOTE" -c 'wincmd J | wincmd ='
 [mergetool "code"]
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [pack]
