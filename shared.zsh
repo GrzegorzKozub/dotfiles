@@ -29,7 +29,6 @@ pip install --user --upgrade --break-system-packages \
   cfn-lint \
   docker-compose \
   lastversion \
-  locust \
   pynvim
 
 # ruby
