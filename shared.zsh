@@ -27,7 +27,6 @@ pip install --user --upgrade --break-system-packages \
 pip install --user --upgrade --break-system-packages \
   awscli-local \
   cfn-lint \
-  docker-compose \
   lastversion \
   pynvim
 
