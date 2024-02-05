@@ -156,13 +156,13 @@ typeset -U path
 path=(
   ~/.local/bin
   ~/.local/share/cargo/bin
-  ~/.local/share/gem/ruby/3.0.0/bin
   ~/.local/share/go/bin
   ~/code/apsis
   ~/code/arch
   $path[@]
 )
 
+  # ~/.local/share/gem/ruby/3.0.0/bin
   # ~/.local/share/npm/bin
 
 # completion

@@ -32,10 +32,10 @@ pip install --user --upgrade --break-system-packages \
 
 # ruby
 
-[[ -d $XDG_DATA_HOME/gem ]] && rm -rf $XDG_DATA_HOME/gem
-
-gem install --user-install \
-  neovim
+# [[ -d $XDG_DATA_HOME/gem ]] && rm -rf $XDG_DATA_HOME/gem
+#
+# gem install --user-install \
+#   neovim
 
 # rust
 
