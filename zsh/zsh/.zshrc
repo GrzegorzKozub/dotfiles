@@ -420,6 +420,10 @@ my-bindkey '\ecommit' my-git-commit viins vicmd
 
 export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 
+# go
+
+export GOCACHE=${XDG_CACHE_HOME:-~/.cache}/go
+
 # less
 
 export LESSHISTFILE=-

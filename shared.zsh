@@ -19,6 +19,23 @@ mix local.hex --force
 mix local.rebar --force
 mix archive.install hex phx_new --force
 
+# go
+
+export GOCACHE=$XDG_CACHE_HOME/go
+
+for PACKAGE in \
+  github.com/cweill/gotests/gotests \
+  github.com/fatih/gomodifytags \
+  github.com/golangci/golangci-lint/cmd/golangci-lint \
+  github.com/josharian/impl \
+  github.com/haya14busa/goplay/cmd/goplay \
+  github.com/go-delve/delve/cmd/dlv \
+  honnef.co/go/tools/cmd/staticcheck \
+  golang.org/x/tools/gopls
+do
+  go install -v $PACKAGE@latest
+done
+
 # python
 
 pip install --user --upgrade --break-system-packages \
@@ -71,18 +88,5 @@ for EXTENSION in \
   sumneko.lua
 do
   code --install-extension $EXTENSION --force
-done
-
-for PACKAGE in \
-  github.com/cweill/gotests/gotests \
-  github.com/fatih/gomodifytags \
-  github.com/golangci/golangci-lint/cmd/golangci-lint \
-  github.com/josharian/impl \
-  github.com/haya14busa/goplay/cmd/goplay \
-  github.com/go-delve/delve/cmd/dlv \
-  honnef.co/go/tools/cmd/staticcheck \
-  golang.org/x/tools/gopls
-do
-  go install -v $PACKAGE@latest
 done
 
