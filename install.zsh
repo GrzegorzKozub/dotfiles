@@ -77,11 +77,9 @@ npm install --global \
   autocannon \
   eslint \
   express-generator \
-  js-beautify \
   neovim \
   rimraf \
-  typescript \
-  typescript-formatter
+  typescript
 
 # neovim
 
