@@ -2,6 +2,12 @@
 
 set -o verbose
 
+# elixir
+
+[[ -d $XDG_CACHE_HOME/hex ]] && rm -rf $XDG_CACHE_HOME/hex
+[[ -d $XDG_CONFIG_HOME/iex ]] && rm -rf $XDG_CONFIG_HOME/iex
+[[ -d $XDG_DATA_HOME/mix ]] && rm -rf $XDG_DATA_HOME/mix
+
 # go
 
 [[ -d $XDG_CACHE_HOME/go-build ]] && rm -rf $XDG_CACHE_HOME/go-build

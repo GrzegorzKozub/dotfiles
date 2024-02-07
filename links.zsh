@@ -11,7 +11,6 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   flameshot \
   fsh \
   git \
-  iex \
   keepass \
   kitty \
   lf \
@@ -24,7 +23,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   yt-dlp \
   zsh
 
-  # alacritty gdu ncdu zellij
+  # alacritty gdu iex ncdu zellij
 
 if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 

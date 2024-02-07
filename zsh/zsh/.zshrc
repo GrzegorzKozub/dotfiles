@@ -383,12 +383,12 @@ zsh-defer compdef _dotnet_zsh_complete dotnet
 
 # elixir
 
-export ERL_AFLAGS='-kernel shell_history enabled'
-
-export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
-export MIX_HOME=${XDG_DATA_HOME:-~/.local/share}/mix
-
-alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
+# export ERL_AFLAGS='-kernel shell_history enabled'
+#
+# export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
+# export MIX_HOME=${XDG_DATA_HOME:-~/.local/share}/mix
+#
+# alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
 
 # freerdp
 
