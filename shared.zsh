@@ -61,32 +61,3 @@ export CARGO_HOME=$XDG_DATA_HOME/cargo
 cargo install \
   jwt-cli
 
-# vscode
-
-for EXTENSION in \
-  JakeBecker.elixir-ls \
-  antfu.icons-carbon \
-  CucumberOpen.cucumber-official \
-  dbaeumer.vscode-eslint \
-  editorconfig.editorconfig \
-  esbenp.prettier-vscode \
-  golang.Go \
-  kddejong.vscode-cfn-lint \
-  ms-azuretools.vscode-docker \
-  ms-dotnettools.csdevkit \
-  ms-dotnettools.csharp \
-  ms-dotnettools.vscode-dotnet-runtime \
-  ms-python.black-formatter \
-  ms-python.isort \
-  ms-python.python \
-  ms-python.pylint \
-  ms-python.vscode-pylance \
-  pkief.material-icon-theme \
-  redhat.vscode-yaml \
-  sainnhe.gruvbox-material \
-  streetsidesoftware.code-spell-checker \
-  sumneko.lua
-do
-  code --install-extension $EXTENSION --force
-done
-

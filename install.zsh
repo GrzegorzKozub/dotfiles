@@ -86,6 +86,37 @@ npm install --global \
 # nvim -c 'autocmd User VeryLazy lua require("lazy").load({ plugins = { "mason-lspconfig.nvim", "mason-null-ls.nvim" } })'
 nvim -c 'autocmd User MasonToolsUpdateCompleted quitall' -c 'autocmd User VeryLazy MasonToolsUpdate'
 
+# vscode
+
+for EXTENSION in \
+  antfu.icons-carbon \
+  CucumberOpen.cucumber-official \
+  dbaeumer.vscode-eslint \
+  editorconfig.editorconfig \
+  esbenp.prettier-vscode \
+  golang.Go \
+  kddejong.vscode-cfn-lint \
+  ms-azuretools.vscode-docker \
+  ms-dotnettools.csdevkit \
+  ms-dotnettools.csharp \
+  ms-dotnettools.vscode-dotnet-runtime \
+  ms-python.black-formatter \
+  ms-python.debugpy \
+  ms-python.isort \
+  ms-python.python \
+  ms-python.pylint \
+  ms-python.vscode-pylance \
+  pkief.material-icon-theme \
+  redhat.vscode-yaml \
+  sainnhe.gruvbox-material \
+  streetsidesoftware.code-spell-checker \
+  sumneko.lua
+do
+  code --install-extension $EXTENSION --force
+done
+
+  # JakeBecker.elixir-ls
+
 # docker
 
 docker run --privileged --rm tonistiigi/binfmt --install arm64

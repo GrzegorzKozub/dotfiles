@@ -65,3 +65,7 @@ nvim --headless -c 'Lazy! sync' -c 'quitall'
 nvim --headless -c 'TSUpdateSync' -c 'quitall'
 nvim --headless -c 'autocmd User MasonToolsUpdateCompleted quitall' -c 'MasonToolsUpdate'
 
+# vscode
+
+code --update-extensions
+
