@@ -54,10 +54,3 @@ pip install --user --upgrade --break-system-packages \
 # gem install --user-install \
 #   neovim
 
-# rust
-
-export CARGO_HOME=$XDG_DATA_HOME/cargo
-
-cargo install \
-  jwt-cli
-

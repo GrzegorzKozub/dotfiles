@@ -81,6 +81,14 @@ npm install --global \
   rimraf \
   typescript
 
+# rust
+
+export CARGO_HOME=$XDG_DATA_HOME/cargo
+
+cargo install \
+  cargo-update \
+  jwt-cli
+
 # neovim
 
 # nvim -c 'autocmd User VeryLazy lua require("lazy").load({ plugins = { "mason-lspconfig.nvim", "mason-null-ls.nvim" } })'

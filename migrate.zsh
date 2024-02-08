@@ -21,6 +21,12 @@ npm uninstall --global js-beautify typescript-formatter
 
 [[ -d $XDG_DATA_HOME/gem ]] && rm -rf $XDG_DATA_HOME/gem
 
+# rust
+
+cargo install \
+  cargo-update \
+  jwt-cli
+
 # vscode
 
 code --uninstall-extension JakeBecker.elixir-ls

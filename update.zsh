@@ -44,7 +44,7 @@ done
 
 set +o verbose
 
-export NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm
+export NVM_DIR=$XDG_DATA_HOME/nvm
 source $NVM_DIR/nvm.sh
 
 nvm install node --reinstall-packages-from=node --latest-npm
@@ -58,6 +58,11 @@ done
 set -o verbose
 
 npm update --global
+
+# rust
+
+rustup update
+cargo install-update --all
 
 # neovim
 
