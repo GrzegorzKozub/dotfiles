@@ -155,8 +155,8 @@ typeset -U path
 
 path=(
   ~/.local/bin
-  ~/.local/share/cargo/bin
-  ~/.local/share/go/bin
+  ${XDG_DATA_HOME:-~/.local/share}/cargo/bin
+  ${XDG_DATA_HOME:-~/.local/share}/go/bin
   ~/code/apsis
   ~/code/arch
   $path[@]
@@ -174,6 +174,13 @@ fpath=(
   ~/code/arch
   $fpath[@]
 )
+
+my-completions() {
+  local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
+  [[ ! -d $dir ]] && mkdir $dir
+  fpath=($dir $fpath[@])
+}
+zsh-defer my-completions
 
 WORDCHARS=''
 
@@ -470,6 +477,13 @@ export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
 
 export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
 export RUSTUP_HOME=${XDG_DATA_HOME:-~/.local/share}/rustup
+
+my-completions-rust() {
+  local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
+  [[ -a $commands[rustup] && ! -f $dir/_rustup ]] && rustup completions zsh > $dir/_rustup
+  [[ -a $commands[cargo] && ! -f $dir/_cargo ]] && rustup completions zsh cargo > $dir/_cargo
+}
+zsh-defer my-completions-rust
 
 # tmux
 
