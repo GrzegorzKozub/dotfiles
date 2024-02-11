@@ -175,12 +175,12 @@ fpath=(
   $fpath[@]
 )
 
-my-completions() {
-  local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
-  [[ ! -d $dir ]] && mkdir $dir
-  fpath=($dir $fpath[@])
-}
-zsh-defer my-completions
+# my-completions() {
+#   local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
+#   [[ ! -d $dir ]] && mkdir $dir
+#   fpath=($dir $fpath[@])
+# }
+# zsh-defer my-completions
 
 WORDCHARS=''
 
@@ -366,27 +366,15 @@ alias cava='TERM=st-256color cava'
 
 export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
 
-if [[ ! -f "${XDG_CACHE_HOME:-~/.cache}/zsh/_docker" ]]; then
-  typeset -g -A _comps
-  autoload -Uz _docker
-  _comps[docker]=_docker
-fi
-zsh-defer docker completion zsh >| "${XDG_CACHE_HOME:-~/.cache}/zsh/_docker"
-
 # dotnet
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export OMNISHARPHOME=${XDG_DATA_HOME:-~/.local/share}/omnisharp
 
-_dotnet_zsh_complete() {
-  local completions=("$(dotnet complete "$words")")
-  if [ -z "$completions" ]; then
-    _arguments '*::arguments: _normal'
-    return
-  fi
-  _values = "${(ps:\n:)completions}"
-}
-zsh-defer compdef _dotnet_zsh_complete dotnet
+if [[ -a $commands[dotnet] ]]; then
+  _my-compdef-dotnet() { _values = "${(ps:\n:)$(dotnet complete "$words")}" }
+  zsh-defer compdef _my-compdef-dotnet dotnet
+fi
 
 # elixir
 
@@ -478,12 +466,22 @@ export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
 export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
 export RUSTUP_HOME=${XDG_DATA_HOME:-~/.local/share}/rustup
 
-my-completions-rust() {
-  local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
-  [[ -a $commands[rustup] && ! -f $dir/_rustup ]] && rustup completions zsh > $dir/_rustup
-  [[ -a $commands[cargo] && ! -f $dir/_cargo ]] && rustup completions zsh cargo > $dir/_cargo
-}
-zsh-defer my-completions-rust
+# my-completions-rust() {
+#   local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
+#   [[ -a $commands[rustup] && ! -f $dir/_rustup ]] && rustup completions zsh > $dir/_rustup
+#   [[ -a $commands[cargo] && ! -f $dir/_cargo ]] && rustup completions zsh cargo > $dir/_cargo
+# }
+# zsh-defer my-completions-rust
+
+if [[ -a $commands[rustup] ]]; then
+  _my-compdef-rustup() { eval "$(rustup completions zsh)" }
+  zsh-defer compdef _my-compdef-rustup rustup
+fi
+
+if [[ -a $commands[cargo] ]]; then
+  _my-compdef-cargo() { eval "$(rustup completions zsh cargo)" }
+  zsh-defer compdef _my-compdef-cargo cargo
+fi
 
 # tmux
 

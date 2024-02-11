@@ -2,6 +2,10 @@
 
 set -o verbose
 
+# docker
+
+[[ -f "${XDG_CACHE_HOME:-~/.cache}/zsh/_docker" ]] && rm ${XDG_CACHE_HOME:-~/.cache}/zsh/_docker
+
 # go
 
 [[ -d $XDG_CACHE_HOME/go-build ]] && rm -rf $XDG_CACHE_HOME/go-build
