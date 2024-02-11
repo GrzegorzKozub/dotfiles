@@ -368,7 +368,11 @@ export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
 
 # dotnet
 
+export DOTNET_CLI_HOME=${XDG_CACHE_HOME:-~/.cache}/dotnet # https://github.com/dotnet/runtime/issues/98276
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_GENERATE_ASPNET_CERTIFICATE=0
+export DOTNET_NOLOGO=1
+
 export OMNISHARPHOME=${XDG_DATA_HOME:-~/.local/share}/omnisharp
 
 if [[ -a $commands[dotnet] ]]; then
