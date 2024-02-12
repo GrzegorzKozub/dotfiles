@@ -422,6 +422,7 @@ export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 # go
 
 export GOCACHE=${XDG_CACHE_HOME:-~/.cache}/go
+export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
 
 # less
 
