@@ -1,10 +1,8 @@
 [alias]
-  blame = blame -w -C -C -C
-  grep = grep --context 3 --heading --line-number --show-function
+  gp = grep --context 3 --heading --line-number --show-function
   ll = log --graph --all --abbrev-commit --format=format:'%C(3)%h %C(6)%an %C(7)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
   ls = log --graph --all --abbrev-commit --date=relative --format=format:'%C(3)%h %C(auto)%s %C(6)%an %C(7)%ar %C(auto)%D%C(reset)'
   lt = describe --abbrev=0 --tags
-  pull = pull --prune
 [color]
   branch = auto
   diff = auto
@@ -58,6 +56,8 @@
   remoteBranch = green
   unmerged = red
   untracked = red
+[commit]
+  gpgsign = true
 [core]
   editor = nvim
   fscache = true
@@ -84,6 +84,8 @@
   auto = 1
 [github]
   user = GrzegorzKozub
+[gpg]
+  format = ssh
 [merge]
   guitool = code
   renormalize = true
@@ -112,6 +114,7 @@
 [user]
   email = grzegorz.kozub@gmail.com
   name = greg
+  signingkey = ~/.ssh/git/sig.pub
 # [url "git@github.com:"]
 # [url "https://<github personal access token>:@github.com/"]
   # insteadOf = https://github.com/
