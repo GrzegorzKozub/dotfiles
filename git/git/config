@@ -1,10 +1,10 @@
 [alias]
-  g = grep --context 3 --heading --line-number --show-function
-  ls = log --graph --all --abbrev-commit --date=relative --format=format:'%C(3)%h %C(auto)%s %C(6)%an %C(7)%ar %C(auto)%D%C(reset)'
+  blame = blame -w -C -C -C
+  grep = grep --context 3 --heading --line-number --show-function
   ll = log --graph --all --abbrev-commit --format=format:'%C(3)%h %C(6)%an %C(7)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
-  pl = pull --prune
-  ps = ! [[ $(git config "branch.$(git branch --show-current).merge") ]] && git push || git push --set-upstream origin $(git branch --show-current)
+  ls = log --graph --all --abbrev-commit --date=relative --format=format:'%C(3)%h %C(auto)%s %C(6)%an %C(7)%ar %C(auto)%D%C(reset)'
   lt = describe --abbrev=0 --tags
+  pull = pull --prune
 [color]
   branch = auto
   diff = auto
