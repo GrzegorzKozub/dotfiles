@@ -114,7 +114,7 @@
 [user]
   email = grzegorz.kozub@gmail.com
   name = greg
-  signingkey = ~/.ssh/git/sig.pub
+  signingkey = ~/.ssh/sig.pub
 # [url "git@github.com:"]
 # [url "https://<github personal access token>:@github.com/"]
   # insteadOf = https://github.com/
