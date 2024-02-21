@@ -155,6 +155,7 @@ typeset -U path
 
 path=(
   ~/.local/bin
+  ${XDG_CACHE_HOME:-~/.cache}/dotnet/.dotnet/tools
   ${XDG_DATA_HOME:-~/.local/share}/cargo/bin
   ${XDG_DATA_HOME:-~/.local/share}/go/bin
   ~/code/apsis
