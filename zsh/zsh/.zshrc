@@ -425,6 +425,8 @@ export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
 export GOCACHE=${XDG_CACHE_HOME:-~/.cache}/go
 export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
 
+export GOPRIVATE=github.com/ApsisInternational
+
 # less
 
 export LESSHISTFILE=-
