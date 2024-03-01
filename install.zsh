@@ -45,17 +45,13 @@ export GNUPGHOME=$XDG_DATA_HOME/gnupg
 [[ -d $GNUPGHOME ]] && rm -rf $GNUPGHOME
 mkdir $GNUPGHOME && chmod 700 $GNUPGHOME
 
-gpg --batch --generate-key <<EOF
-Key-Type: 1
-Key-Length: 3072
-Name-Real: Grzegorz Kozub
-Name-Email: grzegorz.kozub@gmail.com
-Passphrase: passphrase
-EOF
+gpg2 --batch --passphrase '' --quick-gen-key grzegorz.kozub@gmail.com
 
 # pass
 
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
+
+[[ -d $PASSWORD_STORE_DIR ]] && rm -rf $PASSWORD_STORE_DIR
 
 pass init grzegorz.kozub@gmail.com
 
