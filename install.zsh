@@ -38,7 +38,9 @@ tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf new-session -d
 $XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
-# gnupg
+# gnupg & pass
+
+# https://github.com/docker/docker-credential-helpers/issues/102
 
 export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
@@ -46,8 +48,6 @@ export GNUPGHOME=$XDG_DATA_HOME/gnupg
 mkdir $GNUPGHOME && chmod 700 $GNUPGHOME
 
 gpg2 --batch --passphrase '' --quick-gen-key grzegorz.kozub@gmail.com
-
-# pass
 
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 
