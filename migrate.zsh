@@ -2,14 +2,11 @@
 
 set -o verbose
 
-# gpg & pass
+# gpg
 
-export GNUPGHOME=$XDG_DATA_HOME/gnupg
+~/code/keys/init.zsh
 
-[[ -d $GNUPGHOME ]] && rm -rf $GNUPGHOME
-mkdir $GNUPGHOME && chmod 700 $GNUPGHOME
-
-gpg --batch --passphrase '' --quick-gen-key grzegorz.kozub@gmail.com
+# pass
 
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 

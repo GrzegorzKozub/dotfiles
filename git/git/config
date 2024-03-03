@@ -85,7 +85,7 @@
 [github]
   user = GrzegorzKozub
 [gpg]
-  format = ssh
+  # format = ssh
 [merge]
   guitool = code
   renormalize = true
@@ -114,7 +114,8 @@
 [user]
   email = grzegorz.kozub@gmail.com
   name = greg
-  signingkey = ~/.ssh/sig.pub
+  # signingkey = ~/.ssh/sig.pub
+  signingkey = F49061714C719E6D
 [includeIf "hasconfig:remote.*.url:**/ApsisInternational/audience"]
   path = go.inc
 [includeIf "hasconfig:remote.*.url:**/ApsisInternational/cleanup"]

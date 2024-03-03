@@ -38,16 +38,25 @@ tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf new-session -d
 $XDG_DATA_HOME/tmux/plugins/tpm/bindings/install_plugins
 tmux kill-server
 
-# gnupg & pass
+# gnupg
 
-# https://github.com/docker/docker-credential-helpers/issues/102
+# export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
-export GNUPGHOME=$XDG_DATA_HOME/gnupg
+# [[ -d $GNUPGHOME ]] && rm -rf $GNUPGHOME
+# mkdir $GNUPGHOME && chmod 700 $GNUPGHOME
 
-[[ -d $GNUPGHOME ]] && rm -rf $GNUPGHOME
-mkdir $GNUPGHOME && chmod 700 $GNUPGHOME
+# gpg --batch --passphrase '' --quick-gen-key grzegorz.kozub@gmail.com rsa auth,encr,sign never
 
-gpg --batch --passphrase '' --quick-gen-key grzegorz.kozub@gmail.com
+# gpg --batch --generate-key <<EOF
+# %no-protection
+# Key-Type: rsa
+# Key-Length: 3072
+# Key-Usage: auth,encr,sign
+# Name-Real: Grzegorz Kozub
+# Name-Email: grzegorz.kozub@gmail.com
+# EOF
+
+# pass
 
 export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 
