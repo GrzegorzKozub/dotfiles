@@ -4,7 +4,11 @@ set -o verbose
 
 # gpg
 
-~/code/keys/init.zsh
+[[ -d $GNUPGHOME ]] && rm -rf $GNUPGHOME
+
+pushd ~/code/keys
+./init.zsh
+popd
 
 # pass
 
