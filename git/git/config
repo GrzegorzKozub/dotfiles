@@ -59,6 +59,7 @@
 [commit]
   gpgsign = true
 [core]
+  autocrlf = input
   editor = nvim
   fscache = true
   pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub
