@@ -1,0 +1,8 @@
+--background '#fff0'
+--font Cascadia\ Code=32
+--no-line-number
+--no-window-controls
+--pad-horiz 64
+--pad-vert 64
+--tab-width 2
+--theme gruvbox-material-dark

@@ -53,3 +53,9 @@ pip install --user --upgrade --break-system-packages \
 # gem install --user-install \
 #   neovim
 
+# silicon
+
+pushd $XDG_CONFIG_HOME/silicon
+silicon --build-cache
+popd
+
