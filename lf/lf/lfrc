@@ -15,10 +15,6 @@ set shell 'zsh'
 
 cmd q :quit
 
-cmd trash %{{
-  while IFS= read -r item; do trash-put "$item"; done <<< "$fx"
-}}
-
 cmd open ${{
   case $(file --mime-type "$f" -b) in
     text/*|application/csv|application/json|inode/symlink) $EDITOR "$fx";;
@@ -43,6 +39,14 @@ cmd fzf ${{
   [[ -f "$res" ]] && local cmd='select'
   [[ -d "$res" ]] && local cmd='cd'
   lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd on-cd &{{
+  zoxide add "$PWD"
+}}
+
+cmd trash %{{
+  while IFS= read -r item; do trash-put "$item"; done <<< "$fx"
 }}
 
 # key bindings
