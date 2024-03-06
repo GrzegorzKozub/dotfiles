@@ -56,6 +56,9 @@ pip install --user --upgrade --break-system-packages \
 # silicon
 
 pushd $XDG_CONFIG_HOME/silicon
+
+[[ -d syntaxes ]] || mkdir syntaxes
 silicon --build-cache
+
 popd
 
