@@ -14,8 +14,8 @@ columns = 160
 lines = 40
 
 [window.padding]
-x = 5
-y = 5
+x = 16
+y = 16
 
 [font]
 builtin_box_drawing = false
