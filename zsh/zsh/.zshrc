@@ -511,7 +511,7 @@ alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
 
 # zoxide
 
-export _ZO_DATA_DIR=~/code/history/zoxide
+export _ZO_DATA_DIR=~/code/history/$HOST
 export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS
 
 zsh-defer eval "$(zoxide init --cmd cd zsh)"
