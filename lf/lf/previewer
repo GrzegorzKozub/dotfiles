@@ -16,7 +16,15 @@ case "$1" in
     ;;
   *)
     MIME=$(file --brief --mime-type "$1")
-    if [[ $MIME == text* || $MIME == *javascript || $MIME == *json ]]; then
+    if [[ $MIME == image* ]] && (( $+commands[kitty] )); then
+      kitty +kitten icat \
+        --place "${2}x${3}@${4}x${5}" \
+        --silent \
+        --stdin no \
+        --transfer-mode file \
+        "$1" < /dev/null > /dev/tty
+      exit 1
+    elif [[ $MIME == text* || $MIME == *javascript || $MIME == *json ]]; then
       show "$1"
     elif [[ $MIME == 'inode/symlink' ]]; then
       show $(file --brief "$1" | sed -e 's/symbolic link to //')

@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+if (( $+commands[kitty] )); then
+
+  kitty +kitten icat \
+    --clear \
+    --silent \
+    --stdin no \
+    --transfer-mode file \
+    < /dev/null > /dev/tty
+
+fi
