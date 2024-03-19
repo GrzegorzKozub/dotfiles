@@ -533,7 +533,11 @@ zsh-defer eval "$(zoxide init --cmd cd zsh)"
 
 # env
 
-[[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/env.zsh ]] && . ${XDG_CONFIG_HOME:-~/.config}/zsh/env.zsh
+if [[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.env ]]; then
+  set -o allexport
+  source ${XDG_CONFIG_HOME:-~/.config}/zsh/.env
+  set +o allexport
+fi
 
 # tmux
 
