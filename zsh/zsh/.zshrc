@@ -158,7 +158,6 @@ path=(
   ${XDG_CACHE_HOME:-~/.cache}/dotnet/.dotnet/tools
   ${XDG_DATA_HOME:-~/.local/share}/cargo/bin
   ${XDG_DATA_HOME:-~/.local/share}/go/bin
-  ~/code/apsis
   ~/code/arch
   $path[@]
 )
@@ -171,7 +170,6 @@ path=(
 typeset -U fpath
 
 fpath=(
-  ~/code/apsis
   ~/code/arch
   $fpath[@]
 )
