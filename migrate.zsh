@@ -2,7 +2,4 @@
 
 set -o verbose
 
-# mdpdf
 
-npm install --global \
-  mdpdf
