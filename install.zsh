@@ -82,6 +82,7 @@ npm install --global \
   autocannon \
   eslint \
   express-generator \
+  mdpdf \
   neovim \
   rimraf \
   typescript
