@@ -1,16 +1,22 @@
 # perf check: hyperfine 'zsh -i -c exit' --warmup 10
 # key scan: cat -v or showkey -a
 
+# env
+
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-~/.cache}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
+
 # dirs
 
-[[ -d ${XDG_CACHE_HOME:-~/.cache}/zsh ]] || mkdir -p ${XDG_CACHE_HOME:-~/.cache}/zsh
-# [[ -d ${XDG_DATA_HOME:-~/.local/share}/zsh ]] || mkdir -p ${XDG_DATA_HOME:-~/.local/share}/zsh
+[[ -d $XDG_CACHE_HOME/zsh ]] || mkdir -p $XDG_CACHE_HOME/zsh
+# [[ -d $XDG_DATA_HOME/zsh ]] || mkdir -p $XDG_DATA_HOME/zsh
 
 # plugin support
 
 declare -A ZINIT
-export ZINIT[HOME_DIR]=${XDG_DATA_HOME:-~/.local/share}/zinit
-export ZINIT[ZCOMPDUMP_PATH]=${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
+export ZINIT[HOME_DIR]=$XDG_DATA_HOME/zinit
+export ZINIT[ZCOMPDUMP_PATH]=$XDG_CACHE_HOME/zsh/zcompdump
 
 source $ZINIT[HOME_DIR]/bin/zinit.zsh
 autoload -Uz _zinit
@@ -22,7 +28,7 @@ zinit ice depth=1 && zinit light romkatv/zsh-defer
 
 # theme
 
-source ${XDG_CONFIG_HOME:-~/.config}/zsh/gruvbox-material.zsh
+source $XDG_CONFIG_HOME/zsh/gruvbox-material.zsh
 
 # functions
 
@@ -155,9 +161,9 @@ typeset -U path
 
 path=(
   ~/.local/bin
-  ${XDG_CACHE_HOME:-~/.cache}/dotnet/.dotnet/tools
-  ${XDG_DATA_HOME:-~/.local/share}/cargo/bin
-  ${XDG_DATA_HOME:-~/.local/share}/go/bin
+  $XDG_CACHE_HOME/dotnet/.dotnet/tools
+  $XDG_DATA_HOME/cargo/bin
+  $XDG_DATA_HOME/go/bin
   ~/code/arch
   $path[@]
 )
@@ -175,7 +181,7 @@ fpath=(
 )
 
 # my-completions() {
-#   local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
+#   local dir=$XDG_CACHE_HOME/zsh/completions
 #   [[ ! -d $dir ]] && mkdir $dir
 #   fpath=($dir $fpath[@])
 # }
@@ -193,11 +199,11 @@ setopt MENU_COMPLETE # highlight first completion menu item
 setopt PATH_DIRS # search for paths on commands with slashes
 
 zsh-defer zmodload -i zsh/complist
-zsh-defer autoload -Uz compinit && zsh-defer compinit -d ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompdump
+zsh-defer autoload -Uz compinit && zsh-defer compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 zsh-defer autoload -Uz bashcompinit && zsh-defer bashcompinit # required by aws
 
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
 zstyle ':completion:*' completer _complete _match _approximate
 
@@ -234,7 +240,7 @@ zinit wait lucid as'completion' for \
 
 # history
 
-# HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/history
+# HISTFILE=$XDG_DATA_HOME/zsh/history
 HISTFILE=~/code/history/$HOST/history
 
 HISTSIZE=10000 # history memory limit
@@ -338,7 +344,7 @@ my-bindkey '\el' my-lf-cd viins vicmd
 
 autoload -Uz colors && colors
 
-eval $(dircolors -b ${XDG_CONFIG_HOME:-~/.config}/zsh/dir_colors)
+eval $(dircolors -b $XDG_CONFIG_HOME/zsh/dir_colors)
 
 # syntax highlighting
 
@@ -348,8 +354,8 @@ zsh-defer zinit light zdharma-continuum/fast-syntax-highlighting
 
 # aws
 
-export AWS_CONFIG_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/config
-export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME:-~/.config}/aws/credentials
+export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
+export AWS_SHARED_CREDENTIALS_FILE=$XDG_CONFIG_HOME/aws/credentials
 export AWS_PROFILE=apsis-waw-stage
 export AWS_SDK_LOAD_CONFIG=1
 
@@ -363,16 +369,16 @@ alias cava='TERM=st-256color cava'
 
 # docker
 
-export DOCKER_CONFIG=${XDG_CONFIG_HOME:-~/.config}/docker
+export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 
 # dotnet
 
-export DOTNET_CLI_HOME=${XDG_CACHE_HOME:-~/.cache}/dotnet # https://github.com/dotnet/runtime/issues/98276
+export DOTNET_CLI_HOME=$XDG_CACHE_HOME/dotnet # https://github.com/dotnet/runtime/issues/98276
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_GENERATE_ASPNET_CERTIFICATE=0
 export DOTNET_NOLOGO=1
 
-export OMNISHARPHOME=${XDG_DATA_HOME:-~/.local/share}/omnisharp
+export OMNISHARPHOME=$XDG_DATA_HOME/omnisharp
 
 if [[ -a $commands[dotnet] ]]; then
   _my-compdef-dotnet() { _values = "${(ps:\n:)$(dotnet complete "$words")}" }
@@ -383,10 +389,10 @@ fi
 
 # export ERL_AFLAGS='-kernel shell_history enabled'
 #
-# export HEX_HOME=${XDG_CACHE_HOME:-~/.cache}/hex
-# export MIX_HOME=${XDG_DATA_HOME:-~/.local/share}/mix
+# export HEX_HOME=$XDG_CACHE_HOME/hex
+# export MIX_HOME=$XDG_DATA_HOME/mix
 #
-# alias iex="iex --dot-iex ${XDG_CONFIG_HOME:-~/.config}/iex/iex.exs"
+# alias iex="iex --dot-iex $XDG_CONFIG_HOME/iex/iex.exs"
 
 # freerdp
 
@@ -416,12 +422,12 @@ my-bindkey '\ecommit' my-git-commit viins vicmd
 
 # gnupg
 
-export GNUPGHOME=${XDG_DATA_HOME:-~/.local/share}/gnupg
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
 # go
 
-export GOCACHE=${XDG_CACHE_HOME:-~/.cache}/go
-export GOPATH=${XDG_DATA_HOME:-~/.local/share}/go
+export GOCACHE=$XDG_CACHE_HOME/go
+export GOPATH=$XDG_DATA_HOME/go
 
 export GOPRIVATE=github.com/ApsisInternational/*
 
@@ -444,16 +450,16 @@ alias vim='nvim'
 
 export NODE_REPL_HISTORY=''
 
-export NPM_CONFIG_CACHE=${XDG_CACHE_HOME:-~/.cache}/npm
-export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:-~/.config}/npm/npmrc
-# export NPM_CONFIG_PREFIX=${XDG_DATA_HOME:-~/.local/share}/npm
+export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+# export NPM_CONFIG_PREFIX=$XDG_DATA_HOME/npm
 
-export NVM_DIR=${XDG_DATA_HOME:-~/.local/share}/nvm
+export NVM_DIR=$XDG_DATA_HOME/nvm
 zsh-defer source $NVM_DIR/nvm.sh
 
 # pass
 
-export PASSWORD_STORE_DIR=${XDG_DATA_HOME:-~/.local/share}/pass
+export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 
 # pkgfile
 
@@ -461,19 +467,19 @@ zsh-defer source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # python
 
-export PYLINTHOME=${XDG_CACHE_HOME:-~/.cache}/pylint
+export PYLINTHOME=$XDG_CACHE_HOME/pylint
 
 # ripgrep
 
-export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME:-~/.config}/ripgrep/ripgreprc
+export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/ripgreprc
 
 # rust
 
-export CARGO_HOME=${XDG_DATA_HOME:-~/.local/share}/cargo
-export RUSTUP_HOME=${XDG_DATA_HOME:-~/.local/share}/rustup
+export CARGO_HOME=$XDG_DATA_HOME/cargo
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
 # my-completions-rust() {
-#   local dir=${XDG_CACHE_HOME:-~/.cache}/zsh/completions
+#   local dir=$XDG_CACHE_HOME/zsh/completions
 #   [[ -a $commands[rustup] && ! -f $dir/_rustup ]] && rustup completions zsh > $dir/_rustup
 #   [[ -a $commands[cargo] && ! -f $dir/_cargo ]] && rustup completions zsh cargo > $dir/_cargo
 # }
@@ -491,7 +497,7 @@ fi
 
 # tmux
 
-alias tmux="tmux -f ${XDG_CONFIG_HOME:-~/.config}/tmux/tmux.conf"
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
 # vi-mode
 
@@ -505,7 +511,7 @@ alias code='code 2> /dev/null'
 
 # wget
 
-alias wget="wget --hsts-file=${XDG_CACHE_HOME:-~/.cache}/wget-hsts"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 
 # zoxide
 
@@ -527,13 +533,13 @@ zsh-defer eval "$(zoxide init --cmd cd zsh)"
 
 # powerlevel10k
 
-[[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh ]] && source ${XDG_CONFIG_HOME:-~/.config}/zsh/.p10k.zsh
+[[ -f $XDG_CONFIG_HOME/zsh/.p10k.zsh ]] && source $XDG_CONFIG_HOME/zsh/.p10k.zsh
 
 # env
 
-if [[ -f ${XDG_CONFIG_HOME:-~/.config}/zsh/.env ]]; then
+if [[ -f $XDG_CONFIG_HOME/zsh/.env ]]; then
   set -o allexport
-  source ${XDG_CONFIG_HOME:-~/.config}/zsh/.env
+  source $XDG_CONFIG_HOME/zsh/.env
   set +o allexport
 fi
 
