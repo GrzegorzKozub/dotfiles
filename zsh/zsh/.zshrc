@@ -216,7 +216,7 @@ zstyle ':completion:*:messages' format '%F{white}%d%f'
 zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
 
 # try case-sensitive match first and match partial words
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
 
 # complete not only for dir stack but also for options on -
 zstyle ':completion:*' complete-options true
@@ -226,7 +226,7 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # complete environment variables
-zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
+zstyle ':completion:*:*:*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
