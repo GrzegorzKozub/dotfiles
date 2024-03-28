@@ -1,3 +1,5 @@
+# https://zsh.sourceforge.io/Doc/Release/
+
 # perf check: hyperfine 'zsh -i -c exit' --warmup 10
 # key scan: cat -v or showkey -a
 
@@ -205,7 +207,23 @@ zsh-defer autoload -Uz bashcompinit && zsh-defer bashcompinit # required by aws
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
+# complete not only for dir stack but also for options on -
+zstyle ':completion:*' complete-options true
+
+# expand // to /
+zstyle ':completion:*' squeeze-slashes true
+
 zstyle ':completion:*' completer _complete _match _approximate
+
+# correct single char typos
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# also match upper-case when typing lower-case & match partial words
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
+
+# complete environment variables
+zstyle ':completion:*:*:*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
 zstyle ':completion:*' list-separator '-'
 zstyle ':completion:*' menu select
@@ -214,22 +232,6 @@ zstyle ':completion:*:default' list-colors '=(#b)*( - *)=37=38;5;8' '=*=37' 'ma=
 
 zstyle ':completion:*:messages' format '%F{white}%d%f'
 zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
-
-# try case-sensitive match first and match partial words
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
-
-# complete not only for dir stack but also for options on -
-zstyle ':completion:*' complete-options true
-
-# correct single char typos
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-# complete environment variables
-zstyle ':completion:*:*:*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
-
-# expand // to /
-zstyle ':completion:*' squeeze-slashes true
 
 zsh-defer bindkey -M menuselect '^[[Z' reverse-menu-complete # shift+tab
 
