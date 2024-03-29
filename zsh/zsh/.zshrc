@@ -1,5 +1,3 @@
-# https://zsh.sourceforge.io/Doc/Release/
-
 # perf check: hyperfine 'zsh -i -c exit' --warmup 10
 # key scan: cat -v or showkey -a
 
@@ -174,6 +172,7 @@ path=(
   # ~/.local/share/npm/bin
 
 # completion
+# https://zsh.sourceforge.io/Doc/Release/Completion-System.html
 
 typeset -U fpath
 
@@ -219,8 +218,8 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# also match upper-case when typing lower-case & match partial words
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
+# try simple completion, then match upper-case when typing lower-case, then match partial words
+zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+l:|=* r:|=*'
 
 # complete environment variables
 zstyle ':completion:*:*:*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
