@@ -123,37 +123,41 @@ zle -N zle-line-init
 function my-visual-mode { my-cursor visual && zle .visual-mode }
 zle -N visual-mode my-visual-mode
 
-# options
+# changing directories
 
 setopt AUTO_PUSHD # pushd on every cd
-setopt CORRECT_ALL
-setopt NO_BEEP
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_MINUS # cd - goes to the previous dir
 
-[[ -o login ]] && stty -ixon # disable flow control (^s and ^c)
+# expansion and globbing
 
+setopt EXTENDED_GLOB
+
+# input/output
+
+setopt CORRECT # correct command spelling
+setopt CORRECT_ALL # correct all arguments spelling
+setopt INTERACTIVE_COMMENTS
+setopt PATH_DIRS # search for paths on commands with slashes
+setopt SHORT_LOOPS
+
+# zsh line editor (zle)
+
+WORDCHARS='' # non-alphanumeric chars not considered part of a word
 zle_bracketed_paste=() # don't select pasted text
 
-zstyle ':prezto:module:terminal' auto-title 'yes'
+setopt NO_BEEP
+
+[[ -o login ]] && stty -ixon # disable flow control (^s and ^c)
 
 # prompt
 
-autoload -Uz promptinit && promptinit
-
 setopt PROMPT_SUBST
+
+autoload -Uz promptinit && promptinit
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-
-# aliases
-
-alias df='df -h'
-alias diff='diff --color'
-alias du='du -hd1'
-alias grep='grep --color=auto --exclude-dir={.git}'
-alias la='ls -lAh'
-alias ls='ls --color=auto'
 
 # paths
 
@@ -172,7 +176,6 @@ path=(
   # ~/.local/share/npm/bin
 
 # completion
-# https://zsh.sourceforge.io/Doc/Release/Completion-System.html
 
 typeset -U fpath
 
@@ -188,16 +191,11 @@ fpath=(
 # }
 # zsh-defer my-completions
 
-WORDCHARS=''
-
-setopt ALWAYS_TO_END # put cursor at the end of completed word
-setopt AUTO_MENU # show completion menu after pressing tab second time
-setopt COMPLETE_ALIASES
-setopt COMPLETE_IN_WORD # complete from both ends of word
-setopt EXTENDED_GLOB
-setopt LIST_PACKED
-setopt MENU_COMPLETE # highlight first completion menu item
-setopt PATH_DIRS # search for paths on commands with slashes
+setopt ALWAYS_TO_END # put cursor at the end of the completed word
+setopt COMPLETE_ALIASES # don't substitute aliases
+setopt COMPLETE_IN_WORD # don't move cursor to the word end on completion
+setopt LIST_PACKED # smaller completion list
+setopt MENU_COMPLETE # tab through matches on ambiguous completion
 
 zsh-defer zmodload -i zsh/complist
 zsh-defer autoload -Uz compinit && zsh-defer compinit -d $XDG_CACHE_HOME/zsh/zcompdump
@@ -257,7 +255,16 @@ setopt HIST_IGNORE_SPACE # don't add commands prefixed with space
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY # don't run command immediately
-setopt INC_APPEND_HISTORY # add commands immediately
+setopt INC_APPEND_HISTORY # immediately append instead of rewriting the history file
+
+# aliases
+
+alias df='df -h'
+alias diff='diff --color'
+alias du='du -hd1'
+alias grep='grep --color=auto --exclude-dir={.git}'
+alias la='ls -lAh'
+alias ls='ls --color=auto'
 
 # fzf
 
@@ -500,12 +507,6 @@ fi
 
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
-# vi-mode
-
-# VI_MODE_CURSOR_VISUAL=2
-# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-# VI_MODE_SET_CURSOR=true
-
 # vscode
 
 alias code='code 2> /dev/null'
@@ -520,17 +521,6 @@ export _ZO_DATA_DIR=~/code/history/$HOST
 export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS
 
 zsh-defer eval "$(zoxide init --cmd cd zsh)"
-
-# zsh-vim-mode
-
-# MODE_CURSOR_VIINS='blinking bar'
-# MODE_CURSOR_VICMD='blinking block'
-# MODE_CURSOR_VISUAL=$MODE_CURSOR_VICMD
-# MODE_CURSOR_VLINE=$MODE_CURSOR_VISUAL
-# MODE_CURSOR_REPLACE=$MODE_CURSOR_VIINS
-# MODE_CURSOR_SEARCH='steady underline'
-
-# print -n "\e[5 q" # the use of zsh-defer requires to manually set the cursor to blinking bar
 
 # powerlevel10k
 
