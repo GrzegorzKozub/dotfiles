@@ -191,6 +191,7 @@ fpath=(
 setopt ALWAYS_TO_END # put cursor at the end of the completed word
 setopt COMPLETE_ALIASES # don't substitute aliases
 setopt COMPLETE_IN_WORD # don't move cursor to the word end on completion
+setopt GLOB_DOTS # don't require . to complete the hidden files/dirs
 setopt LIST_PACKED # smaller completion list
 setopt MENU_COMPLETE # tab through matches on ambiguous completion
 
@@ -201,31 +202,45 @@ zsh-defer autoload -Uz bashcompinit && zsh-defer bashcompinit # required by aws
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
-# complete not only for dir stack but also for options on -
-zstyle ':completion:*' complete-options true
+zstyle ':completion:*' completer _complete _match _approximate
+
+zstyle ':completion:*' menu select
+
+zstyle ':completion:*:default' list-colors \
+  '=(#b)*( - *)=37=38;5;8' '=*=37' 'ma=0' 'tc=37'
+
+zstyle ':completion:*' list-separator '-'
+
+zstyle ':completion:*:default' list-prompt '%F{white}match %m%f'
+zstyle ':completion:*:default' select-prompt '%F{white}match %m%f'
+
+zstyle ':completion:*:messages' format '%F{white}%d%f'
+zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
+
+# in a single matcher, try simple completion,
+# then match upper-case when typing lower-case,
+# then match partial words
+zstyle ':completion:*' matcher-list \
+  '' '+m:{[:lower:]}={[:upper:]}' '+l:|=* r:|=*'
+
+# show the menu in groups (needed for files first)
+zstyle ':completion:*' group-name ''
+
+# files first
+zstyle ':completion:*' file-patterns \
+  '%p(^-/):globbed-files *(-/):directories:location'
 
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
 
-zstyle ':completion:*' completer _complete _match _approximate
+# complete not only dirs but also options on -
+zstyle ':completion:*' complete-options true
 
-# correct single char typos
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-# try simple completion, then match upper-case when typing lower-case, then match partial words
-zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+l:|=* r:|=*'
-
-# complete environment variables
-zstyle ':completion:*:*:*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
-
-zstyle ':completion:*' list-separator '-'
-zstyle ':completion:*' menu select
-
-zstyle ':completion:*:default' list-colors '=(#b)*( - *)=37=38;5;8' '=*=37' 'ma=0' 'tc=37'
-
-zstyle ':completion:*:messages' format '%F{white}%d%f'
-zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
+# insert manual scetions
+# zstyle ':completion:*:manuals.*' insert-sections true
+# zstyle ':completion:*:manuals.*' separate-sections true
+zstyle ':completion:*' insert-sections true
+zstyle ':completion:*' separate-sections true
 
 zsh-defer bindkey -M menuselect '^[[Z' reverse-menu-complete # shift+tab
 
