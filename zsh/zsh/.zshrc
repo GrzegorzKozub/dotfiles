@@ -61,9 +61,6 @@ emoji:      🙁 😐 🙂 👍 👎
 
 # vi mode
 
-# zsh-defer zinit light softmoth/zsh-vim-mode
-# zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
-
 my-bindkey '^[[1;5D' backward-word # ctrl+left
 my-bindkey '^[[1;5C' forward-word # ctrl+right
 
@@ -506,10 +503,6 @@ fi
 # tmux
 
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-
-# vscode
-
-alias code='code 2> /dev/null'
 
 # wget
 
