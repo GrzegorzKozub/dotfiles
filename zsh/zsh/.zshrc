@@ -211,8 +211,7 @@ zstyle ':completion:*:default' list-colors \
 
 zstyle ':completion:*' list-separator '-'
 
-zstyle ':completion:*:default' list-prompt '%F{white}match %m%f'
-zstyle ':completion:*:default' select-prompt '%F{white}match %m%f'
+zstyle ':completion:*:default' select-prompt '%F{white}%m%f'
 
 zstyle ':completion:*:messages' format '%F{white}%d%f'
 zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
@@ -243,6 +242,15 @@ zstyle ':completion:*' insert-sections true
 zstyle ':completion:*' separate-sections true
 
 zsh-defer bindkey -M menuselect '^[[Z' reverse-menu-complete # shift+tab
+
+for key in '^[[5~' '^U' # page up, ctrl+u
+  do zsh-defer bindkey -M menuselect $key backward-word; done
+
+for key in '^[[6~' '^D' # page down, ctrl+d
+  do zsh-defer bindkey -M menuselect $key forward-word; done
+
+zsh-defer bindkey -M menuselect '^F' history-incremental-search-forward # ctrl+f
+zsh-defer bindkey -M menuselect '^B' history-incremental-search-backward # ctrl+b
 
 zinit wait lucid as'completion' for \
   OMZ::plugins/docker-compose/_docker-compose \
