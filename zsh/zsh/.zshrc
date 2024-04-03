@@ -194,6 +194,7 @@ setopt COMPLETE_IN_WORD # don't move cursor to the word end on completion
 setopt GLOB_DOTS # don't require . to complete the hidden files/dirs
 setopt LIST_PACKED # smaller completion list
 setopt MENU_COMPLETE # tab through matches on ambiguous completion
+setopt NO_LIST_TYPES # don't show file/dir types as trailing marks
 
 zsh-defer zmodload -i zsh/complist
 zsh-defer autoload -Uz compinit && zsh-defer compinit -d $XDG_CACHE_HOME/zsh/zcompdump
@@ -206,12 +207,15 @@ zstyle ':completion:*' completer _complete _match _approximate
 
 zstyle ':completion:*' menu select
 
+zstyle ':completion:*' list-separator ' '
+
+# https://github.com/marlonrichert/zcolors
 zstyle ':completion:*:default' list-colors \
-  '=(#b)*( - *)=37=38;5;8' '=*=37' 'ma=0' 'tc=37'
+  '(*~*(directories|files|expansions))=(*[^ ]~*  *|)[ ]#(#b)(*)=37=38;5;8' \
+  'ma=0' \
+  ${(s.:.)LS_COLORS}
 
-zstyle ':completion:*' list-separator '-'
-
-zstyle ':completion:*:default' select-prompt '%F{white}%m%f'
+zstyle ':completion:*:default' select-prompt '%F{8}%m%f'
 
 zstyle ':completion:*:messages' format '%F{white}%d%f'
 zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'

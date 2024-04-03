@@ -2,12 +2,8 @@
 
 COLORTERM ?*
 
-TERM tmux*
-TERM xterm*
-
 # NORMAL 0
 # FILE 0
-
 RESET 0
 DIR 36
 LINK 34
