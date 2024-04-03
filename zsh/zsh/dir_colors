@@ -49,6 +49,7 @@ EXEC 32
 .gitattributes 37
 .gitignore 37
 .gitmodules 37
+.pylintrc 37
 
 .backup 90
 .bak 90
