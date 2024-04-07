@@ -524,10 +524,6 @@ if [[ -a $commands[cargo] ]]; then
   zsh-defer compdef _my-compdef-cargo cargo
 fi
 
-# tmux
-
-alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-
 # wget
 
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
