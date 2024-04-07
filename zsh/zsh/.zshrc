@@ -209,9 +209,12 @@ zstyle ':completion:*' menu select
 
 zstyle ':completion:*' list-separator ' '
 
-# https://github.com/marlonrichert/zcolors
+# use dircolors for files & dirs based on https://github.com/marlonrichert/zcolors
+zstyle ':completion:*' group-name '' # allow excluding groups in list-colors
+zstyle ':completion:*' file-patterns \
+  '%p(^-/):globbed-files *(-/):directories:my-dirs' # show files first
 zstyle ':completion:*:default' list-colors \
-  '(*~*(directories|files|expansions))=(*[^ ]~*  *|)[ ]#(#b)(*)=37=38;5;8' \
+  '(^(*argument*|*directories|*files))=(#b)(*[^ ]~*  *|)[ ]#(*)=38;5;8=37=38;5;8' \
   'ma=0' \
   ${(s.:.)LS_COLORS}
 
@@ -225,13 +228,6 @@ zstyle ':completion:*:warnings' format '%F{yellow}no matches found%f'
 # then match partial words
 zstyle ':completion:*' matcher-list \
   '' '+m:{[:lower:]}={[:upper:]}' '+l:|=* r:|=*'
-
-# show the menu in groups (needed for files first)
-zstyle ':completion:*' group-name ''
-
-# files first
-zstyle ':completion:*' file-patterns \
-  '%p(^-/):globbed-files *(-/):directories:location'
 
 # expand // to /
 zstyle ':completion:*' squeeze-slashes true
