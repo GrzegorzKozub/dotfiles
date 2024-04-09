@@ -2,10 +2,6 @@
 
 set -e -o verbose
 
-# bat
-
-bat cache --build
-
 # elixir
 
 # export HEX_HOME=$XDG_CACHE_HOME/hex
@@ -52,13 +48,4 @@ pip install --user --upgrade --break-system-packages \
 #
 # gem install --user-install \
 #   neovim
-
-# silicon
-
-pushd $XDG_CONFIG_HOME/silicon
-
-[[ -d syntaxes ]] || mkdir syntaxes
-silicon --build-cache
-
-popd
 

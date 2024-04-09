@@ -68,6 +68,10 @@ pass init grzegorz.kozub@gmail.com
 
 . `dirname $0`/shared.zsh
 
+# bat
+
+bat cache --build
+
 # node
 
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
@@ -98,6 +102,15 @@ cargo install \
 
 # nvim -c 'autocmd User VeryLazy lua require("lazy").load({ plugins = { "mason-lspconfig.nvim", "mason-null-ls.nvim" } })'
 nvim -c 'autocmd User MasonToolsUpdateCompleted quitall' -c 'autocmd User VeryLazy MasonToolsUpdate'
+
+# silicon
+
+pushd $XDG_CONFIG_HOME/silicon
+
+[[ -d syntaxes ]] || mkdir syntaxes
+silicon --build-cache
+
+popd
 
 # vscode
 
