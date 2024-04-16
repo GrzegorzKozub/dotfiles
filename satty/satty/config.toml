@@ -1,0 +1,17 @@
+[general]
+early-exit = true
+initial-tool = "rectangle"
+copy-command = "wl-copy"
+annotation-size-factor = 0.5
+
+[font]
+family = "DejaVu Sans Condensed"
+
+[color-palette]
+first = "#cc241d"
+second = "#98971a"
+third = "#d79921"
+fourth = "#458588"
+fifth = "#b16286"
+custom = "#d65d0e"
+

@@ -18,6 +18,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   npm \
   nvim \
   ripgrep \
+  satty \
   silicon \
   tmux \
   vscode \
