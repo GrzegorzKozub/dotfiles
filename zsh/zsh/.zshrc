@@ -303,6 +303,7 @@ export FZF_DEFAULT_OPTS="
   --no-bold
   --no-info
   --no-scrollbar
+  --no-separator
   --pointer '$MY_FZF_CHAR_POINTER'
   --prompt '$MY_FZF_CHAR_PROMPT'
   --tabstop 2
