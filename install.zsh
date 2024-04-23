@@ -90,6 +90,8 @@ npm install --global \
   rimraf \
   typescript
 
+  # mdpdf
+
 # rust
 
 export CARGO_HOME=$XDG_DATA_HOME/cargo
