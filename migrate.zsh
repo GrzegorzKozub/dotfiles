@@ -14,3 +14,8 @@ rm -rf ~/.local/bin
 rm -rf ~/.local/include
 rm -rf ~/.local/lib
 
+# cargo-update
+
+cargo install \
+  cargo-update \
+  --force --features vendored-libgit2 --features vendored-openssl
