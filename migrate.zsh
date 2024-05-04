@@ -4,6 +4,7 @@ set -o verbose
 
 # neovim
 
+git submodule foreach --recursive git pull
 nvim --headless -c 'Lazy! build LuaSnip' -c 'quitall'
 
 # python
