@@ -22,19 +22,19 @@ builtin_box_drawing = false
 size = 12
 
 [font.bold]
-family = "Cascadia Code"
+family = "Cascadia Code NF"
 style = "Semibold"
 
 [font.bold_italic]
-family = "Cascadia Code"
+family = "Cascadia Code NF"
 style = "Semibold Italic"
 
 [font.italic]
-family = "Cascadia Code"
+family = "Cascadia Code NF"
 style = "Italic"
 
 [font.normal]
-family = "Cascadia Code"
+family = "Cascadia Code NF"
 style = "Regular"
 
 [colors]
