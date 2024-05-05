@@ -42,22 +42,34 @@ done
 
 # node
 
-set +o verbose
+# set +o verbose
+#
+# export NVM_DIR=$XDG_DATA_HOME/nvm
+# source $NVM_DIR/nvm.sh
+#
+# nvm install node --reinstall-packages-from=node --latest-npm
+# nvm install-latest-npm
+# nvm cache clear
+#
+# for version in $(nvm ls --no-alias --no-colors | sed 's/ //g' | sed 's/\*//'); do
+#   [[ $version =~ '->' ]] || nvm uninstall $version
+# done
+#
+# set -o verbose
+#
+# npm update --global
 
-export NVM_DIR=$XDG_DATA_HOME/nvm
-source $NVM_DIR/nvm.sh
-
-nvm install node --reinstall-packages-from=node --latest-npm
-nvm install-latest-npm
-nvm cache clear
-
-for version in $(nvm ls --no-alias --no-colors | sed 's/ //g' | sed 's/\*//'); do
-  [[ $version =~ '->' ]] || nvm uninstall $version
-done
-
-set -o verbose
-
-npm update --global
+CURRENT=$(fnm current)
+LATEST=$(fnm ls-remote | tail -1)
+if [[ $CURRENT != $LATEST ]]; then
+  fnm install --latest
+  fnm alias $LATEST default
+  fnm use default
+  fnm exec --using $CURRENT npm ls --global --json |
+    jq --raw-output '.dependencies | to_entries[] | .key' |
+    xargs npm install --global
+  fnm uninstall $CURRENT
+fi
 
 # rust
 

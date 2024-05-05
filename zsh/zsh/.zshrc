@@ -484,8 +484,16 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 # export NPM_CONFIG_PREFIX=$XDG_DATA_HOME/npm
 
-export NVM_DIR=$XDG_DATA_HOME/nvm
-zsh-defer source $NVM_DIR/nvm.sh
+# export NVM_DIR=$XDG_DATA_HOME/nvm
+# zsh-defer source $NVM_DIR/nvm.sh
+
+zsh-defer eval "$(fnm env --use-on-cd)"
+zsh-defer fnm use default --log-level quiet
+
+if [[ -a $commands[fnm] ]]; then
+  _my-compdef-fnm() { eval "$(fnm completions --shell zsh)" }
+  zsh-defer compdef _my-compdef-fnm fnm
+fi
 
 # pass
 

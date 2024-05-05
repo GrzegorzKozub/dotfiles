@@ -20,3 +20,4 @@ rm -rf ~/.local/lib
 cargo install \
   cargo-update \
   --force --features vendored-libgit2 --features vendored-openssl
+
