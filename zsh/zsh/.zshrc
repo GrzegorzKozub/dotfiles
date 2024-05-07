@@ -487,15 +487,15 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 # export NVM_DIR=$XDG_DATA_HOME/nvm
 # zsh-defer source $NVM_DIR/nvm.sh
 
-# two workarounds for fnm env adding 30 ms
-# zsh-defer eval "$(fnm env --use-on-cd)"
-zsh-defer -c 'eval "$(fnm env --use-on-cd)"'
-# [[ -f $XDG_DATA_HOME/fnm/env ]] || fnm env --use-on-cd > $XDG_DATA_HOME/fnm/env
-# zsh-defer source $XDG_DATA_HOME/fnm/env
-
-zsh-defer fnm use default --log-level quiet
+# zsh-defer -c 'eval "$(fnm env --use-on-cd)"' # fnm env is slow
+# zsh-defer fnm use default --log-level quiet
 
 if [[ -a $commands[fnm] ]]; then
+  _my-fnm-init() {
+    eval "$(fnm env --use-on-cd)"
+    fnm use default --log-level quiet
+  }
+  zsh-defer _my-fnm-init
   _my-compdef-fnm() { eval "$(fnm completions --shell zsh)" }
   zsh-defer compdef _my-compdef-fnm fnm
 fi
