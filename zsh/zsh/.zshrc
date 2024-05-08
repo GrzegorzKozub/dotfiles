@@ -282,7 +282,6 @@ setopt INC_APPEND_HISTORY # immediately append instead of rewriting the history 
 alias df='df -h'
 alias diff='diff --color'
 alias du='du -hd1'
-alias fd='fd --hidden'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias ls='ls --color=auto'
@@ -423,6 +422,10 @@ fi
 # export MIX_HOME=$XDG_DATA_HOME/mix
 #
 # alias iex="iex --dot-iex $XDG_CONFIG_HOME/iex/iex.exs"
+
+# fd
+
+alias fd='fd --exclude .git --hidden'
 
 # freerdp
 
