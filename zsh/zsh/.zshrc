@@ -425,7 +425,7 @@ fi
 
 # eza
 
-export EZA_COLORS="oc=37:ur=37:uw=37:ux=37:ue=37:gr=37:gw=37:gx=37:tr=37:tw=37:tx=37:su=37:sf=37:xa=37:nb=90:nk=37:nm=33:ng=31:nt=91:uu=90:uR=31:un=37:gu=90:gR=31:gn=37:ga=32:gm=33:gd=31:gv=33:gt=33:gi=90:gc=91:Gm=34:Go=34:Gc=90:Gd=33:da=37:bO=31:mp=34;4:cr=33:do=0:tm=90:bu=0:sc=0"
+export EZA_COLORS="oc=37:ur=37:uw=37:ux=37:ue=37:gr=37:gw=37:gx=37:tr=37:tw=37:tx=37:su=37:sf=37:xa=37:nb=90:nk=37:nm=33:ng=31:nt=91:uu=90:uR=31:un=37:gu=90:gR=31:gn=37:ga=32:gm=33:gd=31:gv=33:gt=33:gi=90:gc=91:Gm=34:Go=34:Gc=30:Gd=33:da=37:bO=31:mp=34;4:cr=33:do=0:tm=90:bu=0:sc=0"
 export EZA_ICONS_AUTO=1
 
 alias ls='eza --all --group-directories-first'

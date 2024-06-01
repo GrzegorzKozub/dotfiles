@@ -19,6 +19,11 @@ OTHER_WRITABLE 36
 STICKY 36
 EXEC 32
 
+.bat 32
+.cmd 32
+.exe 32
+.ps1 32
+
 .7z 33
 .gz 33
 .rar 33
