@@ -1,5 +1,7 @@
 no-mouse: true
+show-item-count: true
+show-relative-size: true
 style:
   selected-row:
-    text-color: "#d4be98"
-    background-color: "#2479d0"
+    background-color: '#2479d0'
+    text-color: '#D4BE98'
