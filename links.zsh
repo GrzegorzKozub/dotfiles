@@ -13,6 +13,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   git \
   keepass \
   kitty \
+  lazygit \
   lf \
   mpv \
   npm \
