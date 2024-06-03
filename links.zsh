@@ -7,6 +7,7 @@ set -e -o verbose
 stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   bat \
   cava \
+  dust \
   environment \
   flameshot \
   fsh \
@@ -25,7 +26,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   yt-dlp \
   zsh
 
-  # alacritty dust gdu iex zellij
+  # alacritty gdu iex zellij
 
 if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
