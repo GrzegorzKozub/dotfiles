@@ -6,16 +6,23 @@
   lsa = ls --all
   lt = describe --abbrev=0 --tags
 [color]
+  advice = auto
   branch = auto
   diff = auto
   grep = auto
   interactive = auto
   pager = true
+  push = auto
   showBranch = auto
   status = auto
   ui = auto
+[color.advice]
+  hint = normal
+[color.blame]
+  highlightRecent = brightblack,12 month ago,white,1 month ago,yellow,1 week ago,red
+  repeatedLines = cyan
 [color.branch]
-  current = blue
+  current = blue bold
   local = blue
   plain = normal
   remote = green
@@ -40,18 +47,23 @@
   plain = normal
   whitespace = red reverse
 [color.grep]
+  column = magenta
   context = normal
   filename = cyan
   function = blue
-  linenumber = black bold
+  lineNumber = magenta
   match = yellow
+  matchContext = yellow
+  matchSelected = yellow
   selected = normal
-  separator = black bold
+  separator = brightblack
 [color.interactive]
   error = red
-  header = normal
+  header = white
   help = normal
-  prompt = blue
+  prompt = magenta
+[color.push]
+  error = red
 [color.status]
   added = green
   branch = blue
