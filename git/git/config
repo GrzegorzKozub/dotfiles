@@ -32,7 +32,11 @@
   frag = magenta
   meta = cyan
   new = green
+  newMoved = green italic
+  newMovedAlternative = brightgreen italic
   old = red
+  oldMoved = red italic
+  oldMovedAlternative = brightred italic
   plain = normal
   whitespace = red reverse
 [color.grep]
@@ -69,6 +73,7 @@
   whitespace = blank-at-eol,tab-in-indent
 [diff]
   algorithm = histogram
+  colorMoved = default
   guitool = code
   renames = copies
   tool = nvim
