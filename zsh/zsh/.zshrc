@@ -153,8 +153,7 @@ setopt PROMPT_SUBST
 
 autoload -Uz promptinit && promptinit
 
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
+zinit ice lucid depth=1 && zinit light romkatv/powerlevel10k
 
 # paths
 
@@ -434,6 +433,11 @@ alias la='eza --all --group-directories-first --long'
 # fd
 
 alias fd='fd --exclude .git --hidden'
+
+# forgit
+
+zsh-defer zinit ice lucid depth=1
+zsh-defer zinit light wfxr/forgit
 
 # freerdp
 
