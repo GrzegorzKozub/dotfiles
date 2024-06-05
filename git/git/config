@@ -1,4 +1,5 @@
 [alias]
+  blm = blame --color-by-age
   gp = grep --context 3 --heading --line-number --show-function
   ll = log --graph --abbrev-commit --format=format:'%C(3)%h %C(6)%an %C(7)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
   lla = ll --all
@@ -56,7 +57,7 @@
   matchContext = yellow
   matchSelected = yellow
   selected = normal
-  separator = brightblack
+  separator = white
 [color.interactive]
   error = red
   header = white
