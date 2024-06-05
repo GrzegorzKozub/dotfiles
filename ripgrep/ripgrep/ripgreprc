@@ -4,7 +4,10 @@
 --colors=path:fg:cyan
 
 --context=3
---context-separator=''
+
+--context-separator=
+--field-context-separator=
+--field-match-separator=
 
 --glob=!.git/*
 --glob=!node_modules/*

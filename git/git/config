@@ -57,7 +57,7 @@
   matchContext = yellow
   matchSelected = yellow
   selected = normal
-  separator = white
+  separator = brightblack
 [color.interactive]
   error = red
   header = white
