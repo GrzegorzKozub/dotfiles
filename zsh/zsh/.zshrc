@@ -291,8 +291,9 @@ zsh-defer source /usr/share/fzf/completion.zsh
 zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 export FZF_DEFAULT_OPTS="
-  --color dark,bg+:-1,fg:$MY_FZF_COLOR_FG,fg+:-1,hl:$MY_FZF_COLOR_HL,hl+:$MY_FZF_COLOR_HL
-  --color spinner:-1,info:-1,prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER
+  --color dark,fg:$MY_FZF_COLOR_FG,hl:$MY_FZF_COLOR_HL,fg+:-1,bg+:-1,gutter:-1,hl+:$MY_FZF_COLOR_HL
+  --color info:$MY_FZF_COLOR_FG,border:$MY_FZF_COLOR_FG
+  --color prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER,spinner:-1
   --ellipsis '…'
   --height 50%
   --layout reverse-list
@@ -435,6 +436,14 @@ alias la='eza --all --group-directories-first --long'
 alias fd='fd --exclude .git --hidden'
 
 # forgit
+
+export FORGIT_COPY_CMD='xclip -selection clipboard'
+export FORGIT_GLO_FORMAT='%C(3)%h %C(auto)%s %C(6)%an %C(7)%ar %C(auto)%D%C(reset)'
+
+export FORGIT_FZF_DEFAULT_OPTS="
+  --color fg:-1,bg+:white
+  --height '100%'
+"
 
 zsh-defer zinit ice lucid depth=1
 zsh-defer zinit light wfxr/forgit
