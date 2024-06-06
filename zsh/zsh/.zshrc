@@ -291,20 +291,29 @@ zsh-defer source /usr/share/fzf/completion.zsh
 zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 export FZF_DEFAULT_OPTS="
-  --color dark,fg:$MY_FZF_COLOR_FG,hl:$MY_FZF_COLOR_HL,fg+:-1,bg+:-1,gutter:-1,hl+:$MY_FZF_COLOR_HL
-  --color info:$MY_FZF_COLOR_FG,border:$MY_FZF_COLOR_FG
-  --color prompt:$MY_FZF_COLOR_PROMPT,pointer:$MY_FZF_COLOR_POINTER,marker:$MY_FZF_COLOR_MARKER,spinner:-1
+  --bind=ctrl-d:page-down,ctrl-u:page-up
+  --border none
+  --color dark
+  --color fg:$MY_FZF_COLOR_DARK,selected-fg:$MY_FZF_COLOR_LIGHT,preview-fg:-1
+  --color hl:$MY_FZF_COLOR_HL,selected-hl:$MY_FZF_COLOR_HL
+  --color current-fg:-1,current-bg:-1,gutter:-1,current-hl:$MY_FZF_COLOR_HL
+  --color info:$MY_FZF_COLOR_DARK
+  --color border:$MY_FZF_COLOR_DARK
+  --color prompt:$MY_FZF_COLOR_PROMPT
+  --color pointer:$MY_FZF_COLOR_LIGHT,marker:$MY_FZF_COLOR_LIGHT
   --ellipsis '…'
   --height 50%
   --layout reverse-list
-  --margin 0,0,0,0
+  --margin 0
   --marker '$MY_FZF_CHAR_MARKER'
   --no-bold
   --no-info
   --no-scrollbar
   --no-separator
+  --padding 0
   --pointer '$MY_FZF_CHAR_POINTER'
   --prompt '$MY_FZF_CHAR_PROMPT'
+  --scroll-off 3
   --tabstop 2
 "
 
@@ -440,10 +449,10 @@ alias fd='fd --exclude .git --hidden'
 export FORGIT_COPY_CMD='xclip -selection clipboard'
 export FORGIT_GLO_FORMAT='%C(3)%h %C(auto)%s %C(6)%an %C(7)%ar %C(auto)%D%C(reset)'
 
-export FORGIT_FZF_DEFAULT_OPTS="
-  --color fg:-1,bg+:white
-  --height '100%'
-"
+# export FORGIT_FZF_DEFAULT_OPTS="
+#   --color fg:-1,bg+:white
+#   --height '100%'
+# "
 
 zsh-defer zinit ice lucid depth=1
 zsh-defer zinit light wfxr/forgit

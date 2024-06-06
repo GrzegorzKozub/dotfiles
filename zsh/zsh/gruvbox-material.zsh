@@ -40,10 +40,9 @@ MY_PROMPT_STATUS_COLOR='black'
 
 # fzf
 
-MY_FZF_COLOR_FG='bright-black'
+MY_FZF_COLOR_DARK='bright-black'
 MY_FZF_COLOR_HL='yellow'
-MY_FZF_COLOR_MARKER='white'
-MY_FZF_COLOR_POINTER='white'
+MY_FZF_COLOR_LIGHT='white'
 MY_FZF_COLOR_PROMPT='magenta'
 
 MY_FZF_CHAR_MARKER='• '
