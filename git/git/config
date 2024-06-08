@@ -81,9 +81,25 @@
   autocrlf = false
   editor = nvim
   fscache = true
-  pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub
+  # pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub
+  pager = delta
   symlinks = true
   whitespace = blank-at-eol,tab-in-indent
+[delta]
+  dark = true
+  hyperlinks = true
+  line-numbers = true
+  line-numbers-left-format = "{nm:>4}"
+  line-numbers-right-format = "{np:>4} "
+  line-numbers-minus-style = red
+  line-numbers-plus-style = green
+  syntax-theme = gruvbox-material-dark
+  file-style = cyan
+  file-decoration-style = ""
+  hunk-header-decoration-style = ""
+  hunk-header-file-style = cyan
+  hunk-header-style = line-number
+  hunk-header-line-number-style = magenta
 [diff]
   algorithm = histogram
   colorMoved = default
