@@ -362,6 +362,8 @@ my-games() { my-dir /run/media/$USER/games }; zle -N my-games; my-bindkey '^gg' 
 
 # lf
 
+alias lf='TERM=xterm-256color lf' # fix bat color tint
+
 my-cd() {
   local temp_file=$1
   if [[ -f "$temp_file" ]]; then
