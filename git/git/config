@@ -1,6 +1,6 @@
 [alias]
   blm = blame --color-by-age
-  gp = grep --context 3 --heading --line-number --show-function
+  gp = grep --context 3 --line-number --show-function
   ll = log --graph --abbrev-commit --format=format:'%C(yellow)%h %C(cyan)%an %C(white)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
   lla = ll --all
   ls = log --graph --abbrev-commit --date=relative --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(white)%ar %C(auto)%D%C(reset)'
@@ -86,11 +86,12 @@
   symlinks = true
   whitespace = blank-at-eol,tab-in-indent
 [delta]
-  # todo: blame, completion, merge, minus, plus, width
+  # todo: blame, merge, vim colors for minus & plus?, italic for moved?
   file-decoration-style = ""
   file-style = cyan
   grep-file-style = cyan
   grep-line-number-style = magenta
+  # grep-match-line-style = yellow
   grep-match-word-style = yellow
   # grep-output-type = ripgrep
   hunk-header-decoration-style = ""
@@ -106,6 +107,12 @@
   line-numbers-right-format = "{np:>3} "
   line-numbers-zero-style = brightblack
   max-line-length = 128
+  minus-emph-style = syntax red
+  minus-non-emph-style = syntax "#472322"
+  minus-style = syntax "#472322"
+  plus-emph-style = syntax green
+  plus-non-emph-style = syntax "#3d4220"
+  plus-style = syntax "#3d4220"
   # side-by-side = true
   syntax-theme = gruvbox-material-dark
   tabs = 2
