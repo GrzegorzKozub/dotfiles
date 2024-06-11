@@ -6,6 +6,7 @@
   ls = log --graph --abbrev-commit --date=relative --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(white)%ar %C(auto)%D%C(reset)'
   lsa = ls --all
   lt = describe --abbrev=0 --tags
+  pickaxe = "!f() { git log -S $1 -p --pickaxe-all; }; f"
 [color]
   advice = auto
   branch = auto
