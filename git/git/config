@@ -1,6 +1,6 @@
 [alias]
   blm = blame --color-by-age
-  gp = grep --context 3 --line-number --show-function
+  grp = grep --context 3 --line-number --show-function
   ll = log --graph --abbrev-commit --format=format:'%C(yellow)%h %C(cyan)%an %C(white)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
   lla = ll --all
   ls = log --graph --abbrev-commit --date=relative --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(white)%ar %C(auto)%D%C(reset)'
@@ -86,7 +86,11 @@
   symlinks = true
   whitespace = blank-at-eol,tab-in-indent
 [delta]
-  # todo: blame, merge, vim colors for minus & plus?, italic for moved?
+  # minus & plus use DiffDelete & DiffAdd highlight colors from neovim
+  blame-code-style = syntax
+  blame-format = {commit:<8} {author:<8.8} {timestamp:<8.8}
+  blame-palette = normal
+  blame-separator-format = " {n:>3_block}"
   file-decoration-style = ""
   file-style = cyan
   grep-file-style = cyan
@@ -107,6 +111,12 @@
   line-numbers-right-format = "{np:>3} "
   line-numbers-zero-style = brightblack
   max-line-length = 128
+  merge-conflict-begin-symbol = ""
+  merge-conflict-end-symbol = ""
+  merge-conflict-ours-diff-header-decoration-style = ""
+  merge-conflict-ours-diff-header-style = green
+  merge-conflict-theirs-diff-header-decoration-style = ""
+  merge-conflict-theirs-diff-header-style = blue
   minus-emph-style = syntax red
   minus-non-emph-style = syntax "#472322"
   minus-style = syntax "#472322"
