@@ -1,12 +1,11 @@
 [alias]
   blm = blame --color-by-age
-  grp = grep --context 3 --line-number --show-function
+  grp = "!f() { git log -G \"$@\" -p; }; f"
   ll = log --graph --abbrev-commit --format=format:'%C(yellow)%h %C(cyan)%an %C(white)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
   lla = ll --all
   ls = log --graph --abbrev-commit --date=relative --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(white)%ar %C(auto)%D%C(reset)'
   lsa = ls --all
   lt = describe --abbrev=0 --tags
-  pickaxe = "!f() { git log -S $1 -p --pickaxe-all; }; f"
 [color]
   advice = auto
   branch = auto
@@ -48,17 +47,17 @@
   oldMovedAlternative = brightred italic
   plain = normal
   whitespace = red reverse
-# [color.grep]
-#   column = magenta
-#   context = normal
-#   filename = cyan
-#   function = blue
-#   lineNumber = magenta
-#   match = yellow
-#   matchContext = yellow
-#   matchSelected = yellow
-#   selected = normal
-#   separator = brightblack
+[color.grep]
+  column = magenta
+  context = normal
+  filename = cyan
+  function = blue
+  lineNumber = magenta
+  # match = yellow # not compatible with delta
+  matchContext = yellow
+  # matchSelected = yellow # not compatible with delta
+  selected = normal
+  separator = brightblack
 [color.interactive]
   error = red
   header = white
@@ -96,7 +95,7 @@
   file-style = cyan
   grep-file-style = cyan
   grep-line-number-style = magenta
-  # grep-match-line-style = yellow
+  grep-match-line-style = yellow
   grep-match-word-style = yellow
   # grep-output-type = ripgrep
   hunk-header-decoration-style = ""
