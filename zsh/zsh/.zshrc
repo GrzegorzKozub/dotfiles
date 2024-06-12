@@ -504,6 +504,10 @@ export GOPATH=$XDG_DATA_HOME/go
 
 export GOPRIVATE=github.com/ApsisInternational/*
 
+# gopass
+
+alias pass='gopass'
+
 # less
 
 export LESSHISTFILE=-
