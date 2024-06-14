@@ -104,13 +104,14 @@
   # hunk-header-style = line-number blue
   hunk-header-style = omit
   hyperlinks = true
+  inline-hint-style = red
   line-numbers = true
   line-numbers-left-format = "{nm:>3} "
   line-numbers-minus-style = red
   line-numbers-plus-style = green
   line-numbers-right-format = "{np:>3} "
   line-numbers-zero-style = brightblack
-  max-line-length = 128
+  max-line-length = 256
   merge-conflict-begin-symbol = ""
   merge-conflict-end-symbol = ""
   merge-conflict-ours-diff-header-decoration-style = ""
