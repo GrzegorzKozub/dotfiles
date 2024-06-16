@@ -382,6 +382,16 @@ my-lf-cd() {
 zle -N my-lf-cd
 my-bindkey '\el' my-lf-cd viins vicmd
 
+# yazi
+
+my-yazi-cd() {
+  local temp_file="$(mktemp)"
+  yazi "$@" --cwd-file="$temp_file" < $TTY
+  my-cd $temp_file
+}
+zle -N my-yazi-cd
+my-bindkey '\ey' my-yazi-cd viins vicmd
+
 # dir colors
 
 autoload -Uz colors && colors

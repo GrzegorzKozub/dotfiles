@@ -23,6 +23,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   silicon \
   tmux \
   vscode \
+  yazi \
   yt-dlp \
   zsh
 
