@@ -5,12 +5,13 @@
 
 --context=3
 
---context-separator=
---field-context-separator=
---field-match-separator=
+--context-separator=\x20
+--field-context-separator=\x20
+--field-match-separator=\x20
 
---glob=!.git/*
---glob=!node_modules/*
+--glob=!**/.cache/*
+--glob=!**/.git/*
+--glob=!**/node_modules/*
 
 --hidden
 
