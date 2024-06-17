@@ -264,7 +264,7 @@ HISTFILE=~/code/history/$HOST/history
 HISTSIZE=10000 # history memory limit
 SAVEHIST=10000 # history file limit
 
-HISTORY_IGNORE='(#i)(*bearer*|*password*|*secret*|*token*)'
+HISTORY_IGNORE='(#i)(*bearer*|*jwt*|*password*|*secret*|*token*)'
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
