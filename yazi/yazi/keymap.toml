@@ -1,5 +1,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
+# j/k dn/up lists, ctrl d/u list pages, alt j/k dn/up previews, alt d/u preview pages
+
 [manager]
 
 keymap = [
@@ -20,6 +22,8 @@ keymap = [
   { on = ["<S-Up>"], run = "arrow -5", desc = "Move cursor up 5 lines" },
   { on = ["<S-Down>"], run = "arrow 5", desc = "Move cursor down 5 lines" },
 
+
+  # remove ctrl f and b
   { on = ["<C-u>"], run = "arrow -50%", desc = "Move cursor up half page" },
   { on = ["<C-d>"], run = "arrow 50%", desc = "Move cursor down half page" },
   { on = ["<C-b>"], run = "arrow -100%", desc = "Move cursor up one page" },
@@ -42,6 +46,10 @@ keymap = [
   { on = ["<A-Down>"], run = "seek 5", desc = "Seek down 5 units in the preview" },
   { on = ["<A-PageUp>"], run = "seek -5", desc = "Seek up 5 units in the preview" },
   { on = ["<A-PageDown>"], run = "seek 5", desc = "Seek down 5 units in the preview" },
+
+  # keep but doesnt work really
+  { on = ["<A-u>"], run = "seek -50", desc = "Seek up 5 units in the preview" },
+  { on = ["<A-d>"], run = "seek 50", desc = "Seek down 5 units in the preview" },
 
   { on = ["<Up>"], run = "arrow -1", desc = "Move cursor up" },
   { on = ["<Down>"], run = "arrow 1", desc = "Move cursor down" },
@@ -146,10 +154,12 @@ keymap = [
   { on = ["g", "c"], run = "cd ~/.config", desc = "Go to the config directory" },
   { on = ["g", "d"], run = "cd ~/Downloads", desc = "Go to the downloads directory" },
   { on = ["g", "t"], run = "cd /tmp", desc = "Go to the temporary directory" },
+
+  # desc appears in the help panel
   { on = ["g", "<Space>"], run = "cd --interactive", desc = "Go to a directory interactively" },
 
-  # Help
-  { on = ["~"], run = "help", desc = "Open help" },
+  # Help - changed to f1
+  { on = ["<F1>"], run = "help", desc = "Open help" },
 ]
 
 [tasks]
@@ -201,7 +211,7 @@ keymap = [
   { on = ["<C-q>"], run = "close", desc = "Cancel input" },
   { on = ["<Enter>"], run = "close --submit", desc = "Submit the input" },
   # { on = ["<Esc>"], run = "escape", desc = "Go back the normal mode, or cancel input" },
-   { on = ["<Esc>"], run = "close", desc = "Go back the normal mode, or cancel input" },
+  { on = ["<Esc>"], run = "close", desc = "Go back the normal mode, or cancel input" },
   { on = ["<C-[>"], run = "escape", desc = "Go back the normal mode, or cancel input" },
 
   # Mode
