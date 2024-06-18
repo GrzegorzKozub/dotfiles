@@ -81,34 +81,23 @@ icon_file = ""
 icon_folder = ""
 icon_command = ""
 
-# : }}}
 
 
-# : Tasks {{{
 
 [tasks]
 border = { fg = "blue" }
 title = {}
 hovered = { fg = "magenta", underline = true }
 
-# : }}}
-
-
-# : Which {{{
 
 [which]
-cols = 3
-mask = { bg = "black" }
-cand = { fg = "lightcyan" }
+cols = 2
+mask = { bg = "reset" }
+cand = { fg = "cyan" }
 rest = { fg = "darkgray" }
-desc = { fg = "lightmagenta" }
-separator = "  "
-separator_style = { fg = "darkgray" }
+desc = { fg = "magenta" }
+separator = " "
 
-# : }}}
-
-
-# : Help {{{
 
 [help]
 on = { fg = "cyan" }
@@ -117,10 +106,6 @@ desc = {}
 hovered = { reversed = true, bold = true }
 footer = { fg = "black", bg = "white" }
 
-# : }}}
-
-
-# : Notify {{{
 
 [notify]
 title_info = { fg = "green" }
@@ -136,7 +121,10 @@ icon_error = ""
 
 rules = [
   { name = "*.{cow,fsa,mrimg,wim}", fg = "magenta" },
+
   { name = "*.iso", fg = "magenta" },
+
+  { name = "*.git/", fg = "gray" },
 
   { name = "*.dockerignore", fg = "gray" },
   { name = "*.editorconfig", fg = "gray" },
@@ -146,17 +134,25 @@ rules = [
   { name = "*.gitattributes", fg = "gray" },
   { name = "*.gitignore", fg = "gray" },
   { name = "*.gitmodules", fg = "gray" },
+  { name = "*.luacheckrc", fg = "gray" },
   { name = "*.pylintrc", fg = "gray" },
+
+  # npmrc .luarc.json .stylua.toml .taplo.toml
 
   { name = "*.{backup,bak,log,off,old,orig,original,part,swp,tmp}", fg = "darkgray" },
 
   { mime = "image/*", fg = "magenta" },
 
   { mime = "{audio,video}/*", fg = "magenta" },
+
   { mime = "application/*zip", fg = "yellow" },
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "yellow" },
 
+  { name = "*", is = "link", fg = "blue" },
+  { name = "*/", is = "link", fg = "blue" },
   { name = "*", is = "orphan", fg = "red" },
+  { name = "*/", is = "orphan", fg = "red" },
+
   { name = "*", is = "exec", fg = "green" },
 
   { name = "*", fg = "reset" },
@@ -166,27 +162,99 @@ rules = [
 [icon]
 
 rules = [
-  { name = "*.{7z,gz,rar,tar,zip}", text = "" },
-
   { name = "*.{cow,fsa,mrimg,wim}", text = "󰋊" },
+
   { name = "*.iso", text = "󰗮" },
+
+  { name = "*.dockerignore", text = "" },
+  { name = "*.editorconfig", text = "" },
+  { name = "*.env", text = "" },
+  { name = "*.eslintrc", text = "" },
+  { name = "*.git", text = "" },
+  { name = "*.gitattributes", text = "" },
+  { name = "*.gitignore", text = "" },
+  { name = "*.gitmodules", text = "" },
+  { name = "*.luacheckrc", text = "" },
+  { name = "*.pylintrc", text = "" },
+
+  { name = "*.{backup,bak,log,off,old,orig,original,part,swp,tmp}", text = "󰘓" },
 
   { name = "*.{jpeg,jpg,png,svg}", text = "" },
 
   { name = "*.{mp3,ogg,opus}", text = "" },
   { name = "*.{mkv,mp4,webm}", text = "" },
 
-  { name = "*.dockerignore", text = "" },
-  { name = "*.editorconfig", text = "" },
-  { name = "*.env", text = "" },
-  { name = "*.eslintrc", text = "󰘓" },
-  { name = "*.git", text = "" },
-  { name = "*.gitattributes", text = "" },
-  { name = "*.gitignore", text = "" },
-  { name = "*.gitmodules", text = "" },
-  { name = "*.pylintrc", text = "󰘓" },
+  { name = "*.{7z,gz,rar,tar,zip}", text = "" },
 
-  { name = "*.{backup,bak,log,off,old,orig,original,part,swp,tmp}", text = "󰘓" },
+  { name = "*", is = "link", text = "󰌷" },
+  { name = "*/", is = "link", text = "󰌷" },
+  { name = "*", is = "orphan", text = "󰌸" },
+  { name = "*/", is = "orphan", text = "󰌸" },
+
+  { name = "*.c", text = "" },
+  { name = "*.cpp", text = "" },
+  { name = "*.cs", text = "󰌛" },
+  { name = "*.css", text = "" },
+  { name = "*.go", text = "" },
+  { name = "*.h", text = "" },
+  { name = "*.hpp", text = "" },
+  { name = "*.html", text = "" },
+  { name = "*.js", text = "" },
+  { name = "*.jsx", text = "" },
+  { name = "*.lua", text = "" },
+  { name = "*.nix", text = "" },
+  { name = "*.nu", text = ">" },
+  { name = "*.py", text = "" },
+  { name = "*.rb", text = "" },
+  { name = "*.rs", text = "" },
+  { name = "*.scss", text = "" },
+  { name = "*.sh", text = "" },
+  { name = "*.zsh", text = "" },
+  { name = "*.ts", text = "" },
+  { name = "*.vim", text = "" },
+
+  { name = "*.ps1", text = "" },
+  { name = "*.cmd", text = "" },
+  { name = "*.bat", text = "" },
+  { name = "*.exe", text = "" },
+
+  { name = "Dockerfile", text = "󰡨" }, # not working
+
+  { name = "*.conf", text = "" },
+  { name = "config", text = "" }, # not working
+  { name = "*.rules", text = "" },
+  { name = "*.service", text = "" },
+  { name = "*.timer", text = "󰅐" },
+  { name = "*.ini", text = "" },
+  { name = "*.json", text = "" },
+  { name = "*.jsonc", text = "" },
+  { name = "*.kdl", text = "" },
+  { name = "*.md", text = ""  },
+  { name = "*.toml", text = "" },
+  { name = "*.txt", text = "" },
+  { name = "*.yaml", text = "" },
+  { name = "*.yml", text = "" },
+  { name = "*.xml", text = "󰗀" },
+  { name = "*.tmTheme", text = "󰗀" },
+
+  { name = "*.[ot]tf", text = "" },
+  { name = "*.icm", text = "󰏘" },
+
+  { name = "*.exe", text = "" },
+
+  { name = ".zprofile", text = "" }, # they are not working
+  { name = ".zshenv", text = "" },
+  { name = ".zshrc", text = "" },
+  # dir_colors
+
+
+  { name = "*.git/", text = "" },
+
+  { name = "*.csv", text = "" },
+  { name = "*.docx", text = "" },
+  { name = "*.pdf", text = "" },
+  { name = "*.xlsx", text = "" },
+  { name = "*.epub", text = "" },
 
   { name = "*", text = "" },
   { name = "*/", text = "" },

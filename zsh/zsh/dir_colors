@@ -32,9 +32,10 @@ EXEC 32
 
 .cow 35
 .fsa 35
-.iso 35
 .mrimg 35
 .wim 35
+
+.iso 35
 
 .jpeg 35
 .jpg 35
@@ -57,6 +58,7 @@ EXEC 32
 .gitattributes 37
 .gitignore 37
 .gitmodules 37
+.luacheckrc 37
 .pylintrc 37
 
 .backup 90

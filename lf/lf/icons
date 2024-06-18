@@ -32,8 +32,9 @@ ow 󰝰
 *.cow 󰋊  # nf-md-harddisk
 *.fsa 󰋊
 *.mrimg 󰋊
-*.iso 󰗮  # nf-md-disc
 *.wim 󰋊
+
+*.iso 󰗮  # nf-md-disc
 
 *.jpeg 󰥶  # nf-md-image_outline
 *.jpg 󰥶
@@ -56,6 +57,7 @@ ow 󰝰
 *.gitattributes 󰘓
 *.gitignore 󰘓
 *.gitmodules 󰘓
+*.luacheckrc 󰘓
 *.pylintrc 󰘓
 
 *.backup 󰘓
