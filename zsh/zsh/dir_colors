@@ -32,8 +32,8 @@ EXEC 32
 
 .cow 35
 .fsa 35
-.mrimg 35
 .iso 35
+.mrimg 35
 .wim 35
 
 .jpeg 35
@@ -51,6 +51,7 @@ EXEC 32
 
 .dockerignore 37
 .editorconfig 37
+.env 37
 .eslintrc 37
 .git 37
 .gitattributes 37

@@ -23,10 +23,7 @@ ow 󰝰
 *.sh 󰑷
 *.zsh 󰑷
 
-*.001 󰏗  # nf-md-package_variant_closed
-*.002 󰏗
-*.003 󰏗
-*.7z 󰏗
+*.7z 󰏗  # nf-md-package_variant_closed
 *.gz 󰏗
 *.rar 󰏗
 *.tar 󰏗
@@ -41,6 +38,7 @@ ow 󰝰
 *.jpeg 󰥶  # nf-md-image_outline
 *.jpg 󰥶
 *.png 󰥶
+*.svg 󰥶
 
 *.mp3 󰝚  # nf-md-music
 *.ogg 󰝚
@@ -52,10 +50,13 @@ ow 󰝰
 
 *.dockerignore 󰘓  # nf-md-file_hidden
 *.editorconfig 󰘓
+*.env 󰘓
+*.eslintrc 󰘓
 *.git 󰘓
 *.gitattributes 󰘓
 *.gitignore 󰘓
 *.gitmodules 󰘓
+*.pylintrc 󰘓
 
 *.backup 󰘓
 *.bak 󰘓
