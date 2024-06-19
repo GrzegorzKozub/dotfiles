@@ -77,3 +77,48 @@ ow 󰝰
 *.swp 󰘓
 *.tmp 󰘓
 
+.azure-pipelines/ 󰿕  # nf-md-microsoft_azure_devops
+.git/ 
+.github/ 󰊤  # nf-md-github
+.vscode/ 󰨞  # nf-md-microsoft_visual_studio_code
+
+*.conf 
+*.ini 
+*.kdl 
+*.rules 
+*.service 
+*.timer 
+*.zprofile 
+*.zshenv 
+*.zshrc 
+
+*config 
+*dir_colors 󰏘  # nf-md-palette
+*icons 󰏘
+*lfrc 
+*npmrc 
+*ripgreprc 
+
+*.csv 󰱿  # nf-md-file_table_outline
+*.json   # nf-seti-json
+*.jsonc 
+*.tmTheme 󰗀  # nf-md-xml
+*.toml   # nf-custom-toml
+*.xml 󰗀
+*.yaml   # nf-seti-yml
+*.yml 
+
+*.md   # nf-dev-markdown
+*.txt   # nf-fa-file_text_o
+
+*.icm 󰏘  # nf-md-palette
+*.otf   # nf-fa-font
+*.ttf 
+
+*.epub   # nf-oct-book
+*.pdf   # nf-fa-file_pdf
+
+*.docx   # nf-fa-file_word
+*.xlsx   # nf-fa-file_excel
+
+

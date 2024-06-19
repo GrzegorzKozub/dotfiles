@@ -82,8 +82,6 @@ icon_folder = ""
 icon_command = ""
 
 
-
-
 [tasks]
 border = { fg = "blue" }
 title = {}
@@ -136,8 +134,6 @@ rules = [
 
   { mime = "{audio,image,video}/*", fg = "magenta" },
 
-  { name = "*.git/", fg = "gray" },
-
   { name = "*.dockerignore", fg = "gray" },
   { name = "*.editorconfig", fg = "gray" },
   { name = "*.{env,eslintrc,eslintrc.js,npmrc}", fg = "gray" },
@@ -147,6 +143,8 @@ rules = [
   { name = "*.taplo.toml", fg = "gray" },
 
   { name = "*.{backup,bak,log,off,old,orig,original,part,swp,tmp}", fg = "darkgray" },
+
+  { name = "*.{azure-pipelines,git,github,vscode}/", fg = "gray" },
 
   { name = "*", fg = "reset" },
   { name = "*/", fg = "cyan" },
@@ -179,8 +177,6 @@ rules = [
 
   { name = "*.{mkv,mp4,webm}", text = "󰷝" },
 
-  { name = "*.git/", text = "" },
-
   { name = "*.dockerignore", text = "" },
   { name = "*.editorconfig", text = "" },
   { name = "*.env", text = "" },
@@ -192,46 +188,62 @@ rules = [
 
   { name = "*.{backup,bak,log,off,old,orig,original,part,swp,tmp}", text = "󰘓" },
 
-  # todo: filetypes below have no yazi colors, dir_colors & lf icons
+  { name = "*.azure-pipelines/", text = "󰿕" },
+  { name = "*.git/", text = "" },
+  { name = "*.github/", text = "󰊤" },
+  { name = "*.vscode/", text = "󰨞" },
+
+  # todo: filetypes below have no yazi colors or dir_colors
 
   { name = "*.{conf,rules,service,timer}", text = "" },
   { name = "*.{ini,kdl}", text = "" },
   { name = "*.{zprofile,zshenv,zshrc}", text = "" },
 
-  { name = "config", text = "" }, # does not work
-  { name = "dir_colors", text = "󰏘" }, # does not work
+  { name = "*config", text = "" },
+  { name = "*{dir_colors,icons}", text = "󰏘" },
+  { name = "*{lfrc,npmrc,ripgreprc}", text = "" },
 
-  { name = "Dockerfile", text = "󰡨" }, # does not work
+  { name = "*.csv", text = "󰱿" },
+  { name = "*.{json,jsonc}", text = "" },
+  { name = "*.{tmTheme,xml}", text = "󰗀" },
+  { name = "*.toml", text = "" },
+  { name = "*.{yaml,yml}", text = "" },
+
+  { name = "*.md", text = "" },
+  { name = "*.txt", text = "" },
+
+  { name = "*.icm", text = "󰏘" },
+  { name = "*.[ot]tf", text = "" },
+
+  { name = "*.epub", text = "" },
+  { name = "*.pdf", text = "" },
+
+  { name = "*.docx", text = "" },
+  { name = "*.xlsx", text = "" },
 
   # ...
 
+  { name = "*Dockerfile", text = "󰡨" },
+# LICENSE"      , text = "󰿃
 
-  { name = "*.{json,jsonc}", text = "" },
-  { name = "*.md", text = ""  },
-  { name = "*.toml", text = "" },
-  { name = "*.txt", text = "" },
-  { name = "*.{yaml,yml}", text = "" },
-  { name = "*.{tmTheme,xml}", text = "󰗀" },
+# csproj sln go.mod go.sum html
+# .gitkeep
 
-  { name = "*.[ot]tf", text = "" },
-  { name = "*.icm", text = "󰏘" },
+# ico scss
+# .nvmrc .prettierignore .prettierrc
 
-
+# credentials (aws)
+# key ovpn pem
+# kbx gpg
+# kdbx
 
   { name = "*.po", text = "" },
-  { name = "*.c", text = "" },
-  { name = "*.cpp", text = "" },
-  { name = "*.cs", text = "󰌛" },
+  { name = "*.cs", text = "󰌛" }, # nf-md-language_csharp
   { name = "*.css", text = "" },
   { name = "*.go", text = "" },
-  { name = "*.h", text = "" },
-  { name = "*.hpp", text = "" },
   { name = "*.html", text = "" },
   { name = "*.js", text = "" },
-  { name = "*.jsx", text = "" },
   { name = "*.lua", text = "" },
-  { name = "*.nix", text = "" },
-  { name = "*.nu", text = ">" },
   { name = "*.py", text = "" },
   { name = "*.rb", text = "" },
   { name = "*.rs", text = "" },
@@ -239,13 +251,6 @@ rules = [
   { name = "*.ts", text = "" },
   { name = "*.vim", text = "" },
 
-
-
-  { name = "*.csv", text = "" },
-  { name = "*.docx", text = "" },
-  { name = "*.pdf", text = "" },
-  { name = "*.xlsx", text = "" },
-  { name = "*.epub", text = "" },
 
   # ...
 
