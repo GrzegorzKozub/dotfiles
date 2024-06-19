@@ -16,18 +16,19 @@ ex 󰈤
 fi 󰈤
 ow 󰝰
 
+*.sh   # nf-oct-terminal
+*.zsh 
+
 *.bat 󰑷  # nf-md-script_outline
 *.cmd 󰑷
-*.exe 󰘔  # nf-md-application_outline
-*.ps1 󰑷
-*.sh 󰑷
-*.zsh 󰑷
+*.exe   # nf-dev-windows
+*.ps1   # nf-cod-terminal_powershell
 
-*.7z 󰏗  # nf-md-package_variant_closed
-*.gz 󰏗
-*.rar 󰏗
-*.tar 󰏗
-*.zip 󰏗
+*.7z   # nf-oct-file_zip
+*.gz 
+*.rar 
+*.tar 
+*.zip 
 
 *.cow 󰋊  # nf-md-harddisk
 *.fsa 󰋊
@@ -36,10 +37,10 @@ ow 󰝰
 
 *.iso 󰗮  # nf-md-disc
 
-*.jpeg 󰥶  # nf-md-image_outline
-*.jpg 󰥶
-*.png 󰥶
-*.svg 󰥶
+*.jpeg   # nf-fa-file_image
+*.jpg 
+*.png 
+*.svg 
 
 *.mp3 󰝚  # nf-md-music
 *.ogg 󰝚
@@ -49,18 +50,23 @@ ow 󰝰
 *.mp4 󰷝
 *.webm 󰷝
 
-*.dockerignore 󰘓  # nf-md-file_hidden
-*.editorconfig 󰘓
-*.env 󰘓
-*.eslintrc 󰘓
-*.git 󰘓
-*.gitattributes 󰘓
-*.gitignore 󰘓
-*.gitmodules 󰘓
-*.luacheckrc 󰘓
-*.pylintrc 󰘓
+*.dockerignore   # nf-seti-docker
+*.editorconfig   # nf-seti-editorconfig
+*.env   # nf-oct-sliders
+*.eslintrc   # nf-seti-config
+*.eslintrc.js 
+*.git   # nf-fa-git
+*.gitattributes 
+*.gitignore 
+*.gitmodules 
+*.luacheckrc 
+*.luarc.json 
+*.npmrc 
+*.pylintrc 
+*.stylua.toml 
+*.taplo.toml 
 
-*.backup 󰘓
+*.backup 󰘓  # nf-md-file_hidden
 *.bak 󰘓
 *.log 󰘓
 *.off 󰘓

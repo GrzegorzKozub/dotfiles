@@ -19,6 +19,9 @@ OTHER_WRITABLE 36
 STICKY 36
 EXEC 32
 
+# .sh 32
+# .zsh 32
+
 # .bat 32
 # .cmd 32
 # .exe 32
@@ -54,12 +57,17 @@ EXEC 32
 .editorconfig 37
 .env 37
 .eslintrc 37
+.eslintrc.js 37
 .git 37
 .gitattributes 37
 .gitignore 37
 .gitmodules 37
 .luacheckrc 37
+.luarc.json 37
+.npmrc 37
 .pylintrc 37
+.stylua.toml 37
+.taplo.toml 37
 
 .backup 90
 .bak 90
