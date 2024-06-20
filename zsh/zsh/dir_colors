@@ -40,6 +40,7 @@ EXEC 32
 
 .iso 35
 
+.ico 35
 .jpeg 35
 .jpg 35
 .png 35
@@ -61,10 +62,14 @@ EXEC 32
 .git 37
 .gitattributes 37
 .gitignore 37
+.gitkeep 37
 .gitmodules 37
 .luacheckrc 37
 .luarc.json 37
 .npmrc 37
+.nvmrc 37
+.prettierignore 37
+.prettierrc 37
 .pylintrc 37
 .stylua.toml 37
 .taplo.toml 37
