@@ -129,8 +129,8 @@ ow 󰝰
 *.yml 
 
 *.ahk 󰑷
+*.reg 
 *.vbs 󰑷
-*.vim   # nf-dev-vim
 
 *Dockerfile 󰡨
 *LICENSE 󰿃  # nf-md-license

@@ -230,7 +230,7 @@ rules = [
   { name = "*.{yaml,yml}", text = "" },
 
   { name = "*.{ahk,vbs}", text = "󰑷" },
-  { name = "*.vim", text = "" },
+  { name = "*.reg", text = "" },
 
   { name = "*Dockerfile", text = "󰡨" },
   { name = "*LICENSE", text = "󰿃" },
