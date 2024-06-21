@@ -16,8 +16,8 @@ find_position = { fg = "yellow", reversed = true }
 
 marker_copied = { fg = "yellow", bg = "reset" }
 marker_cut = { fg = "red", bg = "reset" }
-marker_marked = { fg = "lightblue", bg = "reset" }
-marker_selected = { fg = "blue", bg = "reset" }
+marker_marked = { fg = "lightmagenta", bg = "reset" }
+marker_selected = { fg = "magenta", bg = "reset" }
 
 tab_active = { fg = "gray" }
 tab_inactive = { fg = "darkgray" }
@@ -25,7 +25,7 @@ tab_width = 32
 
 count_copied = { fg = "black", bg = "yellow" }
 count_cut = { fg = "black", bg = "red" }
-count_selected = { fg = "black", bg = "blue" }
+count_selected = { fg = "black", bg = "magenta" }
 
 border_symbol = " "
 border_style = { fg = "black" }
@@ -38,12 +38,12 @@ separator_close = ""
 separator_style = { fg = "black", bg = "darkgray" }
 
 mode_normal = { fg = "black", bg = "gray" }
-mode_select = { fg = "black", bg = "lightblue" }
+mode_select = { fg = "black", bg = "lightmagenta" }
 mode_unset = { fg = "black", bg = "red" }
 
-progress_label = {}
-progress_normal = { fg = "blue", bg = "black" }
-progress_error = { fg = "red", bg = "black" }
+progress_label = { reverse = true }
+progress_normal = { fg = "blue", bg = "reset" }
+progress_error = { fg = "red", bg = "reset" }
 
 permissions_t = { fg = "black", bg = "darkgray" }
 permissions_r = { fg = "black", bg = "darkgray" }
@@ -80,24 +80,22 @@ border = { fg = "darkgray" }
 title = { fg = "darkgray" }
 hovered = { fg = "reset" }
 
-# ...
-
 [which]
 
 cols = 2
 mask = { bg = "reset" }
-cand = { fg = "cyan" }
+cand = { fg = "magenta" }
 rest = { fg = "darkgray" }
-desc = { fg = "magenta" }
+desc = { fg = "gray" }
 separator = " "
 
 [help]
 
-on = { fg = "cyan" }
-run = { fg = "magenta" }
-desc = {}
-hovered = { reversed = true, bold = true }
-footer = { fg = "black", bg = "white" }
+on = { fg = "magenta", bg = "reset" }
+run = { fg = "darkgray" }
+desc = { fg = "gray" }
+hovered = { bold = true }
+footer = { fg = "gray", bg = "reset" }
 
 [notify]
 
@@ -108,8 +106,6 @@ title_error = { fg = "red" }
 icon_info = ""
 icon_warn = ""
 icon_error = ""
-
-# ...
 
 [filetype]
 
