@@ -1,6 +1,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [flavor]
+
 use = ""
 
 [manager]
@@ -8,87 +9,81 @@ use = ""
 cwd = { fg = "cyan" }
 
 hovered = { reversed = true }
-preview_hovered = { bold = true }
+preview_hovered = {}
 
-find_keyword = { fg = "yellow", bold = true, italic = true, underline = true }
-find_position = { fg = "magenta", bg = "reset", bold = true, italic = true }
+find_keyword = { fg = "yellow", bold = true }
+find_position = { fg = "yellow", reversed = true }
 
-# Marker
-marker_copied = { fg = "lightgreen", bg = "lightgreen" }
-marker_cut = { fg = "lightred", bg = "lightred" }
-marker_marked = { fg = "lightcyan", bg = "lightcyan" }
-marker_selected = { fg = "lightyellow", bg = "lightyellow" }
+marker_copied = { fg = "yellow", bg = "reset" }
+marker_cut = { fg = "red", bg = "reset" }
+marker_marked = { fg = "lightblue", bg = "reset" }
+marker_selected = { fg = "blue", bg = "reset" }
 
-# Tab
-tab_active = { reversed = true }
-tab_inactive = {}
-tab_width = 1
+tab_active = { fg = "gray" }
+tab_inactive = { fg = "darkgray" }
+tab_width = 32
 
-# Count
-count_copied = { fg = "white", bg = "green" }
-count_cut = { fg = "white", bg = "red" }
-count_selected = { fg = "white", bg = "yellow" }
+count_copied = { fg = "black", bg = "yellow" }
+count_cut = { fg = "black", bg = "red" }
+count_selected = { fg = "black", bg = "blue" }
 
 border_symbol = " "
 border_style = { fg = "black" }
 
-
 [status]
+
+# used for size, name, owner & permissions
 separator_open = ""
 separator_close = ""
-separator_style = { fg = "gray", bg = "gray" }
+separator_style = { fg = "black", bg = "darkgray" }
 
-# Mode
-mode_normal = { bg = "blue", bold = true }
-mode_select = { bg = "red", bold = true }
-mode_unset = { bg = "red", bold = true }
+mode_normal = { fg = "black", bg = "gray" }
+mode_select = { fg = "black", bg = "lightblue" }
+mode_unset = { fg = "black", bg = "red" }
 
-# Progress
-progress_label = { bold = true }
+progress_label = {}
 progress_normal = { fg = "blue", bg = "black" }
 progress_error = { fg = "red", bg = "black" }
 
-# Permissions
-permissions_t = { fg = "green" }
-permissions_r = { fg = "yellow" }
-permissions_w = { fg = "red" }
-permissions_x = { fg = "cyan" }
-permissions_s = { fg = "darkgray" }
-
+permissions_t = { fg = "black", bg = "darkgray" }
+permissions_r = { fg = "black", bg = "darkgray" }
+permissions_w = { fg = "black", bg = "darkgray" }
+permissions_x = { fg = "black", bg = "darkgray" }
+permissions_s = { fg = "darkgray", bg = "darkgray" }
 
 [select]
-border = { fg = "darkgray" }
-active = { fg = "magenta", bold = true }
-inactive = {}
 
+border = { fg = "darkgray" }
+active = { fg = "reset" }
+inactive = { fg = "gray" }
 
 [input]
+
 border = { fg = "darkgray" }
-title = { fg = "magenta" }
-value = {}
+title = { fg = "darkgray" }
+value = { fg = "reset" }
 selected = { reversed = true }
 
-
-# : Completion {{{
-
 [completion]
-border = { fg = "blue" }
-active = { reversed = true }
-inactive = {}
 
-# Icons
-icon_file = ""
-icon_folder = ""
+border = { fg = "darkgray" }
+active = { fg = "reset" }
+inactive = { fg = "gray" }
+
+icon_file = "󰈤"
+icon_folder = "󰝰"
 icon_command = ""
 
-
 [tasks]
-border = { fg = "blue" }
-title = {}
-hovered = { fg = "magenta", underline = true }
 
+border = { fg = "darkgray" }
+title = { fg = "darkgray" }
+hovered = { fg = "reset" }
+
+# ...
 
 [which]
+
 cols = 2
 mask = { bg = "reset" }
 cand = { fg = "cyan" }
@@ -96,24 +91,25 @@ rest = { fg = "darkgray" }
 desc = { fg = "magenta" }
 separator = " "
 
-
 [help]
+
 on = { fg = "cyan" }
 run = { fg = "magenta" }
 desc = {}
 hovered = { reversed = true, bold = true }
 footer = { fg = "black", bg = "white" }
 
-
 [notify]
+
 title_info = { fg = "green" }
 title_warn = { fg = "yellow" }
 title_error = { fg = "red" }
 
-# Icons
 icon_info = ""
 icon_warn = ""
 icon_error = ""
+
+# ...
 
 [filetype]
 

@@ -1,16 +1,19 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
+
 ratio = [2, 3, 4]
 show_hidden = true
 show_symlink = false
 scrolloff = 3
 
 [preview]
+
 max_width = 1920
 max_height = 1080
 
 [opener]
+
 edit = [{ run = '$EDITOR "$@"', block = true, desc = "Edit" }]
 open = [
   { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
@@ -30,6 +33,7 @@ play = [
 ]
 
 [open]
+
 rules = [
   { name = "*/", use = ["edit", "open", "reveal"] },
   { mime = "text/*", use = ["edit", "reveal"] },
@@ -43,6 +47,7 @@ rules = [
 ]
 
 [plugin]
+
 previewers = [
   { name = "*/", run = "folder", sync = true },
   { mime = "text/*", run = "code" },
@@ -56,6 +61,7 @@ previewers = [
 ]
 
 [input]
+
 cd_title = " cd "
 cd_origin = "center"
 create_title = " create "
@@ -80,6 +86,6 @@ quit_title = " quit when {n} task{s} running? (y/N) "
 quit_origin = "center"
 
 [select]
+
 open_title = " open "
 open_origin = "center"
-
