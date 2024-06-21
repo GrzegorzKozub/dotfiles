@@ -47,11 +47,12 @@ function Status:owner()
   if h == nil or ya.target_family() ~= 'unix' then
     return ui.Line {}
   end
+  owner = ya.user_name(h.cha.uid) or tostring(h.cha.uid)
   return ui.Line {
-    ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg(THEME.status.separator_style.bg),
+    ui.Span(owner):fg(owner == 'root' and THEME.notify.title_error.fg or THEME.status.separator_style.bg),
     ui.Span ' ',
-    ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg(THEME.status.separator_style.bg),
-    ui.Span ' ',
+    -- ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg(THEME.status.separator_style.bg),
+    -- ui.Span ' ',
   }
 end
 
