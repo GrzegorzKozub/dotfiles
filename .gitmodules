@@ -10,3 +10,7 @@
 	path = mpv/mpv
 	url = git@github.com:GrzegorzKozub/mpv.git
 	branch = master
+[submodule "yazi/yazi"]
+	path = yazi/yazi
+	url = git@github.com:GrzegorzKozub/yazi.git
+	branch = master
