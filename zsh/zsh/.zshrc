@@ -352,14 +352,9 @@ zsh-defer bindkey -r '^[^[[A' # esc+down
 
 my-dir() { cd $1; zle my-redraw-prompt }
 
-my-cache() { my-dir $XDG_CACHE_HOME }; zle -N my-cache; my-bindkey '^gxa' my-cache
-my-config() { my-dir $XDG_CONFIG_HOME }; zle -N my-config; my-bindkey '^gxc' my-config
-my-share() { my-dir $XDG_DATA_HOME }; zle -N my-share; my-bindkey '^gxd' my-share
-
 my-code() { my-dir ~/code }; zle -N my-code; my-bindkey '^gc' my-code
-
-my-data() { my-dir /run/media/$USER/data }; zle -N my-data; my-bindkey '^gd' my-data
-my-games() { my-dir /run/media/$USER/games }; zle -N my-games; my-bindkey '^gg' my-games
+my-downloads() { my-dir ~/Downloads }; zle -N my-downloads; my-bindkey '^gd' my-downloads
+my-mount() { my-dir /run/media/$USER }; zle -N my-mount; my-bindkey '^gm' my-mount
 
 # lf
 

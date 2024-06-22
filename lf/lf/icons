@@ -82,6 +82,10 @@ ow 󰝰
 *.swp 󰘓
 *.tmp 󰘓
 
+.cache/ 󱐋  # nf-md-lightning_bolt
+.config/ 
+.local/ 󰆼  # nf-md-database
+
 .azure-pipelines/ 󰿕  # nf-md-microsoft_azure_devops
 .git/ 
 .github/ 󰊤  # nf-md-github

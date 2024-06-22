@@ -19,20 +19,10 @@ cmd q :quit
 cmd open ${{
   case $(file --mime-type "$f" -b) in
     text/*|application/csv|application/json|inode/symlink) $EDITOR "$fx";;
+    application/*zip|application/x-{tar,bzip*,7z-compressed,xz,rar}) ouch decompress "$fx";;
     *) xdg-open "$f" & disown;;
   esac
 }}
-
-cmd extract %{{
-  case "$f" in
-    *.gz) gzip --decompress "$f";;
-    *.zip) 7z x "$f";;
-    *) lf -remote "send $id echoerr 'unknown archive format'";;
-  esac
-}}
-
-cmd gzip %gzip "$f"
-cmd zip %7z a "$f.zip" "$f"
 
 cmd fzf ${{
   local res="$(fzf)"
@@ -54,29 +44,24 @@ cmd trash %{{
 
 map <esc> quit
 map <enter> open
-map <delete> delete
-
-map <f-2> rename
-map <f-7> push %mkdir<space>
 
 map <c-f> :fzf
 
+map <f-7> push %mkdir<space>
+map a push %mkdir<space>
+
+map <f-2> rename
+
+map x cut
+
+map <delete> trash
+map d trash
+
 map D delete
-map M push %mkdir<space>
-map t trash
-
-map ae extract
-map ag gzip
-map az zip
-
-map gxc cd ~/.config
-map gxa cd ~/.cache
-map gxd cd ~/.local/share
 
 map gc cd ~/code
-
-map gd cd /run/media/greg/data
-map gg cd /run/media/greg/games
+map gd cd ~/Downloads
+map gm cd /run/media/greg
 
 # pager
 
