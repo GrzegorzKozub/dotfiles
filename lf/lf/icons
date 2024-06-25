@@ -56,11 +56,13 @@ ow 󰝰
 *.env   # nf-oct-sliders
 *.eslintrc   # nf-seti-config
 *.eslintrc.js 
-*.git   # nf-fa-git
+*.eslintrc.json 
+*.git   # dnf-fa-git
 *.gitattributes 
 *.gitignore 
 *.gitkeep 
 *.gitmodules 
+*.lock 󰤱  # nf-md-pin_outline
 *.luacheckrc 
 *.luarc.json 
 *.npmrc 
@@ -70,6 +72,7 @@ ow 󰝰
 *.pylintrc 
 *.stylua.toml 
 *.taplo.toml 
+*.yarnrc 
 
 *.backup 󰘓  # nf-md-file_hidden
 *.bak 󰘓
@@ -90,6 +93,7 @@ ow 󰝰
 .git/ 
 .github/ 󰊤  # nf-md-github
 .vscode/ 󰨞  # nf-md-microsoft_visual_studio_code
+node_modules/ 󰎙  # nf-md-nodejs
 
 *.icm 󰏘  # nf-md-palette
 *.otf   # nf-fa-font

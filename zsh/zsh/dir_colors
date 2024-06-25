@@ -59,11 +59,13 @@ EXEC 32
 .env 37
 .eslintrc 37
 .eslintrc.js 37
+.eslintrc.json 37
 .git 37
 .gitattributes 37
 .gitignore 37
 .gitkeep 37
 .gitmodules 37
+.lock 37
 .luacheckrc 37
 .luarc.json 37
 .npmrc 37
