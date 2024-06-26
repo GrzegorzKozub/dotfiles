@@ -4,11 +4,11 @@ foreground = "#d4be98" # fg0
 
 [colors.cursor]
 cursor = "#928374" # grey1
-text = "#32302f"   # bg0
+text = "#32302f" # bg0
 
 [colors.vi_mode_cursor]
 cursor = "#928374" # grey1
-text = "#32302f"   # bg0
+text = "#32302f" # bg0
 
 [colors.search.matches]
 background = "#b47109" # yellow
@@ -31,21 +31,21 @@ background = "#d4be98" # fg0
 foreground = "#32302f" # bg0
 
 [colors.normal]
-black = "#3c3836"   # bg1
-red = "#c14a4a"     # red
-green = "#6c782e"   # green
-yellow = "#b47109"  # yellow
-blue = "#45707a"    # blue
+black = "#3c3836" # bg1
+red = "#c14a4a" # red
+green = "#6c782e" # green
+yellow = "#b47109" # yellow
+blue = "#45707a" # blue
 magenta = "#945e80" # magenta
-cyan = "#4c7a5d"    # cyan
-white = "#928374"   # grey1
+cyan = "#4c7a5d" # cyan
+white = "#928374" # grey1
 
 [colors.bright]
-black = "#665c54"   # bg5
-red = "#ea6962"     # red
-green = "#a9b665"   # green
-yellow = "#d8a657"  # yellow
-blue = "#7daea3"    # blue
+black = "#665c54" # bg5
+red = "#ea6962" # red
+green = "#a9b665" # green
+yellow = "#d8a657" # yellow
+blue = "#7daea3" # blue
 magenta = "#d3869b" # magenta
-cyan = "#89b482"    # cyan
-white = "#d4be98"   # fg0
+cyan = "#89b482" # cyan
+white = "#d4be98" # fg0

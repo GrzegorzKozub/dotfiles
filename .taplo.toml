@@ -1,0 +1,6 @@
+[formatting]
+align_comments = false
+allowed_blank_lines = 1
+column_width = 96
+indent_tables = true
+inline_table_expand = false

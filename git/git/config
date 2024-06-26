@@ -81,9 +81,11 @@
   autocrlf = false
   editor = nvim
   fscache = true
+  fsmonitor = true
   # pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub
   pager = delta
-  symlinks = true
+  symlinks = false
+  untrackedCache = true
   whitespace = blank-at-eol,tab-in-indent
 [delta]
   # minus & plus use DiffDelete & DiffAdd highlight colors from neovim

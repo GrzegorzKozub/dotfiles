@@ -9,33 +9,33 @@ decorations_theme_variant = "Dark"
 dynamic_padding = true
 opacity = 0.95
 
-[window.dimensions]
-columns = 160
-lines = 40
+  [window.dimensions]
+  columns = 160
+  lines = 40
 
-[window.padding]
-x = 16
-y = 16
+  [window.padding]
+  x = 16
+  y = 16
 
 [font]
 builtin_box_drawing = false
 size = 12
 
-[font.bold]
-family = "Cascadia Code NF"
-style = "Semibold"
+  [font.bold]
+  family = "Cascadia Code NF"
+  style = "Semibold"
 
-[font.bold_italic]
-family = "Cascadia Code NF"
-style = "Semibold Italic"
+  [font.bold_italic]
+  family = "Cascadia Code NF"
+  style = "Semibold Italic"
 
-[font.italic]
-family = "Cascadia Code NF"
-style = "Italic"
+  [font.italic]
+  family = "Cascadia Code NF"
+  style = "Italic"
 
-[font.normal]
-family = "Cascadia Code NF"
-style = "Regular"
+  [font.normal]
+  family = "Cascadia Code NF"
+  style = "Regular"
 
 [colors]
 transparent_background_colors = true
