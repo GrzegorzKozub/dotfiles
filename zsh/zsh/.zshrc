@@ -371,13 +371,13 @@ my-cd() {
   zle my-redraw-prompt
 }
 
-my-lf-cd() {
-  local temp_file="$(mktemp)"
-  lf -last-dir-path="$temp_file" "$@" < $TTY
-  my-cd $temp_file
-}
-zle -N my-lf-cd
-my-bindkey '\el' my-lf-cd viins vicmd
+# my-lf-cd() {
+#   local temp_file="$(mktemp)"
+#   lf -last-dir-path="$temp_file" "$@" < $TTY
+#   my-cd $temp_file
+# }
+# zle -N my-lf-cd
+# my-bindkey '\el' my-lf-cd viins vicmd
 
 # yazi
 
@@ -387,6 +387,7 @@ my-yazi-cd() {
   my-cd $temp_file
 }
 zle -N my-yazi-cd
+my-bindkey '\el' my-yazi-cd viins vicmd
 my-bindkey '\ey' my-yazi-cd viins vicmd
 
 # dir colors
