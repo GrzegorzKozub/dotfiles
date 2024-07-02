@@ -92,6 +92,9 @@ ow 󰝰
 .azure-pipelines/ 󰿕  # nf-md-microsoft_azure_devops
 .git/ 
 .github/ 󰊤  # nf-md-github
+.husky/ 󰛢  # nf-md-hook
+.pki/ 󰍁  # nf-md-lock_outline
+.ssh/ 󰍁
 .vscode/ 󰨞  # nf-md-microsoft_visual_studio_code
 node_modules/ 󰎙  # nf-md-nodejs
 
