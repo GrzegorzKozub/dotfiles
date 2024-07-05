@@ -36,12 +36,12 @@ if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
 
 fi
 
-if [[ $HOST = 'player' ]]; then
-
-  stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
-    redshift
-
-fi
+# if [[ $HOST = 'player' ]]; then
+#
+#   stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
+#     redshift
+#
+# fi
 
 stow --dir=`dirname $0` --target=$HOME --stow \
   zprofile
