@@ -402,6 +402,15 @@ eval $(dircolors -b $XDG_CONFIG_HOME/zsh/dir_colors)
 zsh-defer zinit ice lucid depth=1 atload"fast-theme XDG:gruvbox-material --quiet"
 zsh-defer zinit light zdharma-continuum/fast-syntax-highlighting
 
+# autosuggestions
+
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=32
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+typeset -U ZSH_AUTOSUGGEST_STRATEGY && ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+zsh-defer zinit ice lucid depth=1
+zsh-defer zinit light zsh-users/zsh-autosuggestions
+
 # aws
 
 export AWS_CONFIG_FILE=$XDG_CONFIG_HOME/aws/config
