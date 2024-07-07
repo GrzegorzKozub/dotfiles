@@ -87,6 +87,12 @@
   symlinks = false
   untrackedCache = true
   whitespace = blank-at-eol,tab-in-indent
+[credential]
+	helper = gopass
+[credential "http://osiris"]
+  username = grkoz_adm
+[credential "http://tfs"]
+  username = grkoz_adm
 [delta]
   # minus & plus use DiffDelete & DiffAdd highlight colors from neovim
   blame-code-style = syntax
