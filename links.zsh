@@ -46,8 +46,7 @@ fi
 stow --dir=`dirname $0` --target=$HOME --stow \
   zprofile
 
-# stow --dir=`dirname $0` --target=$HOME --stow \
-#   imwheel
+  # imwheel
 
 [[ -d $XDG_CONFIG_HOME/btop ]] || mkdir -p $XDG_CONFIG_HOME/btop
 stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME/btop --stow btop
@@ -56,7 +55,6 @@ DIR=$(dirname $(realpath $0))
 
 if [[ $HOST = 'drifter' ]]; then
 
-  # xwayland
   ln -sf $DIR/flags/brave-flags.intel-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
   ln -sf $DIR/flags/code-flags.intel-x11.conf $XDG_CONFIG_HOME/code-flags.conf
 
@@ -64,7 +62,6 @@ fi
 
 if [[ $HOST = 'player' ]]; then
 
-  # x11
   ln -sf $DIR/flags/brave-flags.nvidia-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
   ln -sf $DIR/flags/code-flags.nvidia-x11.conf $XDG_CONFIG_HOME/code-flags.conf
 
@@ -72,7 +69,6 @@ fi
 
 if [[ $HOST = 'worker' ]]; then
 
-  # xwayland
   ln -sf $DIR/flags/brave-flags.amd-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
   ln -sf $DIR/flags/code-flags.amd-x11.conf $XDG_CONFIG_HOME/code-flags.conf
 
