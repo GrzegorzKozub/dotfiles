@@ -602,6 +602,10 @@ if [[ -a $commands[cargo] ]]; then
   zsh-defer compdef _my-compdef-cargo cargo
 fi
 
+# vscode
+
+alias code='code 2> /dev/null'
+
 # wget
 
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"

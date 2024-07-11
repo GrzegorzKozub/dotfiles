@@ -14,8 +14,8 @@ opacity = 0.95
   lines = 40
 
   [window.padding]
-  x = 16
-  y = 16
+  x = 10
+  y = 10
 
 [font]
 builtin_box_drawing = false
