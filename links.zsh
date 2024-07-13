@@ -27,14 +27,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   yt-dlp \
   zsh
 
-  # alacritty gdu iex zellij
-
-if [[ $HOST = 'drifter' || $HOST = 'worker' ]]; then
-
-  stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
-    foot
-
-fi
+  # alacritty foot gdu iex zellij
 
 # if [[ $HOST = 'player' ]]; then
 #
