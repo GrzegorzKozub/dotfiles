@@ -479,6 +479,7 @@ export FORGIT_FZF_DEFAULT_OPTS="
   --color fg:$MY_FZF_COLOR_LIGHT
   --color header:-1
   --height 100%
+  --preview-window='right:50%'
 "
 
 zsh-defer zinit ice lucid depth=1
