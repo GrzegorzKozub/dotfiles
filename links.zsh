@@ -55,8 +55,8 @@ fi
 
 if [[ $HOST = 'player' ]]; then
 
-  ln -sf $DIR/flags/brave-flags.nvidia-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
-  ln -sf $DIR/flags/code-flags.nvidia-x11.conf $XDG_CONFIG_HOME/code-flags.conf
+  ln -sf $DIR/flags/brave-flags.nvidia-wayland.conf $XDG_CONFIG_HOME/brave-flags.conf
+  ln -sf $DIR/flags/code-flags.nvidia-wayland.conf $XDG_CONFIG_HOME/code-flags.conf
 
 fi
 
