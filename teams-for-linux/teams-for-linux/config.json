@@ -4,8 +4,9 @@
   "disableNotificationWindowFlash": true,
   "disableNotifications": true,
   "electronCLIFlags": [
-    ["ozone-platform-hint", "auto"],
-    ["enable-features", "WaylandWindowDecorations"]
+    ["disable-features", "WaylandFractionalScaleV1"],
+    ["enable-features", "WaylandWindowDecorations"],
+    ["ozone-platform-hint", "auto"]
   ],
   "followSystemTheme": true,
   "optInTeamsV2": true,
