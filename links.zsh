@@ -47,8 +47,8 @@ DIR=$(dirname $(realpath $0))
 
 if [[ $HOST = 'drifter' ]]; then
 
-  ln -sf $DIR/flags/brave-flags.intel-x11.conf $XDG_CONFIG_HOME/brave-flags.conf
-  ln -sf $DIR/flags/code-flags.intel-x11.conf $XDG_CONFIG_HOME/code-flags.conf
+  ln -sf $DIR/flags/brave-flags.intel-wayland.conf $XDG_CONFIG_HOME/brave-flags.conf
+  ln -sf $DIR/flags/code-flags.intel-wayland.conf $XDG_CONFIG_HOME/code-flags.conf
 
 fi
 
