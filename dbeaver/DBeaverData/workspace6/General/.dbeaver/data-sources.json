@@ -41,6 +41,20 @@
 				"auth-model": "native"
 			}
 		},
+    "mysql8-190c50f474a-9dfdb1d5d3babad": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "au-beta-writer",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3312",
+				"url": "jdbc:mysql://localhost:3312/",
+				"configurationType": "MANUAL",
+				"type": "test",
+				"auth-model": "native"
+			}
+		},
 		"mysql8-18c8b5ebbac-5c0ca74f3f947349": {
 			"provider": "mysql",
 			"driver": "mysql8",
