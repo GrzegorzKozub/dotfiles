@@ -19,6 +19,8 @@ OTHER_WRITABLE 36
 STICKY 36
 EXEC 32
 
+.AppImage 32
+
 # .sh 32
 # .zsh 32
 

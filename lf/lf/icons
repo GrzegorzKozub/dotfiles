@@ -16,6 +16,8 @@ ex 󰈤
 fi 󰈤
 ow 󰝰
 
+*.appimage 󰘔  # nf-md-application_outline
+
 *.sh   # nf-oct-terminal
 *.zsh 
 
