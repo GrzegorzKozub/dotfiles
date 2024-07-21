@@ -163,6 +163,8 @@
   user = GrzegorzKozub
 [gpg]
   # format = ssh
+[init]
+  defaultBranch = master
 [merge]
   guitool = code
   renormalize = true
