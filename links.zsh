@@ -20,6 +20,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   ripgrep \
   satty \
   silicon \
+  teams-for-linux \
   tmux \
   vscode \
   yazi \
