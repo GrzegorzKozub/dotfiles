@@ -88,9 +88,7 @@ fnm use default
 npm install --global \
   autocannon \
   eslint \
-  express-generator \
   neovim \
-  rimraf \
   typescript
 
   # mdpdf
