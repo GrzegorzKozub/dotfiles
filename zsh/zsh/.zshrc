@@ -261,8 +261,8 @@ zinit wait lucid as'completion' for \
 # HISTFILE=$XDG_DATA_HOME/zsh/history
 HISTFILE=~/code/history/$HOST/history
 
-HISTSIZE=10000 # history memory limit
-SAVEHIST=10000 # history file limit
+HISTSIZE=100000 # history memory limit
+SAVEHIST=100000 # history file limit
 
 HISTORY_IGNORE='(#i)(*bearer*|*jwt*|*password*|*secret*|*token*)'
 
