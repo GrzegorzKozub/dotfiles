@@ -20,7 +20,7 @@ $env.config = {
     padding: { left: 0 right: 0 }
     trim: { methodology: wrapping truncating_suffix: "…" }
   }
-  completions: { algorithm: fuzzy }
+  completions: { algorithm: prefix } # fuzzy is weird
   filesize: { metric: true }
   cursor_shape: { vi_insert: line vi_normal: block }
   color_config: $gruvbox_material_dark
@@ -28,4 +28,54 @@ $env.config = {
   float_precision: 1
   edit_mode: vi
   use_kitty_protocol: true
+  menus: [
+    {
+      name: completion_menu
+      only_buffer_difference: false
+      marker: "●• "
+      type: {
+        layout: columnar
+        columns: 4
+        col_padding: 1
+      }
+      style: {
+        text: gray
+        selected_text: light_gray
+        description_text: dark_gray
+        match_text: yellow
+        selected_match_text: yellow
+      }
+    }
+    {
+      name: history_menu
+      only_buffer_difference: true
+      marker: "●• "
+      type: {
+        layout: list
+        page_size: 10
+      }
+      style: {
+        text: gray
+        selected_text: light_gray
+        description_text: dark_gray
+      }
+    }
+    {
+      name: help_menu
+      only_buffer_difference: true
+      marker: "●• "
+      type: {
+        layout: description
+        columns: 4
+        col_padding: 1
+        selection_rows: 2
+        description_rows: 8
+      }
+      style: {
+        text: gray
+        selected_text: light_gray
+        description_text: light_gray
+      }
+    }
+  ]
 }
