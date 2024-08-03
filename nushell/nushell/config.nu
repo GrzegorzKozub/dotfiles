@@ -1,8 +1,10 @@
+#!/usr/bin/env nu
+
 let gruvbox_material_dark = {
   separator: dark_gray
-  leading_trailing_space_bg: red_reverse # unseen
+  leading_trailing_space_bg: light_red # not yet seen
   header: dark_gray
-  empty: red_reverse # unseen
+  empty: dark_gray
   bool: purple
   int: purple
   filesize: purple
@@ -10,54 +12,54 @@ let gruvbox_material_dark = {
   date: purple
   range: yellow
   float: purple
-  string: green
+  string: light_gray
   nothing: dark_gray
-  binary: yellow
-  cell-path: red_reverse # unseen
+  binary: purple
+  cell-path: light_red_reverse # not yet seen
   row_index: dark_gray
   record: light_gray
   list: light_gray
   block: light_gray
   hints: dark_gray
-  search_result: { bg: yellow }
+  search_result: { fg: black bg: yellow }
   shape_and: yellow
   shape_binary: purple
   shape_block: gray
   shape_bool: purple
-  shape_closure: yellow
-  shape_custom: red_reverse # unseen
+  shape_closure: gray
+  shape_custom: light_red_reverse # not yet seen
   shape_datetime: purple
   shape_directory: cyan
   shape_external: green
   shape_externalarg: yellow
   shape_external_resolved: green
   shape_filepath: cyan
-  shape_flag: yellow
+  shape_flag: blue
   shape_float: purple
-  shape_garbage: { bg: red }
-  shape_glob_interpolation: red_reverse # unseen
-  shape_globpattern: red_reverse # unseen
+  shape_garbage: { fg: black bg: red }
+  shape_glob_interpolation: purple
+  shape_globpattern: purple
   shape_int: purple
-  shape_internalcall: blue
-  shape_keyword: red
+  shape_internalcall: green
+  shape_keyword: yellow
   shape_list: gray
-  shape_literal: red_reverse # unseen
-  shape_match_pattern: yellow
+  shape_literal: light_red_reverse # not yet seen
+  shape_match_pattern: light_red_reverse # not yet seen
   shape_matching_brackets: { attr: r }
   shape_nothing: dark_gray
   shape_operator: yellow
   shape_or: yellow
-  shape_pipe: dark_gray
+  shape_pipe: gray
   shape_range: yellow
   shape_record: gray
-  shape_redirection: dark_gray
-  shape_signature: red_reverse # unseen
-  shape_string: green
-  shape_string_interpolation: cyan
+  shape_redirection: gray
+  shape_signature: blue
+  shape_string: light_gray
+  shape_string_interpolation: blue
   shape_table: gray
   shape_variable: red
   shape_vardecl: red
-  shape_raw_string: green
+  shape_raw_string: light_gray
 }
 
 $env.config = {
@@ -81,7 +83,7 @@ $env.config = {
     {
       name: completion_menu
       only_buffer_difference: false
-      marker: (prompt_indicator "blue")
+      marker: (prompt-indicator)
       type: {
         layout: columnar
         columns: 4
@@ -98,7 +100,7 @@ $env.config = {
     {
       name: history_menu
       only_buffer_difference: true
-      marker: (prompt_indicator "purple")
+      marker: (prompt-indicator "purple")
       type: {
         layout: list
         page_size: 10
@@ -112,7 +114,7 @@ $env.config = {
     {
       name: help_menu
       only_buffer_difference: true
-      marker: (prompt_indicator "blue")
+      marker: (prompt-indicator)
       type: {
         layout: description
         columns: 4
