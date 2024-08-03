@@ -18,7 +18,8 @@ ow 󰝰
 
 *.appimage 󰘔  # nf-md-application_outline
 
-*.sh   # nf-oct-terminal
+*.nu   # nf-oct-terminal
+*.sh 
 *.zsh 
 
 *.bat 󰑷  # nf-md-script_outline

@@ -21,6 +21,7 @@ EXEC 32
 
 .AppImage 32
 
+# .nu 32
 # .sh 32
 # .zsh 32
 
