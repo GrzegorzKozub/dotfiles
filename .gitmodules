@@ -14,3 +14,7 @@
 	path = yazi/yazi
 	url = git@github.com:GrzegorzKozub/yazi.git
 	branch = master
+[submodule "nushell/nushell"]
+	path = nushell/nushell
+	url = git@github.com:GrzegorzKozub/nushell.git
+	branch = master
