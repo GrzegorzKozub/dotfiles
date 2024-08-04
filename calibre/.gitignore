@@ -1,0 +1,11 @@
+calibre/*
+
+!calibre/conversion
+calibre/conversion/*
+!calibre/conversion/page_setup.py
+
+!calibre/dynamic.pickle.json
+!calibre/global.py.json
+!calibre/gui.json
+!calibre/gui.py.json
+
