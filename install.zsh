@@ -123,6 +123,7 @@ popd
 
 for EXTENSION in \
   antfu.icons-carbon \
+  asvetliakov.vscode-neovim \
   CucumberOpen.cucumber-official \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
