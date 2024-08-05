@@ -26,9 +26,10 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   vscode \
   yazi \
   yt-dlp \
+  zellij \
   zsh
 
-  # alacritty flameshot foot gdu iex zellij
+  # alacritty flameshot foot gdu iex
 
 # if [[ $HOST = 'player' ]]; then
 #
