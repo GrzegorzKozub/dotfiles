@@ -32,6 +32,10 @@ for plugin in $XDG_DATA_HOME/tmux/plugins/*; do
     $(echo $plugin | sed 's/^.*\///')
 done
 
+# yazi
+
+ya pack --upgrade
+
 # links
 
 . `dirname $0`/links.zsh
