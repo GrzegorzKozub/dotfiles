@@ -165,10 +165,7 @@ FILE=$XDG_CONFIG_HOME/yazi/package.toml
 
 for PLUGIN in \
   KKV9/compress \
-  pirafrank/what-size \
-  yazi-rs/plugins#hide-preview \
-  yazi-rs/plugins#jump-to-char \
-  yazi-rs/plugins#max-preview
+  yazi-rs/plugins#jump-to-char
 do
   ya pack --add "$PLUGIN"
 done
