@@ -253,7 +253,6 @@ zsh-defer bindkey -M menuselect '^B' history-incremental-search-backward # ctrl+
 
 zinit wait lucid as'completion' for \
   OMZ::plugins/docker-compose/_docker-compose \
-  OMZ::plugins/docker-machine/_docker-machine \
   OMZ::plugins/pip/_pip
 
 # history
