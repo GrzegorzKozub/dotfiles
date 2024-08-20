@@ -3,6 +3,7 @@
   "disableNotificationSound": true,
   "disableNotificationWindowFlash": true,
   "disableNotifications": true,
+  "disableGpu": true,
   "electronCLIFlags": [
     ["disable-features", "WaylandFractionalScaleV1"],
     ["enable-features", "WaylandWindowDecorations"],
