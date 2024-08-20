@@ -89,6 +89,7 @@ npm install --global \
   autocannon \
   eslint \
   neovim \
+  tsx \
   typescript
 
   # mdpdf
