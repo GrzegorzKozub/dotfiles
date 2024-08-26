@@ -11,5 +11,6 @@
   ],
   "followSystemTheme": true,
   "optInTeamsV2": true,
+  "url": "https://teams.microsoft.com/v2",
   "spellCheckerLanguages": ["en", "pl"]
 }
