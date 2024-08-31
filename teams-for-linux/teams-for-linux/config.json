@@ -1,16 +1,17 @@
 {
   "appIconType": "light",
+  "disableGpu": true,
   "disableNotificationSound": true,
   "disableNotificationWindowFlash": true,
   "disableNotifications": true,
-  "disableGpu": true,
   "electronCLIFlags": [
     ["disable-features", "WaylandFractionalScaleV1"],
     ["enable-features", "WaylandWindowDecorations"],
     ["ozone-platform-hint", "auto"]
   ],
   "followSystemTheme": true,
+  "logConfig": false,
   "optInTeamsV2": true,
-  "url": "https://teams.microsoft.com/v2",
-  "spellCheckerLanguages": ["en", "pl"]
+  "spellCheckerLanguages": ["en", "pl"],
+  "url": "https://teams.microsoft.com/v2"
 }
