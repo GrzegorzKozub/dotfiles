@@ -1,6 +1,6 @@
 --italic-text=always
 --pager='less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub'
---style=numbers
+--style=plain
 --tabs=2
 
 # converted from https://github.com/sainnhe/gruvbox-material-vscode
