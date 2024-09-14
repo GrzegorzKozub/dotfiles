@@ -125,6 +125,7 @@ popd
 for EXTENSION in \
   antfu.icons-carbon \
   asvetliakov.vscode-neovim \
+  bierner.markdown-mermaid \
   CucumberOpen.cucumber-official \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
