@@ -356,9 +356,7 @@ my-code() { my-dir ~/code }; zle -N my-code; my-bindkey '^gc' my-code
 my-downloads() { my-dir ~/Downloads }; zle -N my-downloads; my-bindkey '^gd' my-downloads
 my-mount() { my-dir /run/media/$USER }; zle -N my-mount; my-bindkey '^gm' my-mount
 
-# lf
-
-alias lf='TERM=xterm-256color lf' # fix bat color tint
+# yazi
 
 my-cd() {
   local temp_file=$1
@@ -369,16 +367,6 @@ my-cd() {
   fi
   zle my-redraw-prompt
 }
-
-# my-lf-cd() {
-#   local temp_file="$(mktemp)"
-#   lf -last-dir-path="$temp_file" "$@" < $TTY
-#   my-cd $temp_file
-# }
-# zle -N my-lf-cd
-# my-bindkey '\el' my-lf-cd viins vicmd
-
-# yazi
 
 my-yazi-cd() {
   local temp_file="$(mktemp)"

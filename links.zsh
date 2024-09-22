@@ -13,7 +13,6 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   git \
   keepass \
   kitty \
-  lf \
   mpv \
   npm \
   nushell \
@@ -29,7 +28,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   zellij \
   zsh
 
-  # alacritty flameshot foot gdu iex
+  # alacritty flameshot foot gdu iex lf
 
 # if [[ $HOST = 'player' ]]; then
 #
