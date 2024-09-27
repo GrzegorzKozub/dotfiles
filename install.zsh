@@ -124,7 +124,6 @@ popd
 
 for EXTENSION in \
   antfu.icons-carbon \
-  asvetliakov.vscode-neovim \
   bierner.markdown-mermaid \
   CucumberOpen.cucumber-official \
   dbaeumer.vscode-eslint \
@@ -151,7 +150,7 @@ do
   code --install-extension $EXTENSION --force
 done
 
-  # JakeBecker.elixir-ls
+  # asvetliakov.vscode-neovim JakeBecker.elixir-ls
 
 # docker
 
