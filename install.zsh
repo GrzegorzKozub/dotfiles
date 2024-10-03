@@ -86,13 +86,12 @@ fnm install --latest
 fnm use default
 
 npm install --global \
-  autocannon \
   eslint \
   neovim \
   tsx \
   typescript
 
-  # mdpdf
+  # artillery autocannon mdpdf
 
 # rust
 
