@@ -36,6 +36,7 @@ ow 󰝰
 *.cow 󰋊  # nf-md-harddisk
 *.fsa 󰋊
 *.mrimg 󰋊
+*.mrimgx 󰋊
 *.wim 󰋊
 
 *.iso 󰗮  # nf-md-disc

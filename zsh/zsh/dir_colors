@@ -39,6 +39,7 @@ EXEC 32
 .cow 35
 .fsa 35
 .mrimg 35
+.mrimgx 35
 .wim 35
 
 .iso 35
