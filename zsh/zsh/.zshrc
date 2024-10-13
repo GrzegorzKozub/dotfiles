@@ -277,7 +277,7 @@ setopt INC_APPEND_HISTORY # immediately append instead of rewriting the history 
 
 # aliases
 
-alias df='df -h'
+alias df='df -h | grep -v tmpfs | grep -v efivars'
 alias diff='diff --color'
 alias du='du -hd1 | sort -hr'
 alias grep='grep --color=auto --exclude-dir={.git}'
