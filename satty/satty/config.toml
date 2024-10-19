@@ -1,4 +1,5 @@
 [general]
+output-filename = "/home/greg/Downloads/Shot %b %0d %H:%M.png"
 early-exit = true
 initial-tool = "rectangle"
 copy-command = "wl-copy"
