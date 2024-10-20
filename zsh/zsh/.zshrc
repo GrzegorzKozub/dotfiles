@@ -560,13 +560,6 @@ export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
 
 zsh-defer source /usr/share/doc/pkgfile/command-not-found.zsh
 
-# procs
-
-if [[ -a $commands[procs] ]]; then
-  _my-compdef-procs() { eval "$(procs --gen-completion-out zsh)" }
-  zsh-defer compdef _my-compdef-procs procs
-fi
-
 # python
 
 export PYLINTHOME=$XDG_CACHE_HOME/pylint

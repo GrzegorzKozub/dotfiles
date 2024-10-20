@@ -17,7 +17,6 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   npm \
   nushell \
   nvim \
-  procs \
   ripgrep \
   satty \
   silicon \
