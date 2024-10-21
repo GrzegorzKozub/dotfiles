@@ -59,6 +59,15 @@ emoji:      🙁 😐 🙂 👍 👎
 '
 }
 
+procs() {
+  # awk breaks padding & does not round
+  # local cores=$(nproc)
+  ps $1 -o pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-%cpu --no-headers |
+    # awk -v cores=$cores '{$3 = $3 / cores; print}' |
+    sed 's/\([[:digit:]]\)\.\([[:digit:]]\)/\1,\2/' |
+    numfmt --field=4 --from-unit=1000 --to=iec --padding=4
+}
+
 # vi mode
 
 my-bindkey '^[[1;5D' backward-word # ctrl+left
@@ -283,8 +292,6 @@ alias du='du -hd1 | sort -hr'
 alias grep='grep --color=auto --exclude-dir={.git}'
 alias la='ls -lAh'
 alias ls='ls --color=auto'
-alias pscpu="ps -eo pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-%cpu --no-headers | sed 's/\([[:digit:]]\)\.\([[:digit:]]\)/\1,\2/' | numfmt --field=4 --from-unit=1000 --to=iec --padding=4"
-alias psmem="ps -eo pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-rss --no-headers | sed 's/\([[:digit:]]\)\.\([[:digit:]]\)/\1,\2/' | numfmt --field=4 --from-unit=1000 --to=iec --padding=4"
 
 # fzf
 
