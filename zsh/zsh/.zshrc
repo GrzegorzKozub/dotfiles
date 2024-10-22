@@ -60,12 +60,17 @@ emoji:      🙁 😐 🙂 👍 👎
 }
 
 procs() {
-  # awk breaks padding & does not round
-  # local cores=$(nproc)
-  ps $1 -o pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-%cpu --no-headers |
-    # awk -v cores=$cores '{$3 = $3 / cores; print}' |
-    sed 's/\([[:digit:]]\)\.\([[:digit:]]\)/\1,\2/' |
-    numfmt --field=4 --from-unit=1000 --to=iec --padding=4
+  # extra space before cmd; incorrect cpu value
+  local cores=$(nproc)
+  ps $1 -eo pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-%cpu --no-headers |
+    numfmt --field=4 --from-unit=1000 --to=iec --padding=4 |
+    awk -v cores=$cores --use-lc-numeric '{
+      $3 = int($3 / cores * 100 + 0.5) / 100;
+      printf "%5i %4s %5.2f %4s", $1, $2, $3, $4;
+      $1=$2=$3=$4="";
+      printf "%s\n", $0;
+    }' |
+    head -10
 }
 
 # vi mode
