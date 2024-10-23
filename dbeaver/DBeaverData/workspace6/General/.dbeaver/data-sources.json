@@ -45,7 +45,6 @@
 			"provider": "mysql",
 			"driver": "mysql8",
 			"name": "au-beta-writer",
-			"save-password": true,
 			"configuration": {
 				"host": "localhost",
 				"port": "3312",
