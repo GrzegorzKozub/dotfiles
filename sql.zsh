@@ -10,6 +10,7 @@ pushd `dirname $0`
 #   git update-index --assume-unchanged mysql/.mysql/workbench/$ITEM
 
 for ITEM (
+  '.metadata/.config/connection-types.xml'
   '.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.editors.prefs'
   '.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs'
   '.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs'
