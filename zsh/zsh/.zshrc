@@ -61,8 +61,7 @@ emoji:      🙁 😐 🙂 👍 👎
 
 procs() {
   local cores=$(nproc)
-  ps -eo pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-%cpu --no-headers |
-    grep $1 |
+  ps -eo pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-$1 --no-headers |
     numfmt --field=4 --from-unit=1000 --to=iec --padding=4 |
     awk -v cores=$cores --use-lc-numeric 'BEGIN { OFS = "" } {
       $3 = $3 / cores;
@@ -72,6 +71,9 @@ procs() {
     }' |
     less --chop-long-lines
 }
+
+pscpu() { procs %cpu }
+psmem() { procs rss }
 
 # vi mode
 
