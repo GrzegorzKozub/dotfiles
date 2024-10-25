@@ -60,8 +60,16 @@ emoji:      🙁 😐 🙂 👍 👎
 }
 
 procs() {
+  local sort=%cpu
+  for arg in $@; do
+    [[ $arg == '--cpu' ]] && local sort=%cpu && continue
+    [[ $arg == '--mem' ]] && local sort=rss && continue
+    local filter=$arg
+  done
   local cores=$(nproc)
-  ps -eo pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-$1 --no-headers |
+  local ps=$(ps -eo pid=pid,user:4=usr,%cpu=cpu,rss=mem,cmd=cmd --sort=-$sort --no-headers)
+  [[ $filter ]] && local ps=$(echo $ps | grep $filter)
+  echo $ps |
     numfmt --field=4 --from-unit=1000 --to=iec --padding=4 |
     awk -v cores=$cores --use-lc-numeric 'BEGIN { OFS = "" } {
       $3 = $3 / cores;
@@ -71,9 +79,6 @@ procs() {
     }' |
     less --chop-long-lines
 }
-
-pscpu() { procs %cpu }
-psmem() { procs rss }
 
 # vi mode
 
