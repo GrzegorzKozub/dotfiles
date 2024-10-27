@@ -25,6 +25,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   vscode \
   yazi \
   yt-dlp \
+  zed \
   zellij \
   zsh
 
