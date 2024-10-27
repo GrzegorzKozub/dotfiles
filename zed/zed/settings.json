@@ -1,9 +1,45 @@
 {
-  "ui_font_size": 16,
+  "auto_install_extensions": {
+    "dockerfile": true,
+    "html": false,
+    "nix": true,
+    "toml": true
+  },
+  "buffer_font_family": "Cascadia Code",
+  "buffer_font_features": { "calt": true, "ss01": true },
   "buffer_font_size": 16,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
-  }
+  "cursor_blink": false,
+  "git": { "inline_blame": { "enabled": false } },
+  "indent_guides": { "enabled": false },
+  "languages": {
+    "JavaScript": {
+      "code_actions_on_format": { "source.organizeImports": true }
+    },
+    "TypeScript": {
+      "code_actions_on_format": { "source.organizeImports": true }
+    }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": { "command": "clippy" },
+        "inlayHints": {
+          "bindingModeHints": { "enable": true },
+          "closureCaptureHints": { "enable": true },
+          "closureReturnTypeHints": { "enable": "always" },
+          "discriminantHints": { "enable": "always" },
+          "expressionAdjustmentHints": { "enable": "always" },
+          "implicitDrops": { "enable": true },
+          "lifetimeElisionHints": { "enable": "always" },
+          "rangeExclusiveHints": { "enable": true },
+          "reborrowHints": { "enable": "always" }
+        }
+      }
+    }
+  },
+  "soft_wrap": "bounded",
+  "tab_bar": { "show_nav_history_buttons": false },
+  "tabs": { "file_icons": true, "git_status": true },
+  "theme": { "light": "Gruvbox Light Soft", "dark": "Gruvbox Dark Soft" },
+  "ui_font_size": 16
 }
