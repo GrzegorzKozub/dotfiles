@@ -6,11 +6,13 @@
   },
   "auto_install_extensions": {
     "basher": true,
+    "docker-compose": true,
     "dockerfile": true,
     "html": false,
     "lua": true,
     "nix": true,
-    "toml": true
+    "toml": true,
+    "xml": true
   },
   "buffer_font_family": "Cascadia Code",
   "buffer_font_features": { "calt": true, "ss01": true },
@@ -24,11 +26,35 @@
     "JavaScript": {
       "code_actions_on_format": { "source.organizeImports": true }
     },
+    "Rust": { "tab_size": 4 },
     "TypeScript": {
       "code_actions_on_format": { "source.organizeImports": true }
     }
   },
   "lsp": {
+    "elixirls": {
+      "settings": { "dialyzerEnabled": false, "fetchDeps": false }
+    },
+    "gopls": {
+      "initialization_options": {
+        "analyses": {
+          "fieldalignment": true,
+          "shadow": true,
+          "unusedvariable": true,
+          "unusedwrite": true,
+          "useany": true
+        },
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        }
+      }
+    },
     "rust-analyzer": {
       "initialization_options": {
         "check": { "command": "clippy" },
@@ -42,6 +68,28 @@
           "lifetimeElisionHints": { "enable": "always" },
           "rangeExclusiveHints": { "enable": true },
           "reborrowHints": { "enable": "always" }
+        }
+      }
+    },
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includeInlayEnumMemberValueHints": true,
+          "includeInlayFunctionLikeReturnTypeHints": true,
+          "includeInlayFunctionParameterTypeHints": true,
+          "includeInlayParameterNameHints": "all",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+          "includeInlayPropertyDeclarationTypeHints": true,
+          "includeInlayVariableTypeHints": true,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": true
+        }
+      }
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "format": { "enabled": true, "singleQuote": true },
+          "validate": false
         }
       }
     }
@@ -58,7 +106,7 @@
     "default_width": 512,
     "line_height": "standard"
   },
-  "theme": { "light": "Gruvbox Light Soft", "dark": "Gruvbox Dark Soft" },
+  "theme": { "light": "One Light", "dark": "Gruvbox Dark Soft" },
   "ui_font_size": 16,
   "vertical_scroll_margin": 2,
   "vim_mode": false,
