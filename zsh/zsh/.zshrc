@@ -640,7 +640,7 @@ zsh-defer eval "$(zoxide init --cmd cd zsh)"
 
 # tmux
 
-if [[ ! $TERM_PROGRAM = 'vscode' ]] && [[ -z $TMUX ]]; then
+if [[ ! $TERM_PROGRAM =~ 'vscode|zed' ]] && [[ -z $TMUX ]]; then
   tmux has-session -t 0 2> /dev/null
   [[ $? = 0 ]] && tmux attach-session -t 0 || tmux new-session
 fi
