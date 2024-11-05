@@ -73,7 +73,7 @@ procs() {
     numfmt --field=4 --from-unit=1000 --to=iec --padding=4 |
     awk -v cores=$cores --use-lc-numeric 'BEGIN { OFS = "" } {
       $3 = $3 / cores;
-      printf "%5i %4s %5.2f %4s", $1, $2, $3, $4;
+      printf "%6i %4s %5.2f %4s", $1, $2, $3, $4;
       $1 = $2 = $3 = $4 = "";
       printf " %s\n", $0;
     }' |
