@@ -128,6 +128,8 @@ for EXTENSION in \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
+  GitHub.copilot \
+  GitHub.copilot-chat \
   golang.Go \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
