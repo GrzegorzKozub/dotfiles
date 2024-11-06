@@ -10,10 +10,13 @@
   },
   "auto_install_extensions": {
     "basher": true,
+    "csharp": true,
     "docker-compose": true,
     "dockerfile": true,
+    "git-firefly": true,
     "html": true,
     "lua": true,
+    "sql": true,
     "toml": true,
     "xml": true
   },
@@ -27,13 +30,31 @@
   "indent_guides": { "enabled": false },
   "jupyter": { "enabled": false },
   "languages": {
+    "CSharp": { "show_inline_completions": true },
+    "Dockerfile": { "show_inline_completions": true },
+    "Git Attributes": { "show_inline_completions": true },
+    "Git Config": { "show_inline_completions": true },
+    "Git Ignore": { "show_inline_completions": true },
+    "Go": { "show_inline_completions": true },
+    "Go Mod": { "show_inline_completions": true },
+    "JSON": { "show_inline_completions": true },
+    "JSONC": { "show_inline_completions": true },
     "JavaScript": {
-      "code_actions_on_format": { "source.organizeImports": true }
+      "code_actions_on_format": { "source.organizeImports": true },
+      "show_inline_completions": true
     },
-    "Rust": { "tab_size": 4 },
+    "Lua": { "show_inline_completions": true },
+    "Python": { "show_inline_completions": true },
+    "Rust": { "show_inline_completions": true, "tab_size": 4 },
+    "Shell Script": { "show_inline_completions": true },
+    "SQL": { "show_inline_completions": true, "tab_size": 4 },
+    "TOML": { "show_inline_completions": true },
     "TypeScript": {
-      "code_actions_on_format": { "source.organizeImports": true }
-    }
+      "code_actions_on_format": { "source.organizeImports": true },
+      "show_inline_completions": true
+    },
+    "XML": { "show_inline_completions": true },
+    "YAML": { "show_inline_completions": true }
   },
   "lsp": {
     "elixirls": {
@@ -110,6 +131,7 @@
     "indent_size": 8
   },
   "restore_on_startup": "none",
+  "show_inline_completions": false,
   "tab_bar": { "show_nav_history_buttons": false },
   "tab_size": 2,
   "tabs": { "file_icons": true, "git_status": true },
