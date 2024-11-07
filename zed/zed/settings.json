@@ -30,31 +30,14 @@
   "indent_guides": { "enabled": false },
   "jupyter": { "enabled": false },
   "languages": {
-    "CSharp": { "show_inline_completions": true },
-    "Dockerfile": { "show_inline_completions": true },
-    "Git Attributes": { "show_inline_completions": true },
-    "Git Config": { "show_inline_completions": true },
-    "Git Ignore": { "show_inline_completions": true },
-    "Go": { "show_inline_completions": true },
-    "Go Mod": { "show_inline_completions": true },
-    "JSON": { "show_inline_completions": true },
-    "JSONC": { "show_inline_completions": true },
     "JavaScript": {
-      "code_actions_on_format": { "source.organizeImports": true },
-      "show_inline_completions": true
+      "code_actions_on_format": { "source.organizeImports": true }
     },
-    "Lua": { "show_inline_completions": true },
-    "Python": { "show_inline_completions": true },
-    "Rust": { "show_inline_completions": true, "tab_size": 4 },
-    "Shell Script": { "show_inline_completions": true },
-    "SQL": { "show_inline_completions": true, "tab_size": 4 },
-    "TOML": { "show_inline_completions": true },
+    "Rust": { "tab_size": 4 },
+    "SQL": { "tab_size": 4 },
     "TypeScript": {
-      "code_actions_on_format": { "source.organizeImports": true },
-      "show_inline_completions": true
-    },
-    "XML": { "show_inline_completions": true },
-    "YAML": { "show_inline_completions": true }
+      "code_actions_on_format": { "source.organizeImports": true }
+    }
   },
   "lsp": {
     "elixirls": {

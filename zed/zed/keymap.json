@@ -1,5 +1,11 @@
 [
   {
+    "context": "Editor && mode == full",
+    "bindings": {
+      "ctrl-i": "assistant::InlineAssist"
+    }
+  },
+  {
     "context": "Pane",
     "bindings": {
       "alt-left": "pane::GoBack",
@@ -12,6 +18,12 @@
       "ctrl-n": "project_panel::NewFile",
       "ctrl-shift-n": "project_panel::NewDirectory",
       "enter": "project_panel::Open"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-i": "assistant::InlineAssist"
     }
   },
   {
