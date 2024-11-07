@@ -1,11 +1,5 @@
 [
   {
-    "context": "Editor && mode == full",
-    "bindings": {
-      "ctrl-i": "assistant::InlineAssist"
-    }
-  },
-  {
     "context": "Pane",
     "bindings": {
       "alt-left": "pane::GoBack",
@@ -21,15 +15,8 @@
     }
   },
   {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-i": "assistant::InlineAssist"
-    }
-  },
-  {
     "context": "Workspace",
     "bindings": {
-      "ctrl-shift-n": null,
       "ctrl-shift-s": "workspace::SaveAll"
     }
   }
