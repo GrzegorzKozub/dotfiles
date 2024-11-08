@@ -122,7 +122,6 @@ popd
 # vscode
 
 for EXTENSION in \
-  antfu.icons-carbon \
   bierner.markdown-mermaid \
   cucumberopen.cucumber-official \
   dbaeumer.vscode-eslint \
