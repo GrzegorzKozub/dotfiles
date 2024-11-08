@@ -124,13 +124,13 @@ popd
 for EXTENSION in \
   antfu.icons-carbon \
   bierner.markdown-mermaid \
-  CucumberOpen.cucumber-official \
+  cucumberopen.cucumber-official \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
-  GitHub.copilot \
-  GitHub.copilot-chat \
-  golang.Go \
+  github.copilot \
+  github.copilot-chat \
+  golang.go \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
   ms-dotnettools.csdevkit \
@@ -139,14 +139,16 @@ for EXTENSION in \
   ms-python.black-formatter \
   ms-python.debugpy \
   ms-python.isort \
-  ms-python.python \
   ms-python.pylint \
+  ms-python.python \
   ms-python.vscode-pylance \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
+  rust-lang.rust-analyzer \
   sainnhe.gruvbox-material \
   streetsidesoftware.code-spell-checker \
-  sumneko.lua
+  sumneko.lua \
+  tamasfe.even-better-toml
 do
   code --install-extension $EXTENSION --force
 done
