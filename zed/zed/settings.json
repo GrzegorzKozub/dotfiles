@@ -9,8 +9,6 @@
     "version": "2"
   },
   "auto_install_extensions": {
-    "basher": true,
-    "csharp": true,
     "docker-compose": true,
     "dockerfile": true,
     "git-firefly": true,
@@ -124,7 +122,11 @@
     "default_width": 512,
     "line_height": "standard"
   },
-  "theme": { "dark": "One Dark", "light": "One Light", "mode": "system" },
+  "theme": {
+    "dark": "One Dark",
+    "light": "One Dark",
+    "mode": "system"
+  },
   "ui_font_size": 16,
   "vertical_scroll_margin": 2,
   "vim_mode": false,
