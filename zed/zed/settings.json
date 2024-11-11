@@ -113,6 +113,7 @@
   },
   "restore_on_startup": "none",
   "show_inline_completions": false,
+  "show_whitespaces": "none",
   "tab_bar": { "show_nav_history_buttons": false },
   "tab_size": 2,
   "tabs": { "file_icons": true, "git_status": true },
@@ -124,7 +125,7 @@
   },
   "theme": {
     "dark": "One Dark",
-    "light": "One Dark",
+    "light": "Gruvbox Material Soft Dark",
     "mode": "system"
   },
   "ui_font_size": 16,
