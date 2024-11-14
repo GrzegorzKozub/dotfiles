@@ -127,8 +127,6 @@ for EXTENSION in \
   dbaeumer.vscode-eslint \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
-  github.copilot \
-  github.copilot-chat \
   golang.go \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
@@ -152,7 +150,10 @@ do
   code --install-extension $EXTENSION --force
 done
 
-  # asvetliakov.vscode-neovim JakeBecker.elixir-ls
+  # asvetliakov.vscode-neovim \
+  # github.copilot \
+  # github.copilot-chat \
+  # JakeBecker.elixir-ls \
 
 # docker
 
