@@ -11,12 +11,10 @@
   "auto_install_extensions": {
     "docker-compose": true,
     "dockerfile": true,
+    "env": true,
     "git-firefly": true,
-    "html": true,
     "lua": true,
-    "sql": true,
-    "toml": true,
-    "xml": true
+    "toml": true
   },
   "buffer_font_family": "Cascadia Code",
   "buffer_font_features": { "calt": true, "ss01": true },
@@ -124,7 +122,7 @@
     "line_height": "standard"
   },
   "theme": {
-    "dark": "One Dark",
+    "dark": "Gruvbox Material Soft Dark",
     "light": "Gruvbox Material Soft Dark",
     "mode": "system"
   },
