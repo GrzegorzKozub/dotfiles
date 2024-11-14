@@ -13,6 +13,7 @@
     "dockerfile": true,
     "env": true,
     "git-firefly": true,
+    "html": true,
     "lua": true,
     "toml": true
   },
