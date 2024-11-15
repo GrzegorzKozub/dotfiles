@@ -1,4 +1,5 @@
 // https://github.com/zed-industries/zed/blob/main/crates/theme/src/schema.rs
+// https://github.com/sainnhe/gruvbox-material-vscode
 
 package main
 

@@ -55,7 +55,7 @@
         "tab.inactive_background": "#32302f",
         "tab.active_background": "#3c3836",
 
-        "search.match_background": "#c35e0a80",
+        "search.match_background": "#bd6f3e80",
 
         "panel.background": "#32302f",
         "panel.focused_border": "#ea6962",
@@ -76,7 +76,7 @@
         "editor.gutter.background": "#32302f",
         "editor.subheader.background": "#3c3836",
         "editor.active_line.background": "#3c3836",
-        "editor.highlighted_line.background": "#c35e0a80",
+        "editor.highlighted_line.background": "#bd6f3e80",
         "editor.line_number": "#5a524c",
         "editor.active_line_number": "#7c6f64",
         "editor.invisible": "#5a524c",
@@ -119,21 +119,21 @@
         "terminal.ansi.bright_white": "#d4be98",
         "terminal.ansi.dim_white": "#928374",
 
-        "link_text.hover": "#45707a",
+        "link_text.hover": "#68948a",
 
-        "conflict": "#b47109",
+        "conflict": "#c18f41",
         "conflict.background": "#3c3836",
         "conflict.border": "#32302f",
 
-        "created": "#6c782e",
+        "created": "#8f9a52",
         "created.background": "#3c3836",
         "created.border": "#32302f",
 
-        "deleted": "#c14a4a",
+        "deleted": "#b85651",
         "deleted.background": "#3c3836",
         "deleted.border": "#32302f",
 
-        "error": "#c14a4a",
+        "error": "#b85651",
         "error.background": "#3c3836",
         "error.border": "#32302f",
 
@@ -141,7 +141,7 @@
         "hidden.background": "#3c3836",
         "hidden.border": "#32302f",
 
-        "hint": "#6c782e",
+        "hint": "#8f9a52",
         "hint.background": "#3c3836",
         "hint.border": "#32302f",
 
@@ -149,11 +149,11 @@
         "ignored.background": "#3c3836",
         "ignored.border": "#32302f",
 
-        "info": "#45707a",
+        "info": "#68948a",
         "info.background": "#5a524c",
         "info.border": "#32302f",
 
-        "modified": "#45707a",
+        "modified": "#68948a",
         "modified.background": "#3c3836",
         "modified.border": "#32302f",
 
@@ -161,11 +161,11 @@
         "predictive.background": "#3c3836",
         "predictive.border": "#32302f",
 
-        "renamed": "#b47109",
+        "renamed": "#c18f41",
         "renamed.background": "#3c3836",
         "renamed.border": "#32302f",
 
-        "success": "#6c782e",
+        "success": "#8f9a52",
         "success.background": "#3c3836",
         "success.border": "#32302f",
 
@@ -173,7 +173,7 @@
         "unreachable.background": "#3c3836",
         "unreachable.border": "#32302f",
 
-        "warning": "#b47109",
+        "warning": "#c18f41",
         "warning.background": "#3c3836",
         "warning.border": "#32302f",
 

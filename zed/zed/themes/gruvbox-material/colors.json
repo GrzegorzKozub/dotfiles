@@ -15,27 +15,9 @@
   "grey1": "#928374",
   "grey2": "#a89984",
 
+  "fg1": "#c5b18d",
   "fg": "#d4be98",
   "fg0": "#ddc7a1",
-  "fg1": "#c5b18d",
-
-  "darkBlack": "#3c3836",
-  "darkRed": "#c14a4a",
-  "darkGreen": "#6c782e",
-  "darkYellow": "#b47109",
-  "darkBlue": "#45707a",
-  "darkPurple": "#945e80",
-  "darkAqua": "#4c7a5d",
-  "darkOrange": "#c35e0a",
-  "darkWhite": "#928374",
-
-  "xdarkRed": "#b85651",
-  "xdarkGreen": "#8f9a52",
-  "xdarkYellow": "#c18f41",
-  "xdarkBlue": "#68948a",
-  "xdarkPurple": "#ab6c7d",
-  "xdarkAqua": "#72966c",
-  "xdarkOrange": "#bd6f3e",
 
   "black": "#665c54",
   "red": "#ea6962",
@@ -45,5 +27,23 @@
   "purple": "#d3869b",
   "aqua": "#89b482",
   "orange": "#e78a4e",
-  "white": "#d4be98"
+  "white": "#d4be98",
+
+  "dimRed": "#b85651",
+  "dimGreen": "#8f9a52",
+  "dimYellow": "#c18f41",
+  "dimBlue": "#68948a",
+  "dimPurple": "#ab6c7d",
+  "dimAqua": "#72966c",
+  "dimOrange": "#bd6f3e",
+
+  "termBlack": "#3c3836",
+  "termRed": "#c14a4a",
+  "termGreen": "#6c782e",
+  "termYellow": "#b47109",
+  "termBlue": "#45707a",
+  "termPurple": "#945e80",
+  "termAqua": "#4c7a5d",
+  "termOrange": "#c35e0a",
+  "termWhite": "#928374"
 }

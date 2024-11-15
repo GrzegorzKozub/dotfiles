@@ -55,7 +55,7 @@
         "tab.inactive_background": "{{bg}}",
         "tab.active_background": "{{bg2}}",
 
-        "search.match_background": "{{darkOrange}}80",
+        "search.match_background": "{{dimOrange}}80",
 
         "panel.background": "{{bg}}",
         "panel.focused_border": "{{red}}",
@@ -76,7 +76,7 @@
         "editor.gutter.background": "{{bg}}",
         "editor.subheader.background": "{{bg2}}",
         "editor.active_line.background": "{{bg2}}",
-        "editor.highlighted_line.background": "{{darkOrange}}80",
+        "editor.highlighted_line.background": "{{dimOrange}}80",
         "editor.line_number": "{{bg6}}",
         "editor.active_line_number": "{{grey0}}",
         "editor.invisible": "{{bg6}}",
@@ -94,46 +94,46 @@
         "terminal.bright_foreground": "{{fg}}",
         "terminal.dim_foreground": "{{bg}}",
 
-        "terminal.ansi.black": "{{darkBlack}}",
+        "terminal.ansi.black": "{{termBlack}}",
         "terminal.ansi.bright_black": "{{black}}",
-        "terminal.ansi.dim_black": "{{darkBlack}}",
-        "terminal.ansi.red": "{{darkRed}}",
+        "terminal.ansi.dim_black": "{{termBlack}}",
+        "terminal.ansi.red": "{{termRed}}",
         "terminal.ansi.bright_red": "{{red}}",
-        "terminal.ansi.dim_red": "{{darkRed}}",
-        "terminal.ansi.green": "{{darkGreen}}",
+        "terminal.ansi.dim_red": "{{termRed}}",
+        "terminal.ansi.green": "{{termGreen}}",
         "terminal.ansi.bright_green": "{{green}}",
-        "terminal.ansi.dim_green": "{{darkGreen}}",
-        "terminal.ansi.yellow": "{{darkYellow}}",
+        "terminal.ansi.dim_green": "{{termGreen}}",
+        "terminal.ansi.yellow": "{{termYellow}}",
         "terminal.ansi.bright_yellow": "{{yellow}}",
-        "terminal.ansi.dim_yellow": "{{darkYellow}}",
-        "terminal.ansi.blue": "{{darkBlue}}",
+        "terminal.ansi.dim_yellow": "{{termYellow}}",
+        "terminal.ansi.blue": "{{termBlue}}",
         "terminal.ansi.bright_blue": "{{blue}}",
-        "terminal.ansi.dim_blue": "{{darkBlue}}",
-        "terminal.ansi.magenta": "{{darkPurple}}",
+        "terminal.ansi.dim_blue": "{{termBlue}}",
+        "terminal.ansi.magenta": "{{termPurple}}",
         "terminal.ansi.bright_magenta": "{{purple}}",
-        "terminal.ansi.dim_magenta": "{{darkPurple}}",
-        "terminal.ansi.cyan": "{{darkAqua}}",
+        "terminal.ansi.dim_magenta": "{{termPurple}}",
+        "terminal.ansi.cyan": "{{termAqua}}",
         "terminal.ansi.bright_cyan": "{{aqua}}",
-        "terminal.ansi.dim_cyan": "{{darkAqua}}",
-        "terminal.ansi.white": "{{darkWhite}}",
+        "terminal.ansi.dim_cyan": "{{termAqua}}",
+        "terminal.ansi.white": "{{termWhite}}",
         "terminal.ansi.bright_white": "{{white}}",
-        "terminal.ansi.dim_white": "{{darkWhite}}",
+        "terminal.ansi.dim_white": "{{termWhite}}",
 
-        "link_text.hover": "{{darkBlue}}",
+        "link_text.hover": "{{dimBlue}}",
 
-        "conflict": "{{darkYellow}}",
+        "conflict": "{{dimYellow}}",
         "conflict.background": "{{bg2}}",
         "conflict.border": "{{bg}}",
 
-        "created": "{{darkGreen}}",
+        "created": "{{dimGreen}}",
         "created.background": "{{bg2}}",
         "created.border": "{{bg}}",
 
-        "deleted": "{{darkRed}}",
+        "deleted": "{{dimRed}}",
         "deleted.background": "{{bg2}}",
         "deleted.border": "{{bg}}",
 
-        "error": "{{darkRed}}",
+        "error": "{{dimRed}}",
         "error.background": "{{bg2}}",
         "error.border": "{{bg}}",
 
@@ -141,7 +141,7 @@
         "hidden.background": "{{bg2}}",
         "hidden.border": "{{bg}}",
 
-        "hint": "{{darkGreen}}",
+        "hint": "{{dimGreen}}",
         "hint.background": "{{bg2}}",
         "hint.border": "{{bg}}",
 
@@ -149,11 +149,11 @@
         "ignored.background": "{{bg2}}",
         "ignored.border": "{{bg}}",
 
-        "info": "{{darkBlue}}",
+        "info": "{{dimBlue}}",
         "info.background": "{{bg6}}",
         "info.border": "{{bg}}",
 
-        "modified": "{{darkBlue}}",
+        "modified": "{{dimBlue}}",
         "modified.background": "{{bg2}}",
         "modified.border": "{{bg}}",
 
@@ -161,11 +161,11 @@
         "predictive.background": "{{bg2}}",
         "predictive.border": "{{bg}}",
 
-        "renamed": "{{darkYellow}}",
+        "renamed": "{{dimYellow}}",
         "renamed.background": "{{bg2}}",
         "renamed.border": "{{bg}}",
 
-        "success": "{{darkGreen}}",
+        "success": "{{dimGreen}}",
         "success.background": "{{bg2}}",
         "success.border": "{{bg}}",
 
@@ -173,7 +173,7 @@
         "unreachable.background": "{{bg2}}",
         "unreachable.border": "{{bg}}",
 
-        "warning": "{{darkYellow}}",
+        "warning": "{{dimYellow}}",
         "warning.background": "{{bg2}}",
         "warning.border": "{{bg}}",
 
