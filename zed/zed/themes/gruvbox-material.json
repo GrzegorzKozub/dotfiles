@@ -20,7 +20,7 @@
         "element.background": "#3c3836",
         "element.hover": "#45403d",
         "element.active": "#45403d",
-        "element.selected": "#ea6962",
+        "element.selected": "#45403d",
         "element.disabled": "#ea6962",
 
         "drop_target.background": "#242424",
@@ -39,7 +39,7 @@
 
         "icon": "#7c6f64",
         "icon.muted": "#a89984",
-        "icon.disabled": "#ea6962",
+        "icon.disabled": "#242424",
         "icon.placeholder": "#ea6962",
         "icon.accent": "#ea6962",
 
@@ -55,7 +55,7 @@
         "tab.inactive_background": "#32302f",
         "tab.active_background": "#3c3836",
 
-        "search.match_background": "#c35e0a40",
+        "search.match_background": "#c35e0a80",
 
         "panel.background": "#32302f",
         "panel.focused_border": "#ea6962",
@@ -76,7 +76,7 @@
         "editor.gutter.background": "#32302f",
         "editor.subheader.background": "#3c3836",
         "editor.active_line.background": "#3c3836",
-        "editor.highlighted_line.background": "#ea6962",
+        "editor.highlighted_line.background": "#c35e0a80",
         "editor.line_number": "#5a524c",
         "editor.active_line_number": "#7c6f64",
         "editor.invisible": "#5a524c",
@@ -133,7 +133,7 @@
         "deleted.background": "#3c3836",
         "deleted.border": "#32302f",
 
-        "error": "#ea6962",
+        "error": "#c14a4a",
         "error.background": "#3c3836",
         "error.border": "#32302f",
 
@@ -141,7 +141,7 @@
         "hidden.background": "#3c3836",
         "hidden.border": "#32302f",
 
-        "hint": "#a9b665",
+        "hint": "#6c782e",
         "hint.background": "#3c3836",
         "hint.border": "#32302f",
 
@@ -149,8 +149,8 @@
         "ignored.background": "#3c3836",
         "ignored.border": "#32302f",
 
-        "info": "#7daea3",
-        "info.background": "#242424",
+        "info": "#45707a",
+        "info.background": "#5a524c",
         "info.border": "#32302f",
 
         "modified": "#45707a",
@@ -165,7 +165,7 @@
         "renamed.background": "#3c3836",
         "renamed.border": "#32302f",
 
-        "success": "#a9b665",
+        "success": "#6c782e",
         "success.background": "#3c3836",
         "success.border": "#32302f",
 
@@ -173,7 +173,7 @@
         "unreachable.background": "#3c3836",
         "unreachable.border": "#32302f",
 
-        "warning": "#d8a657",
+        "warning": "#b47109",
         "warning.background": "#3c3836",
         "warning.border": "#32302f",
 

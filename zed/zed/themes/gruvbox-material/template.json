@@ -20,7 +20,7 @@
         "element.background": "{{bg2}}",
         "element.hover": "{{bg4}}",
         "element.active": "{{bg4}}",
-        "element.selected": "{{red}}",
+        "element.selected": "{{bg4}}",
         "element.disabled": "{{red}}",
 
         "drop_target.background": "{{bg1}}",
@@ -39,7 +39,7 @@
 
         "icon": "{{grey0}}",
         "icon.muted": "{{grey2}}",
-        "icon.disabled": "{{red}}",
+        "icon.disabled": "{{bg1}}",
         "icon.placeholder": "{{red}}",
         "icon.accent": "{{red}}",
 
@@ -55,7 +55,7 @@
         "tab.inactive_background": "{{bg}}",
         "tab.active_background": "{{bg2}}",
 
-        "search.match_background": "{{darkOrange}}40",
+        "search.match_background": "{{darkOrange}}80",
 
         "panel.background": "{{bg}}",
         "panel.focused_border": "{{red}}",
@@ -76,7 +76,7 @@
         "editor.gutter.background": "{{bg}}",
         "editor.subheader.background": "{{bg2}}",
         "editor.active_line.background": "{{bg2}}",
-        "editor.highlighted_line.background": "{{red}}",
+        "editor.highlighted_line.background": "{{darkOrange}}80",
         "editor.line_number": "{{bg6}}",
         "editor.active_line_number": "{{grey0}}",
         "editor.invisible": "{{bg6}}",
@@ -133,7 +133,7 @@
         "deleted.background": "{{bg2}}",
         "deleted.border": "{{bg}}",
 
-        "error": "{{red}}",
+        "error": "{{darkRed}}",
         "error.background": "{{bg2}}",
         "error.border": "{{bg}}",
 
@@ -141,7 +141,7 @@
         "hidden.background": "{{bg2}}",
         "hidden.border": "{{bg}}",
 
-        "hint": "{{green}}",
+        "hint": "{{darkGreen}}",
         "hint.background": "{{bg2}}",
         "hint.border": "{{bg}}",
 
@@ -149,8 +149,8 @@
         "ignored.background": "{{bg2}}",
         "ignored.border": "{{bg}}",
 
-        "info": "{{blue}}",
-        "info.background": "{{bg1}}",
+        "info": "{{darkBlue}}",
+        "info.background": "{{bg6}}",
         "info.border": "{{bg}}",
 
         "modified": "{{darkBlue}}",
@@ -165,7 +165,7 @@
         "renamed.background": "{{bg2}}",
         "renamed.border": "{{bg}}",
 
-        "success": "{{green}}",
+        "success": "{{darkGreen}}",
         "success.background": "{{bg2}}",
         "success.border": "{{bg}}",
 
@@ -173,7 +173,7 @@
         "unreachable.background": "{{bg2}}",
         "unreachable.border": "{{bg}}",
 
-        "warning": "{{yellow}}",
+        "warning": "{{darkYellow}}",
         "warning.background": "{{bg2}}",
         "warning.border": "{{bg}}",
 
