@@ -302,7 +302,7 @@
             "font_weight": null
           },
           "punctuation.bracket": {
-            "color": "{{grey2}}",
+            "color": "{{grey1}}",
             "font_style": null,
             "font_weight": null
           },
