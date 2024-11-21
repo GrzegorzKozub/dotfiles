@@ -297,12 +297,12 @@
             "font_weight": null
           },
           "punctuation": {
-            "color": "{{fg}}",
+            "color": "{{grey2}}",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.bracket": {
-            "color": "{{grey1}}",
+            "color": "{{grey2}}",
             "font_style": null,
             "font_weight": null
           },
