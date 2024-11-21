@@ -77,8 +77,8 @@
         "editor.subheader.background": "#3c3836",
         "editor.active_line.background": "#3c3836",
         "editor.highlighted_line.background": "#bd6f3e80",
-        "editor.line_number": "#5a524c",
-        "editor.active_line_number": "#7c6f64",
+        "editor.line_number": "#504945",
+        "editor.active_line_number": "#665c54",
         "editor.invisible": "#5a524c",
         "editor.wrap_guide": "#3c3836",
         "editor.active_wrap_guide": "#ea6962",
@@ -197,12 +197,12 @@
             "font_weight": null
           },
           "comment": {
-            "color": "#928374",
+            "color": "#7c6f64",
             "font_style": "italic",
             "font_weight": null
           },
           "comment.doc": {
-            "color": "#928374",
+            "color": "#7c6f64",
             "font_style": "italic",
             "font_weight": null
           },
@@ -297,27 +297,27 @@
             "font_weight": null
           },
           "punctuation": {
-            "color": "#a89984",
+            "color": "#928374",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.bracket": {
-            "color": "#a89984",
+            "color": "#928374",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.delimiter": {
-            "color": "#a89984",
+            "color": "#928374",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.list_marker": {
-            "color": "#a89984",
+            "color": "#928374",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.special": {
-            "color": "#a89984",
+            "color": "#928374",
             "font_style": null,
             "font_weight": null
           },

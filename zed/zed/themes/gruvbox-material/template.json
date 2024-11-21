@@ -77,8 +77,8 @@
         "editor.subheader.background": "{{bg2}}",
         "editor.active_line.background": "{{bg2}}",
         "editor.highlighted_line.background": "{{dimOrange}}80",
-        "editor.line_number": "{{bg6}}",
-        "editor.active_line_number": "{{grey0}}",
+        "editor.line_number": "{{bg5}}",
+        "editor.active_line_number": "{{bg7}}",
         "editor.invisible": "{{bg6}}",
         "editor.wrap_guide": "{{bg2}}",
         "editor.active_wrap_guide": "{{red}}",
@@ -197,12 +197,12 @@
             "font_weight": null
           },
           "comment": {
-            "color": "{{grey1}}",
+            "color": "{{grey0}}",
             "font_style": "italic",
             "font_weight": null
           },
           "comment.doc": {
-            "color": "{{grey1}}",
+            "color": "{{grey0}}",
             "font_style": "italic",
             "font_weight": null
           },
@@ -297,27 +297,27 @@
             "font_weight": null
           },
           "punctuation": {
-            "color": "{{grey2}}",
+            "color": "{{grey1}}",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.bracket": {
-            "color": "{{grey2}}",
+            "color": "{{grey1}}",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.delimiter": {
-            "color": "{{grey2}}",
+            "color": "{{grey1}}",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.list_marker": {
-            "color": "{{grey2}}",
+            "color": "{{grey1}}",
             "font_style": null,
             "font_weight": null
           },
           "punctuation.special": {
-            "color": "{{grey2}}",
+            "color": "{{grey1}}",
             "font_style": null,
             "font_weight": null
           },
