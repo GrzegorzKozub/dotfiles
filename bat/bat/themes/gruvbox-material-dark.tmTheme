@@ -109,6 +109,65 @@
       </dict>
       <dict>
         <key>name</key>
+        <string>punctuation</string>
+        <key>scope</key>
+        <string>fenced_code.block.language, meta.brace, meta.tag.preprocessor.xml, meta.tag.xml, punctuation.definition.block.sequence.item.yaml, punctuation.definition.interpolation.begin.cs, punctuation.definition.interpolation.end.cs, punctuation.definition.list.begin.markdown, punctuation.definition.markdown, punctuation.definition.raw.markdown, punctuation.definition.string.begin.html, punctuation.definition.string.begin.xml, punctuation.definition.string.begin.yaml, punctuation.definition.string.end.html, punctuation.definition.string.end.xml, punctuation.definition.string.end.yaml, punctuation.definition.table.toml, punctuation.definition.tag.begin.html, punctuation.definition.tag.end.html, punctuation.definition.tag.xml, punctuation.definition.template-expression, punctuation.separator.key-value.html, punctuation</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#928374</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>comments</string>
+        <key>scope</key>
+        <string>comment, punctuation.definition.comment</string>
+        <key>settings</key>
+        <dict>
+          <key>fontStyle</key>
+          <string>italic</string>
+          <key>foreground</key>
+          <string>#7c6f64</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>json &amp; yaml names</string>
+        <key>scope</key>
+        <string>entity.name.tag.yaml, support.type.property-name.json</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#7daea3</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>markdown link text</string>
+        <key>scope</key>
+        <string>string.other.link.title.markdown</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#d3869b</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>markdown link url</string>
+        <key>scope</key>
+        <string>markup.underline.link.markdown</string>
+        <key>settings</key>
+        <dict>
+          <key>fontStyle</key>
+          <string/>
+          <key>foreground</key>
+          <string>#7daea3</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
         <string>Keyword</string>
         <key>scope</key>
         <string>keyword, storage.type.function, storage.type.class, storage.type.enum, storage.type.interface, storage.type.property, keyword.operator.new, keyword.operator.expression, keyword.operator.new, keyword.operator.delete, storage.type.extends</string>
@@ -3173,7 +3232,7 @@
       </dict>
     </array>
     <key>uuid</key>
-    <string>1c2b56e2-d97e-4bea-9c20-2986b01fde35</string>
+    <string>7e2569ff-250f-4421-b1cb-09fecb8ca840</string>
     <key>colorSpaceName</key>
     <string>sRGB</string>
     <key>semanticClass</key>
