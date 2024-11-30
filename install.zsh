@@ -170,7 +170,6 @@ FILE=$XDG_CONFIG_HOME/yazi/package.toml
 for PLUGIN in \
   GrzegorzKozub/mdcat \
   KKV9/compress \
-  Tyarel8/video-ffmpeg \
   yazi-rs/plugins:git \
   yazi-rs/plugins:jump-to-char
 do
