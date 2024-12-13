@@ -29,7 +29,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   zellij \
   zsh
 
-  # alacritty flameshot foot gdu iex lf
+  # alacritty flameshot foot gdu iex
 
 # if [[ $HOST = 'player' ]]; then
 #
