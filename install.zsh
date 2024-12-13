@@ -150,10 +150,12 @@ do
   code --install-extension $EXTENSION --force
 done
 
+  # JakeBecker.elixir-ls \
   # asvetliakov.vscode-neovim \
   # github.copilot \
   # github.copilot-chat \
-  # JakeBecker.elixir-ls \
+  # ms-vscode-remote.remote-containers \
+  # vadimcn.vscode-lldb \
 
 # docker
 
