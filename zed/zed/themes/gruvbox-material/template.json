@@ -84,8 +84,8 @@
         "editor.active_wrap_guide": "{{red}}",
         "editor.indent_guide": "{{bg2}}",
         "editor.indent_guide_active": "{{bg4}}",
-        "editor.document_highlight.read_background": "{{bg4}}",
-        "editor.document_highlight.write_background": "{{bg4}}",
+        "editor.document_highlight.read_background": "{{bg3}}",
+        "editor.document_highlight.write_background": "{{bg5}}",
         "editor.document_highlight.bracket_background": "{{bg6}}",
 
         "terminal.background": "{{bg}}",
