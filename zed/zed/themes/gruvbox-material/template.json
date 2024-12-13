@@ -179,7 +179,7 @@
 
         "players": [
           {
-            "cursor": "{{grey1}}",
+            "cursor": "{{grey2}}",
             "background": "{{red}}",
             "selection": "{{bg6}}"
           }
