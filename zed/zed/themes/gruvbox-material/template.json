@@ -145,7 +145,7 @@
         "hint.background": "{{bg2}}",
         "hint.border": "{{bg}}",
 
-        "ignored": "{{bg6}}",
+        "ignored": "{{grey0}}",
         "ignored.background": "{{bg2}}",
         "ignored.border": "{{bg}}",
 
