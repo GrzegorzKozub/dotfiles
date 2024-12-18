@@ -42,6 +42,8 @@ pip install --user --upgrade --break-system-packages \
   lastversion \
   pynvim
 
+[[ -d $XDG_CONFIG_HOME/ipython ]] || mkdir -p $XDG_CONFIG_HOME/ipython
+
 # ruby
 
 # [[ -d $XDG_DATA_HOME/gem ]] && rm -rf $XDG_DATA_HOME/gem
