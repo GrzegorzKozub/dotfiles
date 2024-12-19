@@ -79,6 +79,7 @@ EXEC 32
 .pylintrc 37
 .stylua.toml 37
 .taplo.toml 37
+.vscodeignore 37
 
 .backup 90
 .bak 90
