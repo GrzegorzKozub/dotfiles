@@ -128,6 +128,7 @@ for EXTENSION in \
   editorconfig.editorconfig \
   esbenp.prettier-vscode \
   golang.go \
+  grzegorzkozub.gruvbox-material-flat \
   kddejong.vscode-cfn-lint \
   ms-azuretools.vscode-docker \
   ms-dotnettools.csdevkit \
@@ -142,7 +143,6 @@ for EXTENSION in \
   pkief.material-icon-theme \
   redhat.vscode-yaml \
   rust-lang.rust-analyzer \
-  sainnhe.gruvbox-material \
   streetsidesoftware.code-spell-checker \
   sumneko.lua \
   tamasfe.even-better-toml
@@ -150,10 +150,10 @@ do
   code --install-extension $EXTENSION --force
 done
 
-  # JakeBecker.elixir-ls \
   # asvetliakov.vscode-neovim \
   # github.copilot \
   # github.copilot-chat \
+  # jakebecker.elixir-ls \
   # ms-vscode-remote.remote-containers \
   # vadimcn.vscode-lldb \
 
