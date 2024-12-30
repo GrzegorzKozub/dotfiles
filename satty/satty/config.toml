@@ -1,6 +1,7 @@
 [general]
 output-filename = "/home/greg/Downloads/Shot %b %0d %H:%M.png"
 early-exit = true
+corner-roundness = 8
 initial-tool = "rectangle"
 copy-command = "wl-copy"
 annotation-size-factor = 0.5
@@ -9,10 +10,4 @@ annotation-size-factor = 0.5
 family = "DejaVu Sans Condensed"
 
 [color-palette]
-first = "#cc241d"
-second = "#98971a"
-third = "#d79921"
-fourth = "#458588"
-fifth = "#b16286"
-custom = "#d65d0e"
-
+palette = ["#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#d65d0e"]
