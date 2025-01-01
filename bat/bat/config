@@ -2,8 +2,4 @@
 --pager='less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub'
 --style=plain
 --tabs=2
-
-# converted from https://github.com/sainnhe/gruvbox-material-vscode
-# using https://github.com/tobiastimm/code-theme-converter
 --theme=gruvbox-material-dark
-
