@@ -2,31 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
+    <key>author</key>
+    <string>greg</string>
+    <key>uuid</key>
+    <string>774ad927-45b0-4286-8234-bad6f2404ff3</string>
     <key>name</key>
-    <string>Gruvbox Material Flat Dark</string>
+    <string>Gruvbox Material Dark</string>
+    <key>semanticClass</key>
+    <string>theme.dark.gruvbox-material-dark</string>
+    <key>colorSpaceName</key>
+    <string>sRGB</string>
     <key>settings</key>
     <array>
       <dict>
         <key>settings</key>
         <dict>
-          <key>accent</key>
-          <string>#bd6f3e</string>
           <key>background</key>
-          <string>#32302f</string>
-          <key>caret</key>
           <string>#32302f</string>
           <key>foreground</key>
           <string>#d4be98</string>
-          <key>lineHighlight</key>
-          <string>#3c3836</string>
+          <key>gutterForeground</key>
+          <string>#45403d</string>
+          <key>caret</key>
+          <string>#a89984</string>
           <key>selection</key>
           <string>#7c6f6480</string>
-          <key>activeGuide</key>
-          <string/>
+          <key>lineHighlight</key>
+          <string>#3c3836</string>
           <key>findHighlight</key>
           <string>#bd6f3e80</string>
-          <key>misspelling</key>
-          <string>#b85651</string>
         </dict>
       </dict>
       <dict>
@@ -42,9 +46,31 @@
       </dict>
       <dict>
         <key>name</key>
+        <string>toml names</string>
+        <key>scope</key>
+        <string>entity.name.table.toml, entity.name.tag.toml, meta.tag.key.toml, meta.tag.table.toml</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#7daea3</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>toml strings</string>
+        <key>scope</key>
+        <string>string.quoted.double.basic.toml, string.quoted.single.literal.toml</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#a9b665</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
         <string>punctuation</string>
         <key>scope</key>
-        <string>fenced_code.block.language, keyword.control.flow.block-scalar.literal.yaml, meta.brace, meta.tag.preprocessor.xml, meta.tag.xml, punctuation.definition.block.sequence.item.yaml, punctuation.definition.interpolation.begin.cs, punctuation.definition.interpolation.end.cs, punctuation.definition.list.begin.markdown, punctuation.definition.markdown, punctuation.definition.raw.markdown, punctuation.definition.string.begin.html, punctuation.definition.string.begin.xml, punctuation.definition.string.begin.yaml, punctuation.definition.string.end.html, punctuation.definition.string.end.xml, punctuation.definition.string.end.yaml, punctuation.definition.table.toml, punctuation.definition.tag.begin.html, punctuation.definition.tag.end.html, punctuation.definition.tag.xml, punctuation.definition.template-expression, punctuation.separator.key-value.html, punctuation</string>
+        <string>fenced_code.block.language, keyword.control.flow.block-scalar.literal.yaml, meta.brace, meta.tag.preprocessor.xml, meta.tag.xml, punctuation.definition.block.sequence.item.yaml, punctuation.definition.interpolation.begin.cs, punctuation.definition.interpolation.end.cs, punctuation.definition.list.begin.markdown, punctuation.definition.markdown, punctuation.definition.raw.markdown, punctuation.definition.string.begin.html, punctuation.definition.string.begin.toml, punctuation.definition.string.begin.xml, punctuation.definition.string.begin.yaml, punctuation.definition.string.end.html, punctuation.definition.string.end.toml, punctuation.definition.string.end.xml, punctuation.definition.string.end.yaml, punctuation.definition.table.toml, punctuation.definition.tag.begin.html, punctuation.definition.tag.end.html, punctuation.definition.tag.xml, punctuation.definition.template-expression, punctuation.separator.key-value.html, punctuation</string>
         <key>settings</key>
         <dict>
           <key>foreground</key>
@@ -2657,15 +2683,5 @@
         </dict>
       </dict>
     </array>
-    <key>uuid</key>
-    <string>c803c9bd-6753-43f8-b909-a545abc9a780</string>
-    <key>colorSpaceName</key>
-    <string>sRGB</string>
-    <key>semanticClass</key>
-    <string>theme.dark.gruvbox-material-flat-dark</string>
-    <key>author</key>
-    <string/>
-    <key>comment</key>
-    <string/>
   </dict>
 </plist>
