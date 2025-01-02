@@ -47,12 +47,15 @@ palette() {
   for color in {0..15}; do
     print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
   done
-  print '\n'
 }
 
-fonts() {
-  printf '%b' \
-'styles:     normal, \033[1mbold\033[22m, \033[3mitalic\033[23m, \033[3;1mbold italic\033[0m, \033[4munderline\033[24m, \e]8;;http://archlinux.org\e\\link\e]8;;\e\\
+features() {
+  printf 'colors:     '
+  palette
+  printf '%b' '
+styles:     normal, \e[1mbold\e[0m, \e[3mitalic\e[0m, \e[3;1mbold italic\e[0m
+underlines: \e[4:1mstraight\e[0m, \e[4:2mdouble\e[0m, \e[4:3mcurly\e[0m, \e[4:4mdotted\e[0m, \e[4:5mdashed\e[0m
+links:      \e]8;;http://archlinux.org\e\\link\e]8;;\e\\
 ligatures:  == != === !== >= <= => ->
 nerd fonts:               
 emoji:      🙁 😐 🙂 👍 👎
