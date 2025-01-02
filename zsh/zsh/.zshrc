@@ -398,8 +398,8 @@ my-yazi-cd() {
   my-cd $temp_file
 }
 zle -N my-yazi-cd
-my-bindkey '\el' my-yazi-cd viins vicmd
-my-bindkey '\ey' my-yazi-cd viins vicmd
+my-bindkey '\el' my-yazi-cd
+my-bindkey '\ey' my-yazi-cd
 
 # dir colors
 
@@ -510,7 +510,7 @@ my-git-checkout-branch() {
   zle vi-insert
 }
 zle -N my-git-checkout-branch
-my-bindkey '\ebranch' my-git-checkout-branch viins vicmd
+my-bindkey '\ebranch' my-git-checkout-branch
 
 my-git-commit() {
   BUFFER="git commit -m ' [sc-]'"
@@ -520,7 +520,7 @@ my-git-commit() {
   zle vi-insert
 }
 zle -N my-git-commit
-my-bindkey '\ecommit' my-git-commit viins vicmd
+my-bindkey '\ecommit' my-git-commit
 
 # gnupg
 
