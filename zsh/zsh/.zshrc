@@ -47,18 +47,17 @@ palette() {
   for color in {0..15}; do
     print -Pn "%K{$color}  %k%F{$color}${(l:2::0:)color}%f "
   done
+  echo # remove trailing %
 }
 
-features() {
-  printf 'colors:     '
-  palette
-  printf '%b' '
-styles:     normal, \e[1mbold\e[0m, \e[3mitalic\e[0m, \e[3;1mbold italic\e[0m
-underlines: \e[4:1mstraight\e[0m, \e[4:2mdouble\e[0m, \e[4:3mcurly\e[0m, \e[4:4mdotted\e[0m, \e[4:5mdashed\e[0m
-links:      \e]8;;http://archlinux.org\e\\link\e]8;;\e\\
-ligatures:  == != === !== >= <= => ->
-nerd fonts:               
-emoji:      🙁 😐 🙂 👍 👎
+fonts() {
+  printf '%b' 'normal \e[1mbold\e[0m \e[3mitalic\e[0m \e[3;1mbold-italic\e[0m
+\e[4:1mstraight\e[0m \e[4:2mdouble\e[0m \e[4:3mcurly\e[0m \e[4:4mdotted\e[0m \e[4:5mdashed\e[0m
+\e[5mblink\e[0m \e[7mreverse\e[0m \e[9mstrikethrough\e[0m
+\e]8;;http://archlinux.org\e\\link\e]8;;\e\\
+== != === !== >= <= => ->
+              
+🙁 😐 🙂 👍 👎
 '
 }
 
