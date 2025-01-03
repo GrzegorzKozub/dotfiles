@@ -170,7 +170,6 @@ FILE=$XDG_CONFIG_HOME/yazi/package.toml
 [[ -f $FILE ]] && rm -f $FILE
 
 for PLUGIN in \
-  GrzegorzKozub/mdcat \
   KKV9/compress \
   yazi-rs/plugins:git \
   yazi-rs/plugins:jump-to-char
