@@ -94,7 +94,6 @@
 [credential "http://tfs"]
   username = grkoz_adm
 [delta]
-  # minus & plus use DiffDelete & DiffAdd highlight colors from neovim
   blame-code-style = syntax
   blame-format = {commit:<8} {author:<8.8} {timestamp:<8.8}
   blame-palette = normal
@@ -126,12 +125,12 @@
   merge-conflict-ours-diff-header-style = green
   merge-conflict-theirs-diff-header-decoration-style = ""
   merge-conflict-theirs-diff-header-style = blue
-  minus-emph-style = syntax red
-  minus-non-emph-style = syntax "#472322"
-  minus-style = syntax "#472322"
-  plus-emph-style = syntax green
-  plus-non-emph-style = syntax "#3d4220"
-  plus-style = syntax "#3d4220"
+  minus-emph-style = syntax "#7A4541"
+  minus-non-emph-style = syntax "#533A37"
+  minus-style = syntax "#533A37"
+  plus-emph-style = syntax "#636942"
+  plus-non-emph-style = syntax "#494B38"
+  plus-style = syntax "#494B38"
   # side-by-side = true
   syntax-theme = gruvbox-material-dark
   tabs = 2
