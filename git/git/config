@@ -118,7 +118,7 @@
   line-numbers-plus-style = green
   line-numbers-right-format = "{np:>3} "
   line-numbers-zero-style = brightblack
-  map-styles = red italic => syntax "#ffff00", green italic => syntax "#0000ff", bright-red italic => syntax "#ff00ff", bright-green italic => syntax "#00ffff"
+  map-styles = red italic => syntax "#554833", green italic => syntax "#3F4946", bright-red italic => syntax "#7E6338", bright-green italic => syntax "#4F655F"
   max-line-length = 256
   merge-conflict-begin-symbol = ""
   merge-conflict-end-symbol = ""
