@@ -549,6 +549,7 @@ export EDITOR='nvim'
 export DIFFPROG='nvim -d'
 export VISUAL='nvim'
 
+alias v='nvim'
 alias vim='nvim'
 
 # node
