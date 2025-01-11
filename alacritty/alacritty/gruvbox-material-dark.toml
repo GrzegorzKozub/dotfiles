@@ -11,7 +11,7 @@ cursor = "#928374" # grey1
 text = "#32302f" # bg0
 
 [colors.selection]
-background = "#504945" # bg5
+background = "#504945" # bg3
 foreground = "CellForeground"
 
 [colors.normal]
