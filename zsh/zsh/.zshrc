@@ -28,7 +28,7 @@ zinit ice depth=1 && zinit light romkatv/zsh-defer
 
 # theme
 
-source $XDG_CONFIG_HOME/zsh/gruvbox-material.zsh
+source $XDG_CONFIG_HOME/zsh/gruvbox-material-dark.zsh
 
 # functions
 
@@ -409,7 +409,7 @@ eval $(dircolors -b $XDG_CONFIG_HOME/zsh/dir_colors)
 # syntax highlighting
 
 # using zinit's wait ice instead of zsh-defer causes delays when typing zinit command
-zsh-defer zinit ice lucid depth=1 atload"fast-theme XDG:gruvbox-material --quiet"
+zsh-defer zinit ice lucid depth=1 atload"fast-theme XDG:gruvbox-material-dark --quiet"
 zsh-defer zinit light zdharma-continuum/fast-syntax-highlighting
 
 # autosuggestions
