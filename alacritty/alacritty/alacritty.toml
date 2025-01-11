@@ -1,3 +1,4 @@
+[general]
 import = ["~/.config/alacritty/gruvbox-material-dark.toml"]
 
 [env]
@@ -36,9 +37,6 @@ size = 12
   [font.normal]
   family = "Cascadia Code NF"
   style = "Regular"
-
-[colors]
-transparent_background_colors = true
 
 [cursor]
 unfocused_hollow = false
