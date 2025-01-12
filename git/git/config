@@ -82,7 +82,7 @@
   editor = nvim
   fscache = true
   fsmonitor = true
-  # pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub
+  # pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DEr -DPw -DSkY -Ddy -Dsm -Dub
   pager = delta
   symlinks = false
   untrackedCache = true

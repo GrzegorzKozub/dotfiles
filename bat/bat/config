@@ -1,5 +1,5 @@
 --italic-text=always
---pager='less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DPw -DSkY -Ddy -Dsm -Dub'
+--pager='less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DEr -DPw -DSkY -Ddy -Dsm -Dub'
 --style=plain
 --tabs=2
 --theme=gruvbox-material-dark
