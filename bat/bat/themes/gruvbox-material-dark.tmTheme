@@ -5,7 +5,7 @@
     <key>author</key>
     <string>greg</string>
     <key>uuid</key>
-    <string>774ad927-45b0-4286-8234-bad6f2404ff3</string>
+    <string>9263d8c0-3462-4a4b-9148-eca557c53e1e</string>
     <key>name</key>
     <string>Gruvbox Material Dark</string>
     <key>semanticClass</key>
@@ -64,6 +64,39 @@
         <dict>
           <key>foreground</key>
           <string>#a9b665</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>man headings</string>
+        <key>scope</key>
+        <string>markup.heading.commands.man, markup.heading.env.man, markup.heading.other.man, markup.heading.synopsis.man</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#d8a657</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>man command line options</string>
+        <key>scope</key>
+        <string>entity.name.command-line-option.man</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#a9b665</string>
+        </dict>
+      </dict>
+      <dict>
+        <key>name</key>
+        <string>man parameters</string>
+        <key>scope</key>
+        <string>variable.parameter.man</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#ea6962</string>
         </dict>
       </dict>
       <dict>
