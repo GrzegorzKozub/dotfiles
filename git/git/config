@@ -1,11 +1,17 @@
 [alias]
-  blm = blame --color-by-age
-  grp = "!f() { git log -G \"$@\" -p; }; f"
-  ll = log --graph --abbrev-commit --format=format:'%C(yellow)%h %C(cyan)%an %C(white)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
-  lla = ll --all
+  # log
   ls = log --graph --abbrev-commit --date=relative --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(white)%ar %C(auto)%D%C(reset)'
   lsa = ls --all
+  ll = log --graph --abbrev-commit --format=format:'%C(yellow)%h %C(cyan)%an %C(white)%aD %C(auto)%D%n%C(auto)%B%C(reset)'
+  lla = ll --all
+  # tags
   lt = describe --abbrev=0 --tags
+  # github
+  url = "!f() { echo \"https://github.com/$(git config --get remote.origin.url | cut -f2 -d':' | cut -f1 -d'.')\"; }; f"
+  hub = "!f() { xdg-open $(git url) > /dev/null; }; f"
+  pr = "!f() { xdg-open $(git url)/pull/new/$(git branch --show-current) > /dev/null; }; f"
+  # grep
+  grp = "!f() { git log -G \"$@\" -p; }; f"
 [color]
   advice = auto
   branch = auto
