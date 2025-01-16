@@ -374,7 +374,7 @@ zsh-defer bindkey -r '^[^[[A' # esc+down
 
 my-dir() { cd $1; zle my-redraw-prompt }
 
-my-home() { my-dir ~/code }; zle -N my-home; my-bindkey '^gh' my-home
+my-home() { my-dir ~ }; zle -N my-home; my-bindkey '^gh' my-home
 my-code() { my-dir ~/code }; zle -N my-code; my-bindkey '^gc' my-code
 my-downloads() { my-dir ~/Downloads }; zle -N my-downloads; my-bindkey '^gd' my-downloads
 my-mount() { my-dir /run/media/$USER }; zle -N my-mount; my-bindkey '^gm' my-mount
@@ -507,22 +507,18 @@ rdp() {
 # git
 
 my-git-checkout-branch() {
-  BUFFER='git checkout -b sc-'
-  zle vi-end-of-line
-  zle vi-insert
+  BUFFER='git checkout -b '
+  zle vi-end-of-line && zle vi-insert
 }
 zle -N my-git-checkout-branch
-my-bindkey '\ebranch' my-git-checkout-branch
+my-bindkey '\egb' my-git-checkout-branch
 
 my-git-commit() {
-  BUFFER="git commit -m ' [sc-]'"
-  zle vi-end-of-line
-  for i in $(seq 2); do zle vi-backward-word; done
-  for i in $(seq 2); do zle vi-backward-char; done
-  zle vi-insert
+  BUFFER="git commit -m ''"
+  zle vi-end-of-line && zle vi-backward-char && zle vi-insert
 }
 zle -N my-git-commit
-my-bindkey '\ecommit' my-git-commit
+my-bindkey '\egc' my-git-commit
 
 # gnupg
 
