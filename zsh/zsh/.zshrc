@@ -370,15 +370,6 @@ zsh-defer bindkey -r '^[^[[C' # esc+right
 zsh-defer bindkey -r '^[^[[B' # esc+up
 zsh-defer bindkey -r '^[^[[A' # esc+down
 
-# dir shortcuts
-
-my-dir() { cd $1; zle my-redraw-prompt }
-
-my-home() { my-dir ~ }; zle -N my-home; my-bindkey '^gh' my-home
-my-code() { my-dir ~/code }; zle -N my-code; my-bindkey '^gc' my-code
-my-downloads() { my-dir ~/Downloads }; zle -N my-downloads; my-bindkey '^gd' my-downloads
-my-mount() { my-dir /run/media/$USER }; zle -N my-mount; my-bindkey '^gm' my-mount
-
 # yazi
 
 my-cd() {
