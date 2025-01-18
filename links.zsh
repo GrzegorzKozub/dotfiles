@@ -8,7 +8,6 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   bat \
   btop \
   cava \
-  dust \
   fsh \
   git \
   keepass \
@@ -29,7 +28,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   zellij \
   zsh
 
-  # alacritty flameshot foot gdu iex
+  # alacritty dust flameshot foot gdu iex
 
 # if [[ $HOST = 'player' ]]; then
 #
