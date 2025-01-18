@@ -84,6 +84,8 @@ procs() {
 
 # vi mode
 
+bindkey -v # enable vi mode
+
 my-bindkey '^[[1;5D' backward-word # ctrl+left
 my-bindkey '^[[1;5C' forward-word # ctrl+right
 
