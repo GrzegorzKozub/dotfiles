@@ -491,12 +491,6 @@ export FORGIT_FZF_DEFAULT_OPTS="
 zsh-defer zinit ice lucid depth=1
 zsh-defer zinit light wfxr/forgit
 
-# freerdp
-
-rdp() {
-  xfreerdp $1 /size:1920x1080 /dynamic-resolution /cert-ignore /drive:/home/$USER/Downloads
-}
-
 # git
 
 my-git-checkout-branch() {
