@@ -391,7 +391,7 @@ my-yazi-cd() {
 }
 zle -N my-yazi-cd
 my-bindkey '\el' my-yazi-cd
-my-bindkey '\ey' my-yazi-cd
+my-bindkey '^y' my-yazi-cd
 
 # dir colors
 
@@ -494,14 +494,14 @@ my-git-checkout-branch() {
   zle vi-end-of-line && zle vi-insert
 }
 zle -N my-git-checkout-branch
-my-bindkey '\egb' my-git-checkout-branch
+my-bindkey '^gb' my-git-checkout-branch
 
 my-git-commit() {
   BUFFER="git commit -m ''"
   zle vi-end-of-line && zle vi-backward-char && zle vi-insert
 }
 zle -N my-git-commit
-my-bindkey '\egc' my-git-commit
+my-bindkey '^gc' my-git-commit
 
 # gnupg
 
