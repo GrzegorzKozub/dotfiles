@@ -596,11 +596,17 @@ fi
 
 # vscode
 
+alias c='code 2> /dev/null'
 alias code='code 2> /dev/null'
 
 # wget
 
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+
+# zed
+
+alias z='zeditor'
+alias zed='zeditor'
 
 # zoxide
 
