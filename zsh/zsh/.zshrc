@@ -436,6 +436,7 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 # docker
 
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock # rootless
 
 # dotnet
 
