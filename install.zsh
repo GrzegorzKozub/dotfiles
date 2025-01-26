@@ -97,13 +97,9 @@ npm install --global \
 
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 
-# https://github.com/nabijaczleweli/cargo-update/issues/243
-cargo install \
-  cargo-update \
-  --force --features vendored-libgit2 --features vendored-openssl
-
-cargo install \
-  jwt-cli
+cargo install cargo-update
+  # --force --features vendored-libgit2 --features vendored-openssl
+  # https://github.com/nabijaczleweli/cargo-update/issues/243
 
 # neovim
 
