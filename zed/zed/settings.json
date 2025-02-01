@@ -37,7 +37,6 @@
     "gopls": {
       "initialization_options": {
         "analyses": {
-          "fieldalignment": true,
           "shadow": true,
           "unusedvariable": true,
           "unusedwrite": true,
