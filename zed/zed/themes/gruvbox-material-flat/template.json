@@ -1,9 +1,9 @@
 {
-  "name": "Gruvbox Material Soft",
+  "name": "Gruvbox Material Flat",
   "author": "greg",
   "themes": [
     {
-      "name": "Gruvbox Material Soft Dark",
+      "name": "Gruvbox Material Flat Dark",
       "appearance": "dark",
       "style": {
         "border": "{{bg}}",

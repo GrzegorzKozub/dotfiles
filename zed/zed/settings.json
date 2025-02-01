@@ -1,13 +1,6 @@
 {
-  "assistant": {
-    "default_height": 256,
-    "default_model": {
-      "model": "claude-3-5-sonnet-latest",
-      "provider": "zed.dev"
-    },
-    "default_width": 512,
-    "version": "2"
-  },
+  "active_pane_modifiers": { "inactive_opacity": 0.7 },
+  "assistant": { "default_height": 256, "default_width": 512, "version": "2" },
   "auto_install_extensions": {
     "docker-compose": true,
     "dockerfile": true,
@@ -22,9 +15,13 @@
   "buffer_font_size": 16,
   "chat_panel": { "default_width": 256 },
   "collaboration_panel": { "default_width": 256 },
+  "current_line_highlight": "line",
   "cursor_blink": false,
+  "file_finder": { "modal_max_width": "medium" },
   "git": { "inline_blame": { "enabled": false } },
+  "git_panel": { "default_width": 256 },
   "indent_guides": { "enabled": false },
+  "journal": { "hour_format": "hour24" },
   "jupyter": { "enabled": false },
   "languages": {
     "JavaScript": {
@@ -37,9 +34,6 @@
     }
   },
   "lsp": {
-    "elixirls": {
-      "settings": { "dialyzerEnabled": false, "fetchDeps": false }
-    },
     "gopls": {
       "initialization_options": {
         "analyses": {
@@ -115,16 +109,17 @@
   "show_whitespaces": "none",
   "tab_bar": { "show_nav_history_buttons": false },
   "tab_size": 2,
-  "tabs": { "file_icons": true, "git_status": true },
+  "tabs": { "file_icons": true, "git_status": true, "show_diagnostics": "all" },
   "telemetry": { "diagnostics": false, "metrics": false },
   "terminal": {
+    "copy_on_select": true,
     "default_height": 256,
     "default_width": 512,
     "line_height": "standard"
   },
   "theme": {
-    "dark": "Gruvbox Material Soft Dark",
-    "light": "Gruvbox Material Soft Dark",
+    "dark": "Gruvbox Material Flat Dark",
+    "light": "Gruvbox Material Flat Dark",
     "mode": "system"
   },
   "ui_font_size": 16,

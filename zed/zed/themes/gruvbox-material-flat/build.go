@@ -27,7 +27,7 @@ func main() {
 	for k, v := range colors {
 		theme = strings.ReplaceAll(theme, fmt.Sprintf("{{%s}}", k), v)
 	}
-	if err := os.WriteFile("../gruvbox-material.json", []byte(theme), 0644); err != nil {
+	if err := os.WriteFile("../gruvbox-material-flat.json", []byte(theme), 0644); err != nil {
 		panic(err)
 	}
 }

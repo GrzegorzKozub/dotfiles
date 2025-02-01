@@ -1,9 +1,9 @@
 {
-  "name": "Gruvbox Material Soft",
+  "name": "Gruvbox Material Flat",
   "author": "greg",
   "themes": [
     {
-      "name": "Gruvbox Material Soft Dark",
+      "name": "Gruvbox Material Flat Dark",
       "appearance": "dark",
       "style": {
         "border": "#32302f",
@@ -84,8 +84,8 @@
         "editor.active_wrap_guide": "#ea6962",
         "editor.indent_guide": "#3c3836",
         "editor.indent_guide_active": "#45403d",
-        "editor.document_highlight.read_background": "#45403d",
-        "editor.document_highlight.write_background": "#45403d",
+        "editor.document_highlight.read_background": "#403c3a",
+        "editor.document_highlight.write_background": "#504945",
         "editor.document_highlight.bracket_background": "#5a524c",
 
         "terminal.background": "#32302f",
@@ -145,7 +145,7 @@
         "hint.background": "#3c3836",
         "hint.border": "#32302f",
 
-        "ignored": "#5a524c",
+        "ignored": "#7c6f64",
         "ignored.background": "#3c3836",
         "ignored.border": "#32302f",
 
@@ -179,7 +179,7 @@
 
         "players": [
           {
-            "cursor": "#928374",
+            "cursor": "#a89984",
             "background": "#ea6962",
             "selection": "#5a524c"
           }
