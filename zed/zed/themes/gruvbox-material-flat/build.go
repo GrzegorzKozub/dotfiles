@@ -1,33 +1,43 @@
-// https://github.com/zed-industries/zed/blob/main/crates/theme/src/schema.rs
-// https://github.com/sainnhe/gruvbox-material-vscode
-
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"os"
 	"strings"
+
+	"github.com/tidwall/gjson"
 )
 
+func read(path string) string {
+	file, err := os.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+	return string(file)
+}
+
+func parse(path string) gjson.Result {
+	return gjson.Parse(read(path))
+}
+
+func build(variant string) {
+	theme := read("./template.json")
+	palette := parse("./" + variant + ".jsonc")
+	palette.ForEach(func(key, value gjson.Result) bool {
+		theme = strings.ReplaceAll(theme, "{{"+key.Str+"}}", value.Str)
+		return true
+	})
+	theme = gjson.Get(theme, "@pretty").Raw
+	if err := os.WriteFile(
+		"../gruvbox-material-flat.json",
+		[]byte(theme),
+		0644,
+	); err != nil {
+		panic(err)
+	}
+}
+
 func main() {
-	templateFile, err := os.ReadFile("./template.json")
-	if err != nil {
-		panic(err)
-	}
-	theme := string(templateFile)
-	colorsFile, err := os.ReadFile("./colors.json")
-	if err != nil {
-		panic(err)
-	}
-	colors := make(map[string]string)
-	if err := json.Unmarshal(colorsFile, &colors); err != nil {
-		panic(err)
-	}
-	for k, v := range colors {
-		theme = strings.ReplaceAll(theme, fmt.Sprintf("{{%s}}", k), v)
-	}
-	if err := os.WriteFile("../gruvbox-material-flat.json", []byte(theme), 0644); err != nil {
-		panic(err)
+	for _, variant := range [1]string{"dark"} {
+		build(variant)
 	}
 }
