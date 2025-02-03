@@ -7,6 +7,16 @@
       "name": "Gruvbox Material Flat Dark",
       "appearance": "dark",
       "style": {
+        "background.appearance": null,
+        "accents": [
+          "{{dimRed}}",
+          "{{dimGreen}}",
+          "{{dimYellow}}",
+          "{{dimBlue}}",
+          "{{dimPurple}}",
+          "{{dimAqua}}",
+          "{{dimOrange}}"
+        ],
         "border": "{{bg}}",
         "border.variant": null,
         "border.focused": "{{bg}}",
@@ -47,8 +57,10 @@
         "search.match_background": "{{dimOrange}}80",
         "panel.background": "{{bg}}",
         "panel.focused_border": "{{bg4}}",
+        "pane_group.border": "{{flag}}",
         "panel.indent_guide": "{{bg2}}",
         "panel.indent_guide_hover": "{{bg4}}",
+        "panel.indent_guide_active": "{{bg4}}",
         "pane.focused_border": "{{flag}}",
         "pane.group_border": "{{flag}}",
         "scrollbar.thumb.background": "{{bg4}}c0",
@@ -61,10 +73,10 @@
         "editor.gutter.background": "{{bg}}",
         "editor.subheader.background": "{{bg}}",
         "editor.active_line.background": "{{bg2}}",
-        "editor.highlighted_line.background": "{{dimOrange}}20",
+        "editor.highlighted_line.background": "{{flag}}",
         "editor.line_number": "{{bg4}}",
         "editor.active_line_number": "{{bg6}}",
-        "editor.hover_line_number": "{{flag}}",
+        "editor.hover_line_number": "{{grey0}}",
         "editor.invisible": "{{bg6}}",
         "editor.wrap_guide": "{{bg2}}",
         "editor.active_wrap_guide": "{{flag}}",
@@ -114,68 +126,53 @@
         "version_control.conflict": "{{flag}}",
         "version_control.conflict_background": "{{flag}}",
         "version_control.ignored": "{{flag}}",
-
         "conflict": "{{dimYellow}}",
-        "conflict.background": "{{bg2}}",
-        "conflict.border": "{{bg}}",
-
+        "conflict.background": "{{flag}}",
+        "conflict.border": "{{flag}}",
         "created": "{{dimGreen}}",
-        "created.background": "{{bg2}}",
-        "created.border": "{{bg}}",
-
+        "created.background": "{{flag}}",
+        "created.border": "{{flag}}",
         "deleted": "{{dimRed}}",
-        "deleted.background": "{{bg2}}",
-        "deleted.border": "{{bg}}",
-
+        "deleted.background": "{{flag}}",
+        "deleted.border": "{{flag}}",
         "error": "{{dimRed}}",
-        "error.background": "{{bg2}}",
-        "error.border": "{{bg}}",
-
-        "hidden": "{{bg6}}",
-        "hidden.background": "{{bg2}}",
-        "hidden.border": "{{bg}}",
-
+        "error.background": "{{flag}}",
+        "error.border": "{{flag}}",
+        "hidden": "{{grey0}}",
+        "hidden.background": "{{flag}}",
+        "hidden.border": "{{flag}}",
         "hint": "{{dimGreen}}",
-        "hint.background": "{{bg2}}",
-        "hint.border": "{{bg}}",
-
+        "hint.background": "{{flag}}",
+        "hint.border": "{{flag}}",
         "ignored": "{{grey0}}",
-        "ignored.background": "{{bg2}}",
-        "ignored.border": "{{bg}}",
-
+        "ignored.background": "{{flag}}",
+        "ignored.border": "{{flag}}",
         "info": "{{dimBlue}}",
-        "info.background": "{{bg6}}",
-        "info.border": "{{bg}}",
-
+        "info.background": "{{flag}}",
+        "info.border": "{{flag}}",
         "modified": "{{dimBlue}}",
-        "modified.background": "{{bg2}}",
-        "modified.border": "{{bg}}",
-
-        "predictive": "{{grey0}}",
-        "predictive.background": "{{bg2}}",
-        "predictive.border": "{{bg}}",
-
+        "modified.background": "{{flag}}",
+        "modified.border": "{{flag}}",
+        "predictive": "{{grey2}}",
+        "predictive.background": "{{flag}}",
+        "predictive.border": "{{flag}}",
         "renamed": "{{dimYellow}}",
-        "renamed.background": "{{bg2}}",
-        "renamed.border": "{{bg}}",
-
+        "renamed.background": "{{flag}}",
+        "renamed.border": "{{flag}}",
         "success": "{{dimGreen}}",
-        "success.background": "{{bg2}}",
-        "success.border": "{{bg}}",
-
-        "unreachable": "{{bg6}}",
-        "unreachable.background": "{{bg2}}",
-        "unreachable.border": "{{bg}}",
-
+        "success.background": "{{flag}}",
+        "success.border": "{{flag}}",
+        "unreachable": "{{unset}}80",
+        "unreachable.background": "{{flag}}",
+        "unreachable.border": "{{flag}}",
         "warning": "{{dimYellow}}",
-        "warning.background": "{{bg2}}",
-        "warning.border": "{{bg}}",
-
+        "warning.background": "{{flag}}",
+        "warning.border": "{{flag}}",
         "players": [
           {
             "cursor": "{{grey2}}",
-            "background": "{{red}}",
-            "selection": "{{bg6}}"
+            "background": "{{flag}}",
+            "selection": "{{grey0}}80"
           }
         ],
 
@@ -216,13 +213,13 @@
             "font_weight": null
           },
           "emphasis": {
-            "color": "{{fg}}",
-            "font_style": "underline",
+            "color": "{{flag}}",
+            "font_style": null,
             "font_weight": null
           },
           "emphasis.strong": {
-            "color": "{{fg}}",
-            "font_style": "underline",
+            "color": "{{flag}}",
+            "font_style": null,
             "font_weight": 600
           },
           "enum": {
