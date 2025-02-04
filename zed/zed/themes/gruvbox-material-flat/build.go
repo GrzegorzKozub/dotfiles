@@ -1,5 +1,3 @@
-// https://github.com/zed-industries/zed/blob/main/crates/theme/src/schema.rs
-
 package main
 
 import (
