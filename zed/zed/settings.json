@@ -1,6 +1,14 @@
 {
   "active_pane_modifiers": { "inactive_opacity": 0.7 },
-  "assistant": { "default_height": 256, "default_width": 512, "version": "2" },
+  "assistant": {
+    "default_height": 256,
+    "default_model": {
+      "model": "claude-3-5-sonnet-latest",
+      "provider": "zed.dev"
+    },
+    "default_width": 512,
+    "version": "2"
+  },
   "auto_install_extensions": {
     "docker-compose": true,
     "dockerfile": true,
