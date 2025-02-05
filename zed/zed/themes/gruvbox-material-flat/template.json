@@ -57,7 +57,7 @@
         "search.match_background": "{{dimOrange}}80",
         "panel.background": "{{bg}}",
         "panel.focused_border": "{{bg4}}",
-        "pane_group.border": "{{flag}}",
+        "pane_group.border": null,
         "panel.indent_guide": "{{bg2}}",
         "panel.indent_guide_hover": "{{bg4}}",
         "panel.indent_guide_active": "{{bg4}}",
