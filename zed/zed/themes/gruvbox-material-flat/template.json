@@ -212,12 +212,12 @@
             "font_weight": null
           },
           "emphasis": {
-            "color": "{{flag}}",
-            "font_style": null,
+            "color": "{{fg}}",
+            "font_style": "italic",
             "font_weight": null
           },
           "emphasis.strong": {
-            "color": "{{flag}}",
+            "color": "{{fg}}",
             "font_style": null,
             "font_weight": 600
           },
@@ -347,14 +347,14 @@
             "font_weight": null
           },
           "text.literal": {
-            "color": "{{flag}}",
+            "color": "{{green}}",
             "font_style": null,
             "font_weight": null
           },
           "title": {
-            "color": "{{flag}}",
+            "color": "{{red}}",
             "font_style": null,
-            "font_weight": null
+            "font_weight": 600
           },
           "type": {
             "color": "{{blue}}",
