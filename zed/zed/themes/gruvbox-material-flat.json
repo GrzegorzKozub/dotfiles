@@ -142,8 +142,8 @@
         "hidden.background": "#ff0000",
         "hidden.border": "#ff0000",
         "hint": "#8f9a52",
-        "hint.background": "#ff0000",
-        "hint.border": "#ff0000",
+        "hint.background": "#8f9a5240",
+        "hint.border": "#8f9a52",
         "ignored": "#5a524c",
         "ignored.background": "#ff0000",
         "ignored.border": "#ff0000",
@@ -166,8 +166,8 @@
         "unreachable.background": "#ff0000",
         "unreachable.border": "#ff0000",
         "warning": "#c18f41",
-        "warning.background": "#ff0000",
-        "warning.border": "#ff0000",
+        "warning.background": "#c18f4140",
+        "warning.border": "#c18f41",
         "players": [
           {
             "cursor": "#a89984",

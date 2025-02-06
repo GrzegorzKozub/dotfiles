@@ -142,8 +142,8 @@
         "hidden.background": "{{flag}}",
         "hidden.border": "{{flag}}",
         "hint": "{{dimGreen}}",
-        "hint.background": "{{flag}}",
-        "hint.border": "{{flag}}",
+        "hint.background": "{{dimGreen}}40",
+        "hint.border": "{{dimGreen}}",
         "ignored": "{{bg6}}",
         "ignored.background": "{{flag}}",
         "ignored.border": "{{flag}}",
@@ -166,8 +166,8 @@
         "unreachable.background": "{{flag}}",
         "unreachable.border": "{{flag}}",
         "warning": "{{dimYellow}}",
-        "warning.background": "{{flag}}",
-        "warning.border": "{{flag}}",
+        "warning.background": "{{dimYellow}}40",
+        "warning.border": "{{dimYellow}}",
         "players": [
           {
             "cursor": "{{grey2}}",
