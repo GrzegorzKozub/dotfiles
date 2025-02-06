@@ -18,7 +18,7 @@
           "#bd6f3e"
         ],
         "border": "#32302f",
-        "border.variant": null,
+        "border.variant": "#3c3836",
         "border.focused": "#32302f",
         "border.selected": null,
         "border.transparent": null,
@@ -394,7 +394,7 @@
           "#bd6f3e"
         ],
         "border": "#f2e5bc",
-        "border.variant": null,
+        "border.variant": "#ebdbb2",
         "border.focused": "#f2e5bc",
         "border.selected": null,
         "border.transparent": null,

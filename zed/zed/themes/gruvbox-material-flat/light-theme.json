@@ -13,7 +13,7 @@
       "{{dimOrange}}"
     ],
     "border": "{{bg}}",
-    "border.variant": null,
+    "border.variant": "{{bg2}}",
     "border.focused": "{{bg}}",
     "border.selected": null,
     "border.transparent": null,
