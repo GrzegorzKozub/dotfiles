@@ -30,7 +30,7 @@ func set(target string, prop string, source string) string {
 
 func build() {
 	theme := read("./theme.json")
-	for _, variant := range [1]string{"dark"} {
+	for _, variant := range [2]string{"dark", "light"} {
 		colors := read("./" + variant + "-theme.json")
 		palette := parse("./" + variant + "-palette.jsonc")
 		palette.ForEach(func(key, value gjson.Result) bool {
