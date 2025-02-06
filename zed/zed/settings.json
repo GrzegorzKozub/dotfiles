@@ -121,8 +121,8 @@
   },
   "theme": {
     "dark": "Gruvbox Material Flat Dark",
-    "light": "Gruvbox Material Flat Dark",
-    "mode": "system"
+    "light": "Gruvbox Material Flat Light",
+    "mode": "dark"
   },
   "ui_font_size": 16,
   "vertical_scroll_margin": 2,
