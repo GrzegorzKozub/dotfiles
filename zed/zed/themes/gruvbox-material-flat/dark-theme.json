@@ -202,7 +202,7 @@
         "font_weight": null
       },
       "embedded": {
-        "color": "{{flag}}",
+        "color": "{{grey2}}",
         "font_style": null,
         "font_weight": null
       },
