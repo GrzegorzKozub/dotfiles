@@ -92,7 +92,7 @@
   fsmonitor = true
   # pager = less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DEr -DPw -DSkY -Ddy -Dsm -Dub
   pager = delta
-  symlinks = false
+  symlinks = true
   untrackedCache = true
   whitespace = blank-at-eol,tab-in-indent
 [credential]
