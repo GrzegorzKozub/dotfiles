@@ -167,8 +167,7 @@ FILE=$XDG_CONFIG_HOME/yazi/package.toml
 
 for PLUGIN in \
   KKV9/compress \
-  yazi-rs/plugins:git \
-  yazi-rs/plugins:jump-to-char
+  yazi-rs/plugins:git
 do
   ya pack --add "$PLUGIN"
 done
