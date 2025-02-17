@@ -107,7 +107,7 @@
     "indent_size": 8
   },
   "restore_on_startup": "none",
-  "show_inline_completions": false,
+  "show_edit_predictions": false,
   "show_whitespaces": "none",
   "tab_bar": { "show_nav_history_buttons": false },
   "tab_size": 2,
