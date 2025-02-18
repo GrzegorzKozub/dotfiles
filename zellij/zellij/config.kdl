@@ -1,3 +1,7 @@
+// https://github.com/zellij-org/zellij/pull/4002
+// https://zellij.dev/documentation/keybinding-presets
+
+default_mode "locked"
 default_layout "my"
 pane_frames false
 theme "gruvbox-material-dark"
@@ -5,6 +9,15 @@ ui {
   pane_frames {
     hide_session_name true
     rounded_corners true
+  }
+}
+keybinds {
+  // unbind "Ctrl p"
+  locked {
+    bind "Ctrl x" { SwitchToMode "normal"; }
+  }
+  normal {
+    // bind "Ctrl x" { SwitchToMode "pane"; }
   }
 }
 

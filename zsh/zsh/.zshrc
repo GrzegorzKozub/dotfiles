@@ -637,4 +637,5 @@ fi
 
 # zellij
 
-# [[ $TERM_PROGRAM = 'vscode' ]] || [[ ! -z $ZELLIJ ]] || zellij attach -c || zellij
+# [[ $TERM_PROGRAM =~ 'vscode|zed' ]] || [[ ! -z $ZELLIJ ]] || zellij attach -c || zellij
+
