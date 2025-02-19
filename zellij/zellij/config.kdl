@@ -1,16 +1,7 @@
 // https://github.com/zellij-org/zellij/pull/4002
-// https://zellij.dev/documentation/keybinding-presets
+// https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
+// https://github.com/dj95/zjstatus/
 
-default_mode "locked"
-default_layout "my"
-pane_frames false
-theme "gruvbox-material-dark"
-ui {
-  pane_frames {
-    hide_session_name true
-    rounded_corners true
-  }
-}
 keybinds {
   // unbind "Ctrl p"
   locked {
@@ -18,6 +9,26 @@ keybinds {
   }
   normal {
     // bind "Ctrl x" { SwitchToMode "pane"; }
+  }
+    shared_except "locked" {
+      bind "Ctrl x" { SwitchToMode "Locked"; }
+  }
+  pane {
+    bind "n" { NewPane; SwitchToMode "Locked"; }
+  }
+}
+
+default_layout "my"
+default_mode "locked"
+pane_frames false
+show_release_notes false
+show_startup_tips false
+simplified_ui true
+theme "gruvbox-material-dark"
+ui {
+  pane_frames {
+    hide_session_name true
+    rounded_corners true
   }
 }
 
