@@ -2,20 +2,34 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 // https://github.com/dj95/zjstatus/
 
-keybinds {
-  // unbind "Ctrl p"
-  locked {
-    bind "Ctrl x" { SwitchToMode "normal"; }
-  }
+keybinds clear-defaults=false {
+  unbind "Ctrl q"
+    locked {
+        bind "Ctrl x" { SwitchToMode "Normal"; }
+    }
   normal {
-    // bind "Ctrl x" { SwitchToMode "pane"; }
-  }
-    shared_except "locked" {
-      bind "Ctrl x" { SwitchToMode "Locked"; }
+    // unbind "Ctrl p"
+    bind "Ctrl p" { SwitchToMode "pane"; }
   }
   pane {
-    bind "n" { NewPane; SwitchToMode "Locked"; }
+    bind "h" { NewPane "Down"; SwitchToMode "Locked"; }
+    bind "v" { NewPane "Right"; SwitchToMode "Locked"; }
+
+    bind "Up" { MoveFocus "Up"; SwitchToMode "Locked"; }
+    bind "Down" { MoveFocus "Down"; SwitchToMode "Locked"; }
+    bind "Left" { MoveFocus "Left"; SwitchToMode "Locked"; }
+    bind "Right" { MoveFocus "Right"; SwitchToMode "Locked"; }
+
+    bind "Shift Left" { MovePane "Left"; }
+    bind "Shift Down" { MovePane "Down"; }
+    bind "Shift Up" { MovePane "Up"; }
+    bind "Shift Right" { MovePane "Right"; }
+
+    bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
   }
+  // shared {
+  //   bind "Enter" "Esc" { SwitchToMode "Locked"; }
+  // }
 }
 
 default_layout "my"

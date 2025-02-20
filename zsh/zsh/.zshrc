@@ -637,5 +637,7 @@ fi
 
 # zellij
 
-# [[ $TERM_PROGRAM =~ 'vscode|zed' ]] || [[ ! -z $ZELLIJ ]] || zellij attach -c || zellij
+# if [[ ! $TERM_PROGRAM =~ 'vscode|zed' ]] && [[ -z $ZELLIJ ]]; then
+#   zellij attach --create
+# fi
 
