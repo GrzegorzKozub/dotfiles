@@ -3,37 +3,47 @@
 // https://github.com/dj95/zjstatus/
 
 keybinds clear-defaults=false {
-  unbind "Ctrl q"
-    locked {
-        bind "Ctrl x" { SwitchToMode "Normal"; }
-    }
-  normal {
-    // unbind "Ctrl p"
-    bind "Ctrl p" { SwitchToMode "pane"; }
-  }
-  pane {
-    bind "h" { NewPane "Down"; SwitchToMode "Locked"; }
-    bind "v" { NewPane "Right"; SwitchToMode "Locked"; }
+  unbind "Ctrl b" "Ctrl p"
 
-    bind "Up" { MoveFocus "Up"; SwitchToMode "Locked"; }
-    bind "Down" { MoveFocus "Down"; SwitchToMode "Locked"; }
-    bind "Left" { MoveFocus "Left"; SwitchToMode "Locked"; }
-    bind "Right" { MoveFocus "Right"; SwitchToMode "Locked"; }
+  pane {
+    unbind "x"
+
+    bind "Ctrl x" { SwitchToMode "Normal"; }
+
+    // bind "Ctrl Left" "Ctrl h" { Resize "Increase Left"; }
+    // bind "Ctrl Down" "Ctrl j" { Resize "Increase Down"; }
+    // bind "Ctrl Up" "Ctrl k" { Resize "Increase Up"; }
+    // bind "Ctrl Right" "Ctrl l" { Resize "Increase Right"; }
 
     bind "Shift Left" { MovePane "Left"; }
     bind "Shift Down" { MovePane "Down"; }
     bind "Shift Up" { MovePane "Up"; }
     bind "Shift Right" { MovePane "Right"; }
 
-    bind "z" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
+    bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+
+    bind "f" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
+    bind "F" { ToggleFloatingPanes; SwitchToMode "Normal"; }
   }
-  // shared {
-  //   bind "Enter" "Esc" { SwitchToMode "Locked"; }
-  // }
+
+  resize {
+    bind "Shift Left" { Resize "Decrease Left"; }
+    bind "Shift Down" { Resize "Decrease Down"; }
+    bind "Shift Up" { Resize "Decrease Up"; }
+    bind "Shift Right" { Resize "Decrease Right"; }
+  }
+
+  shared_except "normal" "locked" {
+    bind "q" { SwitchToMode "Normal"; }
+  }
+
+  shared_except "pane" "locked" {
+    bind "Ctrl x" { SwitchToMode "Pane"; }
+  }
 }
 
 default_layout "my"
-default_mode "locked"
+default_mode "normal"
 pane_frames false
 show_release_notes false
 show_startup_tips false
