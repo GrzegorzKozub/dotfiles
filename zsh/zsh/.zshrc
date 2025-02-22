@@ -367,10 +367,11 @@ zinit snippet OMZ::plugins/last-working-dir/last-working-dir.plugin.zsh
 
 zsh-defer zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
 
-zsh-defer bindkey -r '^[^[[D' # esc+left
-zsh-defer bindkey -r '^[^[[C' # esc+right
-zsh-defer bindkey -r '^[^[[B' # esc+up
-zsh-defer bindkey -r '^[^[[A' # esc+down
+zsh-defer bindkey -r '^[^[[B' # esc up
+zsh-defer bindkey -r '^[^[[A' # esc down
+
+my-bindkey '\e^[[D' dirhistory_zle_dirhistory_back # esc left
+my-bindkey '\e^[[C' dirhistory_zle_dirhistory_future # esc right
 
 # yazi
 
