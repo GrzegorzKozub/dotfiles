@@ -7,7 +7,7 @@ keybinds clear-defaults=false {
   normal {}
 
   pane {
-    bind "Ctrl x" { SwitchToMode "Normal"; }
+    bind "Ctrl x" { SwitchToMode "Normal"; } // WriteChars "^X"
 
     bind "Ctrl r" { SwitchToMode "Resize"; }
     bind "Ctrl m" { SwitchToMode "Move"; }
@@ -24,6 +24,9 @@ keybinds clear-defaults=false {
     // bind "Shift Down" { MovePane "Down"; }
     // bind "Shift Up" { MovePane "Up"; }
     // bind "Shift Right" { MovePane "Right"; }
+
+    bind "Tab" { FocusNextPane; }
+    bind "Shift Tab" { FocusPreviousPane; }
 
     bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
 
@@ -51,7 +54,7 @@ keybinds clear-defaults=false {
   }
 
   tab {
-    bind "n" { NewTab { layout "my"; }; SwitchToMode "Normal"; }
+    bind "n" "t" { NewTab { layout "my"; }; SwitchToMode "Normal"; }
 
     unbind "x"
   }
@@ -61,6 +64,8 @@ keybinds clear-defaults=false {
   entersearch {}
 
   search {
+    bind "Enter" "Esc" { ScrollToBottom; SwitchToMode "Normal"; }
+
     bind "N" { Search "up"; }
   }
 
@@ -73,25 +78,43 @@ keybinds clear-defaults=false {
     bind "Ctrl d" { HalfPageScrollDown; }
   }
 
-  // now working on session (what's the best key? we really only want detach and session manager)
-  // the shared unbindings break plugin keys
-  // what should be the best use of tab in pane mode here and tmux
-
   session {
     bind "Ctrl o" { SwitchToMode "Normal"; }
+  }
+
+  shared_except "locked" {
+    bind "Alt d" { NewPane "Down"; }
+    bind "Alt r" { NewPane "Right"; }
+
+    bind "Alt f" { TogglePaneEmbedOrFloating; }
+    bind "Alt F" { ToggleFloatingPanes; }
+
+
+        // bind "Alt i" { MoveTab "Left"; }
+        // bind "Alt o" { MoveTab "Right"; }
+        // bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
+        // bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
+        // bind "Alt j" "Alt Down" { MoveFocus "Down"; }
+        // bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+        // bind "Alt =" "Alt +" { Resize "Increase"; }
+        // bind "Alt -" { Resize "Decrease"; }
+        // bind "Alt [" { PreviousSwapLayout; }
+        // bind "Alt ]" { NextSwapLayout; }
+        //
   }
 
   shared_except "locked" "normal" "entersearch" "renamepane" "renametab" {
     bind "q" { SwitchToMode "Normal"; }
   }
 
+  // breaks ctrl+x in session-manager in normal mode
   shared_except "locked" "pane" {
     bind "Ctrl x" { SwitchToMode "Pane"; }
   }
 
   shared_except "pane" "tab" { unbind "Ctrl t"; }
   shared_except "pane" "scroll" "entersearch" "search" { unbind "Ctrl s"; }
-  shared { unbind "Ctrl b" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p"; }
+  shared { unbind "Ctrl b" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl q"; }
 }
 
 default_layout "my"
