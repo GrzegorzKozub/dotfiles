@@ -1,29 +1,20 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
-// https://github.com/zellij-org/zellij/pull/4002
-// https://github.com/dj95/zjstatus/
+
+// todo: https://github.com/zellij-org/zellij/pull/4002
+// todo: https://github.com/dj95/zjstatus/
 
 keybinds clear-defaults=false {
+  shared { unbind "Ctrl b" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl q" "Ctrl s" "Ctrl t"; }
+
   locked {}
   normal {}
 
+  shared_except "locked" "pane" {
+    bind "Alt P" "Ctrl x" { SwitchToMode "Pane"; }
+  }
+
   pane {
-    bind "Ctrl x" { SwitchToMode "Normal"; } // WriteChars "^X"
-
-    bind "Ctrl r" { SwitchToMode "Resize"; }
-    bind "Ctrl m" { SwitchToMode "Move"; }
-    bind "Ctrl t" { SwitchToMode "Tab"; }
-    bind "Ctrl s" { SwitchToMode "Scroll"; }
-    bind "Ctrl o" { SwitchToMode "Session"; }
-
-    // bind "Ctrl Left" "Ctrl h" { Resize "Increase Left"; }
-    // bind "Ctrl Down" "Ctrl j" { Resize "Increase Down"; }
-    // bind "Ctrl Up" "Ctrl k" { Resize "Increase Up"; }
-    // bind "Ctrl Right" "Ctrl l" { Resize "Increase Right"; }
-
-    // bind "Shift Left" { MovePane "Left"; }
-    // bind "Shift Down" { MovePane "Down"; }
-    // bind "Shift Up" { MovePane "Up"; }
-    // bind "Shift Right" { MovePane "Right"; }
+    bind "Alt P" "Ctrl x" { SwitchToMode "Normal"; } // WriteChars "^X"
 
     bind "Tab" { FocusNextPane; }
     bind "Shift Tab" { FocusPreviousPane; }
@@ -38,8 +29,12 @@ keybinds clear-defaults=false {
 
   renamepane {}
 
+  shared_except "resize" "locked" {
+    bind "Alt R" { SwitchToMode "Resize"; }
+  }
+
   resize {
-    bind "Ctrl r" { SwitchToMode "Normal"; }
+    bind "Alt R" { SwitchToMode "Normal"; }
 
     bind "Shift Left" { Resize "Decrease Left"; }
     bind "Shift Down" { Resize "Decrease Down"; }
@@ -47,20 +42,42 @@ keybinds clear-defaults=false {
     bind "Shift Right" { Resize "Decrease Right"; }
   }
 
+  shared_except "move" "locked" {
+    bind "Alt M" { SwitchToMode "Move"; }
+  }
+
   move {
-    bind "Ctrl m" { SwitchToMode "Normal"; }
+    bind "Alt M" { SwitchToMode "Normal"; }
 
     bind "Shift Tab" { MovePaneBackwards; }
   }
 
+  shared_except "tab" "locked" {
+    bind "Alt T" { SwitchToMode "Tab"; }
+  }
+
   tab {
+    bind "Alt T" { SwitchToMode "Normal"; }
+
     bind "n" "t" { NewTab { layout "my"; }; SwitchToMode "Normal"; }
+
+    // figure out the best key and port the next 2 to tmux
+    // bind "]" { BreakPaneRight; SwitchToMode "Normal"; }
+    // bind "[" { BreakPaneLeft; SwitchToMode "Normal"; }
 
     unbind "x"
   }
 
   renametab {}
-  scroll {}
+
+  shared_except "scroll" "locked" {
+    bind "Alt S" { SwitchToMode "Scroll"; }
+  }
+
+  scroll {
+    bind "Alt S" { SwitchToMode "Normal"; }
+  }
+
   entersearch {}
 
   search {
@@ -70,51 +87,46 @@ keybinds clear-defaults=false {
   }
 
   shared_among "scroll" "search" {
+    bind "Ctrl u" { HalfPageScrollUp; }
+    bind "Ctrl d" { HalfPageScrollDown; }
+
     bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
   }
 
-  shared_among "scroll" "entersearch" "search" {
-    bind "Ctrl u" { HalfPageScrollUp; }
-    bind "Ctrl d" { HalfPageScrollDown; }
+  shared_except "session" "locked" {
+    bind "Alt O" { SwitchToMode "Session"; }
   }
 
   session {
-    bind "Ctrl o" { SwitchToMode "Normal"; }
+    bind "Alt O" { SwitchToMode "Normal"; }
   }
 
   shared_except "locked" {
     bind "Alt d" { NewPane "Down"; }
     bind "Alt r" { NewPane "Right"; }
 
+    bind "Alt h" "Alt Left" { MoveFocus "Left"; }
+    bind "Alt j" "Alt Down" { MoveFocus "Down"; }
+    bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+    bind "Alt l" "Alt Right" { MoveFocus "Right"; }
+
+    // figure out the best keys and port to tmux
+    // bind "Alt =" "Alt +" { Resize "Increase"; }
+    // bind "Alt -" { Resize "Decrease"; }
+
     bind "Alt f" { TogglePaneEmbedOrFloating; }
     bind "Alt F" { ToggleFloatingPanes; }
 
+    bind "Ctrl T" { NewTab { layout "my"; }; SwitchToMode "Normal"; }
+    bind "Ctrl Tab" { GoToNextTab; }
+    bind "Ctrl Shift Tab" { GoToPreviousTab; }
 
-        // bind "Alt i" { MoveTab "Left"; }
-        // bind "Alt o" { MoveTab "Right"; }
-        // bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
-        // bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
-        // bind "Alt j" "Alt Down" { MoveFocus "Down"; }
-        // bind "Alt k" "Alt Up" { MoveFocus "Up"; }
-        // bind "Alt =" "Alt +" { Resize "Increase"; }
-        // bind "Alt -" { Resize "Decrease"; }
-        // bind "Alt [" { PreviousSwapLayout; }
-        // bind "Alt ]" { NextSwapLayout; }
-        //
+    unbind "Alt i" "Alt o" "Alt [" "Alt ]"
   }
 
   shared_except "locked" "normal" "entersearch" "renamepane" "renametab" {
     bind "q" { SwitchToMode "Normal"; }
   }
-
-  // breaks ctrl+x in session-manager in normal mode
-  shared_except "locked" "pane" {
-    bind "Ctrl x" { SwitchToMode "Pane"; }
-  }
-
-  shared_except "pane" "tab" { unbind "Ctrl t"; }
-  shared_except "pane" "scroll" "entersearch" "search" { unbind "Ctrl s"; }
-  shared { unbind "Ctrl b" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl q"; }
 }
 
 default_layout "my"
