@@ -61,9 +61,11 @@ keybinds clear-defaults=false {
 
     bind "n" "t" { NewTab { layout "my"; }; SwitchToMode "Normal"; }
 
-    // figure out the best key and port the next 2 to tmux
-    // bind "]" { BreakPaneRight; SwitchToMode "Normal"; }
-    // bind "[" { BreakPaneLeft; SwitchToMode "Normal"; }
+    bind "[" { GoToPreviousTab; }
+    bind "]" { GoToNextTab; }
+
+    bind "b" { BreakPaneRight; SwitchToMode "Normal"; }
+    bind "B" { BreakPaneLeft; SwitchToMode "Normal"; }
 
     unbind "x"
   }
@@ -110,10 +112,6 @@ keybinds clear-defaults=false {
     bind "Alt k" "Alt Up" { MoveFocus "Up"; }
     bind "Alt l" "Alt Right" { MoveFocus "Right"; }
 
-    // figure out the best keys and port to tmux
-    // bind "Alt =" "Alt +" { Resize "Increase"; }
-    // bind "Alt -" { Resize "Decrease"; }
-
     bind "Alt f" { TogglePaneEmbedOrFloating; }
     bind "Alt F" { ToggleFloatingPanes; }
 
@@ -121,7 +119,7 @@ keybinds clear-defaults=false {
     bind "Ctrl Tab" { GoToNextTab; }
     bind "Ctrl Shift Tab" { GoToPreviousTab; }
 
-    unbind "Alt i" "Alt o" "Alt [" "Alt ]"
+    // unbind "Alt i" "Alt o" "Alt [" "Alt ]"
   }
 
   shared_except "locked" "normal" "entersearch" "renamepane" "renametab" {
