@@ -119,7 +119,7 @@ keybinds clear-defaults=false {
     bind "Ctrl Tab" { GoToNextTab; }
     bind "Ctrl Shift Tab" { GoToPreviousTab; }
 
-    // unbind "Alt i" "Alt o" "Alt [" "Alt ]"
+    unbind "Alt i" "Alt o" "Alt [" "Alt ]"
   }
 
   shared_except "locked" "normal" "entersearch" "renamepane" "renametab" {
