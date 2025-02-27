@@ -1,12 +1,14 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 
-// todo: https://github.com/zellij-org/zellij/pull/4002
-// todo: https://github.com/dj95/zjstatus/
+// todo: https://github.com/zellij-org/zellij/pull/3242
 
 keybinds clear-defaults=false {
-  shared { unbind "Ctrl b" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl q" "Ctrl s" "Ctrl t"; }
+  shared { unbind "Ctrl b" "Ctrl g" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl q" "Ctrl s" "Ctrl t"; }
 
-  locked {}
+  locked {
+    bind "Alt G" { SwitchToMode "Normal"; }
+  }
+
   normal {}
 
   shared_except "locked" "pane" {
@@ -104,6 +106,8 @@ keybinds clear-defaults=false {
   }
 
   shared_except "locked" {
+    bind "Alt G" { SwitchToMode "Locked"; }
+
     bind "Alt d" { NewPane "Down"; }
     bind "Alt r" { NewPane "Right"; }
 
@@ -132,11 +136,11 @@ default_mode "normal"
 pane_frames false
 show_release_notes false
 show_startup_tips false
-simplified_ui true
+// simplified_ui true
 theme "gruvbox-material-dark"
 ui {
   pane_frames {
-    hide_session_name true
+    // hide_session_name true
     rounded_corners true
   }
 }
