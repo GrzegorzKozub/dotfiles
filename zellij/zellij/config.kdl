@@ -6,7 +6,7 @@ keybinds clear-defaults=false {
   shared { unbind "Ctrl b" "Ctrl g" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl q" "Ctrl s" "Ctrl t"; }
 
   locked {
-    bind "Alt G" { SwitchToMode "Normal"; }
+    bind "Alt L" { SwitchToMode "Normal"; }
   }
 
   normal {}
@@ -26,7 +26,7 @@ keybinds clear-defaults=false {
     bind "f" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
     bind "F" { ToggleFloatingPanes; SwitchToMode "Normal"; }
 
-    unbind "x"
+    // unbind "x"
   }
 
   renamepane {}
@@ -106,7 +106,7 @@ keybinds clear-defaults=false {
   }
 
   shared_except "locked" {
-    bind "Alt G" { SwitchToMode "Locked"; }
+    bind "Alt L" { SwitchToMode "Locked"; }
 
     bind "Alt d" { NewPane "Down"; }
     bind "Alt r" { NewPane "Right"; }

@@ -639,6 +639,6 @@ fi
 # zellij
 
 # if [[ ! $TERM_PROGRAM =~ 'vscode|zed' ]] && [[ -z $ZELLIJ ]]; then
-#   zellij attach --create $HOST
+#   zellij attach --create
 # fi
 
