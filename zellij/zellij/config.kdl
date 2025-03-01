@@ -69,6 +69,8 @@ keybinds clear-defaults=false {
     bind "b" { BreakPaneRight; SwitchToMode "Normal"; }
     bind "B" { BreakPaneLeft; SwitchToMode "Normal"; }
 
+    bind "c" { SwitchToMode "RenameTab"; TabNameInput 0; }
+
     unbind "x"
   }
 

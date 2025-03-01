@@ -4,49 +4,54 @@ layout {
     pane size=1 borderless=true {
       plugin location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm" {
 
- 		    color_bg "#32302f" // bg0
-        color_orange "#c35e0a" // term_orange
+ 		    color_bg0 "#32302f" // bg0
+        color_bg3 "#504945" // bg3 (between black & bright_black)
+        color_term_orange "#c35e0a" // term_orange
 
         border_enabled false // pane size must be 2
         border_position "top"
         border_char "─"
         border_format "#[fg=black]{char}"
 
-        // mode_locked "#[fg=bright_black]#[fg=$bg,bg=bright_black]#[fg=bright_black]"
-        mode_locked "#[fg=bright_black]"
-        // mode_normal "#[fg=bright_black]#[fg=$bg,bg=bright_black]󰞷#[fg=bright_black]" // 󰞷     󰆍
-        mode_normal "#[fg=bright_black]󰞷" // 󰞷     󰆍
-        mode_pane "#[fg=yellow]#[fg=$bg,bg=yellow]󰖲#[fg=yellow]"
-        mode_resize "#[fg=$orange]#[fg=$bg,bg=$orange]r#[fg=$orange]"
-        mode_move "#[fg=red]#[fg=$bg,bg=red]m#[fg=red]"
-        mode_tab "#[fg=blue]#[fg=$bg,bg=blue]󰖯#[fg=blue]"
-        mode_scroll "#[fg=green]#[fg=$bg,bg=green]#[fg=green]" //  󰜷  󰔶
-        mode_enter_search "#[fg=bright_magenta]#[fg=$bg,bg=bright_magenta]#[fg=bright_magenta]"
-        mode_search "#[fg=magenta]#[fg=$bg,bg=magenta]#[fg=magenta]"
-        mode_session "#[fg=cyan]#[fg=$bg,bg=cyan]#[fg=cyan]"
+        mode_locked "#[fg=$bg3]#[fg=$bg0,bg=$bg3]#[fg=$bg3]"
+        mode_normal "#[fg=bright_black]#[fg=$bg0,bg=bright_black]#[fg=bright_black]" // 󰞷
+
+        mode_pane "#[fg=yellow]#[fg=$bg0,bg=yellow]󰖯#[fg=yellow]"
+        mode_rename_pane "#[fg=bright_yellow]#[fg=$bg0,bg=bright_yellow]#[fg=bright_yellow]"
+        mode_resize "#[fg=$term_orange]#[fg=$bg0,bg=$term_orange]󰧆#[fg=$term_orange]"
+        mode_move "#[fg=red]#[fg=$bg0,bg=red]󰁕#[fg=red]"
+
+        mode_tab "#[fg=blue]#[fg=$bg0,bg=blue]󰖰#[fg=blue]"
+        mode_rename_tab "#[fg=bright_blue]#[fg=$bg0,bg=bright_blue]#[fg=bright_blue]"
+
+        mode_scroll "#[fg=green]#[fg=$bg0,bg=green]󰁞#[fg=green]"
+        mode_enter_search "#[fg=bright_cyan]#[fg=$bg0,bg=bright_cyan]#[fg=bright_cyan]"
+        mode_search "#[fg=cyan]#[fg=$bg0,bg=cyan]#[fg=cyan]"
+
+        mode_session "#[fg=magenta]#[fg=$bg0,bg=magenta]󰒓#[fg=magenta]"
 
         tab_separator " "
 
         tab_display_count 8
-        tab_truncate_start_format "#[fg=bright_black]..."
-        tab_truncate_end_format "#[fg=bright_black]..."
+        tab_truncate_start_format "#[fg=$bg3]..."
+        tab_truncate_end_format "#[fg=$bg3]..."
 
         tab_floating_indicator " 󰖲"
         tab_fullscreen_indicator " 󰊓"
         tab_sync_indicator " 󰓦"
 
-        tab_normal "#[fg=bright_black]{name} {index}{floating_indicator}"
-        tab_normal_fullscreen "#[fg=bright_black]{name} {index}{fullscreen_indicator}"
-        tab_normal_sync "#[fg=bright_black]{name} {index}{sync_indicator}"
+        tab_normal "#[fg=$bg3]{name}{floating_indicator}"
+        tab_normal_fullscreen "#[fg=$bg3]{name}{fullscreen_indicator}"
+        tab_normal_sync "#[fg=$bg3]{name}{sync_indicator}"
 
-        tab_active "#[fg=white]{name} {index}{floating_indicator}"
-        tab_active_fullscreen "#[fg=white]{name} {index}{fullscreen_indicator}"
-        tab_active_sync "#[fg=white]{name} {index}{sync_indicator}"
+        tab_active "#[fg=bright_black]{name}{floating_indicator}"
+        tab_active_fullscreen "#[fg=bright_black]{name}{fullscreen_indicator}"
+        tab_active_sync "#[fg=bright_black]{name}{sync_indicator}"
 
-        tab_rename "#[fg=bright_white]{name} {index}{floating_indicator}"
+        tab_rename "#[fg=white]{name}{floating_indicator}"
 
         notification_format_no_notifications ""
-        notification_format_unread "#[fg=white]󰍡 {message}"
+        notification_format_unread "#[fg=bright_black]{message}"
         notification_show_interval 10
 
         format_hide_on_overlength true
@@ -59,5 +64,4 @@ layout {
       }
     }
   }
-  tab name="tab"
 }
