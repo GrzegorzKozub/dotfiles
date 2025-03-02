@@ -13,22 +13,24 @@ layout {
         border_char "─"
         border_format "#[fg=black]{char}"
 
-        mode_locked "#[fg=$bg3]#[fg=$bg0,bg=$bg3]#[fg=$bg3]"
-        mode_normal "#[fg=bright_black]#[fg=$bg0,bg=bright_black]#[fg=bright_black]" // 󰞷
+        //   󰞷  󰖲  󰖯   󰧾 󰌨   󰞔 󰁜 󰁔 󰁝   󰣖 󰢻 󰹚 󰹙 󰊓  󰓦
 
-        mode_pane "#[fg=yellow]#[fg=$bg0,bg=yellow]󰖯#[fg=yellow]"
-        mode_rename_pane "#[fg=bright_yellow]#[fg=$bg0,bg=bright_yellow]#[fg=bright_yellow]"
-        mode_resize "#[fg=$term_orange]#[fg=$bg0,bg=$term_orange]󰧆#[fg=$term_orange]"
-        mode_move "#[fg=red]#[fg=$bg0,bg=red]󰁕#[fg=red]"
+        mode_locked "#[fg=$bg3]#[fg=$bg0,bg=$bg3]#[fg=$bg3]"
+        mode_normal "#[fg=bright_black]#[fg=$bg0,bg=bright_black]󰞷#[fg=bright_black]"
 
-        mode_tab "#[fg=blue]#[fg=$bg0,bg=blue]󰖰#[fg=blue]"
-        mode_rename_tab "#[fg=bright_blue]#[fg=$bg0,bg=bright_blue]#[fg=bright_blue]"
+        mode_pane "#[fg=yellow]#[fg=$bg0,bg=yellow]#[fg=yellow]"
+        mode_rename_pane "#[fg=bright_yellow]#[fg=$bg0,bg=bright_yellow]#[fg=bright_yellow]"
+        mode_resize "#[fg=$term_orange]#[fg=$bg0,bg=$term_orange]󰁜#[fg=$term_orange]"
+        mode_move "#[fg=red]#[fg=$bg0,bg=red]󰁔#[fg=red]"
 
-        mode_scroll "#[fg=green]#[fg=$bg0,bg=green]󰁞#[fg=green]"
+        mode_tab "#[fg=blue]#[fg=$bg0,bg=blue]#[fg=blue]"
+        mode_rename_tab "#[fg=bright_blue]#[fg=$bg0,bg=bright_blue]#[fg=bright_blue]"
+
+        mode_scroll "#[fg=green]#[fg=$bg0,bg=green]󰁝#[fg=green]"
         mode_enter_search "#[fg=bright_cyan]#[fg=$bg0,bg=bright_cyan]#[fg=bright_cyan]"
-        mode_search "#[fg=cyan]#[fg=$bg0,bg=cyan]#[fg=cyan]"
+        mode_search "#[fg=cyan]#[fg=$bg0,bg=cyan]#[fg=cyan]"
 
-        mode_session "#[fg=magenta]#[fg=$bg0,bg=magenta]󰒓#[fg=magenta]"
+        mode_session "#[fg=magenta]#[fg=$bg0,bg=magenta]󰣖#[fg=magenta]"
 
         tab_separator " "
 
@@ -36,8 +38,8 @@ layout {
         tab_truncate_start_format "#[fg=$bg3]..."
         tab_truncate_end_format "#[fg=$bg3]..."
 
-        tab_floating_indicator " 󰖲"
-        tab_fullscreen_indicator " 󰊓"
+        tab_floating_indicator " 󰹚"
+        tab_fullscreen_indicator " "
         tab_sync_indicator " 󰓦"
 
         tab_normal "#[fg=$bg3]{name}{floating_indicator}"

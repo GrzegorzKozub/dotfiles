@@ -121,6 +121,8 @@ keybinds clear-defaults=false {
     bind "Alt f" { TogglePaneEmbedOrFloating; }
     bind "Alt F" { ToggleFloatingPanes; }
 
+    bind "Alt z" { ToggleFocusFullscreen; }
+
     bind "Ctrl T" { NewTab { layout "my"; }; SwitchToMode "Normal"; }
     bind "Ctrl Tab" { GoToNextTab; }
     bind "Ctrl Shift Tab" { GoToPreviousTab; }
