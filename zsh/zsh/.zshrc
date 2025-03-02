@@ -635,7 +635,15 @@ zsh-defer eval "$(zoxide init --cmd cd zsh)"
 
 if [[ ! $TERM_PROGRAM =~ 'vscode|zed' ]] && [[ -z $TMUX ]]; then
   tmux has-session -t 0 2> /dev/null
-  [[ $? = 0 ]] && tmux attach-session -t 0 || tmux new-session # -s 1
+  if [[ $? = 0 ]]; then
+    if [[ $(tmux list-clients -f '#{==:#{client_session},0}' 2> /dev/null) ]]; then
+      tmux new-session
+    else
+      tmux attach-session -t 0
+    fi
+  else
+    tmux new-session -s 0
+  fi
 fi
 
 # zellij
