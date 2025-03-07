@@ -316,9 +316,8 @@ zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 export FZF_DEFAULT_OPTS="
   --bind=ctrl-d:page-down,ctrl-u:page-up
-  --bind=alt-j:preview-down,alt-k:preview-up
-  --bind=alt-down:preview-down,alt-up:preview-up
-  --bind=alt-d:preview-page-down,alt-u:preview-page-up
+  --bind=shift-down:preview-page-down,shift-up:preview-page-up
+  --bind=alt-shift-down:preview-down,alt-shift-up:preview-up
   --border none
   --color dark
   --color fg:$MY_FZF_COLOR_DARK,selected-fg:$MY_FZF_COLOR_LIGHT,preview-fg:-1
