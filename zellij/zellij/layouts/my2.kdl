@@ -1,0 +1,8 @@
+layout {
+  default_tab_template {
+    children
+    pane size=4 {
+      plugin location="status-bar"
+    }
+  }
+}

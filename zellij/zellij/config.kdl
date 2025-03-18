@@ -1,7 +1,5 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 
-// todo: https://github.com/zellij-org/zellij/pull/3242
-
 keybinds clear-defaults=false {
   shared { unbind "Ctrl b" "Ctrl g" "Ctrl h" "Ctrl n" "Ctrl o" "Ctrl p" "Ctrl q" "Ctrl s" "Ctrl t"; }
 
@@ -105,6 +103,16 @@ keybinds clear-defaults=false {
 
   session {
     bind "Alt O" { SwitchToMode "Normal"; }
+
+    bind "o" {
+      LaunchOrFocusPlugin "session-manager" {
+        floating true
+        move_to_focused_tab true
+      };
+      SwitchToMode "Normal";
+    }
+
+    unbind "w"
   }
 
   shared_except "locked" {
@@ -135,17 +143,174 @@ keybinds clear-defaults=false {
   }
 }
 
-default_layout "my"
+default_layout "my2"
 default_mode "normal"
-pane_frames false
+pane_frames true // when making theme
 show_release_notes false
 show_startup_tips false
 // simplified_ui true
-theme "gruvbox-material-dark"
+theme "gruvbox-material-dark2"
 ui {
   pane_frames {
     // hide_session_name true
     rounded_corners true
   }
+}
+
+themes {
+  // https://zellij.dev/documentation/themes
+ 	gruvbox-material-dark2 {
+
+  // bg0              #32302f
+  // bg1              #3c3836
+  // bg3              #504945
+  // bg5              #665c54
+
+  // grey1            #928374
+
+  // fg0              #d4be98
+
+  // term_black=bg1   #3c3836
+  // term_red         #c14a4a
+  // term_green       #6c782e
+  // term_yellow      #b47109
+  // term_blue        #45707a
+  // term_purple      #945e80
+  // term_aqua        #4c7a5d
+  // term_orange      #c35e0a
+  // term_white=grey1 #928374
+
+  // black=bg5        #665c54
+  // red              #ea6962
+  // green            #a9b665
+  // yellow           #d8a657
+  // blue             #7daea3
+  // purple           #d3869b
+  // aqua             #89b482
+  // orange           #e78a4e
+  // white=fg0        #d4be98
+
+    text_unselected {
+      background "#32302f" // bg0
+      base "#665c54" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+    text_selected {
+      background "#32302f" // bg0
+      base "#665c54" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+    ribbon_unselected {
+      background "#32302f" // bg0
+      base "#665c54" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+    ribbon_selected {
+      background "#32302f" // bg0
+      base "#665c54" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+
+    table_cell_unselected {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+    table_cell_selected {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+    table_title {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+
+
+    list_unselected {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+    list_selected {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+    frame_selected {
+      background "#32302f" // bg0
+      base "#665c54" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+    frame_highlight {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+
+    exit_code_success {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+    exit_code_error {
+      background "#32302f" // bg0
+      base "#ff0000" // bg3
+      emphasis_0 "#928374" // black
+      emphasis_1 "#945e80" // fg0
+      emphasis_2 "#945e80" // fg0
+      emphasis_3 "#945e80" // fg0
+    }
+
+    multiplayer_user_colors {
+      player_1 "#c14a4a"
+      player_2 "#6c782e"
+    }
+ 	}
 }
 
