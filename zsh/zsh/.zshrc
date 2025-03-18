@@ -440,6 +440,8 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock # rootless
 
+export COMPOSE_BAKE=true
+
 # dotnet
 
 export DOTNET_CLI_HOME=$XDG_CACHE_HOME/dotnet # https://github.com/dotnet/runtime/issues/98276
