@@ -207,6 +207,8 @@
   path = go.inc
 [includeIf "hasconfig:remote.*.url:**/ApsisInternational/cleanup"]
   path = go.inc
+[includeIf "hasconfig:remote.*.url:**/ApsisInternational/email-sdk-go"]
+  path = go.inc
 [includeIf "hasconfig:remote.*.url:**/ApsisInternational/email-validator-go"]
   path = go.inc
 [includeIf "hasconfig:remote.*.url:**/ApsisInternational/env"]
