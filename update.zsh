@@ -34,7 +34,7 @@ done
 
 # yazi
 
-ya pack --upgrade
+# ya pack --upgrade
 
 # links
 

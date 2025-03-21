@@ -51,3 +51,24 @@ pip install --user --upgrade --break-system-packages \
 # gem install --user-install \
 #   neovim
 
+# yazi
+
+# FILE=$XDG_CONFIG_HOME/yazi/package.toml
+# [[ -f $FILE ]] && rm -f $FILE
+#
+# for DIR in \
+#   compress \
+#   git
+# do
+#   rm -rf $XDG_CONFIG_HOME/yazi/plugins/$DIR.yazi
+# done
+
+pushd $XDG_CONFIG_HOME/yazi && git clean -dfx && popd
+
+for PLUGIN in \
+  KKV9/compress \
+  yazi-rs/plugins:git
+do
+  ya pack --add "$PLUGIN"
+done
+

@@ -160,15 +160,3 @@ docker rmi $(docker images tonistiigi/binfmt -a -q)
 
 docker buildx create --name builder --use
 
-# yazi
-
-FILE=$XDG_CONFIG_HOME/yazi/package.toml
-[[ -f $FILE ]] && rm -f $FILE
-
-for PLUGIN in \
-  KKV9/compress \
-  yazi-rs/plugins:git
-do
-  ya pack --add "$PLUGIN"
-done
-
