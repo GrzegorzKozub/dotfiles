@@ -63,10 +63,10 @@ pip install --user --upgrade --break-system-packages \
 #   rm -rf $XDG_CONFIG_HOME/yazi/plugins/$DIR.yazi
 # done
 
+rm -rf ~/.local/state/yazi/packages
 pushd $XDG_CONFIG_HOME/yazi && git clean -dfx && popd
 
 for PLUGIN in \
-  KKV9/compress \
   yazi-rs/plugins:git
 do
   ya pack --add "$PLUGIN"
