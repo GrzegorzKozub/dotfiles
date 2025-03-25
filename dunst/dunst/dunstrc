@@ -13,7 +13,7 @@
   text_icon_padding = 8
   frame_width = 0
   gap_size = 10
-  font = Cantarell 12
+  font = Adwaita Sans 12
   show_age_threshold = -1
   show_indicators = no
   dmenu = /usr/bin/wofi --dmenu -p dunst:
