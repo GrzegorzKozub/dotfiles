@@ -9,7 +9,7 @@ QUERY="
     -F '#{session_name}  #{t/p:session_created}  #{session_windows}  #{session_attached}  #{session_path}' | \
   awk '$CURRENT' | \
   column --output-separator ' ' --table --table-right 2,4,6,8 | \
-  sort --key 2 --reverse
+  sort --field-separator ' ' --key 1,2 --reverse
 "
 
 LIST=$(eval "$QUERY") && LIST=${//$HOME/\~}
@@ -22,7 +22,7 @@ SELECTED=$(
     --header "$KEYS" --header-first \
     --bind "ctrl-k:execute-silent(tmux kill-session -t {2})+reload($QUERY)" \
     --bind "ctrl-n:execute-silent(tmux new-session -c $(tmux display-message -p '#{pane_current_path}') -d)+reload($QUERY)" \
-    --accept-nth 1
+    --accept-nth 2
 )
 
 EXIT=$? && [ $EXIT == 0 ] && tmux switch-client -t "$SELECTED" || exit 0
