@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-# TODO: icons, current, --header-lines
+KEYS="$(echo -e "\e[35m<Enter>\e[0m \e[37mSwitch\e[0m · \e[35m<C-k>\e[0m \e[37mKill\e[0m · \e[35m<C-n>\e[0m \e[37mNew\e[0m")"
+
+CURRENT="(\$1==$(tmux display-message -p '#{session_name}')) {print \"\033[31m\033[0m \" \$0; next} {print \"$(echo -e '\u00A0') \" \$0}"
 
 QUERY="
   tmux list-sessions \
-    -F '#{session_name} #{t/p:session_created} #{session_windows} #{session_attached} #{session_path}' | \
-  column --output-separator ' ' --table --table-right 1,3,4 | \
-  sort --key 1 --reverse
+    -F '#{session_name}  #{t/p:session_created}  #{session_windows}  #{session_attached}  #{session_path}' | \
+  awk '$CURRENT' | \
+  column --output-separator ' ' --table --table-right 2,4,6,8 | \
+  sort --key 2 --reverse
 "
-
-KEYS="$(echo -e "\e[35m<Enter>\e[0m \e[37mSwitch\e[0m · \e[35m<C-k>\e[0m \e[37mKill\e[0m · \e[35m<C-n>\e[0m \e[37mNew\e[0m")"
 
 LIST=$(eval "$QUERY") && LIST=${//$HOME/\~}
 
@@ -19,8 +20,8 @@ SELECTED=$(
     --layout default --list-border rounded --input-border rounded \
     --ansi --color header:bright-black \
     --header "$KEYS" --header-first \
-    --bind "ctrl-k:execute-silent(tmux kill-session -t {1})+reload($QUERY)" \
-    --bind "ctrl-n:execute-silent(tmux new-session -d)+reload($QUERY)" \
+    --bind "ctrl-k:execute-silent(tmux kill-session -t {2})+reload($QUERY)" \
+    --bind "ctrl-n:execute-silent(tmux new-session -c $(tmux display-message -p '#{pane_current_path}') -d)+reload($QUERY)" \
     --accept-nth 1
 )
 
