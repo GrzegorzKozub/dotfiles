@@ -7,12 +7,13 @@ CURRENT="(\$1==\"$(tmux display-message -p '#{session_name}')\") { print \"\033[
 QUERY="
   tmux list-sessions \
     -F '#{session_name}  #{t/p:session_created}  #{session_windows}  #{session_attached}  #{session_path}' | \
+  sed -e 's|$HOME|~|' | \
   awk '$CURRENT' | \
   column --output-separator ' ' --table --table-right 2,4,6,8 | \
   sort --field-separator ' ' --key 4 --reverse
 "
 
-LIST=$(eval "$QUERY") && LIST=${LIST//$HOME/\~}
+LIST=$(eval "$QUERY") # && LIST=${LIST//$HOME/\~}
 
 SELECTED=$(
   echo -e "$LIST" |
