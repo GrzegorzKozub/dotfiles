@@ -324,7 +324,7 @@ export FZF_DEFAULT_OPTS="
   --color hl:$MY_FZF_COLOR_HL,selected-hl:$MY_FZF_COLOR_HL
   --color current-fg:-1,current-bg:-1,gutter:-1,current-hl:$MY_FZF_COLOR_HL
   --color info:$MY_FZF_COLOR_DARK
-  --color border:$MY_FZF_COLOR_DARK
+  --color border:$MY_FZF_COLOR_DARK,header:$MY_FZF_COLOR_DARK,label:$MY_FZF_COLOR_DARK
   --color prompt:$MY_FZF_COLOR_PROMPT
   --color pointer:$MY_FZF_COLOR_LIGHT,marker:$MY_FZF_COLOR_LIGHT
   --ellipsis '…'
@@ -484,7 +484,6 @@ export FORGIT_GLO_FORMAT='%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar
 
 export FORGIT_FZF_DEFAULT_OPTS="
   --color fg:$MY_FZF_COLOR_LIGHT
-  --color header:-1
   --height 100%
   --preview-window='right:50%'
 "
