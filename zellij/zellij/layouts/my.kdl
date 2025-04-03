@@ -13,7 +13,7 @@ layout {
         border_char "─"
         border_format "#[fg=black]{char}"
 
-        //   󰞷  󰖲  󰖯   󰧾 󰌨   󰞔 󰁜 󰁔 󰁝   󰣖 󰢻 󰹚 󰹙 󰊓  󰓦
+        //   󰞷  󰖲  󰖯   󰧾 󰌨   󰞔 󰁜 󰁔 󰁝    󰣖 󰢻 󰹚 󰹙 󰊓  󰓦 
 
         mode_locked "#[fg=$bg3]#[fg=$bg0,bg=$bg3]#[fg=$bg3]"
         mode_normal "#[fg=bright_black]#[fg=$bg0,bg=bright_black]󰞷#[fg=bright_black]"
