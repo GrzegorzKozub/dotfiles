@@ -316,7 +316,7 @@ export FZF_DEFAULT_OPTS="
   --bind=alt-shift-down:preview-down,alt-shift-up:preview-up
   --border none
   --color dark
-  --color fg:bright-black,selected-fg:white,preview-fg:-1
+  --color fg:white,selected-fg:-1,preview-fg:-1
   --color hl:yellow,selected-hl:yellow
   --color current-fg:-1,current-bg:-1,gutter:-1,current-hl:yellow
   --color info:bright-black
@@ -342,7 +342,7 @@ export FZF_DEFAULT_OPTS="
 fzf-history-widget-no-numbers() {
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
   local opts="
-    $FZF_DEFAULT_OPTS --scheme=history --bind=ctrl-r:toggle-sort,ctrl-z:ignore
+    $FZF_DEFAULT_OPTS --scheme=history --bind=ctrl-r:toggle-sort
     $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m"
   local selected=( $( fc -rln 1 | FZF_DEFAULT_OPTS=$opts $(__fzfcmd) ) )
   local ret=$?
@@ -479,7 +479,6 @@ export FORGIT_COPY_CMD='xclip -selection clipboard'
 export FORGIT_GLO_FORMAT='%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'
 
 export FORGIT_FZF_DEFAULT_OPTS="
-  --color fg:white
   --height 100%
   --preview-window='right:50%'
 "

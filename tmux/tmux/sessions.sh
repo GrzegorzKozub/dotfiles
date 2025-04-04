@@ -20,7 +20,7 @@ SELECTED=$(
   fzf --tmux center,33%,33% --layout default \
     --list-border rounded --input-border rounded \
     --list-label 'Sessions' \
-    --ansi --color fg:white \
+    --ansi \
     --header "$KEYS" --header-first \
     --bind "ctrl-k:execute-silent(tmux kill-session -t {2})+reload($QUERY)" \
     --bind "ctrl-n:execute-silent(tmux new-session -c $(tmux display-message -p '#{pane_current_path}') -d)+reload($QUERY)" \
