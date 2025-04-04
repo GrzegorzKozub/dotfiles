@@ -26,10 +26,6 @@ autoload -Uz _zinit
 
 zinit ice depth=1 && zinit light romkatv/zsh-defer
 
-# theme
-
-source $XDG_CONFIG_HOME/zsh/gruvbox-material-dark.zsh
-
 # functions
 
 my-bindkey() {
@@ -320,25 +316,25 @@ export FZF_DEFAULT_OPTS="
   --bind=alt-shift-down:preview-down,alt-shift-up:preview-up
   --border none
   --color dark
-  --color fg:$MY_FZF_COLOR_DARK,selected-fg:$MY_FZF_COLOR_LIGHT,preview-fg:-1
-  --color hl:$MY_FZF_COLOR_HL,selected-hl:$MY_FZF_COLOR_HL
-  --color current-fg:-1,current-bg:-1,gutter:-1,current-hl:$MY_FZF_COLOR_HL
-  --color info:$MY_FZF_COLOR_DARK
-  --color border:$MY_FZF_COLOR_DARK,header:$MY_FZF_COLOR_DARK,label:$MY_FZF_COLOR_DARK
-  --color prompt:$MY_FZF_COLOR_PROMPT
-  --color pointer:$MY_FZF_COLOR_LIGHT,marker:$MY_FZF_COLOR_LIGHT
+  --color fg:bright-black,selected-fg:white,preview-fg:-1
+  --color hl:yellow,selected-hl:yellow
+  --color current-fg:-1,current-bg:-1,gutter:-1,current-hl:yellow
+  --color info:bright-black
+  --color border:bright-black,label:bright-black
+  --color prompt:magenta,pointer:magenta,marker:magenta
+  --color header:bright-black
   --ellipsis '…'
   --height 50%
   --layout reverse-list
   --margin 0
-  --marker '$MY_FZF_CHAR_MARKER'
+  --marker '• '
   --no-bold
   --no-info
   --no-scrollbar
   --no-separator
   --padding 0
-  --pointer '$MY_FZF_CHAR_POINTER'
-  --prompt '$MY_FZF_CHAR_PROMPT'
+  --pointer '●'
+  --prompt '●• '
   --scroll-off 3
   --tabstop 2
 "
@@ -483,7 +479,7 @@ export FORGIT_COPY_CMD='xclip -selection clipboard'
 export FORGIT_GLO_FORMAT='%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'
 
 export FORGIT_FZF_DEFAULT_OPTS="
-  --color fg:$MY_FZF_COLOR_LIGHT
+  --color fg:white
   --height 100%
   --preview-window='right:50%'
 "
