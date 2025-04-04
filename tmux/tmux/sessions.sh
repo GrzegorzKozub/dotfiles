@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-KEYS="$(echo -e "\e[35m<Enter>\e[0m \e[37mSwitch\e[0m · \e[35m<C-k>\e[0m \e[37mKill\e[0m · \e[35m<C-n>\e[0m \e[37mNew\e[0m")"
-
 CURRENT="(\$1==\"$(tmux display-message -p '#{session_name}')\") { print \"\033[33m󰞷\033[0m \" \$0; next } { print \"$(echo -e '\u00A0') \" \$0 }"
 
 QUERY="
@@ -14,6 +12,8 @@ QUERY="
 "
 
 LIST=$(eval "$QUERY") # && LIST=${LIST//$HOME/\~}
+
+KEYS="$(echo -e "\e[35m<Enter>\e[0m \e[37mSwitch\e[0m · \e[35m<C-k>\e[0m \e[37mKill\e[0m · \e[35m<C-n>\e[0m \e[37mNew\e[0m")"
 
 SELECTED=$(
   echo -e "$LIST" |
