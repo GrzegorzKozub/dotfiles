@@ -1,0 +1,8 @@
+# vim: filetype=yaml
+
+extends: default
+
+rules:
+  comments:
+    min-spaces-from-content: 1
+  document-start: disable

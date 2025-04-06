@@ -22,6 +22,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   teams-for-linux \
   tmux \
   vscode \
+  yamllint \
   yazi \
   yt-dlp \
   zed \
