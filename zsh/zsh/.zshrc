@@ -427,7 +427,6 @@ alias myip='curl http://checkip.amazonaws.com/'
 
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat --language=man --style=plain'"
 
-# neovim
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
@@ -523,6 +522,8 @@ export LESSHISTFILE=-
 # export MANPAGER='less --RAW-CONTROL-CHARS +Gg --squeeze-blank-lines --use-color -DEr -DPw -DSkY -Ddy -Dsm -Dub'
 
 alias less='less --quit-if-one-screen --RAW-CONTROL-CHARS --use-color -DEr -DPw -DSkY -Ddy -Dsm -Dub'
+
+# neovim
 
 export EDITOR='nvim'
 export DIFFPROG='nvim -d'
