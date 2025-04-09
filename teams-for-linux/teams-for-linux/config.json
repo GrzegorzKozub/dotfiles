@@ -1,6 +1,6 @@
 {
   "appIconType": "light",
-  "disableGpu": true,
+  "disableGpu": false,
   "disableNotificationSound": true,
   "disableNotificationWindowFlash": true,
   "disableNotifications": true,
@@ -11,7 +11,6 @@
   ],
   "followSystemTheme": true,
   "logConfig": false,
-  "optInTeamsV2": true,
   "spellCheckerLanguages": ["en", "pl"],
-  "url": "https://teams.microsoft.com/v2"
+  "trayIconEnabled": false
 }
