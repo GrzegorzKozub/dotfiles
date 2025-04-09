@@ -1,14 +1,8 @@
 {
   "appIconType": "light",
-  "disableGpu": false,
   "disableNotificationSound": true,
   "disableNotificationWindowFlash": true,
   "disableNotifications": true,
-  "electronCLIFlags": [
-    ["disable-features", "WaylandFractionalScaleV1"],
-    ["enable-features", "WaylandWindowDecorations"],
-    ["ozone-platform-hint", "auto"]
-  ],
   "followSystemTheme": true,
   "logConfig": false,
   "spellCheckerLanguages": ["en", "pl"],
