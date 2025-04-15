@@ -10,6 +10,7 @@ stow --dir=`dirname $0` --target=$XDG_CONFIG_HOME --stow \
   cava \
   fsh \
   git \
+  ghostty \
   keepass \
   kitty \
   mpv \
