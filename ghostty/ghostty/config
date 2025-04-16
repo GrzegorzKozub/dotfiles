@@ -66,9 +66,6 @@ resize-overlay-duration = 0s
 clipboard-read = allow
 clipboard-write = allow
 
-# no env var support
-# config-file = $HOST
-
 confirm-close-surface = false
 
 # from the bottom
