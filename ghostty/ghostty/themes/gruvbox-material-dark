@@ -1,0 +1,41 @@
+# vim: filetype=confini
+
+# bg0, fg0
+background = #32302f
+foreground = #d4be98
+
+# bg3, fg0
+selection-background = #504945
+selection-foreground = #d4be98
+
+# bg1, term_red, term_green, term_yellow, term_blue, tern_purple, term_aqua, grey1
+palette = 0=#3c3836
+palette = 1=#c14a4a
+palette = 2=#6c782e
+palette = 3=#b47109
+palette = 4=#45707a
+palette = 5=#945e80
+palette = 6=#4c7a5d
+palette = 7=#928374
+
+# bg5, red, green, yellow, blue, purple, aqua, fg0
+palette = 8=#665c54
+palette = 9=#ea6962
+palette = 10=#a9b665
+palette = 11=#d8a657
+palette = 12=#7daea3
+palette = 13=#d3869b
+palette = 14=#89b482
+palette = 15=#d4be98
+
+# grey1, bg0
+cursor-color = #928374
+cursor-text = #32302f
+
+# bg1
+split-divider-color = #3c3836
+
+# bg0, fg0
+window-titlebar-background = #32302f
+window-titlebar-foreground = #d4be98
+
