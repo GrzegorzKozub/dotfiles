@@ -74,6 +74,7 @@ shell-integration = none
 
 app-notifications = false
 
+gtk-single-instance = true
 gtk-titlebar = false
 
 desktop-notifications = false
