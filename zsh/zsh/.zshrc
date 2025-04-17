@@ -474,6 +474,8 @@ alias fd='fd --exclude .git --hidden'
 
 # forgit
 
+# https://github.com/wfxr/forgit/issues/431
+
 export FORGIT_COPY_CMD='xclip -selection clipboard'
 export FORGIT_GLO_FORMAT='%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'
 
