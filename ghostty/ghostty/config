@@ -1,3 +1,6 @@
+# startup optimization by running this on login
+# ghostty --gtk-single-instance=true --initial-window=false --quit-after-last-window-closed=false
+
 font-family = Cascadia Code NF Regular
 font-family-bold = Cascadia Code NF SemiBold
 font-family-italic = Cascadia Code NF Italic
