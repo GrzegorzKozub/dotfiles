@@ -484,10 +484,6 @@ export FORGIT_FZF_DEFAULT_OPTS="
   --preview-window='right:50%'
 "
 
-export FORGIT_DIFF_FZF_OPTS="
-  --no-preview-label
-"
-
 zsh-defer zinit ice lucid depth=1
 zsh-defer zinit light wfxr/forgit
 
