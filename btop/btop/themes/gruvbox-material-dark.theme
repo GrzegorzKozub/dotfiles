@@ -1,83 +1,53 @@
-# vim: filetype=confini
+theme[main_bg]="#32302f" # bg0
+theme[main_fg]="#d4be98" # fg0
 
-# bg0
-theme[main_bg]="#32302f"
+theme[cpu_box]="#665c54" # bg5
+theme[mem_box]="#665c54"
+theme[net_box]="#665c54"
+theme[proc_box]="#665c54"
+theme[div_line]="#665c54"
 
-# fg0
-theme[main_fg]="#d4be98"
+theme[hi_fg]="#945e80" # term_purple
+theme[title]="#928374" # grey1
 
-# grey1
-theme[title]="#928374"
+theme[graph_text]="#665c54" # bg5
 
-# Highlight color for keyboard shortcuts
-theme[hi_fg]="#ea6962"
+theme[selected_bg]="#00000000"
+theme[selected_fg]="#b47109" # term_orange
 
-# Background color of selected items
-theme[selected_bg]="#d8a657"
+theme[inactive_fg]="#3c3836" # bg1
 
-# Foreground color of selected items
-theme[selected_fg]="#282828"
+theme[temp_start]="#7daea3" # blue
+theme[temp_mid]="#d8a657" # yellow
+theme[temp_end]="#ea6962" # red
 
-# Color of inactive/disabled text
-theme[inactive_fg]="#282828"
+theme[cpu_start]="#a9b665" # green
+theme[cpu_mid]="#d8a657" # yellow
+theme[cpu_end]="#ea6962" # red
 
-# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="#665c54"
-
-# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#a9b665"
-
-# Cpu box outline color
-theme[cpu_box]="#7c6f64"
-
-# Memory/disks box outline color
-theme[mem_box]="#7c6f64"
-
-# Net up/down box outline color
-theme[net_box]="#7c6f64"
-
-# Processes box outline color
-theme[proc_box]="#7c6f64"
-
-# Box divider line and small boxes line color
-theme[div_line]="#7c6f64"
-
-# Temperature graph colors
-theme[temp_start]="#7daea3"
-theme[temp_mid]="#e78a4e"
-theme[temp_end]="#ea6962"
-
-# CPU graph colors
-theme[cpu_start]="#a9b665"
-theme[cpu_mid]="#d8a657"
-theme[cpu_end]="#ea6962"
-
-# Mem/Disk free meter
-theme[free_start]="#89b482"
-theme[free_mid]=""
-theme[free_end]=""
-
-# Mem/Disk cached meter
-theme[cached_start]="#7daea3"
-theme[cached_mid]=""
-theme[cached_end]=""
-
-# Mem/Disk available meter
-theme[available_start]="#d8a657"
-theme[available_mid]=""
-theme[available_end]=""
-
-# Mem/Disk used meter
-theme[used_start]="#ea6962"
+theme[used_start]="#ea6962" # term_red
 theme[used_mid]=""
 theme[used_end]=""
 
-# Download graph colors
-theme[download_start]="#e78a4e"
+theme[available_start]="#a9b665" # green
+theme[available_mid]=""
+theme[available_end]=""
+
+theme[cached_start]="#7daea3" # blue
+theme[cached_mid]=""
+theme[cached_end]=""
+
+theme[free_start]="#a9b665" # green
+theme[free_mid]=""
+theme[free_end]=""
+
+theme[download_start]="#89b482" # aqua
 theme[download_mid]=""
 theme[download_end]=""
 
-# Upload graph colors
-theme[upload_start]="#d3869b"
+theme[upload_start]="#d3869b" # purple
 theme[upload_mid]=""
 theme[upload_end]=""
+
+theme[proc_misc]="#a9b665" # green
+
