@@ -1,9 +1,26 @@
 [
   {
+    "bindings": {
+      "ctrl-o": "pane::GoBack",
+      "ctrl-i": "pane::GoForward",
+
+      "ctrl-k r": "pane::SplitRight",
+      "ctrl-k d": "pane::SplitDown",
+
+      "ctrl-k left": "workspace::ActivatePaneLeft",
+      "ctrl-k down": "workspace::ActivatePaneDown",
+      "ctrl-k up": "workspace::ActivatePaneUp",
+      "ctrl-k right": "workspace::ActivatePaneRight"
+    }
+  },
+  {
     "context": "Pane",
     "bindings": {
-      "alt-left": "pane::GoBack",
-      "alt-right": "pane::GoForward"
+      "ctrl-alt--": "pane::GoBack",
+      "ctrl-_": "pane::GoForward",
+
+      "alt-r": "pane::SplitRight",
+      "alt-d": "pane::SplitDown"
     }
   },
   {
@@ -17,7 +34,17 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-shift-s": "workspace::SaveAll"
+      "ctrl-shift-s": "workspace::SaveAll",
+
+      "alt-left": "workspace::ActivatePaneLeft",
+      "alt-down": "workspace::ActivatePaneDown",
+      "alt-up": "workspace::ActivatePaneUp",
+      "alt-right": "workspace::ActivatePaneRight",
+
+      "ctrl-k shift-left": "workspace::SwapPaneLeft",
+      "ctrl-k shift-right": "workspace::SwapPaneRight",
+      "ctrl-k shift-up": "workspace::SwapPaneUp",
+      "ctrl-k shift-down": "workspace::SwapPaneDown"
     }
   }
 ]
