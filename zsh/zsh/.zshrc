@@ -365,8 +365,8 @@ zsh-defer zinit snippet OMZ::plugins/dirhistory/dirhistory.plugin.zsh
 zsh-defer bindkey -r '^[^[[B' # esc up
 zsh-defer bindkey -r '^[^[[A' # esc down
 
-my-bindkey '\e^[[D' dirhistory_zle_dirhistory_back # esc left
-my-bindkey '\e^[[C' dirhistory_zle_dirhistory_future # esc right
+my-bindkey '^O' dirhistory_zle_dirhistory_back # ctrl+o
+my-bindkey '^I' dirhistory_zle_dirhistory_future # ctrl+i
 
 # yazi
 
