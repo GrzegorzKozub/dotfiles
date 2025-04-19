@@ -25,6 +25,7 @@
   "collaboration_panel": { "default_width": 256 },
   "current_line_highlight": "line",
   "cursor_blink": false,
+  "edit_predictions": { "mode": "subtle" },
   "features": { "edit_prediction_provider": "zed" },
   "file_finder": { "modal_max_width": "medium" },
   "git": { "inline_blame": { "enabled": false } },
