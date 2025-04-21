@@ -12,7 +12,7 @@
       "alt-left": "pane::GoBack",
       "alt-right": "pane::GoForward",
 
-      "ctrl-w ctrl-w": ["pane::CloseActiveItem", { "close_pinned": false }],
+      "ctrl-w c": ["pane::CloseActiveItem", { "close_pinned": false }],
 
       "ctrl-w r": "pane::SplitRight",
       "ctrl-w d": "pane::SplitDown",
@@ -27,7 +27,7 @@
       "ctrl-w ctrl-up": "vim::ResizePaneUp",
       "ctrl-w ctrl-right": "vim::ResizePaneRight",
 
-      "ctrl-w ctrl-0": "vim::ResetPaneSizes",
+      "ctrl-w =": "vim::ResetPaneSizes",
 
       "ctrl-w shift-left": "workspace::SwapPaneLeft",
       "ctrl-w shift-right": "workspace::SwapPaneRight",
