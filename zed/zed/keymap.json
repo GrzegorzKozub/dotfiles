@@ -22,20 +22,8 @@
       "ctrl-w up": "workspace::ActivatePaneUp",
       "ctrl-w right": "workspace::ActivatePaneRight",
 
-      "ctrl-w ctrl-left": "vim::ResizePaneLeft",
-      "ctrl-w ctrl-down": "vim::ResizePaneDown",
-      "ctrl-w ctrl-up": "vim::ResizePaneUp",
-      "ctrl-w ctrl-right": "vim::ResizePaneRight",
-
       "ctrl-w =": "vim::ResetPaneSizes",
-
-      "ctrl-w shift-left": "workspace::SwapPaneLeft",
-      "ctrl-w shift-right": "workspace::SwapPaneRight",
-      "ctrl-w shift-up": "workspace::SwapPaneUp",
-      "ctrl-w shift-down": "workspace::SwapPaneDown",
-
       "ctrl-w z": "workspace::ToggleZoom",
-
       "ctrl-w j": "pane::JoinAll"
     }
   },
