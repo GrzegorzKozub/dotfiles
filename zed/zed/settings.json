@@ -3,7 +3,7 @@
   "assistant": {
     "default_height": 256,
     "default_model": {
-      "model": "claude-3-5-sonnet-latest",
+      "model": "claude-3-7-sonnet-latest",
       "provider": "zed.dev"
     },
     "default_width": 512,
@@ -25,7 +25,10 @@
   "collaboration_panel": { "default_width": 256 },
   "current_line_highlight": "line",
   "cursor_blink": false,
-  "edit_predictions": { "mode": "subtle" },
+  "edit_predictions": {
+    "disabled_globs": ["**/credentials", "**/*.ovpn"],
+    "mode": "subtle"
+  },
   "features": { "edit_prediction_provider": "zed" },
   "file_finder": { "modal_max_width": "medium" },
   "git": { "inline_blame": { "enabled": false } },
@@ -109,7 +112,6 @@
     "indent_size": 8
   },
   "restore_on_startup": "none",
-  "show_edit_predictions": false,
   "show_whitespaces": "none",
   "tab_bar": { "show_nav_history_buttons": false },
   "tab_size": 2,

@@ -13,6 +13,7 @@
       "alt-right": "pane::GoForward",
 
       "ctrl-w c": ["pane::CloseActiveItem", { "close_pinned": false }],
+      "ctrl-w ctrl-c": "workspace::CloseAllItemsAndPanes",
 
       "ctrl-w r": "pane::SplitRight",
       "ctrl-w d": "pane::SplitDown",
