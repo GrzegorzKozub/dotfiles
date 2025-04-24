@@ -278,8 +278,7 @@ zinit wait lucid as'completion' for \
 
 # history
 
-# HISTFILE=$XDG_DATA_HOME/zsh/history
-HISTFILE=~/code/history/$HOST/history
+HISTFILE=~/code/hist/$HOST/history
 
 HISTSIZE=100000 # history memory limit
 SAVEHIST=100000 # history file limit
@@ -613,7 +612,7 @@ alias zed='zeditor'
 
 # zoxide
 
-export _ZO_DATA_DIR=~/code/history/$HOST
+export _ZO_DATA_DIR=~/code/hist/$HOST
 export _ZO_FZF_OPTS=$FZF_DEFAULT_OPTS
 
 zsh-defer eval "$(zoxide init --cmd cd zsh)"
