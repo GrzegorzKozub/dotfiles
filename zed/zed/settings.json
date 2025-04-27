@@ -33,6 +33,7 @@
   "file_finder": { "modal_max_width": "medium" },
   "git": { "inline_blame": { "enabled": false } },
   "git_panel": { "default_width": 256 },
+  "horizontal_scroll_margin": 8,
   "indent_guides": { "enabled": false },
   "journal": { "hour_format": "hour24" },
   "jupyter": { "enabled": false },
@@ -129,7 +130,7 @@
     "mode": "dark"
   },
   "ui_font_size": 16,
-  "vertical_scroll_margin": 2,
+  "vertical_scroll_margin": 4,
   "vim_mode": false,
   "wrap_guides": [80]
 }
