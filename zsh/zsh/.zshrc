@@ -324,7 +324,7 @@ export FZF_DEFAULT_OPTS="
   --color header:bright-black
   --ellipsis '…'
   --height 50%
-  --layout reverse-list
+  --layout reverse
   --margin 0
   --marker '• '
   --no-bold
