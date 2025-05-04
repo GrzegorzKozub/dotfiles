@@ -315,7 +315,7 @@ export FZF_DEFAULT_OPTS="
   --bind=alt-shift-down:preview-down,alt-shift-up:preview-up
   --border none
   --color dark
-  --color fg:white,selected-fg:-1,preview-fg:-1
+  --color fg:white,selected-fg:white,preview-fg:-1
   --color hl:yellow,selected-hl:yellow
   --color current-fg:-1,current-bg:-1,gutter:-1,current-hl:yellow
   --color info:bright-black
@@ -334,7 +334,7 @@ export FZF_DEFAULT_OPTS="
   --padding 0
   --pointer '●'
   --prompt '●• '
-  --scroll-off 3
+  --scroll-off 4
   --tabstop 2
 "
 
@@ -482,6 +482,7 @@ export FORGIT_GLO_FORMAT='%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar
 export FORGIT_FZF_DEFAULT_OPTS="
   --height 100%
   --preview-window='right:50%'
+  --bind=alt-p:toggle-preview
 "
 
 zsh-defer zinit ice lucid depth=1
