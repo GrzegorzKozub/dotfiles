@@ -9,7 +9,6 @@
 --field-context-separator=\x20
 --field-match-separator=\x20
 
---glob=!**/.cache/*
 --glob=!**/.git/*
 --glob=!**/node_modules/*
 
