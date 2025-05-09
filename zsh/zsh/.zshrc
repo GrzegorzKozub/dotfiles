@@ -482,7 +482,7 @@ export FORGIT_GLO_FORMAT='%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar
 export FORGIT_FZF_DEFAULT_OPTS="
   --height 100%
   --preview-window='right:50%'
-  --bind=alt-p:toggle-preview
+  --bind 'alt-p:change-preview-window(down|hidden|)'
 "
 
 zsh-defer zinit ice lucid depth=1
