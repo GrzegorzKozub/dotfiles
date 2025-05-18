@@ -53,22 +53,12 @@ pip install --user --upgrade --break-system-packages \
 
 # yazi
 
-# FILE=$XDG_CONFIG_HOME/yazi/package.toml
-# [[ -f $FILE ]] && rm -f $FILE
-#
-# for DIR in \
-#   compress \
-#   git
-# do
-#   rm -rf $XDG_CONFIG_HOME/yazi/plugins/$DIR.yazi
-# done
-
 rm -rf ~/.local/state/yazi/packages
 pushd $XDG_CONFIG_HOME/yazi && git clean -dfx && popd
 
 for PLUGIN in \
   yazi-rs/plugins:git
 do
-  ya pack --add "$PLUGIN"
+  ya pkg add "$PLUGIN"
 done
 
