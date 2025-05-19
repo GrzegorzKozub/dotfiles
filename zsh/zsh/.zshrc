@@ -326,23 +326,32 @@ export FZF_DEFAULT_OPTS="
   --height 50%
   --layout reverse
   --margin 0
-  --marker '• '
   --no-bold
-  --no-info
+  --info inline-right:''
   --no-scrollbar
   --no-separator
   --padding 0
-  --pointer '●'
-  --prompt '●• '
+  --prompt ' '
   --scroll-off 4
   --tabstop 2
 "
 
+# ctrl+w (alt is for preview) line wrapping (default alt/ or ctrl/)
+# line wrap by default?
+# refine the following function
+# which shortcut for copying?
+# slimmer pointer and marker
+# use multiline marker for normal marking
+# vim
+# glo
+#https://github.com/junegunn/fzf/tree/master?tab=readme-ov-file#key-bindings-for-command-line
+
 fzf-history-widget-no-numbers() {
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
   local opts="
-    $FZF_DEFAULT_OPTS --scheme=history --bind=ctrl-r:toggle-sort
-    $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m"
+    $FZF_DEFAULT_OPTS --scheme=history
+    --bind 'ctrl-y:execute-silent(echo {} | wl-copy)+abort'
+    $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} "
   local selected=( $( fc -rln 1 | FZF_DEFAULT_OPTS=$opts $(__fzfcmd) ) )
   local ret=$?
   BUFFER=$selected
