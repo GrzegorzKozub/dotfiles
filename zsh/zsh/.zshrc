@@ -311,6 +311,8 @@ zsh-defer source /usr/share/fzf/key-bindings.zsh
 
 export FZF_DEFAULT_OPTS="
   --bind=ctrl-d:page-down,ctrl-u:page-up
+  --bind=ctrl-w:toggle-wrap
+  --bind 'ctrl-y:execute-silent(echo -n {} | wl-copy)+abort'
   --bind=shift-down:preview-page-down,shift-up:preview-page-up
   --bind=alt-shift-down:preview-down,alt-shift-up:preview-up
   --border none
@@ -324,34 +326,24 @@ export FZF_DEFAULT_OPTS="
   --color header:bright-black
   --ellipsis '…'
   --height 50%
+  --info inline-right:''
   --layout reverse
   --margin 0
+  --marker '▏'
+  --marker-multi-line '▏▏▏'
   --no-bold
-  --info inline-right:''
   --no-scrollbar
   --no-separator
   --padding 0
+  --pointer '▎'
   --prompt ' '
   --scroll-off 4
   --tabstop 2
 "
 
-# ctrl+w (alt is for preview) line wrapping (default alt/ or ctrl/)
-# line wrap by default?
-# refine the following function
-# which shortcut for copying?
-# slimmer pointer and marker
-# use multiline marker for normal marking
-# vim
-# glo
-#https://github.com/junegunn/fzf/tree/master?tab=readme-ov-file#key-bindings-for-command-line
-
 fzf-history-widget-no-numbers() {
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  local opts="
-    $FZF_DEFAULT_OPTS --scheme=history
-    --bind 'ctrl-y:execute-silent(echo {} | wl-copy)+abort'
-    $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} "
+  local opts="$FZF_DEFAULT_OPTS $FZF_CTRL_R_OPTS --scheme=history --query=${(qqq)LBUFFER}"
   local selected=( $( fc -rln 1 | FZF_DEFAULT_OPTS=$opts $(__fzfcmd) ) )
   local ret=$?
   BUFFER=$selected
@@ -483,9 +475,7 @@ alias fd='fd --exclude .git --hidden'
 
 # forgit
 
-# https://github.com/wfxr/forgit/issues/431
-
-export FORGIT_COPY_CMD='xclip -selection clipboard'
+export FORGIT_COPY_CMD='wl-copy'
 export FORGIT_GLO_FORMAT='%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'
 
 export FORGIT_FZF_DEFAULT_OPTS="
