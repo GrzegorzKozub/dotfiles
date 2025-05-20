@@ -323,7 +323,7 @@ export FZF_DEFAULT_OPTS="
   --color info:bright-black
   --color border:bright-black,label:bright-black
   --color prompt:magenta,pointer:magenta,marker:magenta
-  --color header:bright-black
+  --color spinner:bright-black,header:bright-black
   --ellipsis '…'
   --height 50%
   --info inline-right:''
