@@ -371,6 +371,13 @@ zsh-defer bindkey -M vicmd '^I' dirhistory_zle_dirhistory_future # ctrl+i
 
 # yazi
 
+export YAZI_ZOXIDE_OPTS="
+  $FZF_DEFAULT_OPTS
+  --height 100%
+  --preview-window='down:33%'
+  --bind 'alt-p:change-preview-window(right:50%|hidden|)'
+"
+
 my-cd() {
   local temp_file=$1
   if [[ -f "$temp_file" ]]; then
