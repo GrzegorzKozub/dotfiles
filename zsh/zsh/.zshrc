@@ -276,6 +276,15 @@ zinit wait lucid as'completion' for \
   OMZ::plugins/docker-compose/_docker-compose \
   OMZ::plugins/pip/_pip
 
+# fzf-tab
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':fzf-tab:*' fzf-bindings 'space:accept'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+zsh-defer zinit light Aloxaf/fzf-tab
+
 # history
 
 HISTFILE=~/code/hist/$HOST/history
