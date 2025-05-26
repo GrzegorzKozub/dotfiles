@@ -6,5 +6,6 @@
   "followSystemTheme": true,
   "logConfig": false,
   "spellCheckerLanguages": ["en", "pl"],
-  "trayIconEnabled": true
+  "trayIconEnabled": true,
+  "videoMenu": true
 }
