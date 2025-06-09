@@ -528,7 +528,7 @@ export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export GOCACHE=$XDG_CACHE_HOME/go
 export GOPATH=$XDG_DATA_HOME/go
 
-export GOPRIVATE=github.com/ApsisInternational/*
+export GOPRIVATE=github.com/ApsisInternational/*,github.com/efficy-sa/*
 
 # gopass
 

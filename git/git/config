@@ -219,4 +219,19 @@
   path = go.inc
 [includeIf "hasconfig:remote.*.url:**/ApsisInternational/toolbox"]
   path = go.inc
-
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-audience"]
+  path = go.inc
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-shared-cleanup"]
+  path = go.inc
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-shared-email-sdk-go"]
+  path = go.inc
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-shared-email-validator-go"]
+  path = go.inc
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-shared-env"]
+  path = go.inc
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-shared-go-backoff"]
+  path = go.inc
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-shared-terminator"]
+  path = go.inc
+[includeIf "hasconfig:remote.*.url:**/efficy-sa/apsis-shared-toolbox"]
+  path = go.inc
