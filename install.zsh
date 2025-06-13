@@ -88,7 +88,6 @@ fnm use default
 npm install --global \
   eslint \
   neovim \
-  tsx \
   typescript
 
   # artillery autocannon mdpdf
